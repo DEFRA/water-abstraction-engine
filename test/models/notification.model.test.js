@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import EventHelper from '../support/helpers/event.helper.js'
-import EventModel from '../../app/models/event.model.js'
+import EventModel from '../../src/models/event.model.js'
 import LicenceMonitoringStationHelper from '../support/helpers/licence-monitoring-station.helper.js'
-import LicenceMonitoringStationModel from '../../app/models/licence-monitoring-station.model.js'
+import LicenceMonitoringStationModel from '../../src/models/licence-monitoring-station.model.js'
 import NotificationHelper from '../support/helpers/notification.helper.js'
 
 // Thing under test
-import NotificationModel from '../../app/models/notification.model.js'
+import NotificationModel from '../../src/models/notification.model.js'
 
 describe('Notification model', () => {
   let testEvent

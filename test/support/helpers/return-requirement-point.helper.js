@@ -2,7 +2,7 @@
  * @module ReturnRequirementPointHelper
  */
 
-import ReturnRequirementPointModel from '../../../app/models/return-requirement-point.model.js'
+import ReturnRequirementPointModel from '../../../src/models/return-requirement-point.model.js'
 import { generateReturnRequirementPointExternalId, generateUUID } from '../generators.js'
 
 /**

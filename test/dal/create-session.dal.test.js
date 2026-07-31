@@ -2,12 +2,12 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
-import SessionModel from '../../app/models/session.model.js'
+import SessionModel from '../../src/models/session.model.js'
 
 // Thing under test
-import CreateSessionDal from '../../app/dal/create-session.dal.js'
+import CreateSessionDal from '../../src/dal/create-session.dal.js'
 
-describe('DAL - Create Session DAL', () => {
+describe('Create Session DAL', () => {
   describe('when there is no data', () => {
     it('creates an empty session and returns the session ID', async () => {
       const result = await CreateSessionDal()

@@ -4,12 +4,12 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 import http2 from 'node:http2'
 
 // Things we need to stub
-import * as BaseRequest from '../../app/requests/base.request.js'
-import notifyConfig from '../../config/notify.config.js'
-import serverConfig from '../../config/server.config.js'
+import * as BaseRequest from '../../src/requests/base.request.js'
+import notifyConfig from '../../src/config/notify.config.js'
+import serverConfig from '../../src/config/server.config.js'
 
 // Thing under test
-import * as NotifyRequest from '../../app/requests/notify.request.js'
+import * as NotifyRequest from '../../src/requests/notify.request.js'
 
 const { HTTP_STATUS_BAD_REQUEST, HTTP_STATUS_NOT_FOUND, HTTP_STATUS_OK, HTTP_STATUS_TOO_MANY_REQUESTS } =
   http2.constants

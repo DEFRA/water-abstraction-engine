@@ -4,13 +4,13 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 // Test helpers
 import Boom from '@hapi/boom'
 import http2 from 'node:http2'
-import SessionNotFoundError from '../../app/errors/session-not-found.error.js'
+import SessionNotFoundError from '../../src/errors/session-not-found.error.js'
 
 // Things we need to stub
 import GlobalNotifierStub from '../support/stubs/global-notifier.stub.js'
 
 // For running our service
-import { init } from '../../app/server.js'
+import { init } from '../support/test-server.js'
 
 const {
   HTTP_STATUS_BAD_REQUEST,
@@ -21,7 +21,7 @@ const {
   HTTP_STATUS_INTERNAL_SERVER_ERROR
 } = http2.constants
 
-describe('Error Pages plugin', () => {
+describe('Error Pages Plugin', () => {
   let handler
   let notifierStub
   let path

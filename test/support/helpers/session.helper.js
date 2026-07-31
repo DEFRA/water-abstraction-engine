@@ -2,7 +2,7 @@
  * @module SessionHelper
  */
 
-import SessionModel from '../../../app/models/session.model.js'
+import SessionModel from '../../../src/models/session.model.js'
 
 /**
  * Add a new session

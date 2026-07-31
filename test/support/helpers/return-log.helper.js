@@ -2,8 +2,8 @@
  * @module ReturnLogHelper
  */
 
-import ReturnLogModel from '../../../app/models/return-log.model.js'
-import { timestampForPostgres } from '../../../app/lib/general.lib.js'
+import ReturnLogModel from '../../../src/models/return-log.model.js'
+import { timestampForPostgres } from '../../../src/lib/general.lib.js'
 import { generateLicenceRef, generateReference, generateReturnId, generateUUID } from '../generators.js'
 
 /**

@@ -3,19 +3,19 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import ReturnCycleHelper from '../support/helpers/return-cycle.helper.js'
-import ReturnCycleModel from '../../app/models/return-cycle.model.js'
+import ReturnCycleModel from '../../src/models/return-cycle.model.js'
 import ReturnLogHelper from '../support/helpers/return-log.helper.js'
 import ReturnRequirementHelper from '../support/helpers/return-requirement.helper.js'
-import ReturnRequirementModel from '../../app/models/return-requirement.model.js'
+import ReturnRequirementModel from '../../src/models/return-requirement.model.js'
 import ReturnSubmissionHelper from '../support/helpers/return-submission.helper.js'
-import ReturnSubmissionModel from '../../app/models/return-submission.model.js'
+import ReturnSubmissionModel from '../../src/models/return-submission.model.js'
 import ReviewReturnHelper from '../support/helpers/review-return.helper.js'
-import ReviewReturnModel from '../../app/models/review-return.model.js'
+import ReviewReturnModel from '../../src/models/review-return.model.js'
 
 // Thing under test
-import ReturnLogModel from '../../app/models/return-log.model.js'
+import ReturnLogModel from '../../src/models/return-log.model.js'
 
 describe('Return Log model', () => {
   let testLicence

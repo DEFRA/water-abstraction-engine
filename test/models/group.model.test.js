@@ -4,16 +4,16 @@ import { beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import GroupHelper from '../support/helpers/group.helper.js'
 import GroupRoleHelper from '../support/helpers/group-role.helper.js'
-import GroupRoleModel from '../../app/models/group-role.model.js'
+import GroupRoleModel from '../../src/models/group-role.model.js'
 import RoleHelper from '../support/helpers/role.helper.js'
-import RoleModel from '../../app/models/role.model.js'
+import RoleModel from '../../src/models/role.model.js'
 import UserGroupHelper from '../support/helpers/user-group.helper.js'
-import UserGroupModel from '../../app/models/user-group.model.js'
+import UserGroupModel from '../../src/models/user-group.model.js'
 import UserHelper from '../support/helpers/user.helper.js'
-import UserModel from '../../app/models/user.model.js'
+import UserModel from '../../src/models/user.model.js'
 
 // Thing under test
-import GroupModel from '../../app/models/group.model.js'
+import GroupModel from '../../src/models/group.model.js'
 
 const GROUP_ROLE_WIRS_RTNS_INDEX = 5
 const GROUP_WIRS_INDEX = 2

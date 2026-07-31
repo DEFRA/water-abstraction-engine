@@ -2,7 +2,7 @@
  * @module ChangeReasonHelper
  */
 
-import ChargeReasonModel from '../../../app/models/change-reason.model.js'
+import ChargeReasonModel from '../../../src/models/change-reason.model.js'
 import { data as changeReasons } from '../../../db/seeds/data/change-reasons.js'
 import { selectRandomEntry } from '../general.js'
 

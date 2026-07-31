@@ -3,11 +3,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceMonitoringStationHelper from '../support/helpers/licence-monitoring-station.helper.js'
-import LicenceMonitoringStationModel from '../../app/models/licence-monitoring-station.model.js'
+import LicenceMonitoringStationModel from '../../src/models/licence-monitoring-station.model.js'
 import MonitoringStationHelper from '../support/helpers/monitoring-station.helper.js'
 
 // Thing under test
-import MonitoringStationModel from '../../app/models/monitoring-station.model.js'
+import MonitoringStationModel from '../../src/models/monitoring-station.model.js'
 
 describe('Monitoring Station model', () => {
   let testLicenceMonitoringStations

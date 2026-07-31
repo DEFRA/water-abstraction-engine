@@ -2,7 +2,7 @@
  * @module PrimaryPurposeHelper
  */
 
-import PrimaryPurposeModel from '../../../app/models/primary-purpose.model.js'
+import PrimaryPurposeModel from '../../../src/models/primary-purpose.model.js'
 import { data as primaryPurposes } from '../../../db/seeds/data/primary-purposes.js'
 import { selectRandomEntry } from '../general.js'
 

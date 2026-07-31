@@ -2,7 +2,7 @@
  * @module ChargeReferenceHelper
  */
 
-import ChargeReferenceModel from '../../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../../src/models/charge-reference.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

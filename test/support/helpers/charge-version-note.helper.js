@@ -2,7 +2,7 @@
  * @module ChargeVersionNoteHelper
  */
 
-import ChargeVersionNoteModel from '../../../app/models/charge-version-note.model.js'
+import ChargeVersionNoteModel from '../../../src/models/charge-version-note.model.js'
 import { generateUserId } from '../generators.js'
 
 /**

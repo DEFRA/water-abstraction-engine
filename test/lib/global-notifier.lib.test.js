@@ -2,12 +2,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Things we need to stub
-import BaseNotifierLib from '../../app/lib/base-notifier.lib.js'
+import BaseNotifierLib from '../../src/lib/base-notifier.lib.js'
 
 // Thing under test
-import GlobalNotifierLib from '../../app/lib/global-notifier.lib.js'
+import GlobalNotifierLib from '../../src/lib/global-notifier.lib.js'
 
-describe('GlobalNotifierLib class', () => {
+describe('Global Notifier Lib', () => {
   let airbrakeFake
   let pinoFake
 

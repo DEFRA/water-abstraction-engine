@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import PointHelper from '../support/helpers/point.helper.js'
-import PointModel from '../../app/models/point.model.js'
+import PointModel from '../../src/models/point.model.js'
 import ReturnRequirementHelper from '../support/helpers/return-requirement.helper.js'
-import ReturnRequirementModel from '../../app/models/return-requirement.model.js'
+import ReturnRequirementModel from '../../src/models/return-requirement.model.js'
 import ReturnRequirementPointHelper from '../support/helpers/return-requirement-point.helper.js'
 
 // Thing under test
-import ReturnRequirementPointModel from '../../app/models/return-requirement-point.model.js'
+import ReturnRequirementPointModel from '../../src/models/return-requirement-point.model.js'
 
 describe('Return Requirement Point model', () => {
   let testPoint

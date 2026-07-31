@@ -6,13 +6,13 @@ import Nock from 'nock'
 
 // Test helpers
 import http2 from 'node:http2'
-import serverConfig from '../../config/server.config.js'
+import serverConfig from '../../src/config/server.config.js'
 
 // Things we need to stub
 import GlobalNotifierStub from '../support/stubs/global-notifier.stub.js'
 
 // Thing under test
-import * as BaseRequest from '../../app/requests/base.request.js'
+import * as BaseRequest from '../../src/requests/base.request.js'
 
 const { HTTP_STATUS_INTERNAL_SERVER_ERROR, HTTP_STATUS_OK } = http2.constants
 
@@ -41,7 +41,7 @@ describe('Base Request', () => {
       Nock.activate()
     }
 
-    // BaseRequest depends on the GlobalNotifier to have been set. This happens in app/plugins/global-notifier.plugin.js
+    // BaseRequest depends on the GlobalNotifier to have been set. This happens in src/plugins/global-notifier.plugin.js
     // when the app starts up and the plugin is registered. As we're not creating an instance of Hapi server in this
     // test we recreate the condition by setting it directly with our own stub
     notifierStub = GlobalNotifierStub()

@@ -2,7 +2,7 @@
  * @module UserVerificationHelper
  */
 
-import UserVerificationModel from '../../../app/models/user-verification.model.js'
+import UserVerificationModel from '../../../src/models/user-verification.model.js'
 import { generateUUID, generateVerificationCode } from '../generators.js'
 
 /**

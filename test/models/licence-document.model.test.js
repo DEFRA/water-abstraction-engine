@@ -4,12 +4,12 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import LicenceDocumentHelper from '../support/helpers/licence-document.helper.js'
 import LicenceDocumentRoleHelper from '../support/helpers/licence-document-role.helper.js'
-import LicenceDocumentRoleModel from '../../app/models/licence-document-role.model.js'
+import LicenceDocumentRoleModel from '../../src/models/licence-document-role.model.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 
 // Thing under test
-import LicenceDocumentModel from '../../app/models/licence-document.model.js'
+import LicenceDocumentModel from '../../src/models/licence-document.model.js'
 
 describe('Licence Document model', () => {
   let testLicence

@@ -2,7 +2,7 @@
  * @module EventHelper
  */
 
-import EventModel from '../../../app/models/event.model.js'
+import EventModel from '../../../src/models/event.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

@@ -2,7 +2,7 @@
  * @module ReviewChargeVersionHelper
  */
 
-import ReviewChargeVersionModel from '../../../app/models/review-charge-version.model.js'
+import ReviewChargeVersionModel from '../../../src/models/review-charge-version.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

@@ -2,7 +2,7 @@
  * @module GroupHelper
  */
 
-import GroupModel from '../../../app/models/group.model.js'
+import GroupModel from '../../../src/models/group.model.js'
 import { data as groups } from '../../../db/seeds/data/groups.js'
 import { selectRandomEntry } from '../general.js'
 

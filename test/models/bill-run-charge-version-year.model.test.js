@@ -4,12 +4,12 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import BillRunChargeVersionYearHelper from '../support/helpers/bill-run-charge-version-year.helper.js'
 import BillRunHelper from '../support/helpers/bill-run.helper.js'
-import BillRunModel from '../../app/models/bill-run.model.js'
+import BillRunModel from '../../src/models/bill-run.model.js'
 import ChargeVersionHelper from '../support/helpers/charge-version.helper.js'
-import ChargeVersionModel from '../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../src/models/charge-version.model.js'
 
 // Thing under test
-import BillRunChargeVersionYearModel from '../../app/models/bill-run-charge-version-year.model.js'
+import BillRunChargeVersionYearModel from '../../src/models/bill-run-charge-version-year.model.js'
 
 describe('Bill Run Charge Version Year model', () => {
   let testBillRun

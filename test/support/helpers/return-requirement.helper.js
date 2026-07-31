@@ -2,7 +2,7 @@
  * @module ReturnRequirementHelper
  */
 
-import ReturnRequirementModel from '../../../app/models/return-requirement.model.js'
+import ReturnRequirementModel from '../../../src/models/return-requirement.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

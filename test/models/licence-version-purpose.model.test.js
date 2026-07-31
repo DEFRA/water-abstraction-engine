@@ -3,23 +3,23 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceVersionHelper from '../support/helpers/licence-version.helper.js'
-import LicenceVersionModel from '../../app/models/licence-version.model.js'
+import LicenceVersionModel from '../../src/models/licence-version.model.js'
 import LicenceVersionPurposeConditionHelper from '../support/helpers/licence-version-purpose-condition.helper.js'
-import LicenceVersionPurposeConditionModel from '../../app/models/licence-version-purpose-condition.model.js'
+import LicenceVersionPurposeConditionModel from '../../src/models/licence-version-purpose-condition.model.js'
 import LicenceVersionPurposeHelper from '../support/helpers/licence-version-purpose.helper.js'
 import LicenceVersionPurposePointHelper from '../support/helpers/licence-version-purpose-point.helper.js'
-import LicenceVersionPurposePointModel from '../../app/models/licence-version-purpose-point.model.js'
+import LicenceVersionPurposePointModel from '../../src/models/licence-version-purpose-point.model.js'
 import PointHelper from '../support/helpers/point.helper.js'
-import PointModel from '../../app/models/point.model.js'
+import PointModel from '../../src/models/point.model.js'
 import PrimaryPurposeHelper from '../support/helpers/primary-purpose.helper.js'
-import PrimaryPurposeModel from '../../app/models/primary-purpose.model.js'
+import PrimaryPurposeModel from '../../src/models/primary-purpose.model.js'
 import PurposeHelper from '../support/helpers/purpose.helper.js'
-import PurposeModel from '../../app/models/purpose.model.js'
+import PurposeModel from '../../src/models/purpose.model.js'
 import SecondaryPurposeHelper from '../support/helpers/secondary-purpose.helper.js'
-import SecondaryPurposeModel from '../../app/models/secondary-purpose.model.js'
+import SecondaryPurposeModel from '../../src/models/secondary-purpose.model.js'
 
 // Thing under test
-import LicenceVersionPurposeModel from '../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../src/models/licence-version-purpose.model.js'
 
 describe('Licence Version Purpose model', () => {
   let primaryPurposeId

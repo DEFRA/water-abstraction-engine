@@ -2,9 +2,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Thing under test
-import HapiPinoLogInTestService from '../../../app/services/plugins//hapi-pino-log-in-test.service.js'
+import HapiPinoLogInTestService from '../../../src/services/plugins//hapi-pino-log-in-test.service.js'
 
-describe('Hapi Pino Log In Test service', () => {
+describe('Plugins - Hapi Pino Log In Test Service', () => {
   afterEach(() => {
     vi.restoreAllMocks()
   })

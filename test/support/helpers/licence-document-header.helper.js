@@ -2,7 +2,7 @@
  * @module LicenceDocumentHeaderHelper
  */
 
-import LicenceDocumentHeaderModel from '../../../app/models/licence-document-header.model.js'
+import LicenceDocumentHeaderModel from '../../../src/models/licence-document-header.model.js'
 import { generateLicenceRef, generateRandomInteger, generateUUID } from '../generators.js'
 
 /**

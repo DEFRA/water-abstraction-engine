@@ -6,14 +6,14 @@ import http2 from 'node:http2'
 import { generateNoticeReferenceCode } from '../../support/generators.js'
 
 // Things we need to stub
-import * as NotifyRequest from '../../../app/requests/notify.request.js'
+import * as NotifyRequest from '../../../src/requests/notify.request.js'
 
 // Thing under test
-import CreatePrecompiledFileRequest from '../../../app/requests/notify/create-precompiled-file.request.js'
+import CreatePrecompiledFileRequest from '../../../src/requests/notify/create-precompiled-file.request.js'
 
 const { HTTP_STATUS_BAD_REQUEST, HTTP_STATUS_CREATED } = http2.constants
 
-describe('Notify - Create precompiled file request', () => {
+describe('Notify - Create Precompiled File Request', () => {
   let response
   let referenceCode
   let content

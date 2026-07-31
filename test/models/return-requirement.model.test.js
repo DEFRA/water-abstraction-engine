@@ -3,18 +3,18 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import PointHelper from '../support/helpers/point.helper.js'
-import PointModel from '../../app/models/point.model.js'
+import PointModel from '../../src/models/point.model.js'
 import ReturnLogHelper from '../support/helpers/return-log.helper.js'
-import ReturnLogModel from '../../app/models/return-log.model.js'
+import ReturnLogModel from '../../src/models/return-log.model.js'
 import ReturnRequirementHelper from '../support/helpers/return-requirement.helper.js'
 import ReturnRequirementPointHelper from '../support/helpers/return-requirement-point.helper.js'
 import ReturnRequirementPurposeHelper from '../support/helpers/return-requirement-purpose.helper.js'
-import ReturnRequirementPurposeModel from '../../app/models/return-requirement-purpose.model.js'
+import ReturnRequirementPurposeModel from '../../src/models/return-requirement-purpose.model.js'
 import ReturnVersionHelper from '../support/helpers/return-version.helper.js'
-import ReturnVersionModel from '../../app/models/return-version.model.js'
+import ReturnVersionModel from '../../src/models/return-version.model.js'
 
 // Thing under test
-import ReturnRequirementModel from '../../app/models/return-requirement.model.js'
+import ReturnRequirementModel from '../../src/models/return-requirement.model.js'
 
 describe('Return Requirement model', () => {
   let testPoint

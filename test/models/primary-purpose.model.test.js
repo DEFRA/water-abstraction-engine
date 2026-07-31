@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceVersionPurposeHelper from '../support/helpers/licence-version-purpose.helper.js'
-import LicenceVersionPurposeModel from '../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../src/models/licence-version-purpose.model.js'
 import PrimaryPurposeHelper from '../support/helpers/primary-purpose.helper.js'
 import ReturnRequirementPurposeHelper from '../support/helpers/return-requirement-purpose.helper.js'
-import ReturnRequirementPurposeModel from '../../app/models/return-requirement-purpose.model.js'
+import ReturnRequirementPurposeModel from '../../src/models/return-requirement-purpose.model.js'
 
 // Thing under test
-import PrimaryPurposeModel from '../../app/models/primary-purpose.model.js'
+import PrimaryPurposeModel from '../../src/models/primary-purpose.model.js'
 
 describe('Primary Purpose model', () => {
   let testLicenceVersionPurposes

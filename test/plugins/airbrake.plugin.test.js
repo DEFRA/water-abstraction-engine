@@ -2,12 +2,12 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Things we need to stub
-import serverConfig from '../../config/server.config.js'
+import serverConfig from '../../src/config/server.config.js'
 
 // For running our service
-import { init } from '../../app/server.js'
+import { init } from '../support/test-server.js'
 
-describe('Airbrake plugin', () => {
+describe('Airbrake Plugin', () => {
   let originalProxy
   let server
 
@@ -72,10 +72,10 @@ describe('Airbrake plugin', () => {
       NotifierStub = vi.fn()
 
       // TODO: Replace with vi.spyOn() + dynamic import() once the project migrates to ESM
-      // AirbrakePluginWithStubs = Proxyquire('../../app/plugins/airbrake.plugin.js', {
+      // AirbrakePluginWithStubs = Proxyquire('../../src/plugins/airbrake.plugin.js', {
       //   '../lib/got-wrapper.lib.js': { gotWrapper: gotWrapperStub },
       //   '@airbrake/node': { Notifier: NotifierStub },
-      //   '../../config/server.config.js': serverConfig
+      //   '../../src/config/server.config.js': serverConfig
       // })
 
       fakeServer = {

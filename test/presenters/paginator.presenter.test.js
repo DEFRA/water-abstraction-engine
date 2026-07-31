@@ -2,10 +2,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Test helpers
-import DatabaseConfig from '../../config/database.config.js'
+import DatabaseConfig from '../../src/config/database.config.js'
 
 // Thing under test
-import PaginatorPresenter from '../../app/presenters/paginator.presenter.js'
+import PaginatorPresenter from '../../src/presenters/paginator.presenter.js'
 
 describe('Paginator Presenter', () => {
   const path = '/system/bill-runs'

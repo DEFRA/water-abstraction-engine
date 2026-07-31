@@ -5,9 +5,9 @@ import { describe, expect, it } from 'vitest'
 import * as Hoek from '@hapi/hoek'
 
 // Thing under test
-import FilterRoutesService from '../../../app/services/plugins/filter-routes.service.js'
+import FilterRoutesService from '../../../src/services/plugins/filter-routes.service.js'
 
-describe('Filter routes service', () => {
+describe('Plugins - Filter Routes Service', () => {
   const routes = [
     { path: '/' },
     { path: '/admin' },

@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import SessionHelper from '../support/helpers/session.helper.js'
 
 // Thing under test
-import SessionModel from '../../app/models/session.model.js'
+import SessionModel from '../../src/models/session.model.js'
 
 describe('Session model', () => {
   let testRecord

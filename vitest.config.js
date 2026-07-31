@@ -8,15 +8,16 @@ export default {
       changed: !ci,
       // Files and folders to exclude from coverage measurement entirely
       exclude: [
-        'app/controllers/check.controller.js',
-        'app/plugins/airbrake.plugin.js',
-        'app/plugins/auth.plugin.js',
-        'app/plugins/hapi-pino.plugin.js',
-        'app/plugins/stop.plugin.js',
-        'app/plugins/views.plugin.js',
-        'config/**',
-        'db/seeds/**',
-        'templates/**',
+        'db/**',
+        'eslint-rules/**',
+        'src/config/**',
+        'src/plugins/airbrake.plugin.js',
+        'src/plugins/auth.plugin.js',
+        'src/plugins/hapi-pino.plugin.js',
+        'src/plugins/stop.plugin.js',
+        'src/plugins/views.plugin.js',
+        'src/wrappers/**',
+        'src/base-server.js',
         'test/**'
       ],
       // Use V8's built-in coverage instrumentation
@@ -29,9 +30,9 @@ export default {
     // Base directory to scan for test files. Specified to speed up test discovery
     dir: 'test',
     // Module(s) to run once before all test suites. We use it to clean and seed the database
-    globalSetup: ['test/global-setup.js'],
+    globalSetup: ['test/support/vitest/global-setup.js'],
     // Module(s) to run once after all test suites. We use it to ensure the database connection is closed
-    globalTeardown: ['test/global-teardown.js'],
+    globalTeardown: ['test/support/vitest/global-teardown.js'],
     // Each entry is a separate Vitest project, allowing different runner settings per group of tests
     projects: [
       {
@@ -53,23 +54,14 @@ export default {
             'test/plugins/**/*.test.js',
             'test/presenters/**/*.test.js',
             'test/requests/**/*.test.js',
-            'test/services/address/**/*.test.js',
-            'test/services/companies/**/*.test.js',
-            'test/services/company-contacts/**/*.test.js',
-            'test/services/data/**/*.test.js',
-            'test/services/health/**/*.test.js',
-            'test/services/licence-versions/**/*.test.js',
-            'test/services/manage/**/*.test.js',
-            'test/services/monitoring-stations/**/*.test.js',
-            'test/services/plugins/**/*.test.js',
+            'test/services/**/*.test.js',
             'test/validators/**/*.test.js',
-            'test/views/**/*.test.js',
-            'test/services/users/**/*.test.js'
+            'test/views/**/*.test.js'
           ],
           // Share a single worker context across test files rather than isolating each file in its own module scope
           isolate: false,
           // Module(s) to run once per test file before importing it. Used to add polyfills and test-level setup
-          setupFiles: ['test/setup.js'],
+          setupFiles: ['test/support/vitest/file-setup.js'],
           // Human-readable label for this project shown in the Vitest output
           name: 'parallel',
           // In CI use 2 workers (GitHub actions have 2 cores) to avoid resource contention; locally use 50%
@@ -102,28 +94,11 @@ export default {
           // Maximum time in milliseconds allowed for a before/after hook to complete
           hookTimeout: 10000,
           // Glob patterns that select which test files belong to this project
-          include: [
-            'test/dal/**/*.test.js',
-            'test/services/bill-licences/**/*.test.js',
-            'test/services/bill-runs/**/*.test.js',
-            'test/services/billing-accounts/**/*.test.js',
-            'test/services/bills/**/*.test.js',
-            'test/services/idm/**/*.test.js',
-            'test/services/jobs/**/*.test.js',
-            'test/services/licence-monitoring-station/**/*.test.js',
-            'test/services/licences/**/*.test.js',
-            'test/services/notices/**/*.test.js',
-            'test/services/notifications/**/*.test.js',
-            'test/services/reports/**/*.test.js',
-            'test/services/return-logs/**/*.test.js',
-            'test/services/return-submissions/**/*.test.js',
-            'test/services/return-versions/**/*.test.js',
-            'test/services/search/**/*.test.js'
-          ],
+          include: ['test/dal/**/*.test.js'],
           // Share a single worker context across test files rather than isolating each file in its own module scope
           isolate: false,
           // Module(s) to run once per test file before importing it. Used to add polyfills and test-level setup
-          setupFiles: ['test/setup.js'],
+          setupFiles: ['test/support/vitest/file-setup.js'],
           // Human-readable label for this project shown in the Vitest output
           name: 'series',
           // Force a single worker so tests run one at a time and cannot interfere with each other via the database

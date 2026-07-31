@@ -2,9 +2,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Thing under test
-import * as CheckPageLib from '../../app/lib/check-page.lib.js'
+import * as CheckPageLib from '../../src/lib/check-page.lib.js'
 
-describe('CheckPage Lib', () => {
+describe('Check Page Lib', () => {
   let session
 
   beforeEach(() => {

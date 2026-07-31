@@ -3,17 +3,17 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Test helpers
 import http2 from 'node:http2'
-import { NOTIFY_TEMPLATES } from '../../../app/lib/notify-templates.lib.js'
+import { NOTIFY_TEMPLATES } from '../../../src/lib/notify-templates.lib.js'
 
 // Things we need to stub
-import * as NotifyRequest from '../../../app/requests/notify.request.js'
+import * as NotifyRequest from '../../../src/requests/notify.request.js'
 
 // Thing under test
-import CreateEmailRequest from '../../../app/requests/notify/create-email.request.js'
+import CreateEmailRequest from '../../../src/requests/notify/create-email.request.js'
 
 const { HTTP_STATUS_BAD_REQUEST, HTTP_STATUS_OK } = http2.constants
 
-describe('Notify - Create Email request', () => {
+describe('Notify - Create Email Request', () => {
   let emailAddress
   let options
   let response

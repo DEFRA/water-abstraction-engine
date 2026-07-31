@@ -2,9 +2,9 @@
  * @module LicenceMonitoringStationHelper
  */
 
-import LicenceMonitoringStationModel from '../../../app/models/licence-monitoring-station.model.js'
+import LicenceMonitoringStationModel from '../../../src/models/licence-monitoring-station.model.js'
 import { generateUUID } from '../generators.js'
-import { timestampForPostgres } from '../../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../../src/lib/general.lib.js'
 
 /**
  * Add a new licence monitoring station

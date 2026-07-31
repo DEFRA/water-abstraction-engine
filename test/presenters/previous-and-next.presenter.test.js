@@ -5,9 +5,9 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { generateUUID } from '../support/generators.js'
 
 // Thing under test
-import PreviousAndNextPresenter from '../../app/presenters/previous-and-next.presenter.js'
+import PreviousAndNextPresenter from '../../src/presenters/previous-and-next.presenter.js'
 
-describe('Previous and next presenter', () => {
+describe('Previous And Next Presenter', () => {
   let anchorElement
   let arrayOfElements
   let nextElement

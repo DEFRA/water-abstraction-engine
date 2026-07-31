@@ -2,7 +2,7 @@
  * @module ReviewLicenceHelper
  */
 
-import ReviewLicenceModel from '../../../app/models/review-licence.model.js'
+import ReviewLicenceModel from '../../../src/models/review-licence.model.js'
 import { generateLicenceRef, generateUUID } from '../generators.js'
 
 /**

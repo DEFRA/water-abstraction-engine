@@ -1,6 +1,6 @@
-import FinancialAgreementModel from '../../app/models/financial-agreement.model.js'
+import FinancialAgreementModel from '../../src/models/financial-agreement.model.js'
 import { data as financialAgreements } from './data/financial-agreements.js'
-import { timestampForPostgres } from '../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
 export default async function seed() {
   for (const financialAgreement of financialAgreements) {

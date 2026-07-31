@@ -1,0 +1,28 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{#
+  The views engine configures Nunjucks with three paths:
+
+  - The app's `views` folder
+  - The parent of water-abstraction-engine, i.e. node_modules
+  - The path to the GOVUK frontend package
+
+  Short paths to local files, like `new-line-array-items.njk` are not included. They could be, but there is a risk of
+  issues if one of the apps creates its own `macros/` folder as to which Nunjucks resolves first.
+
+  So, we reference local files in the same way we would in the apps. No risk, and less ambiguous.
+#}
+{% from "water-abstraction-engine/views/macros/new-line-array-items.njk" import newLineArrayItems %}
+
+{% macro collapsibleList(items, label, threshold = 5) %}
+
+  {% if items.length > threshold %}
+    {{ govukDetails({
+      summaryText: items.length + " " + label,
+      html: newLineArrayItems(items) | safe,
+      classes: "govuk-!-margin-bottom-0 govuk-!-padding-bottom-0 govuk-!-padding-top-0"
+    }) }}
+  {% else %}
+    {{ newLineArrayItems(items) | safe }}
+  {% endif %}
+{% endmacro %}

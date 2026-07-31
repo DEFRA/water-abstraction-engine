@@ -2,9 +2,9 @@
 import { describe, expect, it } from 'vitest'
 
 // Thing under test
-import PayloadCleaningService from '../../../app/services/plugins/payload-cleaning.service.js'
+import PayloadCleaningService from '../../../src/services/plugins/payload-cleaning.service.js'
 
-describe('Payload cleaning service', () => {
+describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains values with extra whitespace', () => {
     it('can remove them from simple objects', () => {
       const dirtyObject = {

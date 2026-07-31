@@ -1,9 +1,0 @@
-{% extends 'layout-licences.njk' %}
-
-{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
-
-{% from "macros/conditions-summary-cards.njk" import conditionsSummaryCards %}
-
-{% block pageContent %}
-  {{ conditionsSummaryCards(conditionTypes, 'No conditions for this licence.', showingConditions) }}
-{% endblock %}

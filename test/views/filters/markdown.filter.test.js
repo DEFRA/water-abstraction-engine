@@ -2,9 +2,9 @@
 import { describe, expect, it } from 'vitest'
 
 // Thing under test
-import MarkdownFilter from '../../../app/views/filters/markdown.filter.js'
+import MarkdownFilter from '../../../views/filters/markdown.filter.js'
 
-describe('Markdown filter', () => {
+describe('Filters - Markdown Filter', () => {
   describe('when provided with a valid markdown string', () => {
     it('correctly converts the markdown to HTML', async () => {
       const result = await MarkdownFilter('# Test\n\nThis is pretend test.')

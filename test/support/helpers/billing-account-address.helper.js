@@ -2,7 +2,7 @@
  * @module BillingAccountAddressHelper
  */
 
-import BillingAccountAddressModel from '../../../app/models/billing-account-address.model.js'
+import BillingAccountAddressModel from '../../../src/models/billing-account-address.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

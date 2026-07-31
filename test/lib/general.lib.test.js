@@ -9,9 +9,9 @@ import YarStub from '../support/stubs/yar.stub.js'
 import GlobalNotifierStub from '../support/stubs/global-notifier.stub.js'
 
 // Thing under test
-import * as GeneralLib from '../../app/lib/general.lib.js'
+import * as GeneralLib from '../../src/lib/general.lib.js'
 
-describe('GeneralLib', () => {
+describe('General Lib', () => {
   let testDate
 
   afterEach(() => {
@@ -28,7 +28,7 @@ describe('GeneralLib', () => {
       startTime = GeneralLib.currentTimeInNanoseconds()
 
       // BaseRequest depends on the GlobalNotifier to have been set. This happens in
-      // app/plugins/global-notifier.plugin.js when the app starts up and the plugin is registered. As we're not
+      // src/plugins/global-notifier.plugin.js when the app starts up and the plugin is registered. As we're not
       // creating an instance of Hapi server in this test we recreate the condition by setting it directly with our own
       // stub
       notifierStub = GlobalNotifierStub()

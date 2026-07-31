@@ -2,7 +2,7 @@
  * @module RoleHelper
  */
 
-import RoleModel from '../../../app/models/role.model.js'
+import RoleModel from '../../../src/models/role.model.js'
 import { data as roles } from '../../../db/seeds/data/roles.js'
 import { selectRandomEntry } from '../general.js'
 

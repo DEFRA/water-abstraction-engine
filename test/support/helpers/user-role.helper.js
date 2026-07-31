@@ -3,7 +3,7 @@
  */
 
 import RoleHelper from './role.helper.js'
-import UserRoleModel from '../../../app/models/user-role.model.js'
+import UserRoleModel from '../../../src/models/user-role.model.js'
 import { selectRandomEntry } from '../general.js'
 import { data as userRoles } from '../../../db/seeds/data/user-roles.js'
 import { generateUUID, generateUserId } from '../generators.js'

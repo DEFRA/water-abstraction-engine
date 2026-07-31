@@ -2,9 +2,9 @@
 import { describe, expect, it } from 'vitest'
 
 // Thing under test
-import * as LegacyDbSnakeCaseMappersLib from '../../app/lib/legacy-db-snake-case-mappers.lib.js'
+import * as LegacyDbSnakeCaseMappersLib from '../../src/lib/legacy-db-snake-case-mappers.lib.js'
 
-describe('Legacy DB Snake Case Mappers lib', () => {
+describe('Legacy DB Snake Case Mappers Lib', () => {
   describe('#legacyDbSnakeCaseMappers', () => {
     // We always pass in these options. See knexfile.application.js and how legacyDbSnakeCaseMappers() is called
     const options = { underscoreBeforeDigits: true }

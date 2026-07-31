@@ -2,7 +2,7 @@
  * @module CompanyContactHelper
  */
 
-import CompanyContactModel from '../../../app/models/company-contact.model.js'
+import CompanyContactModel from '../../../src/models/company-contact.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

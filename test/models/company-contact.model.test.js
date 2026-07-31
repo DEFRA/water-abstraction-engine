@@ -4,17 +4,17 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from
 // Test helpers
 import CompanyContactHelper from '../support/helpers/company-contact.helper.js'
 import CompanyHelper from '../support/helpers/company.helper.js'
-import CompanyModel from '../../app/models/company.model.js'
+import CompanyModel from '../../src/models/company.model.js'
 import ContactHelper from '../support/helpers/contact.helper.js'
-import ContactModel from '../../app/models/contact.model.js'
+import ContactModel from '../../src/models/contact.model.js'
 import LicenceRoleHelper from '../support/helpers/licence-role.helper.js'
-import LicenceRoleModel from '../../app/models/licence-role.model.js'
+import LicenceRoleModel from '../../src/models/licence-role.model.js'
 import UserHelper from '../support/helpers/user.helper.js'
-import UserModel from '../../app/models/user.model.js'
+import UserModel from '../../src/models/user.model.js'
 import { generateUUID } from '../support/generators.js'
 
 // Thing under test
-import CompanyContactModel from '../../app/models/company-contact.model.js'
+import CompanyContactModel from '../../src/models/company-contact.model.js'
 
 describe('Company Contacts model', () => {
   let testCompany

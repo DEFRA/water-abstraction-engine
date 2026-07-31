@@ -2,7 +2,7 @@
  * @module ContactHelper
  */
 
-import ContactModel from '../../../app/models/contact.model.js'
+import ContactModel from '../../../src/models/contact.model.js'
 
 /**
  * Add a new contact

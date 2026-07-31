@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import FinancialAgreementHelper from '../support/helpers/financial-agreement.helper.js'
-import FinancialAgreementModel from '../../app/models/financial-agreement.model.js'
+import FinancialAgreementModel from '../../src/models/financial-agreement.model.js'
 import LicenceAgreementHelper from '../support/helpers/licence-agreement.helper.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 
 // Thing under test
-import LicenceAgreementModel from '../../app/models/licence-agreement.model.js'
+import LicenceAgreementModel from '../../src/models/licence-agreement.model.js'
 
 const FINANCIAL_AGREEMENT_MCHG_INDEX = 6
 

@@ -2,7 +2,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 // Thing under test
-import * as AbstractionPeriodLib from '../../app/lib/abstraction-period.lib.js'
+import * as AbstractionPeriodLib from '../../src/lib/abstraction-period.lib.js'
 
 // NOTE: You might find it helpful to refresh your understanding of abstraction periods and what the service is trying
 // to fathom when referencing them to the billing and charge periods. See the documentation in the service. Also, a
@@ -13,7 +13,7 @@ import * as AbstractionPeriodLib from '../../app/lib/abstraction-period.lib.js'
 // - Out-year: If the abstraction period end month is _before_ the start month, for example 01-Nov to 31-Mar, then we
 //             assign the reference period's end year to the end date, and start year to the start date.
 
-describe('Determine Abstraction Periods service', () => {
+describe('Abstraction Period Lib', () => {
   let endDay
   let endMonth
   let referencePeriod

@@ -3,15 +3,15 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Things we need to stub
 import jwt from 'jsonwebtoken'
-import notifyConfig from '../../config/notify.config.js'
+import notifyConfig from '../../src/config/notify.config.js'
 
 // For running our service
-import { init } from '../../app/server.js'
+import { init } from '../support/test-server.js'
 
 const TWENTY_SECONDS_IN_MILLISECONDS = 20000
 const THIRTY_SECONDS_IN_MILLISECONDS = 30000
 
-describe('Notify Token Cache plugin', () => {
+describe('Notify Token Cache Plugin', () => {
   let jwtSignSpy
   let server
   let testDate

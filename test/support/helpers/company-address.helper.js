@@ -2,7 +2,7 @@
  * @module CompanyAddressHelper
  */
 
-import CompanyAddressModel from '../../../app/models/company-address.model.js'
+import CompanyAddressModel from '../../../src/models/company-address.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

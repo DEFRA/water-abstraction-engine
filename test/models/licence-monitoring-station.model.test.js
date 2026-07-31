@@ -3,19 +3,19 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import LicenceMonitoringStationHelper from '../support/helpers/licence-monitoring-station.helper.js'
 import LicenceVersionPurposeConditionHelper from '../support/helpers/licence-version-purpose-condition.helper.js'
-import LicenceVersionPurposeConditionModel from '../../app/models/licence-version-purpose-condition.model.js'
+import LicenceVersionPurposeConditionModel from '../../src/models/licence-version-purpose-condition.model.js'
 import MonitoringStationHelper from '../support/helpers/monitoring-station.helper.js'
-import MonitoringStationModel from '../../app/models/monitoring-station.model.js'
+import MonitoringStationModel from '../../src/models/monitoring-station.model.js'
 import NotificationHelper from '../support/helpers/notification.helper.js'
-import NotificationModel from '../../app/models/notification.model.js'
+import NotificationModel from '../../src/models/notification.model.js'
 import UserHelper from '../support/helpers/user.helper.js'
-import UserModel from '../../app/models/user.model.js'
+import UserModel from '../../src/models/user.model.js'
 
 // Thing under test
-import LicenceMonitoringStationModel from '../../app/models/licence-monitoring-station.model.js'
+import LicenceMonitoringStationModel from '../../src/models/licence-monitoring-station.model.js'
 
 describe('Licence Monitoring Station model', () => {
   let testLicence

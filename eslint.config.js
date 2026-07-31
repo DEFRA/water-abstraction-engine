@@ -97,10 +97,10 @@ export default [
     }
   },
   // This section works as an override to the configuration object above. It tells the jsdoc plugin to ignore any files
-  // in the `app/controllers` and `db/seeds` directories. The controllers purposefully do very little and the purpose of
+  // in the `src/controllers` and `db/seeds` directories. The controllers purposefully do very little and the purpose of
   // the seed files is obvious
   {
-    files: ['app/controllers/**/*', 'db/seeds/**/*', 'db/migrations/**/*'],
+    files: ['src/controllers/**/*', 'db/seeds/**/*', 'db/migrations/**/*'],
     rules: {
       'jsdoc/require-jsdoc': 'off'
     }
@@ -119,7 +119,7 @@ export default [
   // 'local/order-within-import-groups' enforces external-before-internal ordering *within* each of those
   // blank-line-separated blocks, replacing sort-imports (which has no concept of external vs internal) for these files
   {
-    files: ['templates/*.test.js', 'test/**/*'],
+    files: ['bin/templates/*.test.js', 'test/**/*'],
     rules: {
       'import/order': 'off',
       'sort-imports': 'off',

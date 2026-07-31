@@ -4,14 +4,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import http2 from 'node:http2'
 
 // Things we need to stub
-import * as NotifyRequest from '../../../app/requests/notify.request.js'
+import * as NotifyRequest from '../../../src/requests/notify.request.js'
 
 // Thing under test
-import ViewHealthRequest from '../../../app/requests/notify/view-health.request.js'
+import ViewHealthRequest from '../../../src/requests/notify/view-health.request.js'
 
 const { HTTP_STATUS_NOT_FOUND, HTTP_STATUS_OK } = http2.constants
 
-describe('Notify - View Health request', () => {
+describe('Notify - View Health Request', () => {
   let response
 
   afterEach(() => {

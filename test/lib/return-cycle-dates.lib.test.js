@@ -2,13 +2,13 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Test helpers
-import { returnCycleDates } from '../../app/lib/static-lookups.lib.js'
-import { today } from '../../app/lib/general.lib.js'
+import { returnCycleDates } from '../../src/lib/static-lookups.lib.js'
+import { today } from '../../src/lib/general.lib.js'
 
 // Thing under test
-import * as ReturnCycleDatesLib from '../../app/lib/return-cycle-dates.lib.js'
+import * as ReturnCycleDatesLib from '../../src/lib/return-cycle-dates.lib.js'
 
-describe('Return Cycle Dates lib', () => {
+describe('Return Cycle Dates Lib', () => {
   const todaysDate = today()
   const year = todaysDate.getFullYear()
 

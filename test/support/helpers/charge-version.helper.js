@@ -2,7 +2,7 @@
  * @module ChargeVersionHelper
  */
 
-import ChargeVersionModel from '../../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../../src/models/charge-version.model.js'
 import { generateLicenceRef, generateUUID } from '../generators.js'
 
 /**

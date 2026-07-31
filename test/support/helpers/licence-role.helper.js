@@ -2,7 +2,7 @@
  * @module LicenceRoleHelper
  */
 
-import LicenceRoleModel from '../../../app/models/licence-role.model.js'
+import LicenceRoleModel from '../../../src/models/licence-role.model.js'
 import { data as licenceRoles } from '../../../db/seeds/data/licence-roles.js'
 
 const data = licenceRoles

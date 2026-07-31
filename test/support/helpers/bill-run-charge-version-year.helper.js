@@ -2,7 +2,7 @@
  * @module BillRunChargeVersionYearHelper
  */
 
-import BillRunChargeVersionYearModel from '../../../app/models/bill-run-charge-version-year.model.js'
+import BillRunChargeVersionYearModel from '../../../src/models/bill-run-charge-version-year.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

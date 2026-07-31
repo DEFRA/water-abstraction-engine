@@ -2,7 +2,7 @@
  * @module NotificationHelper
  */
 
-import NotificationModel from '../../../app/models/notification.model.js'
+import NotificationModel from '../../../src/models/notification.model.js'
 
 /**
  * Add a new notification

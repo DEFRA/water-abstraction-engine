@@ -2,7 +2,7 @@
  * @module ReviewChargeReferenceHelper
  */
 
-import ReviewChargeReferenceModel from '../../../app/models/review-charge-reference.model.js'
+import ReviewChargeReferenceModel from '../../../src/models/review-charge-reference.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

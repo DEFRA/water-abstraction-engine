@@ -1,5 +1,5 @@
-import ServerConfig from '../../config/server.config.js'
-import UserGroupModel from '../../app/models/user-group.model.js'
+import ServerConfig from '../../src/config/server.config.js'
+import UserGroupModel from '../../src/models/user-group.model.js'
 import { db } from '../db.js'
 import { data as groups } from './data/groups.js'
 import { data as userGroups } from './data/user-groups.js'

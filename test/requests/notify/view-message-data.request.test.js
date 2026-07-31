@@ -4,14 +4,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import http2 from 'node:http2'
 
 // Things we need to stub
-import * as NotifyRequest from '../../../app/requests/notify.request.js'
+import * as NotifyRequest from '../../../src/requests/notify.request.js'
 
 // Thing under test
-import ViewMessageDataRequest from '../../../app/requests/notify/view-message-data.request.js'
+import ViewMessageDataRequest from '../../../src/requests/notify/view-message-data.request.js'
 
 const { HTTP_STATUS_NOT_FOUND, HTTP_STATUS_OK } = http2.constants
 
-describe('Notify - View Message Data request', () => {
+describe('Notify - View Message Data Request', () => {
   const notificationId = '5a714bec-4ca0-45ba-8edf-8fa37db09499'
 
   let response

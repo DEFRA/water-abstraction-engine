@@ -4,10 +4,10 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import ReturnSubmissionHelper from '../support/helpers/return-submission.helper.js'
 import ReturnSubmissionLineHelper from '../support/helpers/return-submission-line.helper.js'
-import ReturnSubmissionModel from '../../app/models/return-submission.model.js'
+import ReturnSubmissionModel from '../../src/models/return-submission.model.js'
 
 // Thing under test
-import ReturnSubmissionLineModel from '../../app/models/return-submission-line.model.js'
+import ReturnSubmissionLineModel from '../../src/models/return-submission-line.model.js'
 
 describe('Return Submission Line model', () => {
   let testRecord

@@ -3,17 +3,17 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import ReturnLogHelper from '../support/helpers/return-log.helper.js'
-import ReturnLogModel from '../../app/models/return-log.model.js'
+import ReturnLogModel from '../../src/models/return-log.model.js'
 import ReviewChargeElementHelper from '../support/helpers/review-charge-element.helper.js'
-import ReviewChargeElementModel from '../../app/models/review-charge-element.model.js'
+import ReviewChargeElementModel from '../../src/models/review-charge-element.model.js'
 import ReviewChargeElementReturnHelper from '../support/helpers/review-charge-element-return.helper.js'
-import ReviewChargeElementReturnModel from '../../app/models/review-charge-element-return.model.js'
+import ReviewChargeElementReturnModel from '../../src/models/review-charge-element-return.model.js'
 import ReviewLicenceHelper from '../support/helpers/review-licence.helper.js'
-import ReviewLicenceModel from '../../app/models/review-licence.model.js'
+import ReviewLicenceModel from '../../src/models/review-licence.model.js'
 import ReviewReturnHelper from '../support/helpers/review-return.helper.js'
 
 // Thing under test
-import ReviewReturnModel from '../../app/models/review-return.model.js'
+import ReviewReturnModel from '../../src/models/review-return.model.js'
 
 describe('Review Return model', () => {
   let testRecord

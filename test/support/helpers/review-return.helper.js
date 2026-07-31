@@ -2,7 +2,7 @@
  * @module ReviewReturnHelper
  */
 
-import ReviewReturnModel from '../../../app/models/review-return.model.js'
+import ReviewReturnModel from '../../../src/models/review-return.model.js'
 import { generateLicenceRef, generateReference, generateReturnId, generateUUID } from '../generators.js'
 
 /**

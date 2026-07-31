@@ -3,11 +3,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import WorkflowHelper from '../support/helpers/workflow.helper.js'
 
 // Thing under test
-import WorkflowModel from '../../app/models/workflow.model.js'
+import WorkflowModel from '../../src/models/workflow.model.js'
 
 describe('Workflow model', () => {
   let testLicence

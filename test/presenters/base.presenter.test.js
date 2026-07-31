@@ -3,16 +3,16 @@ import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
 import { ValidationError } from 'joi'
-import LicenceVersionModel from '../../app/models/licence-version.model.js'
-import ReturnVersionModel from '../../app/models/return-version.model.js'
+import LicenceVersionModel from '../../src/models/licence-version.model.js'
+import ReturnVersionModel from '../../src/models/return-version.model.js'
 import { generateUUID } from '../support/generators.js'
-import { today } from '../../app/lib/general.lib.js'
+import { today } from '../../src/lib/general.lib.js'
 import { tomorrow, yesterday } from '../support/general.js'
 
 // Thing under test
-import * as BasePresenter from '../../app/presenters/base.presenter.js'
+import * as BasePresenter from '../../src/presenters/base.presenter.js'
 
-describe('Base presenter', () => {
+describe('Base Presenter', () => {
   describe('#convertPenceToPounds()', () => {
     let valueInPence
 

@@ -2,7 +2,7 @@
  * @module ReviewChargeElementHelper
  */
 
-import ReviewChargeElementModel from '../../../app/models/review-charge-element.model.js'
+import ReviewChargeElementModel from '../../../src/models/review-charge-element.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

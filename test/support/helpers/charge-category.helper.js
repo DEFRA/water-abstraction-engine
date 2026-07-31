@@ -2,7 +2,7 @@
  * @module ChargeCategoryHelper
  */
 
-import ChargeCategoryModel from '../../../app/models/charge-category.model.js'
+import ChargeCategoryModel from '../../../src/models/charge-category.model.js'
 import { data as chargeCategories } from '../../../db/seeds/data/charge-categories.js'
 import { selectRandomEntry } from '../general.js'
 

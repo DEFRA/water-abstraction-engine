@@ -1,10 +1,19 @@
-import DatabaseConfig from './config/database.config.js'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
+
+import DatabaseConfig from './src/config/database.config.js'
+
+// This is part of ensuring all paths are determined absolute rather than relative. It means rather than Knex looking
+// for migrations and seeds, etc, relative from `process.cwd()`, it instead just uses the absolute path to the file.
+// This allows us to run migrations in the engine to create the test DB, as well as from the apps for their own testing,
+// and to run migrations against the main DB from them.
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const defaultConfig = {
   client: 'postgres',
   useNullAsDefault: true,
   seeds: {
-    directory: './db/seeds'
+    directory: join(__dirname, 'db/seeds')
   }
 }
 
@@ -21,7 +30,7 @@ const development = {
   ...defaultConfig,
   migrations: {
     tableName: 'knex_migrations',
-    directory: './db/migrations/public'
+    directory: join(__dirname, 'db/migrations/public')
   },
   connection: defaultConnection
 }
@@ -31,7 +40,7 @@ const test = {
   migrations: {
     sortDirsSeparately: true,
     tableName: 'knex_migrations',
-    directory: ['./db/migrations/legacy', './db/migrations/public']
+    directory: [join(__dirname, 'db/migrations/legacy'), join(__dirname, 'db/migrations/public')]
   },
   connection: {
     ...defaultConnection,
@@ -56,7 +65,7 @@ const production = {
   ...defaultConfig,
   migrations: {
     tableName: 'knex_migrations',
-    directory: './db/migrations/public'
+    directory: join(__dirname, 'db/migrations/public')
   },
   connection: defaultConnection
 }

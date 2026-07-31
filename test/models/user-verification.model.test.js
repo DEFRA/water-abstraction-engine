@@ -3,14 +3,14 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceDocumentHeaderHelper from '../support/helpers/licence-document-header.helper.js'
-import LicenceDocumentHeaderModel from '../../app/models/licence-document-header.model.js'
+import LicenceDocumentHeaderModel from '../../src/models/licence-document-header.model.js'
 import LicenceEntityHelper from '../support/helpers/licence-entity.helper.js'
-import LicenceEntityModel from '../../app/models/licence-entity.model.js'
+import LicenceEntityModel from '../../src/models/licence-entity.model.js'
 import UserVerificationDocumentHelper from '../support/helpers/user-verification-document.helper.js'
 import UserVerificationHelper from '../support/helpers/user-verification.helper.js'
 
 // Thing under test
-import UserVerificationModel from '../../app/models/user-verification.model.js'
+import UserVerificationModel from '../../src/models/user-verification.model.js'
 
 describe('User Verification model', () => {
   let testLicenceDocumentHeaders

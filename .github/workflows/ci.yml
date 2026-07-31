@@ -11,47 +11,33 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
-      ADMIN_CLIENT_ID: shortvaluefullofnumbersandlettersinlowercase
-      AIRBRAKE_HOST: https://my-errbit-instance.com
-      AIRBRAKE_KEY: longvaluefullofnumbersandlettersinlowercase
-      PORT: 3000
-      # External services - they don't exist here but we have code that depends on these values being present
-      CHARGING_MODULE_URL: http://localhost:8020
-      EA_ADDRESS_FACADE_URL: http://localhost:8009
-      EXTERNAL_UI_URL: http://localhost:8000
-      GOTENBERG_URL: http://localhost:8040
-      IMPORT_URL: http://localhost:8007
-      INTERNAL_UI_URL: http://localhost:8008
-      PERMIT_REPOSITORY_URL: http://localhost:8004
-      REPORTING_URL: http://localhost:8011
-      RETURNS_URL: http://localhost:8006
-      SERVICE_BACKGROUND_URL: http://localhost:8012
-      SERVICE_FOREGROUND_URL: http://localhost:8001
-      TACTICAL_CRM_URL: http://localhost:8002
-      TACTICAL_IDM_URL: http://localhost:8003
-      GOV_UK_NOTIFY_API_KEY: 'test-api-key'
-      # JWT Auth token shared by all legacy external services
-      LEGACY_AUTH_TOKEN: longvalueofnumbersandletters.inbothcases.splitin3by2periods
-      # External Charging Module JWT (AWS Cognito) service
-      CHARGING_MODULE_TOKEN_URL: https://myinstance.amazoncognito.com
-      CHARGING_MODULE_TOKEN_USERNAME: valuefullofnumbersandlettersinlowercase
-      CHARGING_MODULE_TOKEN_PASSWORD: longvaluefullofnumbersandlettersinlowercase
-      # ReSP API config - we have code that depends on this value being present
-      RESP_TOKEN_URL: https://login.microsoftonline.com
-      # These need to be duplicated in services section for postgres. Unfortunately, there is not a way to reuse them
-      POSTGRES_USER: water_user
-      POSTGRES_PASSWORD: password
-      POSTGRES_HOST: localhost
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: wabs_system_test
-      POSTGRES_DB_TEST: wabs_system_test
-      ENVIRONMENT: dev
-      COOKIE_SECRET: 1a1028df-a2af-468a-929b-e3a274be1208
-      DEFAULT_USER_PASSWORD: P@55word
       # Shut up dot env!
       DOTENV_CONFIG_QUIET: true
+      # Email addresses to send alerts to
+      ALERT_EMAIL_ADDRESSES: admin-internal@wrls.gov.uk
+      # Airbrake config
+      AIRBRAKE_HOST: https://my-errbit-instance.com
+      AIRBRAKE_KEY: longvaluefullofnumbersandlettersinlowercase
+      ENVIRONMENT: ci
+      # Database config
+      # These need to be duplicated in services section for postgres. Unfortunately, there is not a way to reuse them
+      DEFAULT_USER_PASSWORD: P@55word
+      POSTGRES_DB: wabs_engine_test
+      POSTGRES_DB_TEST: wabs_engine_test
+      POSTGRES_HOST: localhost
+      POSTGRES_PASSWORD: password
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: water_user
+      # Hapi config
+      PORT: 3000
+      # Notify
+      GOV_UK_NOTIFY_API_KEY: 'test-api-key'
+      # Server config
       EXTERNAL_DOMAIN: http://localhost:8000
       INTERNAL_DOMAIN: http://localhost:8008
+      # Yar config
+      COOKIE_SECRET: 1a1028df-a2af-468a-929b-e3a274be1208
+      SESSION_NAME: engine
 
     # Service containers to run with `runner-job`
     services:
@@ -61,10 +47,10 @@ jobs:
         image: postgres:15
         # Provide the password for postgres
         env:
-          POSTGRES_USER: water_user
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: wabs_system_test
+          POSTGRES_DB: wabs_engine_test
           POSTGRES_INITDB_ARGS: "--lc-collate=en_US.UTF-8 --lc-ctype=en_US.UTF-8"
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: water_user
         # Maps tcp port 5432 on service container to the host
         ports:
           - 5432:5432
@@ -90,7 +76,7 @@ jobs:
       # Alongside this, check we haven't accidentally left any `console.log` or `console.dir` while checking results in app and tests
       - name: Temporary log check
         run: |
-          if grep -R 'console.log(\|console.dir(' ./app/ ./test/; then
+          if grep -R 'console.log(\|console.dir(' ./src/ ./test/; then
             echo "console statement found. Please remove it."
             exit 1
           fi

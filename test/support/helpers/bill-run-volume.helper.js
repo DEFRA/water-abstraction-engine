@@ -2,7 +2,7 @@
  * @module BillRunVolumeHelper
  */
 
-import BillRunVolumeModel from '../../../app/models/bill-run-volume.model.js'
+import BillRunVolumeModel from '../../../src/models/bill-run-volume.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

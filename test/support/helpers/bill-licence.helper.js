@@ -2,7 +2,7 @@
  * @module BillLicenceHelper
  */
 
-import BillLicenceModel from '../../../app/models/bill-licence.model.js'
+import BillLicenceModel from '../../../src/models/bill-licence.model.js'
 import { generateLicenceRef, generateUUID } from '../generators.js'
 
 /**

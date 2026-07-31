@@ -3,12 +3,12 @@ import { beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import SessionHelper from '../support/helpers/session.helper.js'
-import SessionModel from '../../app/models/session.model.js'
+import SessionModel from '../../src/models/session.model.js'
 
 // Thing under test
-import DeleteSessionDal from '../../app/dal/delete-session.dal.js'
+import DeleteSessionDal from '../../src/dal/delete-session.dal.js'
 
-describe('DAL - Delete session dal', () => {
+describe('Delete Session DAL', () => {
   let session
   let sessionId
 

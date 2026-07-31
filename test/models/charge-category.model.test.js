@@ -4,10 +4,10 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import ChargeCategoryHelper from '../support/helpers/charge-category.helper.js'
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
-import ChargeReferenceModel from '../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../src/models/charge-reference.model.js'
 
 // Thing under test
-import ChargeCategoryModel from '../../app/models/charge-category.model.js'
+import ChargeCategoryModel from '../../src/models/charge-category.model.js'
 
 describe('Charge Category model', () => {
   let testChargeReferences

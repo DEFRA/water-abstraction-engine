@@ -3,23 +3,23 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import BillingAccountAddressHelper from '../support/helpers/billing-account-address.helper.js'
-import BillingAccountAddressModel from '../../app/models/billing-account-address.model.js'
+import BillingAccountAddressModel from '../../src/models/billing-account-address.model.js'
 import BillingAccountHelper from '../support/helpers/billing-account.helper.js'
-import BillingAccountModel from '../../app/models/billing-account.model.js'
+import BillingAccountModel from '../../src/models/billing-account.model.js'
 import CompanyAddressHelper from '../support/helpers/company-address.helper.js'
-import CompanyAddressModel from '../../app/models/company-address.model.js'
+import CompanyAddressModel from '../../src/models/company-address.model.js'
 import CompanyContactHelper from '../support/helpers/company-contact.helper.js'
-import CompanyContactModel from '../../app/models/company-contact.model.js'
+import CompanyContactModel from '../../src/models/company-contact.model.js'
 import CompanyHelper from '../support/helpers/company.helper.js'
 import LicenceDocumentRoleHelper from '../support/helpers/licence-document-role.helper.js'
-import LicenceDocumentRoleModel from '../../app/models/licence-document-role.model.js'
+import LicenceDocumentRoleModel from '../../src/models/licence-document-role.model.js'
 import LicenceVersionHelper from '../support/helpers/licence-version.helper.js'
-import LicenceVersionModel from '../../app/models/licence-version.model.js'
+import LicenceVersionModel from '../../src/models/licence-version.model.js'
 import RegionHelper from '../support/helpers/region.helper.js'
-import RegionModel from '../../app/models/region.model.js'
+import RegionModel from '../../src/models/region.model.js'
 
 // Thing under test
-import CompanyModel from '../../app/models/company.model.js'
+import CompanyModel from '../../src/models/company.model.js'
 
 describe('Company model', () => {
   let billingAccountAddresses

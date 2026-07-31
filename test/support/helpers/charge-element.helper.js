@@ -2,7 +2,7 @@
  * @module ChargeElementHelper
  */
 
-import ChargeElementModel from '../../../app/models/charge-element.model.js'
+import ChargeElementModel from '../../../src/models/charge-element.model.js'
 import PrimaryPurposeHelper from './primary-purpose.helper.js'
 import PurposeHelper from './purpose.helper.js'
 import SecondaryPurposeHelper from './secondary-purpose.helper.js'

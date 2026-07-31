@@ -2,7 +2,7 @@
  * @module ReturnSubmissionLineHelper
  */
 
-import ReturnSubmissionLineModel from '../../../app/models/return-submission-line.model.js'
+import ReturnSubmissionLineModel from '../../../src/models/return-submission-line.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

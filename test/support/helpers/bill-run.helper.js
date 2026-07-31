@@ -2,7 +2,7 @@
  * @module BillRunHelper
  */
 
-import BillRunModel from '../../../app/models/bill-run.model.js'
+import BillRunModel from '../../../src/models/bill-run.model.js'
 import RegionHelper from './region.helper.js'
 
 /**

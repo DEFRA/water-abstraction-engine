@@ -2,11 +2,11 @@
  * @module LicenceVersionPurposesHelper
  */
 
-import LicenceVersionPurposeModel from '../../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../../src/models/licence-version-purpose.model.js'
 import PrimaryPurposeHelper from './primary-purpose.helper.js'
 import PurposeHelper from './purpose.helper.js'
 import SecondaryPurposeHelper from './secondary-purpose.helper.js'
-import { timestampForPostgres } from '../../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../../src/lib/general.lib.js'
 import { generateLicenceVersionPurposeExternalId, generateUUID } from '../generators.js'
 
 /**

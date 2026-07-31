@@ -2,7 +2,7 @@
  * @module BillingHelper
  */
 
-import BillModel from '../../../app/models/bill.model.js'
+import BillModel from '../../../src/models/bill.model.js'
 import { generateAccountNumber, generateUUID } from '../generators.js'
 
 /**

@@ -2,7 +2,7 @@
  * @module AddressHelper
  */
 
-import AddressModel from '../../../app/models/address.model.js'
+import AddressModel from '../../../src/models/address.model.js'
 import { generateUprn } from '../generators.js'
 
 /**

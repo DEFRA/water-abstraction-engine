@@ -2,7 +2,7 @@
  * @module PointHelper
  */
 
-import PointModel from '../../../app/models/point.model.js'
+import PointModel from '../../../src/models/point.model.js'
 import SourceHelper from './source.helper.js'
 import { generateNaldPointId, generateNationalGridReference } from '../generators.js'
 

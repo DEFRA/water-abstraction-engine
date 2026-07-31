@@ -5,9 +5,9 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vite
 import YarStub from '../support/stubs/yar.stub.js'
 
 // Thing under test
-import * as SubmitPageLib from '../../app/lib/submit-page.lib.js'
+import * as SubmitPageLib from '../../src/lib/submit-page.lib.js'
 
-describe('SubmitPageLib', () => {
+describe('Submit Page Lib', () => {
   let payload
 
   describe('#clearFilters()', () => {

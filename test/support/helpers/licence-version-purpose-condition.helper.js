@@ -2,9 +2,9 @@
  * @module LicenceVersionPurposeConditionHelper
  */
 
-import LicenceVersionPurposeConditionModel from '../../../app/models/licence-version-purpose-condition.model.js'
+import LicenceVersionPurposeConditionModel from '../../../src/models/licence-version-purpose-condition.model.js'
 import LicenceVersionPurposeConditionTypeHelper from './licence-version-purpose-condition-type.helper.js'
-import { timestampForPostgres } from '../../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../../src/lib/general.lib.js'
 import { generateRandomInteger, generateUUID } from '../generators.js'
 
 /**

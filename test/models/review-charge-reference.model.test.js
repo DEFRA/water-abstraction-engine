@@ -3,15 +3,15 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
-import ChargeReferenceModel from '../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../src/models/charge-reference.model.js'
 import ReviewChargeElementHelper from '../support/helpers/review-charge-element.helper.js'
-import ReviewChargeElementModel from '../../app/models/review-charge-element.model.js'
+import ReviewChargeElementModel from '../../src/models/review-charge-element.model.js'
 import ReviewChargeReferenceHelper from '../support/helpers/review-charge-reference.helper.js'
 import ReviewChargeVersionHelper from '../support/helpers/review-charge-version.helper.js'
-import ReviewChargeVersionModel from '../../app/models/review-charge-version.model.js'
+import ReviewChargeVersionModel from '../../src/models/review-charge-version.model.js'
 
 // Thing under test
-import ReviewChargeReferenceModel from '../../app/models/review-charge-reference.model.js'
+import ReviewChargeReferenceModel from '../../src/models/review-charge-reference.model.js'
 
 describe('Review Charge reference model', () => {
   let testChargeElement

@@ -3,15 +3,15 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
 import ReturnLogHelper from '../support/helpers/return-log.helper.js'
-import ReturnLogModel from '../../app/models/return-log.model.js'
+import ReturnLogModel from '../../src/models/return-log.model.js'
 import ReturnSubmissionHelper from '../support/helpers/return-submission.helper.js'
 import ReturnSubmissionLineHelper from '../support/helpers/return-submission-line.helper.js'
-import ReturnSubmissionLineModel from '../../app/models/return-submission-line.model.js'
+import ReturnSubmissionLineModel from '../../src/models/return-submission-line.model.js'
 
 // Thing under test
-import ReturnSubmissionModel from '../../app/models/return-submission.model.js'
+import ReturnSubmissionModel from '../../src/models/return-submission.model.js'
 
-import { unitNames } from '../../app/lib/static-lookups.lib.js'
+import { unitNames } from '../../src/lib/static-lookups.lib.js'
 
 describe('Return Submission model', () => {
   let testRecord

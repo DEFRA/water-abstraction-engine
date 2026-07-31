@@ -4,10 +4,10 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import LicenceEndDateChangeHelper from '../support/helpers/licence-end-date-change.helper.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 
 // Thing under test
-import LicenceEndDateChangeModel from '../../app/models/licence-end-date-change.model.js'
+import LicenceEndDateChangeModel from '../../src/models/licence-end-date-change.model.js'
 
 describe('Licence End Date Change model', () => {
   let testLicence

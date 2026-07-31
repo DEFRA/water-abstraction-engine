@@ -1,8 +1,8 @@
-import { legacyDbSnakeCaseMappers } from './app/lib/legacy-db-snake-case-mappers.lib.js'
+import { legacyDbSnakeCaseMappers } from './src/lib/legacy-db-snake-case-mappers.lib.js'
 
 /**
  * Passing in our variant of `knexSnakeCaseMappers` allows us to use camelCase everywhere and knex will convert it to
- * snake_case on the fly. (see `app/lib/legacy-db-snake-case-mappers.lib.js` for details on why we have our own
+ * snake_case on the fly. (see `src/lib/legacy-db-snake-case-mappers.lib.js` for details on why we have our own
  * variant)
  *
  * This means when we access a property on the model we can use camelCase even if the underlying database property

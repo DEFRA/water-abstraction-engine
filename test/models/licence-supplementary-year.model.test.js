@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import BillRunHelper from '../support/helpers/bill-run.helper.js'
-import BillRunModel from '../../app/models/bill-run.model.js'
+import BillRunModel from '../../src/models/bill-run.model.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import LicenceSupplementaryYearHelper from '../support/helpers/licence-supplementary-year.helper.js'
 
 // Thing under test
-import LicenceSupplementaryYearModel from '../../app/models/licence-supplementary-year.model.js'
+import LicenceSupplementaryYearModel from '../../src/models/licence-supplementary-year.model.js'
 
 describe('Licence Supplementary Year model', () => {
   let testBillRun

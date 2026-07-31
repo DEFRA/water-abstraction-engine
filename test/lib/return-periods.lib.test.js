@@ -3,12 +3,12 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vite
 
 // Test framework dependencies
 import ReturnCycleHelper from '../support/helpers/return-cycle.helper.js'
-import { returnPeriodDates } from '../../app/lib/static-lookups.lib.js'
+import { returnPeriodDates } from '../../src/lib/static-lookups.lib.js'
 
 // Thing under test
-import * as ReturnPeriodLib from '../../app/lib/return-periods.lib.js'
+import * as ReturnPeriodLib from '../../src/lib/return-periods.lib.js'
 
-describe('Return Period lib', () => {
+describe('Return Period Lib', () => {
   const year = 2024
   const nextYear = year + 1
   const lastYear = year - 1

@@ -2,7 +2,7 @@
  * @module ReturnVersionHelper
  */
 
-import ReturnVersionModel from '../../../app/models/return-version.model.js'
+import ReturnVersionModel from '../../../src/models/return-version.model.js'
 import { randomRegionCode } from '../general.js'
 import { generateRandomInteger, generateUUID } from '../generators.js'
 

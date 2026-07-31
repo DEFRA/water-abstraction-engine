@@ -2,7 +2,7 @@
  * @module FinancialAgreementHelper
  */
 
-import FinancialAgreementModel from '../../../app/models/financial-agreement.model.js'
+import FinancialAgreementModel from '../../../src/models/financial-agreement.model.js'
 import { data as financialAgreements } from '../../../db/seeds/data/financial-agreements.js'
 import { selectRandomEntry } from '../general.js'
 

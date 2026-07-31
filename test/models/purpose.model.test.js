@@ -3,17 +3,17 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import ChargeElementHelper from '../support/helpers/charge-element.helper.js'
-import ChargeElementModel from '../../app/models/charge-element.model.js'
+import ChargeElementModel from '../../src/models/charge-element.model.js'
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
-import ChargeReferenceModel from '../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../src/models/charge-reference.model.js'
 import LicenceVersionPurposeHelper from '../support/helpers/licence-version-purpose.helper.js'
-import LicenceVersionPurposeModel from '../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../src/models/licence-version-purpose.model.js'
 import PurposeHelper from '../support/helpers/purpose.helper.js'
 import ReturnRequirementPurposeHelper from '../support/helpers/return-requirement-purpose.helper.js'
-import ReturnRequirementPurposeModel from '../../app/models/return-requirement-purpose.model.js'
+import ReturnRequirementPurposeModel from '../../src/models/return-requirement-purpose.model.js'
 
 // Thing under test
-import PurposeModel from '../../app/models/purpose.model.js'
+import PurposeModel from '../../src/models/purpose.model.js'
 
 describe('Purpose model', () => {
   let testChargeElements

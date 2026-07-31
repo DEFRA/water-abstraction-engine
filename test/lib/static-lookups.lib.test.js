@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest'
 
 // Thing under test
-import * as StaticLookups from '../../app/lib/static-lookups.lib.js'
+import * as StaticLookups from '../../src/lib/static-lookups.lib.js'
 
 describe('Static Lookups', () => {
   describe('#NoticeJourney', () => {

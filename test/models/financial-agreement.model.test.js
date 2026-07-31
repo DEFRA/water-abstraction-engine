@@ -4,10 +4,10 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import FinancialAgreementHelper from '../support/helpers/financial-agreement.helper.js'
 import LicenceAgreementHelper from '../support/helpers/licence-agreement.helper.js'
-import LicenceAgreementModel from '../../app/models/licence-agreement.model.js'
+import LicenceAgreementModel from '../../src/models/licence-agreement.model.js'
 
 // Thing under test
-import FinancialAgreementModel from '../../app/models/financial-agreement.model.js'
+import FinancialAgreementModel from '../../src/models/financial-agreement.model.js'
 
 const FINANCIAL_AGREEMENT_MVAL_INDEX = 7
 

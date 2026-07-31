@@ -2,7 +2,7 @@
  * @module WorkflowHelper
  */
 
-import WorkflowModel from '../../../app/models/workflow.model.js'
+import WorkflowModel from '../../../src/models/workflow.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

@@ -3,23 +3,23 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
 import AddressHelper from '../support/helpers/address.helper.js'
-import AddressModel from '../../app/models/address.model.js'
+import AddressModel from '../../src/models/address.model.js'
 import CompanyHelper from '../support/helpers/company.helper.js'
-import CompanyModel from '../../app/models/company.model.js'
+import CompanyModel from '../../src/models/company.model.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import LicenceVersionHelper from '../support/helpers/licence-version.helper.js'
-import LicenceVersionPurposeModel from '../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../src/models/licence-version-purpose.model.js'
 import LicenceVersionPurposesHelper from '../support/helpers/licence-version-purpose.helper.js'
 import ModLogHelper from '../support/helpers/mod-log.helper.js'
-import ModLogModel from '../../app/models/mod-log.model.js'
+import ModLogModel from '../../src/models/mod-log.model.js'
 import PurposeHelper from '../support/helpers/purpose.helper.js'
-import PurposeModel from '../../app/models/purpose.model.js'
+import PurposeModel from '../../src/models/purpose.model.js'
 import RegionHelper from '../support/helpers/region.helper.js'
 import { generateRandomInteger } from '../support/generators.js'
 
 // Thing under test
-import LicenceVersionModel from '../../app/models/licence-version.model.js'
+import LicenceVersionModel from '../../src/models/licence-version.model.js'
 
 describe('Licence Version model', () => {
   let address

@@ -2,7 +2,7 @@
  * @module PermitLicenceHelper
  */
 
-import PermitLicenceModel from '../../../app/models/permit-licence.model.js'
+import PermitLicenceModel from '../../../src/models/permit-licence.model.js'
 import { generateLicenceRef } from '../generators.js'
 
 /**

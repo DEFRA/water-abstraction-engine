@@ -2,9 +2,9 @@
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 
 // Thing under test
-import * as DateLib from '../../app/lib/dates.lib.js'
+import * as DateLib from '../../src/lib/dates.lib.js'
 
-describe('Dates lib', () => {
+describe('Dates Lib', () => {
   describe('compareDates', () => {
     let firstDate
     let secondDate

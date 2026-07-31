@@ -3,16 +3,16 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import BillRunHelper from '../support/helpers/bill-run.helper.js'
-import BillRunModel from '../../app/models/bill-run.model.js'
+import BillRunModel from '../../src/models/bill-run.model.js'
 import CompanyHelper from '../support/helpers/company.helper.js'
-import CompanyModel from '../../app/models/company.model.js'
+import CompanyModel from '../../src/models/company.model.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import RegionHelper from '../support/helpers/region.helper.js'
 import { generateLicenceRef } from '../support/generators.js'
 
 // Thing under test
-import RegionModel from '../../app/models/region.model.js'
+import RegionModel from '../../src/models/region.model.js'
 
 describe('Region model', () => {
   let testBillRuns

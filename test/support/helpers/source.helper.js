@@ -2,7 +2,7 @@
  * @module SourceHelper
  */
 
-import SourceModel from '../../../app/models/source.model.js'
+import SourceModel from '../../../src/models/source.model.js'
 import { selectRandomEntry } from '../general.js'
 import { data as sources } from '../../../db/seeds/data/sources.js'
 

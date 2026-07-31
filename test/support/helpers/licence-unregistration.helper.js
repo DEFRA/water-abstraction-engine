@@ -2,7 +2,7 @@
  * @module LicenceUnregistrationHelper
  */
 
-import LicenceUnregistrationModel from '../../../app/models/licence-unregistration.model.js'
+import LicenceUnregistrationModel from '../../../src/models/licence-unregistration.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

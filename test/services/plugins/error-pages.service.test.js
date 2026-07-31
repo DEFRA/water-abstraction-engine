@@ -4,13 +4,13 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import http2 from 'node:http2'
 
 // Test helpers
-import SessionNotFoundError from '../../../app/errors/session-not-found.error.js'
+import SessionNotFoundError from '../../../src/errors/session-not-found.error.js'
 
 // Things we need to stub
 import GlobalNotifierStub from '../../support/stubs/global-notifier.stub.js'
 
 // Thing under test
-import ErrorPagesService from '../../../app/services/plugins/error-pages.service.js'
+import ErrorPagesService from '../../../src/services/plugins/error-pages.service.js'
 
 const {
   HTTP_STATUS_FORBIDDEN,
@@ -20,7 +20,7 @@ const {
   HTTP_STATUS_GONE
 } = http2.constants
 
-describe('Error pages service', () => {
+describe('Plugins - Error Pages Service', () => {
   const boom403Response = {
     message: "can't touch this",
     isBoom: true,

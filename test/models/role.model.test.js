@@ -3,17 +3,17 @@ import { beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import GroupHelper from '../support/helpers/group.helper.js'
-import GroupModel from '../../app/models/group.model.js'
+import GroupModel from '../../src/models/group.model.js'
 import GroupRoleHelper from '../support/helpers/group-role.helper.js'
-import GroupRoleModel from '../../app/models/group-role.model.js'
+import GroupRoleModel from '../../src/models/group-role.model.js'
 import RoleHelper from '../support/helpers/role.helper.js'
 import UserHelper from '../support/helpers/user.helper.js'
-import UserModel from '../../app/models/user.model.js'
+import UserModel from '../../src/models/user.model.js'
 import UserRoleHelper from '../support/helpers/user-role.helper.js'
-import UserRoleModel from '../../app/models/user-role.model.js'
+import UserRoleModel from '../../src/models/user-role.model.js'
 
 // Thing under test
-import RoleModel from '../../app/models/role.model.js'
+import RoleModel from '../../src/models/role.model.js'
 
 const GROUP_ROLE_SUPER_AR_USER_INDEX = 16
 const GROUP_SUPER_INDEX = 5

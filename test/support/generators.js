@@ -4,8 +4,8 @@
 
 import crypto from 'crypto'
 
-import { formatDateObjectToISO } from '../../app/lib/dates.lib.js'
-import { generateNoticeReferenceCode, generateRandomInteger, generateUUID } from '../../app/lib/general.lib.js'
+import { formatDateObjectToISO } from '../../src/lib/dates.lib.js'
+import { generateNoticeReferenceCode, generateRandomInteger, generateUUID } from '../../src/lib/general.lib.js'
 
 export { generateNoticeReferenceCode, generateRandomInteger, generateUUID }
 

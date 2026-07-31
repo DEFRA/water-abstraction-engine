@@ -2,7 +2,7 @@
  * @module LicenceVersionPurposePointHelper
  */
 
-import LicenceVersionPurposePointModel from '../../../app/models/licence-version-purpose-point.model.js'
+import LicenceVersionPurposePointModel from '../../../src/models/licence-version-purpose-point.model.js'
 import { generateLicenceVersionPurposePointExternalId, generateUUID } from '../generators.js'
 
 /**

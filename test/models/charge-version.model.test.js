@@ -3,27 +3,27 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from
 
 // Test helpers
 import BillRunChargeVersionYearHelper from '../support/helpers/bill-run-charge-version-year.helper.js'
-import BillRunChargeVersionYearModel from '../../app/models/bill-run-charge-version-year.model.js'
+import BillRunChargeVersionYearModel from '../../src/models/bill-run-charge-version-year.model.js'
 import BillingAccountHelper from '../support/helpers/billing-account.helper.js'
-import BillingAccountModel from '../../app/models/billing-account.model.js'
+import BillingAccountModel from '../../src/models/billing-account.model.js'
 import ChangeReasonHelper from '../support/helpers/change-reason.helper.js'
-import ChangeReasonModel from '../../app/models/change-reason.model.js'
+import ChangeReasonModel from '../../src/models/change-reason.model.js'
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
-import ChargeReferenceModel from '../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../src/models/charge-reference.model.js'
 import ChargeVersionHelper from '../support/helpers/charge-version.helper.js'
 import ChargeVersionNoteHelper from '../support/helpers/charge-version-note.helper.js'
-import ChargeVersionNoteModel from '../../app/models/charge-version-note.model.js'
+import ChargeVersionNoteModel from '../../src/models/charge-version-note.model.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import ModLogHelper from '../support/helpers/mod-log.helper.js'
-import ModLogModel from '../../app/models/mod-log.model.js'
+import ModLogModel from '../../src/models/mod-log.model.js'
 import ReviewChargeVersionHelper from '../support/helpers/review-charge-version.helper.js'
-import ReviewChargeVersionModel from '../../app/models/review-charge-version.model.js'
+import ReviewChargeVersionModel from '../../src/models/review-charge-version.model.js'
 import UserHelper from '../support/helpers/user.helper.js'
 import { generateRandomInteger } from '../support/generators.js'
 
 // Thing under test
-import ChargeVersionModel from '../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../src/models/charge-version.model.js'
 
 const CHANGE_REASON_NEW_LICENCE_PART_INDEX = 10
 

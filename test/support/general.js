@@ -4,7 +4,7 @@
  */
 
 import { generateRandomInteger } from './generators.js'
-import { today } from '../../app/lib/general.lib.js'
+import { today } from '../../src/lib/general.lib.js'
 
 /**
  * Generate the POST request options needed for `server.inject()`

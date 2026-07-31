@@ -2,12 +2,12 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
-import GlobalNotifierLib from '../../app/lib/global-notifier.lib.js'
+import GlobalNotifierLib from '../../src/lib/global-notifier.lib.js'
 
 // For running our service
-import { init } from '../../app/server.js'
+import { init } from '../support/test-server.js'
 
-describe('Global Notifier plugin', () => {
+describe('Global Notifier Plugin', () => {
   beforeEach(async () => {
     // Create server before each test
     await init()

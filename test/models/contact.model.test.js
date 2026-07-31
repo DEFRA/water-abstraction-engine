@@ -3,15 +3,15 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
 import BillingAccountAddressHelper from '../support/helpers/billing-account-address.helper.js'
-import BillingAccountAddressModel from '../../app/models/billing-account-address.model.js'
+import BillingAccountAddressModel from '../../src/models/billing-account-address.model.js'
 import CompanyContactHelper from '../support/helpers/company-contact.helper.js'
-import CompanyContactModel from '../../app/models/company-contact.model.js'
+import CompanyContactModel from '../../src/models/company-contact.model.js'
 import ContactHelper from '../support/helpers/contact.helper.js'
 import LicenceDocumentRoleHelper from '../support/helpers/licence-document-role.helper.js'
-import LicenceDocumentRoleModel from '../../app/models/licence-document-role.model.js'
+import LicenceDocumentRoleModel from '../../src/models/licence-document-role.model.js'
 
 // Thing under test
-import ContactModel from '../../app/models/contact.model.js'
+import ContactModel from '../../src/models/contact.model.js'
 
 describe('Contact model', () => {
   let testBillingAccountAddresses

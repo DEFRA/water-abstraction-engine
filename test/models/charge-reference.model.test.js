@@ -3,23 +3,23 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import BillRunVolumeHelper from '../support/helpers/bill-run-volume.helper.js'
-import BillRunVolumeModel from '../../app/models/bill-run-volume.model.js'
+import BillRunVolumeModel from '../../src/models/bill-run-volume.model.js'
 import ChargeCategoryHelper from '../support/helpers/charge-category.helper.js'
-import ChargeCategoryModel from '../../app/models/charge-category.model.js'
+import ChargeCategoryModel from '../../src/models/charge-category.model.js'
 import ChargeElementHelper from '../support/helpers/charge-element.helper.js'
-import ChargeElementModel from '../../app/models/charge-element.model.js'
+import ChargeElementModel from '../../src/models/charge-element.model.js'
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
 import ChargeVersionHelper from '../support/helpers/charge-version.helper.js'
-import ChargeVersionModel from '../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../src/models/charge-version.model.js'
 import PurposeHelper from '../support/helpers/purpose.helper.js'
-import PurposeModel from '../../app/models/purpose.model.js'
+import PurposeModel from '../../src/models/purpose.model.js'
 import ReviewChargeReferenceHelper from '../support/helpers/review-charge-reference.helper.js'
-import ReviewChargeReferenceModel from '../../app/models/review-charge-reference.model.js'
+import ReviewChargeReferenceModel from '../../src/models/review-charge-reference.model.js'
 import TransactionHelper from '../support/helpers/transaction.helper.js'
-import TransactionModel from '../../app/models/transaction.model.js'
+import TransactionModel from '../../src/models/transaction.model.js'
 
 // Thing under test
-import ChargeReferenceModel from '../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../src/models/charge-reference.model.js'
 
 describe('Charge Reference model', () => {
   let testBillRunVolumes

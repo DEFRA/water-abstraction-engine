@@ -2,7 +2,7 @@
  * @module LicenceHelper
  */
 
-import LicenceModel from '../../../app/models/licence.model.js'
+import LicenceModel from '../../../src/models/licence.model.js'
 import RegionHelper from './region.helper.js'
 import { generateLicenceRef } from '../generators.js'
 

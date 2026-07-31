@@ -7,11 +7,11 @@ import http2 from 'node:http2'
 import LoggerStub from '../support/stubs/logger.stub.js'
 
 // For running our service
-import { init } from '../../app/server.js'
+import { init } from '../support/test-server.js'
 
 const { HTTP_STATUS_OK } = http2.constants
 
-describe('Root controller: GET /', () => {
+describe('Root Controller', () => {
   let server
 
   // Create server before running the tests
@@ -35,16 +35,18 @@ describe('Root controller: GET /', () => {
     await server.stop()
   })
 
-  it('displays the correct message', async () => {
-    const options = {
-      method: 'GET',
-      url: '/'
-    }
+  describe('GET /', () => {
+    it('displays the correct message', async () => {
+      const options = {
+        method: 'GET',
+        url: '/'
+      }
 
-    const response = await server.inject(options)
-    const payload = JSON.parse(response.payload)
+      const response = await server.inject(options)
+      const payload = JSON.parse(response.payload)
 
-    expect(response.statusCode).toEqual(HTTP_STATUS_OK)
-    expect(payload.status).toEqual('alive')
+      expect(response.statusCode).toEqual(HTTP_STATUS_OK)
+      expect(payload.status).toEqual('alive')
+    })
   })
 })

@@ -2,7 +2,7 @@
  * @module ModLogHelper
  */
 
-import ModLogModel from '../../../app/models/mod-log.model.js'
+import ModLogModel from '../../../src/models/mod-log.model.js'
 import { randomRegionCode } from '../general.js'
 import { generateLicenceRef, generateRegionNaldPatternExternalId } from '../generators.js'
 

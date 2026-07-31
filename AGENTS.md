@@ -2,16 +2,16 @@
 
 ## Project overview
 
-Part of a UK government digital service for managing water abstraction licences, delivered and maintained by DEFRA.
+A shared Node.js package for a UK government digital service managing water abstraction licences, delivered and maintained by DEFRA.
 
-This project is incrementally replacing internal functionality in the legacy services. As features are added the legacy [water-abstraction-ui](https://github.com/DEFRA/water-abstraction-ui) service is updated to redirect to this service.
+It provides shared infrastructure — a base server, models, DAL modules, services, plugins, views, and utilities — consumed by internal and external water abstraction applications.
 
 ## Technology
 
-The project is a single web service using server-side rendering.
+The project is a shared Node.js package. Consuming applications build on top of its base server, models, services, plugins, and other shared modules.
 
-- **Runtime**: Node.js v22
-- **Language**: Vanilla JavaScript (CommonJS modules)
+- **Runtime**: Node.js v24
+- **Language**: Vanilla JavaScript (ESM modules)
 - **Framework**: Hapi
 - **Templating**: Nunjucks with GOV.UK Frontend
 - **Validation**: Joi
@@ -22,12 +22,21 @@ The project is a single web service using server-side rendering.
 
 ## Project paths quick reference
 
-```
+```text
 .agents/              # Agent configuration
 .github/
 ├── workflows         # GitHub workflows
 .vscode/              # VSCode settings and tasks. Ignored by git
-app/                  # Primary source code folder
+bin/                  # Bash scripts including our build script
+client/               # Our SASS files for custom styling
+db/                   # All things related to working with the database
+├── migrations
+│   ├── legacy        # Recreates database schemas and tables managed by legacy projects
+│   └── public        # Database migrations managed by this project
+├── seeds             # Database seeds primarily for test and non-production environments
+│   └── data          # Source data for our seeds
+src/                  # Primary source code folder
+├── config/           # Server, environment, and feature configuration
 ├── controllers/      # Handlers for Hapi routes
 ├── dal/              # Data Access Layer. Logic that interacts with the database are isolated as DAL modules
 ├── errors/           # Custom errors
@@ -35,30 +44,23 @@ app/                  # Primary source code folder
 ├── models/           # Objection.js models that also define relationships between our data entities
 ├── plugins/          # Hapi plugins (auth, CSRF, CSP, views, session, etc)
 ├── presenters/       # Used to transform data received from the database or a web request into a format and content needed elsewhere
+├── public/           # Static assets served by the web server
 ├── requests/         # All HTTP requests made by this project to external services. Built on Got.
 ├── routes/           # Route handlers — one file per route group
 ├── services/         # Business logic — called by controllers
 ├── validators/       # Validates data submitted to the service. Built on Joi
-├── views/            # Nunjucks base layouts and error pages held in the root of the folder
-│   ├── includes/     # Reusable template fragments
-│   └── macros/       # Reusable template macros
-bin/                  # Bash scripts including our build script
-client/               # Our SASS files for custom styling
-config/               # Server, environment, and feature configuration
-db/                   # All things related to working with the database
-├── migrations
-│   ├── legacy        # Recreates database schemas and tables managed by legacy projects
-│   └── public        # Database migrations managed by this project
-├── seeds             # Database seeds primarily for test and non-production environments
-│   └── data          # Source data for our seeds
-templates/            # Works with scaffold.sh to create new boiler-plate pages in the service
-test/                 # Test files mirroring app/ structure
+├── wrappers/         # Thin wrappers around third-party integrations
+test/                 # Test files mirroring src/ structure
+├── support/          # Helpers, stubs, and vitest modules to support the unit tests
+views/                # Nunjucks base layouts and error pages
+├── filters/          # Custom Nunjucks filters
+└── macros/           # Reusable template macros
 ```
 
 ## Configuration
 
 - Configuration is environment-variable driven; local config lives in `.env`
-- These values are read by the modules in `config/` using dotenv
+- These values are read by the modules in `src/config/` using dotenv
 - All environment-variables are represented in `.env.example`
 - No environment variable values are to be committed
 
@@ -73,24 +75,20 @@ test/                 # Test files mirroring app/ structure
 
 ```bash
 # Install dependencies
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm ci'
-
-# Run the service
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm start'
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && npm ci'
 
 # Lint
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run lint'
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && npm run lint'
 
-# Test (runs clean + lab)
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm test'
+# Test
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && npm test'
 
 # Database migrations
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run migrate'       # run latest migrations
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run migrate:test'  # wipe and re-migrate test DB
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run rollback'      # rollback last migration
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && npm run migrate:test'   # wipe and re-migrate test DB
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && npm run rollback:test'  # rollback last migration (test DB)
 
 # Run commands inside the dev container (preferred pattern)
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && <command>'
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && <command>'
 
 # Open a shell in the dev container
 docker compose exec dev /bin/bash

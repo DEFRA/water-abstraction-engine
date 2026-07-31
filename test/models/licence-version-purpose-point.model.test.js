@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceVersionPurposeHelper from '../support/helpers/licence-version-purpose.helper.js'
-import LicenceVersionPurposeModel from '../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../src/models/licence-version-purpose.model.js'
 import LicenceVersionPurposePointHelper from '../support/helpers/licence-version-purpose-point.helper.js'
 import PointHelper from '../support/helpers/point.helper.js'
-import PointModel from '../../app/models/point.model.js'
+import PointModel from '../../src/models/point.model.js'
 
 // Thing under test
-import LicenceVersionPurposePointModel from '../../app/models/licence-version-purpose-point.model.js'
+import LicenceVersionPurposePointModel from '../../src/models/licence-version-purpose-point.model.js'
 
 describe('Licence Version Purpose Point model', () => {
   let testLicenceVersionPurpose

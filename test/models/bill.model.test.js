@@ -4,14 +4,14 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import BillHelper from '../support/helpers/bill.helper.js'
 import BillLicenceHelper from '../support/helpers/bill-licence.helper.js'
-import BillLicenceModel from '../../app/models/bill-licence.model.js'
+import BillLicenceModel from '../../src/models/bill-licence.model.js'
 import BillRunHelper from '../support/helpers/bill-run.helper.js'
-import BillRunModel from '../../app/models/bill-run.model.js'
+import BillRunModel from '../../src/models/bill-run.model.js'
 import BillingAccountHelper from '../support/helpers/billing-account.helper.js'
-import BillingAccountModel from '../../app/models/billing-account.model.js'
+import BillingAccountModel from '../../src/models/billing-account.model.js'
 
 // Thing under test
-import BillModel from '../../app/models/bill.model.js'
+import BillModel from '../../src/models/bill.model.js'
 
 describe('Bill model', () => {
   let testBillingAccount

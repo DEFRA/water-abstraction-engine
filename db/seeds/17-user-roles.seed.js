@@ -1,5 +1,5 @@
-import ServerConfig from '../../config/server.config.js'
-import UserRoleModel from '../../app/models/user-role.model.js'
+import ServerConfig from '../../src/config/server.config.js'
+import UserRoleModel from '../../src/models/user-role.model.js'
 import { db } from '../db.js'
 import { data as roles } from './data/roles.js'
 import { data as userRoles } from './data/user-roles.js'

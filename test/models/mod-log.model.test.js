@@ -3,17 +3,17 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import ChargeVersionHelper from '../support/helpers/charge-version.helper.js'
-import ChargeVersionModel from '../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../src/models/charge-version.model.js'
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import LicenceVersionHelper from '../support/helpers/licence-version.helper.js'
-import LicenceVersionModel from '../../app/models/licence-version.model.js'
+import LicenceVersionModel from '../../src/models/licence-version.model.js'
 import ModLogHelper from '../support/helpers/mod-log.helper.js'
 import ReturnVersionHelper from '../support/helpers/return-version.helper.js'
-import ReturnVersionModel from '../../app/models/return-version.model.js'
+import ReturnVersionModel from '../../src/models/return-version.model.js'
 
 // Thing under test
-import ModLogModel from '../../app/models/mod-log.model.js'
+import ModLogModel from '../../src/models/mod-log.model.js'
 
 describe('Mod Log model', () => {
   let testChargeVersion

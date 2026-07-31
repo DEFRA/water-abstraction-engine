@@ -3,11 +3,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import PointHelper from '../support/helpers/point.helper.js'
-import PointModel from '../../app/models/point.model.js'
+import PointModel from '../../src/models/point.model.js'
 import SourceHelper from '../support/helpers/source.helper.js'
 
 // Thing under test
-import SourceModel from '../../app/models/source.model.js'
+import SourceModel from '../../src/models/source.model.js'
 
 describe('Source model', () => {
   let testPoints

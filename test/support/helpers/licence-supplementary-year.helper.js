@@ -2,7 +2,7 @@
  * @module LicenceSupplementaryYearHelper
  */
 
-import LicenceSupplementaryYearModel from '../../../app/models/licence-supplementary-year.model.js'
+import LicenceSupplementaryYearModel from '../../../src/models/licence-supplementary-year.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

@@ -3,11 +3,11 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceEntityHelper from '../support/helpers/licence-entity.helper.js'
-import LicenceEntityModel from '../../app/models/licence-entity.model.js'
+import LicenceEntityModel from '../../src/models/licence-entity.model.js'
 import LicenceEntityRoleHelper from '../support/helpers/licence-entity-role.helper.js'
 
 // Thing under test
-import LicenceEntityRoleModel from '../../app/models/licence-entity-role.model.js'
+import LicenceEntityRoleModel from '../../src/models/licence-entity-role.model.js'
 
 describe('Licence Entity Role model', () => {
   let testCompanyEntity

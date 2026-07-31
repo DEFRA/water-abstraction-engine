@@ -2,7 +2,7 @@
  * @module LicenceEntityRoleHelper
  */
 
-import LicenceEntityRoleModel from '../../../app/models/licence-entity-role.model.js'
+import LicenceEntityRoleModel from '../../../src/models/licence-entity-role.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

@@ -3,17 +3,17 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import PrimaryPurposeHelper from '../support/helpers/primary-purpose.helper.js'
-import PrimaryPurposeModel from '../../app/models/primary-purpose.model.js'
+import PrimaryPurposeModel from '../../src/models/primary-purpose.model.js'
 import PurposeHelper from '../support/helpers/purpose.helper.js'
-import PurposeModel from '../../app/models/purpose.model.js'
+import PurposeModel from '../../src/models/purpose.model.js'
 import ReturnRequirementHelper from '../support/helpers/return-requirement.helper.js'
-import ReturnRequirementModel from '../../app/models/return-requirement.model.js'
+import ReturnRequirementModel from '../../src/models/return-requirement.model.js'
 import ReturnRequirementPurposeHelper from '../support/helpers/return-requirement-purpose.helper.js'
 import SecondaryPurposeHelper from '../support/helpers/secondary-purpose.helper.js'
-import SecondaryPurposeModel from '../../app/models/secondary-purpose.model.js'
+import SecondaryPurposeModel from '../../src/models/secondary-purpose.model.js'
 
 // Thing under test
-import ReturnRequirementPurposeModel from '../../app/models/return-requirement-purpose.model.js'
+import ReturnRequirementPurposeModel from '../../src/models/return-requirement-purpose.model.js'
 
 describe('Return Requirement Purpose model', () => {
   let testPrimaryPurpose

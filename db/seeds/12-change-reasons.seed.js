@@ -1,6 +1,6 @@
-import ChangeReasonModel from '../../app/models/change-reason.model.js'
+import ChangeReasonModel from '../../src/models/change-reason.model.js'
 import { data as changeReasons } from './data/change-reasons.js'
-import { timestampForPostgres } from '../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
 export default async function seed() {
   for (const changeReason of changeReasons) {

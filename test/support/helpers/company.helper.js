@@ -2,7 +2,7 @@
  * @module CompanyHelper
  */
 
-import CompanyModel from '../../../app/models/company.model.js'
+import CompanyModel from '../../../src/models/company.model.js'
 
 /**
  * Add a new company

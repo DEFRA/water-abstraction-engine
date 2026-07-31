@@ -3,15 +3,15 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import CompanyAddressHelper from '../support/helpers/company-address.helper.js'
-import CompanyAddressModel from '../../app/models/company-address.model.js'
+import CompanyAddressModel from '../../src/models/company-address.model.js'
 import CompanyContactHelper from '../support/helpers/company-contact.helper.js'
-import CompanyContactModel from '../../app/models/company-contact.model.js'
+import CompanyContactModel from '../../src/models/company-contact.model.js'
 import LicenceDocumentRoleHelper from '../support/helpers/licence-document-role.helper.js'
-import LicenceDocumentRoleModel from '../../app/models/licence-document-role.model.js'
+import LicenceDocumentRoleModel from '../../src/models/licence-document-role.model.js'
 import LicenceRoleHelper from '../support/helpers/licence-role.helper.js'
 
 // Thing under test
-import LicenceRoleModel from '../../app/models/licence-role.model.js'
+import LicenceRoleModel from '../../src/models/licence-role.model.js'
 
 describe('Licence Role model', () => {
   let testCompanyAddresses

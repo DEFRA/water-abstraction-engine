@@ -3,7 +3,7 @@
  */
 
 import FinancialAgreementHelper from './financial-agreement.helper.js'
-import LicenceAgreementModel from '../../../app/models/licence-agreement.model.js'
+import LicenceAgreementModel from '../../../src/models/licence-agreement.model.js'
 import { generateLicenceRef } from '../generators.js'
 
 /**

@@ -2,7 +2,7 @@
  * @module ReturnSubmissionHelper
  */
 
-import ReturnSubmissionModel from '../../../app/models/return-submission.model.js'
+import ReturnSubmissionModel from '../../../src/models/return-submission.model.js'
 import { generateReturnId, generateUUID } from '../generators.js'
 
 /**

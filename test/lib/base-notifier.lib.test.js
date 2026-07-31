@@ -2,18 +2,18 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Test helpers
-import { NOTIFY_TEMPLATES } from '../../app/lib/notify-templates.lib.js'
+import { NOTIFY_TEMPLATES } from '../../src/lib/notify-templates.lib.js'
 
 // Things we need to stub
 import AirbrakeModule from '@airbrake/node'
-import * as CreateEmailRequest from '../../app/requests/notify/create-email.request.js'
-import AirbrakeConfig from '../../config/airbrake.config.js'
-import NotifyConfig from '../../config/notify.config.js'
+import * as CreateEmailRequest from '../../src/requests/notify/create-email.request.js'
+import AirbrakeConfig from '../../src/config/airbrake.config.js'
+import NotifyConfig from '../../src/config/notify.config.js'
 
 // Thing under test
-import BaseNotifierLib from '../../app/lib/base-notifier.lib.js'
+import BaseNotifierLib from '../../src/lib/base-notifier.lib.js'
 
-describe('BaseNotifierLib class', () => {
+describe('Base Notifier Lib', () => {
   const id = '1234567890'
   const error = 'test error'
   const message = 'say what test'

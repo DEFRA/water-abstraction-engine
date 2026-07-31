@@ -4,10 +4,10 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import ReturnCycleHelper from '../support/helpers/return-cycle.helper.js'
 import ReturnLogHelper from '../support/helpers/return-log.helper.js'
-import ReturnLogModel from '../../app/models/return-log.model.js'
+import ReturnLogModel from '../../src/models/return-log.model.js'
 
 // Thing under test
-import ReturnCycleModel from '../../app/models/return-cycle.model.js'
+import ReturnCycleModel from '../../src/models/return-cycle.model.js'
 
 describe('Return Cycle model', () => {
   let testRecord

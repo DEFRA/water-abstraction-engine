@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceHelper from '../support/helpers/licence.helper.js'
-import LicenceModel from '../../app/models/licence.model.js'
+import LicenceModel from '../../src/models/licence.model.js'
 import LicenceUnregistrationHelper from '../support/helpers/licence-unregistration.helper.js'
 import UserHelper from '../support/helpers/user.helper.js'
-import UserModel from '../../app/models/user.model.js'
+import UserModel from '../../src/models/user.model.js'
 
 // Thing under test
-import LicenceUnregistrationModel from '../../app/models/licence-unregistration.model.js'
+import LicenceUnregistrationModel from '../../src/models/licence-unregistration.model.js'
 
 describe('Licence Unregistration model', () => {
   let testLicence

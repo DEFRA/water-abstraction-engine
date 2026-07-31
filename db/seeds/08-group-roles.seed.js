@@ -1,4 +1,4 @@
-import GroupRoleModel from '../../app/models/group-role.model.js'
+import GroupRoleModel from '../../src/models/group-role.model.js'
 import { db } from '../db.js'
 import { data as groupRoles } from './data/group-roles.js'
 import { data as groups } from './data/groups.js'

@@ -4,16 +4,16 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import AddressHelper from '../support/helpers/address.helper.js'
 import BillingAccountAddressHelper from '../support/helpers/billing-account-address.helper.js'
-import BillingAccountAddressModel from '../../app/models/billing-account-address.model.js'
+import BillingAccountAddressModel from '../../src/models/billing-account-address.model.js'
 import CompanyAddressHelper from '../support/helpers/company-address.helper.js'
-import CompanyAddressModel from '../../app/models/company-address.model.js'
+import CompanyAddressModel from '../../src/models/company-address.model.js'
 import LicenceDocumentRoleHelper from '../support/helpers/licence-document-role.helper.js'
-import LicenceDocumentRoleModel from '../../app/models/licence-document-role.model.js'
+import LicenceDocumentRoleModel from '../../src/models/licence-document-role.model.js'
 import LicenceVersionHelper from '../support/helpers/licence-version.helper.js'
-import LicenceVersionModel from '../../app/models/licence-version.model.js'
+import LicenceVersionModel from '../../src/models/licence-version.model.js'
 
 // Thing under test
-import AddressModel from '../../app/models/address.model.js'
+import AddressModel from '../../src/models/address.model.js'
 
 describe('Address model', () => {
   let billingAccountAddresses

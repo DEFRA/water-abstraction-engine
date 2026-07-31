@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import BillRunHelper from '../support/helpers/bill-run.helper.js'
-import BillRunModel from '../../app/models/bill-run.model.js'
+import BillRunModel from '../../src/models/bill-run.model.js'
 import BillRunVolumeHelper from '../support/helpers/bill-run-volume.helper.js'
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
-import ChargeReferenceModel from '../../app/models/charge-reference.model.js'
+import ChargeReferenceModel from '../../src/models/charge-reference.model.js'
 
 // Thing under test
-import BillRunVolumeModel from '../../app/models/bill-run-volume.model.js'
+import BillRunVolumeModel from '../../src/models/bill-run-volume.model.js'
 
 describe('Bill Run Volume model', () => {
   let testBillRun

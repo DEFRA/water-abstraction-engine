@@ -1,7 +1,7 @@
 // Test framework
 import { vi } from 'vitest'
 
-import SessionModel from '../../../app/models/session.model.js'
+import SessionModel from '../../../src/models/session.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

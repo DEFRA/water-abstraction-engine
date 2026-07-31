@@ -7,15 +7,14 @@ import http2 from 'node:http2'
 import LoggerStub from '../support/stubs/logger.stub.js'
 
 // Things we need to stub
-import * as DatabaseHealthCheckService from '../../app/services/health/database-health-check.service.js'
-import * as InfoService from '../../app/services/health/info.service.js'
+import * as CheckDatabaseDal from '../../src/dal/health/check-database.dal.js'
 
 // For running our service
-import { init } from '../../app/server.js'
+import { init } from '../support/test-server.js'
 
 const { HTTP_STATUS_INTERNAL_SERVER_ERROR, HTTP_STATUS_OK } = http2.constants
 
-describe('Health controller', () => {
+describe('Health Controller', () => {
   let airbrakeStub
   let server
 
@@ -28,7 +27,8 @@ describe('Health controller', () => {
     // We silence any calls to server.logger made in the plugin to try and keep the test output as clean as possible
     LoggerStub(server.logger)
 
-    // We silence sending a notification to our Errbit instance using Airbrake
+    // We need to stub Airbrake in these tests. But this also silences sending a notification to our Errbit instance
+    // using Airbrake just like our other controller tests
     airbrakeStub = vi.spyOn(server.app.airbrake, 'notify').mockResolvedValue(undefined)
   })
 
@@ -67,37 +67,7 @@ describe('Health controller', () => {
 
     describe('when the request succeeds', () => {
       beforeEach(async () => {
-        vi.spyOn(DatabaseHealthCheckService, 'default').mockResolvedValue()
-      })
-
-      it('returns stats about each table', async () => {
-        const response = await server.inject(options)
-
-        expect(response.statusCode).toEqual(HTTP_STATUS_OK)
-      })
-    })
-  })
-
-  describe('GET /health/info', () => {
-    const options = {
-      method: 'GET',
-      url: '/health/info'
-    }
-
-    describe('when the request succeeds', () => {
-      beforeEach(async () => {
-        vi.spyOn(InfoService, 'default').mockResolvedValue({
-          virusScannerData: 'ClamAV 0.103.6/26738/Fri Dec 2 11:12:06 2022',
-          redisConnectivityData: 'ERROR: Command failed: redis-server --version /bin/sh: 1: redis-server: not found',
-          addressFacadeData: 'hola',
-          chargingModuleData: 'ghcr.io/defra/sroc-charging-module-api:v0.19.0',
-          appData: {
-            name: 'Service - foreground',
-            url: 'http://localhost:8001',
-            version: '3.1.2',
-            commit: 'e5186e106ac8d7a2873faf5ae09f963fc5db8a1c'
-          }
-        })
+        vi.spyOn(CheckDatabaseDal, 'default').mockResolvedValue()
       })
 
       it('returns stats about each table', async () => {

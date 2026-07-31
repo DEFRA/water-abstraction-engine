@@ -2,7 +2,7 @@
  * @module LicenceDocumentHelper
  */
 
-import LicenceDocumentModel from '../../../app/models/licence-document.model.js'
+import LicenceDocumentModel from '../../../src/models/licence-document.model.js'
 import { generateLicenceRef } from '../generators.js'
 
 /**

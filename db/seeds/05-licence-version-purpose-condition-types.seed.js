@@ -1,6 +1,6 @@
-import LicenceVersionPurposeConditionTypeModel from '../../app/models/licence-version-purpose-condition-type.model.js'
+import LicenceVersionPurposeConditionTypeModel from '../../src/models/licence-version-purpose-condition-type.model.js'
 import { data as licenceVersionPurposeConditionTypes } from './data/licence-version-purpose-condition-types.js'
-import { timestampForPostgres } from '../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
 /**
  * Seeds the licence version purpose condition types reference data using an upsert

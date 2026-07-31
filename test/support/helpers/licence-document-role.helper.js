@@ -2,7 +2,7 @@
  * @module LicenceDocumentRoleHelper
  */
 
-import LicenceDocumentRoleModel from '../../../app/models/licence-document-role.model.js'
+import LicenceDocumentRoleModel from '../../../src/models/licence-document-role.model.js'
 import { generateUUID } from '../generators.js'
 
 /**

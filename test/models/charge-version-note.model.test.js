@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import ChargeVersionHelper from '../support/helpers/charge-version.helper.js'
-import ChargeVersionModel from '../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../src/models/charge-version.model.js'
 import ChargeVersionNoteHelper from '../support/helpers/charge-version-note.helper.js'
 import UserHelper from '../support/helpers/user.helper.js'
-import UserModel from '../../app/models/user.model.js'
+import UserModel from '../../src/models/user.model.js'
 
 // Thing under test
-import ChargeVersionNoteModel from '../../app/models/charge-version-note.model.js'
+import ChargeVersionNoteModel from '../../src/models/charge-version-note.model.js'
 
 describe('Charge Version Note model', () => {
   let testChargeVersion

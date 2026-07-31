@@ -3,13 +3,13 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import SessionHelper from '../support/helpers/session.helper.js'
-import SessionNotFoundError from '../../app/errors/session-not-found.error.js'
+import SessionNotFoundError from '../../src/errors/session-not-found.error.js'
 import { generateUUID } from '../support/generators.js'
 
 // Thing under test
-import FetchSessionDal from '../../app/dal/fetch-session.dal.js'
+import FetchSessionDal from '../../src/dal/fetch-session.dal.js'
 
-describe('DAL - Fetch session dal', () => {
+describe('Fetch Session DAL', () => {
   let session
   let sessionId
 

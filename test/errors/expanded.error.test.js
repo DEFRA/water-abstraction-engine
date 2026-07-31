@@ -2,9 +2,9 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 // Thing under test
-import ExpandedError from '../../app/errors/expanded.error.js'
+import ExpandedError from '../../src/errors/expanded.error.js'
 
-describe('ExpandedError', () => {
+describe('Expanded Error', () => {
   describe('when instantiated with additional data properties', () => {
     let additionalData
 

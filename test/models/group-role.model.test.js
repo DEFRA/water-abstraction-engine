@@ -3,13 +3,13 @@ import { beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import GroupHelper from '../support/helpers/group.helper.js'
-import GroupModel from '../../app/models/group.model.js'
+import GroupModel from '../../src/models/group.model.js'
 import GroupRoleHelper from '../support/helpers/group-role.helper.js'
 import RoleHelper from '../support/helpers/role.helper.js'
-import RoleModel from '../../app/models/role.model.js'
+import RoleModel from '../../src/models/role.model.js'
 
 // Thing under test
-import GroupRoleModel from '../../app/models/group-role.model.js'
+import GroupRoleModel from '../../src/models/group-role.model.js'
 
 const GROUP_BILLING_DATA_INDEX = 1
 const GROUP_ROLE_BILLING_DATA_INDEX = 18

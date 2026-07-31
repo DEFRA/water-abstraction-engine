@@ -1,6 +1,6 @@
-import LicenceRoleModel from '../../app/models/licence-role.model.js'
+import LicenceRoleModel from '../../src/models/licence-role.model.js'
 import { data as licenceRoles } from './data/licence-roles.js'
-import { timestampForPostgres } from '../../app/lib/general.lib.js'
+import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
 export default async function seed() {
   for (const licenceRole of licenceRoles) {

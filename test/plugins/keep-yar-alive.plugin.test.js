@@ -12,11 +12,11 @@ import YarStub from '../support/stubs/yar.stub.js'
 import GlobalNotifierStub from '../support/stubs/global-notifier.stub.js'
 
 // Thing under test
-import KeepYarAlivePlugin from '../../app/plugins/keep-yar-alive.plugin.js'
+import KeepYarAlivePlugin from '../../src/plugins/keep-yar-alive.plugin.js'
 
 const { HTTP_STATUS_OK } = http2.constants
 
-describe('Keep Yar Alive plugin', () => {
+describe('Keep Yar Alive Plugin', () => {
   let notifierStub
   let server
   let yarStub
@@ -24,7 +24,7 @@ describe('Keep Yar Alive plugin', () => {
   beforeEach(async () => {
     // This setup exercises our plugin on its own instance of a Hapi server. This means we can isolate the setup and
     // focusing on testing it. This differs from our controller tests where we do want to exercise 'our' Hapi server
-    // as defined in `app/server.js`.
+    // as defined in `src/base-server.js`.
     server = Hapi.server()
 
     // Register our plugin

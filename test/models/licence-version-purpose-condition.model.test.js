@@ -3,15 +3,15 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 
 // Test helpers
 import LicenceMonitoringStationHelper from '../support/helpers/licence-monitoring-station.helper.js'
-import LicenceMonitoringStationModel from '../../app/models/licence-monitoring-station.model.js'
+import LicenceMonitoringStationModel from '../../src/models/licence-monitoring-station.model.js'
 import LicenceVersionPurposeConditionHelper from '../support/helpers/licence-version-purpose-condition.helper.js'
 import LicenceVersionPurposeConditionTypeHelper from '../support/helpers/licence-version-purpose-condition-type.helper.js'
-import LicenceVersionPurposeConditionTypeModel from '../../app/models/licence-version-purpose-condition-type.model.js'
+import LicenceVersionPurposeConditionTypeModel from '../../src/models/licence-version-purpose-condition-type.model.js'
 import LicenceVersionPurposeHelper from '../support/helpers/licence-version-purpose.helper.js'
-import LicenceVersionPurposeModel from '../../app/models/licence-version-purpose.model.js'
+import LicenceVersionPurposeModel from '../../src/models/licence-version-purpose.model.js'
 
 // Thing under test
-import LicenceVersionPurposeConditionModel from '../../app/models/licence-version-purpose-condition.model.js'
+import LicenceVersionPurposeConditionModel from '../../src/models/licence-version-purpose-condition.model.js'
 
 describe('Licence Version Purpose Condition model', () => {
   let testLicenceMonitoringStations

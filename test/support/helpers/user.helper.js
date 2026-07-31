@@ -2,7 +2,7 @@
  * @module UserHelper
  */
 
-import UserModel from '../../../app/models/user.model.js'
+import UserModel from '../../../src/models/user.model.js'
 import { generateUserName } from '../generators.js'
 import { selectRandomEntry } from '../general.js'
 import { data as users } from '../../../db/seeds/data/users.js'

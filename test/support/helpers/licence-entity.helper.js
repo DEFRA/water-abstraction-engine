@@ -2,7 +2,7 @@
  * @module LicenceEntityHelper
  */
 
-import LicenceEntityModel from '../../../app/models/licence-entity.model.js'
+import LicenceEntityModel from '../../../src/models/licence-entity.model.js'
 import { generateName, generateUUID } from '../generators.js'
 
 /**

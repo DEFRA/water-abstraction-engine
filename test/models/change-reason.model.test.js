@@ -4,10 +4,10 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 // Test helpers
 import ChangeReasonHelper from '../support/helpers/change-reason.helper.js'
 import ChargeVersionHelper from '../support/helpers/charge-version.helper.js'
-import ChargeVersionModel from '../../app/models/charge-version.model.js'
+import ChargeVersionModel from '../../src/models/charge-version.model.js'
 
 // Thing under test
-import ChangeReasonModel from '../../app/models/change-reason.model.js'
+import ChangeReasonModel from '../../src/models/change-reason.model.js'
 
 const CHANGE_REASON_SUCCESSION_REMAINDER_INDEX = 9
 
