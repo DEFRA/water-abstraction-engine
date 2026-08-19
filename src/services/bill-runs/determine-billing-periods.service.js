@@ -7,6 +7,8 @@
 // January is actually 0, February is 1 etc. This is why we are always deducting 1 from the months.
 const APRIL = 3
 const MARCH = 2
+const FIRST = 1
+const THIRTY_FIRST = 31
 const NO_OF_YEARS_TO_LOOK_BACK = 5
 const SROC_FIRST_FIN_YEAR_END = 2023
 
@@ -37,8 +39,8 @@ export default function determineBillingPeriodsService(billRunType, financialYea
 
 function _addBillingPeriod(billingPeriods, startYear, endYear) {
   billingPeriods.push({
-    startDate: new Date(startYear, APRIL, 1),
-    endDate: new Date(endYear, MARCH, 31)
+    startDate: new Date(startYear, APRIL, FIRST),
+    endDate: new Date(endYear, MARCH, THIRTY_FIRST)
   })
 }
 
@@ -72,7 +74,7 @@ function _billingPeriods(billRunType, financialYear) {
 
 function _financialYear(financialYearEnding) {
   return {
-    startDate: new Date(financialYearEnding - 1, APRIL, 1),
-    endDate: new Date(financialYearEnding, MARCH, 31)
+    startDate: new Date(financialYearEnding - 1, APRIL, FIRST),
+    endDate: new Date(financialYearEnding, MARCH, THIRTY_FIRST)
   }
 }
