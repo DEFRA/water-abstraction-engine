@@ -2,7 +2,7 @@ import { db } from '../db.js'
 import { data as groups } from './data/groups.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
-export default async function seed() {
+export async function seed() {
   for (const group of groups) {
     await _upsert(group)
   }

@@ -2,7 +2,7 @@ import ChargeCategoryModel from '../../src/models/charge-category.model.js'
 import { data as chargeCategories } from './data/charge-categories.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
-export default async function seed() {
+export async function seed() {
   for (const chargeCategory of chargeCategories) {
     await _upsert(chargeCategory)
   }

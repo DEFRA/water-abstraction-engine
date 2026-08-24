@@ -2,7 +2,7 @@ import ChangeReasonModel from '../../src/models/change-reason.model.js'
 import { data as changeReasons } from './data/change-reasons.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
-export default async function seed() {
+export async function seed() {
   for (const changeReason of changeReasons) {
     const exists = await _exists(changeReason)
 

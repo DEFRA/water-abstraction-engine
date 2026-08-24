@@ -7,7 +7,7 @@ import { db } from '../db.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
 import { data as users } from './data/users.js'
 
-export default async function seed() {
+export async function seed() {
   // These users are for use in our non-production environments only
   if (ServerConfig.environment === 'production') {
     return

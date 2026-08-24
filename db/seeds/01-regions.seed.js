@@ -14,7 +14,7 @@ import { timestampForPostgres } from '../../src/lib/general.lib.js'
  * We manually check if the combination exits already and update / insert accordingly.
  *
  */
-export default async function seed() {
+export async function seed() {
   for (const region of regions) {
     const exists = await _exists(region)
 
