@@ -2,7 +2,7 @@ import SourceModel from '../../src/models/source.model.js'
 import { data as sources } from './data/sources.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
-export default async function seed() {
+export async function seed() {
   for (const source of sources) {
     await _upsert(source)
   }

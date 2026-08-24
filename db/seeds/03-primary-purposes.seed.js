@@ -12,7 +12,7 @@ import { timestampForPostgres } from '../../src/lib/general.lib.js'
  * Public table name - public.primary_purposes
  *
  */
-export default async function seed() {
+export async function seed() {
   for (const purpose of primaryPurposes) {
     await _upsert(purpose)
   }

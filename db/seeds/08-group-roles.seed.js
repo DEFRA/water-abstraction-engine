@@ -4,7 +4,7 @@ import { data as groupRoles } from './data/group-roles.js'
 import { data as groups } from './data/groups.js'
 import { data as roles } from './data/roles.js'
 
-export default async function seed() {
+export async function seed() {
   for (const groupRole of groupRoles) {
     const { group, role } = _names(groupRole)
 

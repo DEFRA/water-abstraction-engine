@@ -2,7 +2,7 @@ import LicenceRoleModel from '../../src/models/licence-role.model.js'
 import { data as licenceRoles } from './data/licence-roles.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
 
-export default async function seed() {
+export async function seed() {
   for (const licenceRole of licenceRoles) {
     const exists = await _exists(licenceRole)
 

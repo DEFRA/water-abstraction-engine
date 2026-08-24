@@ -6,7 +6,7 @@ import {
 } from '../../src/lib/return-cycle-dates.lib.js'
 import { generateUUID, timestampForPostgres } from '../../src/lib/general.lib.js'
 
-export default async function seed() {
+export async function seed() {
   const currentYear = new Date().getFullYear()
 
   let year = 1959

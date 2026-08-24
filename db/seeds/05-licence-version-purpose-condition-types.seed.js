@@ -12,7 +12,7 @@ import { timestampForPostgres } from '../../src/lib/general.lib.js'
  * Public table name - public.licence_version_purpose_condition_types
  *
  */
-export default async function seed() {
+export async function seed() {
   for (const licenceVersionPurposeConditionType of licenceVersionPurposeConditionTypes) {
     await _upsert(licenceVersionPurposeConditionType)
   }
