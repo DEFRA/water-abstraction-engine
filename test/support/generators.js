@@ -1,4 +1,5 @@
 /**
+/**
  * @module Generators
  */
 
@@ -11,6 +12,7 @@ export { generateNoticeReferenceCode, generateRandomInteger, generateUUID }
 
 const VERIFICATION_CODE_CHARACTERS = '23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXY'
 const VERIFICATION_CODE_LENGTH = 5
+const TEST_REGION_CODE = 9
 
 /**
  * Generates a random account number
@@ -33,10 +35,9 @@ export function generateAccountNumber() {
  * @returns {string} - A random external id
  */
 export function generateAddressExternalId() {
-  const regionCode = generateRandomInteger(1, 9)
   const addressId = generateRandomInteger(100, 99998)
 
-  return `${regionCode}:${addressId}`
+  return `${TEST_REGION_CODE}:${addressId}`
 }
 
 /**
@@ -47,10 +48,9 @@ export function generateAddressExternalId() {
  * @returns {string} - A random external id
  */
 export function generateCompanyExternalId() {
-  const regionCode = generateRandomInteger(1, 9)
   const partyId = generateRandomInteger(100, 9999998)
 
-  return `${regionCode}:${partyId}`
+  return `${TEST_REGION_CODE}:${partyId}`
 }
 
 /**
@@ -86,14 +86,12 @@ export function generateContactHashId(contactName, address) {
 /**
  * Returns a randomly generated licence reference
  *
+ * We use 'AT/TE/ST/' as the start of test licences so we can delete them in the teardown.
+ *
  * @returns {string} - A randomly generated licence reference
  */
 export function generateLicenceRef() {
-  const secondPart = generateRandomInteger(10, 99)
-  const thirdPart = generateRandomInteger(10, 99)
-  const fourthPart = generateRandomInteger(1000, 9999)
-
-  return `01/${secondPart}/${thirdPart}/${fourthPart}`
+  return `AT/TE/ST/${generateRandomInteger(1000, 9999)}/${generateRandomInteger(1000, 9999)}`
 }
 
 /**
@@ -102,7 +100,7 @@ export function generateLicenceRef() {
  * @returns {string} - A randomly generated externalId
  */
 export function generateLicenceVersionExternalId() {
-  return `${generateRandomInteger(0, 9)}:${generateRandomInteger(10000, 99999)}:${generateRandomInteger(1, 100)}:0`
+  return `${TEST_REGION_CODE}:${generateRandomInteger(10000, 99999)}:${generateRandomInteger(1, 100)}:0`
 }
 
 /**
@@ -111,7 +109,7 @@ export function generateLicenceVersionExternalId() {
  * @returns {string} - A randomly generated external id
  */
 export function generateLicenceVersionPurposeExternalId() {
-  return `${generateRandomInteger(0, 9)}:${generateRandomInteger(10000, 99999)}`
+  return `${TEST_REGION_CODE}:${generateRandomInteger(10000, 99999)}`
 }
 
 /**
@@ -126,7 +124,7 @@ export function generateLicenceVersionPurposeExternalId() {
 export function generateLicenceVersionPurposePointExternalId() {
   const naldPointId = generateNaldPointId()
 
-  return `9:${generateRandomInteger(100, 99999)}:${naldPointId}`
+  return `${TEST_REGION_CODE}:${generateRandomInteger(100, 99999)}:${naldPointId}`
 }
 
 /**
@@ -234,7 +232,7 @@ export function generateReturnId(
 export function generateReturnRequirementPointExternalId() {
   const naldPointId = generateNaldPointId()
 
-  return `9:${generateRandomInteger(100, 99999)}:${naldPointId}`
+  return `${TEST_REGION_CODE}:${generateRandomInteger(100, 99999)}:${naldPointId}`
 }
 
 /**
