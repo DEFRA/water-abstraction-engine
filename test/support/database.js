@@ -8,23 +8,23 @@
 
 import { db, dbConfig } from '../../db/db.js'
 
-import ChangeReasonsSeeder from '../../db/seeds/12-change-reasons.seed.js'
-import ChargeCategoriesSeeder from '../../db/seeds/13-charge-categories.seed.js'
-import FinancialAgreementsSeeder from '../../db/seeds/11-financial-agreements.seed.js'
-import GroupRolesSeeder from '../../db/seeds/08-group-roles.seed.js'
-import GroupsSeeder from '../../db/seeds/06-groups.seed.js'
-import LicenceRoleSeeder from '../../db/seeds/14-licence-roles.seed.js'
-import LicenceVersionPurposeConditionTypeSeeder from '../../db/seeds/05-licence-version-purpose-condition-types.seed.js'
-import PrimaryPurposesSeeder from '../../db/seeds/03-primary-purposes.seed.js'
-import PurposesSeeder from '../../db/seeds/02-purposes.seed.js'
-import RegionsSeeder from '../../db/seeds/01-regions.seed.js'
-import ReturnCycleSeeder from '../../db/seeds/16-return-cycles.seed.js'
-import RolesSeeder from '../../db/seeds/07-roles.seed.js'
-import SecondaryPurposesSeeder from '../../db/seeds/04-secondary-purposes.seed.js'
-import SourcesSeeder from '../../db/seeds/15-sources.seed.js'
-import UserGroupsSeeder from '../../db/seeds/10-user-groups.seed.js'
-import UserRolesSeeder from '../../db/seeds/17-user-roles.seed.js'
-import UsersSeeder from '../../db/seeds/09-users.seed.js'
+import { seed as changeReasonsSeeder } from '../../db/seeds/12-change-reasons.seed.js'
+import { seed as chargeCategoriesSeeder } from '../../db/seeds/13-charge-categories.seed.js'
+import { seed as financialAgreementsSeeder } from '../../db/seeds/11-financial-agreements.seed.js'
+import { seed as groupRolesSeeder } from '../../db/seeds/08-group-roles.seed.js'
+import { seed as groupsSeeder } from '../../db/seeds/06-groups.seed.js'
+import { seed as licenceRoleSeeder } from '../../db/seeds/14-licence-roles.seed.js'
+import { seed as licenceVersionPurposeConditionTypeSeeder } from '../../db/seeds/05-licence-version-purpose-condition-types.seed.js'
+import { seed as primaryPurposesSeeder } from '../../db/seeds/03-primary-purposes.seed.js'
+import { seed as purposesSeeder } from '../../db/seeds/02-purposes.seed.js'
+import { seed as regionsSeeder } from '../../db/seeds/01-regions.seed.js'
+import { seed as returnCyclesSeeder } from '../../db/seeds/16-return-cycles.seed.js'
+import { seed as rolesSeeder } from '../../db/seeds/07-roles.seed.js'
+import { seed as secondaryPurposesSeeder } from '../../db/seeds/04-secondary-purposes.seed.js'
+import { seed as sourcesSeeder } from '../../db/seeds/15-sources.seed.js'
+import { seed as userGroupsSeeder } from '../../db/seeds/10-user-groups.seed.js'
+import { seed as userRolesSeeder } from '../../db/seeds/17-user-roles.seed.js'
+import { seed as usersSeeder } from '../../db/seeds/09-users.seed.js'
 
 const LEGACY_SCHEMAS = ['crm', 'crm_v2', 'idm', 'permit', 'returns', 'water']
 
@@ -88,23 +88,23 @@ function _migrationTables() {
 
 async function _seed() {
   // NOTE: Order matches the order they are seeded via Knex seeding. Do not alphabetize!
-  await RegionsSeeder()
-  await PurposesSeeder()
-  await PrimaryPurposesSeeder()
-  await SecondaryPurposesSeeder()
-  await LicenceVersionPurposeConditionTypeSeeder()
-  await GroupsSeeder()
-  await RolesSeeder()
-  await GroupRolesSeeder()
-  await UsersSeeder()
-  await UserGroupsSeeder()
-  await UserRolesSeeder()
-  await FinancialAgreementsSeeder()
-  await ChangeReasonsSeeder()
-  await ChargeCategoriesSeeder()
-  await LicenceRoleSeeder()
-  await SourcesSeeder()
-  await ReturnCycleSeeder()
+  await regionsSeeder()
+  await purposesSeeder()
+  await primaryPurposesSeeder()
+  await secondaryPurposesSeeder()
+  await licenceVersionPurposeConditionTypeSeeder()
+  await groupsSeeder()
+  await rolesSeeder()
+  await groupRolesSeeder()
+  await usersSeeder()
+  await userGroupsSeeder()
+  await userRolesSeeder()
+  await financialAgreementsSeeder()
+  await changeReasonsSeeder()
+  await chargeCategoriesSeeder()
+  await licenceRoleSeeder()
+  await sourcesSeeder()
+  await returnCyclesSeeder()
 }
 
 async function _tableNames(schema) {
