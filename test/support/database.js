@@ -10,6 +10,7 @@ import { db, dbConfig } from '../../db/db.js'
 
 import { seed as changeReasonsSeeder } from '../../db/seeds/12-change-reasons.seed.js'
 import { seed as chargeCategoriesSeeder } from '../../db/seeds/13-charge-categories.seed.js'
+import { seed as entitiesSeeder } from '../../db/seeds/18-entities.seed.js'
 import { seed as financialAgreementsSeeder } from '../../db/seeds/11-financial-agreements.seed.js'
 import { seed as groupRolesSeeder } from '../../db/seeds/08-group-roles.seed.js'
 import { seed as groupsSeeder } from '../../db/seeds/06-groups.seed.js'
@@ -33,11 +34,6 @@ const LEGACY_SCHEMAS = ['crm', 'crm_v2', 'idm', 'permit', 'returns', 'water']
  * nothing in the app or test suite ever adds, changes or removes rows in them - see the migrations themselves for
  * the source of truth). `clean()` leaves these untouched entirely rather than truncating and having to re-insert
  * what the migration already put there.
- *
- * `crm.entity` deliberately isn't listed here even though it has a static row too (see
- * `db/migrations/legacy/20221108002002_crm-entity.js`) - it also holds rows tests create dynamically (see
- * `test/support/helpers/licence-entity.helper.js`), so it still needs truncating for test isolation. See
- * `_reinsertCrmRegimeEntity()`.
  */
 const STATIC_REFERENCE_TABLES = {
   permit: ['regime'],
@@ -64,8 +60,6 @@ export async function clean() {
 
     await db.raw(`TRUNCATE TABLE ${tables.join(',')} RESTART IDENTITY;`)
   }
-
-  await _reinsertCrmRegimeEntity()
 
   // TODO: when all calls to DatabaseSupport.clean() (this function) have been removed from the tests we can drop this
   await _seed()
@@ -108,26 +102,6 @@ function _migrationTables() {
   return [dbConfig.migrations.tableName, `${dbConfig.migrations.tableName}_lock`]
 }
 
-/**
- * Re-insert the one static 'regime' row db/migrations/legacy/20221108002002_crm-entity.js inserts directly
- *
- * `crm.entity` still gets truncated by `clean()` (see `STATIC_REFERENCE_TABLES`), so this puts that one row back
- * afterward. A migration only runs once, so without this the row would be gone for the rest of the run after the
- * first `clean()` call.
- */
-async function _reinsertCrmRegimeEntity() {
-  return db('entity')
-    .withSchema('crm')
-    .insert({
-      entity_id: '0434dc31-a34e-7158-5775-4694af7a60cf',
-      entity_nm: 'water-abstraction',
-      entity_type: 'regime',
-      entity_definition: {}
-    })
-    .onConflict(['entity_id', 'entity_nm', 'entity_type'])
-    .ignore()
-}
-
 async function _seed() {
   // NOTE: Order matches the order they are seeded via Knex seeding. Do not alphabetize!
   await regionsSeeder()
@@ -147,6 +121,7 @@ async function _seed() {
   await licenceRoleSeeder()
   await sourcesSeeder()
   await returnCyclesSeeder()
+  await entitiesSeeder()
 }
 
 async function _tableNames(schema, excludedTables = []) {
