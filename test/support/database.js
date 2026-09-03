@@ -10,12 +10,12 @@ import { db, dbConfig } from '../../db/db.js'
 
 import { seed as changeReasonsSeeder } from '../../db/seeds/12-change-reasons.seed.js'
 import { seed as chargeCategoriesSeeder } from '../../db/seeds/13-charge-categories.seed.js'
+import { seed as entitiesSeeder } from '../../db/seeds/18-entities.seed.js'
 import { seed as financialAgreementsSeeder } from '../../db/seeds/11-financial-agreements.seed.js'
 import { seed as groupRolesSeeder } from '../../db/seeds/08-group-roles.seed.js'
 import { seed as groupsSeeder } from '../../db/seeds/06-groups.seed.js'
 import { seed as licenceRoleSeeder } from '../../db/seeds/14-licence-roles.seed.js'
 import { seed as licenceVersionPurposeConditionTypeSeeder } from '../../db/seeds/05-licence-version-purpose-condition-types.seed.js'
-import { seed as permitRegimesSeeder } from '../../db/seeds/18-permit-regimes.seed.js'
 import { seed as primaryPurposesSeeder } from '../../db/seeds/03-primary-purposes.seed.js'
 import { seed as purposesSeeder } from '../../db/seeds/02-purposes.seed.js'
 import { seed as regionsSeeder } from '../../db/seeds/01-regions.seed.js'
@@ -30,6 +30,17 @@ import { seed as usersSeeder } from '../../db/seeds/09-users.seed.js'
 const LEGACY_SCHEMAS = ['crm', 'crm_v2', 'idm', 'permit', 'returns', 'water']
 
 /**
+ * Tables that hold only static reference data inserted directly by their legacy migration (not a seed file, and
+ * nothing in the app or test suite ever adds, changes or removes rows in them - see the migrations themselves for
+ * the source of truth). `clean()` leaves these untouched entirely rather than truncating and having to re-insert
+ * what the migration already put there.
+ */
+const STATIC_REFERENCE_TABLES = {
+  permit: ['regime'],
+  water: ['notify_templates']
+}
+
+/**
  * Call to clean the database of all data
  *
  * It works by identifying all the tables in each schema which we use.
@@ -41,7 +52,11 @@ export async function clean() {
   const schemas = ['public', ...LEGACY_SCHEMAS]
 
   for (const schema of schemas) {
-    const tables = await _tableNames(schema)
+    const tables = await _tableNames(schema, STATIC_REFERENCE_TABLES[schema])
+
+    if (tables.length === 0) {
+      continue
+    }
 
     await db.raw(`TRUNCATE TABLE ${tables.join(',')} RESTART IDENTITY;`)
   }
@@ -106,14 +121,14 @@ async function _seed() {
   await licenceRoleSeeder()
   await sourcesSeeder()
   await returnCyclesSeeder()
-  await permitRegimesSeeder()
+  await entitiesSeeder()
 }
 
-async function _tableNames(schema) {
+async function _tableNames(schema, excludedTables = []) {
   const result = await db('pg_tables')
     .select('tablename')
     .where('schemaname', schema)
-    .whereNotIn('tablename', _migrationTables())
+    .whereNotIn('tablename', [..._migrationTables(), ...excludedTables])
 
   return result.map((table) => {
     return `"${schema}".${table.tablename}`
