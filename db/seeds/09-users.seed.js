@@ -27,6 +27,8 @@ export async function seed() {
 
     await _applyRoleToExternalUsers(user)
   }
+
+  await _syncUserIdSequence()
 }
 
 /**
@@ -150,6 +152,22 @@ async function _insert(user, password) {
   }
 
   return UserModel.query().insert({ ...user, password })
+}
+
+/**
+ * Points the `idm.users` ID sequence at the highest `user_id` in the table
+ *
+ * We explicitly set `user_id` for each seeded user (they start at 100000) instead of letting the DB generate it, so
+ * our inserts never advance the sequence backing the column. Most of the time that's harmless because the sequence
+ * still starts below our seeded IDs. But `test/support/database.js` truncates tables with `RESTART IDENTITY` when
+ * cleaning the DB between tests, which resets the sequence to 1 without touching the rows this seed then
+ * (re)inserts at 100000+. Left alone, the next auto-generated `user_id` would be 1, drifting further out of step
+ * with our seeded IDs each time the DB is cleaned. So, after seeding, we sync the sequence back to the current max.
+ *
+ * @private
+ */
+async function _syncUserIdSequence() {
+  await db.raw("SELECT setval(pg_get_serial_sequence('idm.users', 'user_id'), (SELECT MAX(user_id) FROM idm.users))")
 }
 
 async function _update(user, password) {
