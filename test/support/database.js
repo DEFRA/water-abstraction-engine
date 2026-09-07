@@ -37,7 +37,7 @@ const LEGACY_SCHEMAS = ['crm', 'crm_v2', 'idm', 'permit', 'returns', 'water']
  */
 const STATIC_REFERENCE_TABLES = {
   permit: ['regime'],
-  water: ['notify_templates']
+  water: ['billing_supported_sources', 'notify_templates']
 }
 
 /**
