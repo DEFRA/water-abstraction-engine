@@ -5,6 +5,7 @@
 
 import crypto from 'crypto'
 
+import RegionHelper from './helpers/region.helper.js'
 import { formatDateObjectToISO } from '../../src/lib/dates.lib.js'
 import { generateNoticeReferenceCode, generateRandomInteger, generateUUID } from '../../src/lib/general.lib.js'
 
@@ -12,7 +13,6 @@ export { generateNoticeReferenceCode, generateRandomInteger, generateUUID }
 
 const VERIFICATION_CODE_CHARACTERS = '23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXY'
 const VERIFICATION_CODE_LENGTH = 5
-const TEST_REGION_CODE = 9
 
 /**
  * Generates a random account number
@@ -32,12 +32,18 @@ export function generateAccountNumber() {
  *
  * This is built from NALD import data using the region code and address id
  *
+ * @param {module:RegionModel|null} [region=null] - the region the address belongs to
+ *
  * @returns {string} - A random external id
  */
-export function generateAddressExternalId() {
+export function generateAddressExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
   const addressId = generateRandomInteger(100, 99998)
 
-  return `${TEST_REGION_CODE}:${addressId}`
+  return `${region.naldRegionId}:${addressId}`
 }
 
 /**
@@ -45,12 +51,18 @@ export function generateAddressExternalId() {
  *
  * This is built from NALD import data using the region code and party id
  *
+ * @param {module:RegionModel|null} [region=null] - the region the company belongs to
+ *
  * @returns {string} - A random external id
  */
-export function generateCompanyExternalId() {
+export function generateCompanyExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
   const partyId = generateRandomInteger(100, 9999998)
 
-  return `${TEST_REGION_CODE}:${partyId}`
+  return `${region.naldRegionId}:${partyId}`
 }
 
 /**
@@ -97,19 +109,31 @@ export function generateLicenceRef() {
 /**
  * Returns a randomly generated externalId for a licence version
  *
+ * @param {module:RegionModel|null} [region=null] - the region the licence version belongs to
+ *
  * @returns {string} - A randomly generated externalId
  */
-export function generateLicenceVersionExternalId() {
-  return `${TEST_REGION_CODE}:${generateRandomInteger(10000, 99999)}:${generateRandomInteger(1, 100)}:0`
+export function generateLicenceVersionExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
+  return `${region.naldRegionId}:${generateRandomInteger(10000, 99999)}:${generateRandomInteger(1, 100)}:0`
 }
 
 /**
  * Returns a randomly generated licence version purpose external id
  *
+ * @param {module:RegionModel|null} [region=null] - the region the licence version purpose belongs to
+ *
  * @returns {string} - A randomly generated external id
  */
-export function generateLicenceVersionPurposeExternalId() {
-  return `${TEST_REGION_CODE}:${generateRandomInteger(10000, 99999)}`
+export function generateLicenceVersionPurposeExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
+  return `${region.naldRegionId}:${generateRandomInteger(10000, 99999)}`
 }
 
 /**
@@ -119,12 +143,18 @@ export function generateLicenceVersionPurposeExternalId() {
  *
  * - `[region code]:[licence version purpose ID]:[point ID]` - all values are NALD IDs
  *
+ * @param {module:RegionModel|null} [region=null] - the region the licence version purpose point belongs to
+ *
  * @returns {string} - A randomly generated licence version purpose point external ID
  */
-export function generateLicenceVersionPurposePointExternalId() {
+export function generateLicenceVersionPurposePointExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
   const naldPointId = generateNaldPointId()
 
-  return `${TEST_REGION_CODE}:${generateRandomInteger(100, 99999)}:${naldPointId}`
+  return `${region.naldRegionId}:${generateRandomInteger(100, 99999)}:${naldPointId}`
 }
 
 /**
@@ -172,14 +202,16 @@ export function generateReference() {
  *
  * The pattern is: [region code]:[NALD ID]
  *
- * @param {number} [regionCode] - The region code to use, if not provided a random one is used
+ * @param {number|null} [regionCode=null] - The region code to use, if not provided a random one is used
  *
  * @returns {string} The generated external ID
  */
 export function generateRegionNaldPatternExternalId(regionCode = null) {
-  const regionCodeToUse = regionCode ?? generateRandomInteger(1, 9)
+  if (!regionCode) {
+    regionCode = RegionHelper.select(RegionHelper.TEST_REGION_INDEX).naldRegionId
+  }
 
-  return `${regionCodeToUse}:${generateRandomInteger(100, 99999)}`
+  return `${regionCode}:${generateRandomInteger(100, 99999)}`
 }
 
 /**
@@ -227,12 +259,18 @@ export function generateReturnId(
  *
  * - `[region code]:[return requirement ID]:[point ID]` - all values are NALD IDs
  *
+ * @param {module:RegionModel|null} [region=null] - the region the return requirement point belongs to
+ *
  * @returns {string} - A randomly generated return requirement point external ID
  */
-export function generateReturnRequirementPointExternalId() {
+export function generateReturnRequirementPointExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
   const naldPointId = generateNaldPointId()
 
-  return `${TEST_REGION_CODE}:${generateRandomInteger(100, 99999)}:${naldPointId}`
+  return `${region.naldRegionId}:${generateRandomInteger(100, 99999)}:${naldPointId}`
 }
 
 /**
