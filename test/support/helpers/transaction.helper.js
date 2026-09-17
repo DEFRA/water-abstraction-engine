@@ -29,7 +29,6 @@ import { generateUUID } from '../generators.js'
  * - `loss` - medium
  * - `purposes` - [{}]
  * - `season` - all year
- * - `section130Agreement` - false
  * - `scheme` - sroc
  * - `source` - non-tidal
  * - `startDate` - start date for the current financial year (01-APR-20??)
@@ -79,7 +78,6 @@ function defaults(data = {}) {
     loss: 'medium',
     purposes: [{}],
     season: 'all year',
-    section130Agreement: 'false',
     scheme: 'sroc',
     source: 'non-tidal',
     startDate,
