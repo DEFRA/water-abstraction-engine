@@ -99,7 +99,7 @@ export async function wipe() {
 }
 
 function _migrationTables() {
-  return [dbConfig.migrations.tableName, `${dbConfig.migrations.tableName}_lock`]
+  return [dbConfig.migrations.tableName, `${dbConfig.migrations.tableName}_lock`, 'migrations']
 }
 
 async function _seed() {
