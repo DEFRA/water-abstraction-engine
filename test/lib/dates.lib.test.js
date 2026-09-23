@@ -430,6 +430,46 @@ describe('Dates Lib', () => {
       })
     })
 
+    describe('given a "startDate" that is the last of the month and an "endDate" that is the last of the month', () => {
+      describe('and the next month has the same number of days', () => {
+        beforeAll(async () => {
+          startDate = new Date('2025-07-31')
+          endDate = new Date('2026-03-31')
+        })
+
+        it('sets the start date of the first "month" back to the 1st', () => {
+          const results = DateLib.monthsFromPeriod(startDate, endDate)
+
+          expect(results[0]).toEqual({
+            startDate: new Date('2025-07-01'),
+            endDate: new Date('2025-07-31')
+          })
+        })
+      })
+
+      describe('and the next month has fewer days', () => {
+        beforeAll(async () => {
+          // This was the scenario that exposed a bug with our initial implementation. Adding a month to 31/01/2026
+          // using `setDate()` would result in 31/02/2026 which clearly doesn't exist. Rather than erroring, JavaScript
+          // would simply overrun into the next month and return 03/03/2026.
+          //
+          // Our clever use of `setDate(0)`, to set the date to the last of the previous month to get the end date would
+          // return 28/02/2026, the result being 01/01/2026 to 31/01/2026 is missing from the submission lines.
+          startDate = new Date('2026-01-31')
+          endDate = new Date('2026-03-31')
+        })
+
+        it('still sets the start date of the first "month" back to the 1st', () => {
+          const results = DateLib.monthsFromPeriod(startDate, endDate)
+
+          expect(results[0]).toEqual({
+            startDate: new Date('2026-01-01'),
+            endDate: new Date('2026-01-31')
+          })
+        })
+      })
+    })
+
     describe('given a "startDate" that is the first of the month and an "endDate" that is in the middle', () => {
       beforeAll(async () => {
         startDate = new Date('2025-02-01')

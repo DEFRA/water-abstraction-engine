@@ -4,6 +4,7 @@
  */
 
 const APRIL = 3
+const DECEMBER = 11
 const FEBRUARY = 2
 const LAST_DAY_OF_FEB_STANDARD_YEAR = 28
 const LAST_DAY_OF_FEB_LEAP_YEAR = 29
@@ -60,26 +61,6 @@ export function daysFromPeriod(periodStartDate, periodEndDate) {
 }
 
 /**
- * Determine the financial year end for a given date
- *
- * The financial year runs from April 1st to March 31st. If the given date falls on or after April 1st,
- * the financial year end will be in the following calendar year. Otherwise, it remains in the current year.
- *
- * @param {Date} date - The date to determine the financial year for
- *
- * @returns {number} The year in which the financial year ends
- */
-export function determineFinancialYearEnd(date) {
-  let year = date.getFullYear()
-
-  if (date.getMonth() >= APRIL) {
-    year++
-  }
-
-  return year
-}
-
-/**
  * From an array of dates, filter out empty values and return the earliest
  *
  * This was created as part of our work on generating return logs for licences, and needing to work out the earliest
@@ -100,6 +81,26 @@ export function determineEarliestDate(dates) {
   const earliestDateTimestamp = Math.min(...allEmptyValuesRemoved)
 
   return new Date(earliestDateTimestamp)
+}
+
+/**
+ * Determine the financial year end for a given date
+ *
+ * The financial year runs from April 1st to March 31st. If the given date falls on or after April 1st,
+ * the financial year end will be in the following calendar year. Otherwise, it remains in the current year.
+ *
+ * @param {Date} date - The date to determine the financial year for
+ *
+ * @returns {number} The year in which the financial year ends
+ */
+export function determineFinancialYearEnd(date) {
+  let year = date.getFullYear()
+
+  if (date.getMonth() >= APRIL) {
+    year++
+  }
+
+  return year
 }
 
 /**
@@ -129,6 +130,22 @@ export function determineLatestDate(dates) {
 }
 
 /**
+ * Format the provided date in ISO format.
+ *
+ * @param {Date | string } date - a date object to be formatted
+ * @returns {Date | null} - the date formatted in YYYY-MM-DD.
+ */
+export function formatDateObjectToISO(date) {
+  if (!date) {
+    return null
+  }
+
+  const localDate = new Date(date)
+
+  return localDate.toISOString().split('T')[0]
+}
+
+/**
  * Formats a string assumed to be a date in the format 01/01/2001
  *
  * Formats to iso format 2001-01-01
@@ -155,19 +172,30 @@ export function formatStandardDateToISO(date) {
 }
 
 /**
- * Format the provided date in ISO format.
+ * Checks a string matches the ISO 8601 date format
  *
- * @param {Date | string } date - a date object to be formatted
- * @returns {Date | null} - the date formatted in YYYY-MM-DD.
+ * @param {dateString} dateString - The date in the iso format 2001-01-01
+ * @returns {boolean}
  */
-export function formatDateObjectToISO(date) {
-  if (!date) {
-    return null
-  }
+export function isISODateFormat(dateString) {
+  const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/
 
-  const localDate = new Date(date)
+  return isoDatePattern.test(dateString)
+}
 
-  return localDate.toISOString().split('T')[0]
+/**
+ * Checks if the given date is a quarterly returns submission
+ *
+ * A quarterly returns submission will be true when the date provided is >= 1 April 2025
+ *
+ * @param {string} date - The date to compare against the quarterly return submissions date
+ *
+ * @returns {boolean} - Will return true if the date is for a quarterly return submission
+ *
+ * @private
+ */
+export function isQuarterlyReturnSubmissions(date) {
+  return new Date(date).getTime() >= new Date('2025-04-01').getTime()
 }
 
 /**
@@ -191,64 +219,47 @@ export function isValidDate(dateString) {
 }
 
 /**
- * Checks a string matches the ISO 8601 date format
+ * Creates an array of month objects, each representing a full calendar month within the given period.
  *
- * @param {dateString} dateString - The date in the iso format 2001-01-01
- * @returns {boolean}
+ * If the `periodStartDate` is not the first day of the month, the start date is adjusted backwards to the 1st of that
+ * month to ensure the first full month is included. If the `periodEndDate` falls before the end of a month, the end
+ * date is pushed forward to the end of the month.
+ *
+ * @param {Date} periodStartDate - The start date of the period.
+ * @param {Date} periodEndDate - The end date of the period.
+ *
+ * @returns {object[]} An array of month objects, each containing `startDate` and `endDate` properties representing full
+ * months.
  */
-export function isISODateFormat(dateString) {
-  const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/
+export function monthsFromPeriod(periodStartDate, periodEndDate) {
+  const months = []
 
-  return isoDatePattern.test(dateString)
-}
+  let year = periodStartDate.getFullYear()
+  let month = periodStartDate.getMonth() // 0-indexed (0 = January)
 
-/**
- * Check if a date is a leap year
- *
- * Known issue in javascript - https://en.wikipedia.org/wiki/Leap_year_problem#:~:text=The%20following%20JavaScript%20code%20is,is%202021%2D03%2D01.
- *
- * This functions handles the valid and invalid leap year dates
- *
- * @param {dateString} dateString - The date in the iso format 2001-01-01
- * @returns {boolean}
- *
- * @private
- */
-function _isValidLeapYearDate(dateString) {
-  const [year, month, day] = dateString.split('-')
+  const endYear = periodEndDate.getFullYear()
+  const endMonth = periodEndDate.getMonth()
 
-  if (_isLeapYear(year) === true && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_LEAP_YEAR) {
-    return false
+  // Loop while the current year/month has not passed the period's final month
+  while (year < endYear || (year === endYear && month <= endMonth)) {
+    // First day of the current month
+    const startDate = new Date(Date.UTC(year, month, 1))
+
+    // Last day of the current month. Asking for day 0 of the *next* month rolls back to the last day of this one,
+    // so we never have to worry about 28/29/30/31-day months or leap years
+    const endDate = new Date(Date.UTC(year, month + 1, 0))
+
+    months.push({ startDate, endDate })
+
+    // Advance to the next month, rolling into January of the next year when needed
+    month++
+    if (month > DECEMBER) {
+      month = 0
+      year++
+    }
   }
 
-  if (_isLeapYear(year) === false && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_STANDARD_YEAR) {
-    return false
-  }
-
-  return true
-}
-
-function _isLeapYear(year) {
-  const set400 = 400
-
-  return (year % 4 === 0 && year % 100 !== 0) || year % set400 === 0
-}
-
-/**
- * Calculates the renewal notice start date, 90 days before the given expiry date
- *
- * @param {Date} expiryDate - The expiry date to calculate from
- *
- * @returns {Date} The renewal notice start date
- */
-export function renewalNoticeDate(expiryDate) {
-  const noticeDate = new Date(expiryDate)
-
-  const nintyDays = 90
-
-  noticeDate.setDate(noticeDate.getDate() - nintyDays)
-
-  return noticeDate
+  return months
 }
 
 /**
@@ -270,60 +281,20 @@ export function renewalExpiryDate(days = 0) {
 }
 
 /**
- * Checks if the given date is a quarterly returns submission
+ * Calculates the renewal notice start date, 90 days before the given expiry date
  *
- * A quarterly returns submission will be true when the date provided is >= 1 April 2025
+ * @param {Date} expiryDate - The expiry date to calculate from
  *
- * @param {string} date - The date to compare against the quarterly return submissions date
- *
- * @returns {boolean} - Will return true if the date is for a quarterly return submission
- *
- * @private
+ * @returns {Date} The renewal notice start date
  */
-export function isQuarterlyReturnSubmissions(date) {
-  return new Date(date).getTime() >= new Date('2025-04-01').getTime()
-}
+export function renewalNoticeDate(expiryDate) {
+  const noticeDate = new Date(expiryDate)
 
-/**
- * Creates an array of month objects, each representing a full calendar month within the given period.
- *
- * If the `periodStartDate` is not the first day of the month, the start date is adjusted backwards to the 1st of that
- * month to ensure the first full month is included. If the `periodEndDate` falls before the end of a month, the end
- * date is pushed forward to the end of the month.
- *
- * @param {Date} periodStartDate - The start date of the period.
- * @param {Date} periodEndDate - The end date of the period.
- *
- * @returns {object[]} An array of month objects, each containing `startDate` and `endDate` properties representing full
- * months.
- */
-export function monthsFromPeriod(periodStartDate, periodEndDate) {
-  const months = []
+  const nintyDays = 90
 
-  // We have to clone the date, else as we increment in the loop we'd be incrementing the param passed in!
-  const clonedPeriodStartDate = _cloneDate(periodStartDate)
+  noticeDate.setDate(noticeDate.getDate() - nintyDays)
 
-  // eslint-disable-next-line no-unmodified-loop-condition
-  while (clonedPeriodStartDate < periodEndDate) {
-    // Bump the returnLogStartDate to the next month, for example 2013-04-15 becomes 2013-05-15
-    clonedPeriodStartDate.setMonth(clonedPeriodStartDate.getMonth() + 1)
-
-    // Then clone that for our end date. "But we want the last day in April!?" we hear you scream :-)
-    const endDate = _cloneDate(clonedPeriodStartDate)
-
-    // We use some JavaScript magic to move endDate back to the last of the month. By setting the date (the 01, 02, 03
-    // etc part) to 0, it's the equivalent of setting it to the 1st, then asking JavaScript to minus 1 day. That's
-    // how we get to 2013-04-30. It also means we don't need to worry about which months have 30 vs 31 days, or whether
-    // we are in a leap year!
-    endDate.setDate(0)
-
-    // Set start date to first of the month. Passing it in as a string to new Date() helps keep it UTC rather than local
-    const startDate = new Date(`${endDate.getFullYear()}-${endDate.getMonth() + 1}-01`)
-
-    months.push({ startDate, endDate })
-  }
-
-  return months
+  return noticeDate
 }
 
 /**
@@ -395,6 +366,7 @@ export function weeksFromPeriod(periodStartDate, periodEndDate) {
  *
  * We only want to be working with UTC dates to avoid any issues, but there are times we need to clone a date to avoid
  * making changes to the original. To ensure our cloned date is also UTC, we have this method.
+ *
  * @private
  */
 function _cloneDate(dateToClone) {
@@ -403,4 +375,33 @@ function _cloneDate(dateToClone) {
   const day = dateToClone.getDate()
 
   return new Date(`${year}-${month}-${day}`)
+}
+
+function _isLeapYear(year) {
+  const set400 = 400
+
+  return (year % 4 === 0 && year % 100 !== 0) || year % set400 === 0
+}
+
+/**
+ * Check if a date is a leap year
+ *
+ * Known issue in javascript - https://en.wikipedia.org/wiki/Leap_year_problem#:~:text=The%20following%20JavaScript%20code%20is,is%202021%2D03%2D01.
+ *
+ * This functions handles the valid and invalid leap year dates
+ *
+ * @private
+ */
+function _isValidLeapYearDate(dateString) {
+  const [year, month, day] = dateString.split('-')
+
+  if (_isLeapYear(year) === true && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_LEAP_YEAR) {
+    return false
+  }
+
+  if (_isLeapYear(year) === false && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_STANDARD_YEAR) {
+    return false
+  }
+
+  return true
 }
