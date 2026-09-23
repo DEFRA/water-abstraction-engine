@@ -366,6 +366,7 @@ export function weeksFromPeriod(periodStartDate, periodEndDate) {
  *
  * We only want to be working with UTC dates to avoid any issues, but there are times we need to clone a date to avoid
  * making changes to the original. To ensure our cloned date is also UTC, we have this method.
+ *
  * @private
  */
 function _cloneDate(dateToClone) {
@@ -388,9 +389,6 @@ function _isLeapYear(year) {
  * Known issue in javascript - https://en.wikipedia.org/wiki/Leap_year_problem#:~:text=The%20following%20JavaScript%20code%20is,is%202021%2D03%2D01.
  *
  * This functions handles the valid and invalid leap year dates
- *
- * @param {dateString} dateString - The date in the iso format 2001-01-01
- * @returns {boolean}
  *
  * @private
  */
