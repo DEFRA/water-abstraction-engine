@@ -4,6 +4,7 @@
  */
 
 const APRIL = 3
+const DECEMBER = 11
 const FEBRUARY = 2
 const LAST_DAY_OF_FEB_STANDARD_YEAR = 28
 const LAST_DAY_OF_FEB_LEAP_YEAR = 29
@@ -203,38 +204,6 @@ export function isISODateFormat(dateString) {
 }
 
 /**
- * Check if a date is a leap year
- *
- * Known issue in javascript - https://en.wikipedia.org/wiki/Leap_year_problem#:~:text=The%20following%20JavaScript%20code%20is,is%202021%2D03%2D01.
- *
- * This functions handles the valid and invalid leap year dates
- *
- * @param {dateString} dateString - The date in the iso format 2001-01-01
- * @returns {boolean}
- *
- * @private
- */
-function _isValidLeapYearDate(dateString) {
-  const [year, month, day] = dateString.split('-')
-
-  if (_isLeapYear(year) === true && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_LEAP_YEAR) {
-    return false
-  }
-
-  if (_isLeapYear(year) === false && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_STANDARD_YEAR) {
-    return false
-  }
-
-  return true
-}
-
-function _isLeapYear(year) {
-  const set400 = 400
-
-  return (year % 4 === 0 && year % 100 !== 0) || year % set400 === 0
-}
-
-/**
  * Calculates the renewal notice start date, 90 days before the given expiry date
  *
  * @param {Date} expiryDate - The expiry date to calculate from
@@ -319,7 +288,7 @@ export function monthsFromPeriod(periodStartDate, periodEndDate) {
 
     // Advance to the next month, rolling into January of the next year when needed
     month++
-    if (month > 11) {
+    if (month > DECEMBER) {
       month = 0
       year++
     }
@@ -405,4 +374,36 @@ function _cloneDate(dateToClone) {
   const day = dateToClone.getDate()
 
   return new Date(`${year}-${month}-${day}`)
+}
+
+function _isLeapYear(year) {
+  const set400 = 400
+
+  return (year % 4 === 0 && year % 100 !== 0) || year % set400 === 0
+}
+
+/**
+ * Check if a date is a leap year
+ *
+ * Known issue in javascript - https://en.wikipedia.org/wiki/Leap_year_problem#:~:text=The%20following%20JavaScript%20code%20is,is%202021%2D03%2D01.
+ *
+ * This functions handles the valid and invalid leap year dates
+ *
+ * @param {dateString} dateString - The date in the iso format 2001-01-01
+ * @returns {boolean}
+ *
+ * @private
+ */
+function _isValidLeapYearDate(dateString) {
+  const [year, month, day] = dateString.split('-')
+
+  if (_isLeapYear(year) === true && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_LEAP_YEAR) {
+    return false
+  }
+
+  if (_isLeapYear(year) === false && Number(month) === FEBRUARY && Number(day) > LAST_DAY_OF_FEB_STANDARD_YEAR) {
+    return false
+  }
+
+  return true
 }
