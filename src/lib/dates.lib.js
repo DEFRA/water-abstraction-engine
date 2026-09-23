@@ -61,26 +61,6 @@ export function daysFromPeriod(periodStartDate, periodEndDate) {
 }
 
 /**
- * Determine the financial year end for a given date
- *
- * The financial year runs from April 1st to March 31st. If the given date falls on or after April 1st,
- * the financial year end will be in the following calendar year. Otherwise, it remains in the current year.
- *
- * @param {Date} date - The date to determine the financial year for
- *
- * @returns {number} The year in which the financial year ends
- */
-export function determineFinancialYearEnd(date) {
-  let year = date.getFullYear()
-
-  if (date.getMonth() >= APRIL) {
-    year++
-  }
-
-  return year
-}
-
-/**
  * From an array of dates, filter out empty values and return the earliest
  *
  * This was created as part of our work on generating return logs for licences, and needing to work out the earliest
@@ -101,6 +81,26 @@ export function determineEarliestDate(dates) {
   const earliestDateTimestamp = Math.min(...allEmptyValuesRemoved)
 
   return new Date(earliestDateTimestamp)
+}
+
+/**
+ * Determine the financial year end for a given date
+ *
+ * The financial year runs from April 1st to March 31st. If the given date falls on or after April 1st,
+ * the financial year end will be in the following calendar year. Otherwise, it remains in the current year.
+ *
+ * @param {Date} date - The date to determine the financial year for
+ *
+ * @returns {number} The year in which the financial year ends
+ */
+export function determineFinancialYearEnd(date) {
+  let year = date.getFullYear()
+
+  if (date.getMonth() >= APRIL) {
+    year++
+  }
+
+  return year
 }
 
 /**
@@ -130,6 +130,22 @@ export function determineLatestDate(dates) {
 }
 
 /**
+ * Format the provided date in ISO format.
+ *
+ * @param {Date | string } date - a date object to be formatted
+ * @returns {Date | null} - the date formatted in YYYY-MM-DD.
+ */
+export function formatDateObjectToISO(date) {
+  if (!date) {
+    return null
+  }
+
+  const localDate = new Date(date)
+
+  return localDate.toISOString().split('T')[0]
+}
+
+/**
  * Formats a string assumed to be a date in the format 01/01/2001
  *
  * Formats to iso format 2001-01-01
@@ -156,19 +172,30 @@ export function formatStandardDateToISO(date) {
 }
 
 /**
- * Format the provided date in ISO format.
+ * Checks a string matches the ISO 8601 date format
  *
- * @param {Date | string } date - a date object to be formatted
- * @returns {Date | null} - the date formatted in YYYY-MM-DD.
+ * @param {dateString} dateString - The date in the iso format 2001-01-01
+ * @returns {boolean}
  */
-export function formatDateObjectToISO(date) {
-  if (!date) {
-    return null
-  }
+export function isISODateFormat(dateString) {
+  const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/
 
-  const localDate = new Date(date)
+  return isoDatePattern.test(dateString)
+}
 
-  return localDate.toISOString().split('T')[0]
+/**
+ * Checks if the given date is a quarterly returns submission
+ *
+ * A quarterly returns submission will be true when the date provided is >= 1 April 2025
+ *
+ * @param {string} date - The date to compare against the quarterly return submissions date
+ *
+ * @returns {boolean} - Will return true if the date is for a quarterly return submission
+ *
+ * @private
+ */
+export function isQuarterlyReturnSubmissions(date) {
+  return new Date(date).getTime() >= new Date('2025-04-01').getTime()
 }
 
 /**
@@ -189,68 +216,6 @@ export function isValidDate(dateString) {
   const date = new Date(dateString)
 
   return !Number.isNaN(date.getTime())
-}
-
-/**
- * Checks a string matches the ISO 8601 date format
- *
- * @param {dateString} dateString - The date in the iso format 2001-01-01
- * @returns {boolean}
- */
-export function isISODateFormat(dateString) {
-  const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/
-
-  return isoDatePattern.test(dateString)
-}
-
-/**
- * Calculates the renewal notice start date, 90 days before the given expiry date
- *
- * @param {Date} expiryDate - The expiry date to calculate from
- *
- * @returns {Date} The renewal notice start date
- */
-export function renewalNoticeDate(expiryDate) {
-  const noticeDate = new Date(expiryDate)
-
-  const nintyDays = 90
-
-  noticeDate.setDate(noticeDate.getDate() - nintyDays)
-
-  return noticeDate
-}
-
-/**
- * Calculates the target expiry date for renewal notices
- *
- * The target date is `days` days from today, normalised to midnight.
- *
- * @param {number} [days=0] - The number of days from today
- *
- * @returns {Date} The target expiry date
- */
-export function renewalExpiryDate(days = 0) {
-  const targetDate = new Date()
-
-  targetDate.setDate(targetDate.getDate() + Number(days))
-  targetDate.setHours(0, 0, 0, 0)
-
-  return targetDate
-}
-
-/**
- * Checks if the given date is a quarterly returns submission
- *
- * A quarterly returns submission will be true when the date provided is >= 1 April 2025
- *
- * @param {string} date - The date to compare against the quarterly return submissions date
- *
- * @returns {boolean} - Will return true if the date is for a quarterly return submission
- *
- * @private
- */
-export function isQuarterlyReturnSubmissions(date) {
-  return new Date(date).getTime() >= new Date('2025-04-01').getTime()
 }
 
 /**
@@ -295,6 +260,41 @@ export function monthsFromPeriod(periodStartDate, periodEndDate) {
   }
 
   return months
+}
+
+/**
+ * Calculates the target expiry date for renewal notices
+ *
+ * The target date is `days` days from today, normalised to midnight.
+ *
+ * @param {number} [days=0] - The number of days from today
+ *
+ * @returns {Date} The target expiry date
+ */
+export function renewalExpiryDate(days = 0) {
+  const targetDate = new Date()
+
+  targetDate.setDate(targetDate.getDate() + Number(days))
+  targetDate.setHours(0, 0, 0, 0)
+
+  return targetDate
+}
+
+/**
+ * Calculates the renewal notice start date, 90 days before the given expiry date
+ *
+ * @param {Date} expiryDate - The expiry date to calculate from
+ *
+ * @returns {Date} The renewal notice start date
+ */
+export function renewalNoticeDate(expiryDate) {
+  const noticeDate = new Date(expiryDate)
+
+  const nintyDays = 90
+
+  noticeDate.setDate(noticeDate.getDate() - nintyDays)
+
+  return noticeDate
 }
 
 /**
