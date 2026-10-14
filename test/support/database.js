@@ -16,6 +16,7 @@ import { seed as groupRolesSeeder } from '../../db/seeds/08-group-roles.seed.js'
 import { seed as groupsSeeder } from '../../db/seeds/06-groups.seed.js'
 import { seed as licenceRoleSeeder } from '../../db/seeds/14-licence-roles.seed.js'
 import { seed as licenceVersionPurposeConditionTypeSeeder } from '../../db/seeds/05-licence-version-purpose-condition-types.seed.js'
+import { seed as monitoringStationsSeeder } from '../../db/seeds/19-monitoring-stations.seed.js'
 import { seed as primaryPurposesSeeder } from '../../db/seeds/03-primary-purposes.seed.js'
 import { seed as purposesSeeder } from '../../db/seeds/02-purposes.seed.js'
 import { seed as regionsSeeder } from '../../db/seeds/01-regions.seed.js'
@@ -122,6 +123,7 @@ async function _seed() {
   await sourcesSeeder()
   await returnCyclesSeeder()
   await entitiesSeeder()
+  await monitoringStationsSeeder()
 }
 
 async function _tableNames(schema, excludedTables = []) {
