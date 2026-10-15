@@ -17,7 +17,7 @@ export function up(knex) {
     table.string('external_id').unique()
     table.boolean('is_test').notNullable().defaultTo(false)
     table.string('data_source').notNullable()
-    table.integer('uprn').unique()
+    table.bigInteger('uprn').unique()
     table.string('last_hash')
     table.string('current_hash')
 

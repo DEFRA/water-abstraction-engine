@@ -18,7 +18,7 @@ export function up(knex) {
     table.string('station_reference')
     table.string('status')
     table.jsonb('metadata')
-    table.uuid('hydrology_station_id').notNullable()
+    table.uuid('hydrology_station_id')
     table.boolean('is_test').defaultTo(false)
 
     // Legacy timestamps

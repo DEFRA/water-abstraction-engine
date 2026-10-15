@@ -118,7 +118,7 @@ export function generateLicenceVersionExternalId(region = null) {
     region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
   }
 
-  return `${region.naldRegionId}:${generateRandomInteger(10000, 99999)}:${generateRandomInteger(1, 100)}:0`
+  return `${region.naldRegionId}:${generateRandomInteger(10000, 99999999)}:${generateRandomInteger(1, 100)}:0`
 }
 
 /**
@@ -133,7 +133,7 @@ export function generateLicenceVersionPurposeExternalId(region = null) {
     region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
   }
 
-  return `${region.naldRegionId}:${generateRandomInteger(10000, 99999)}`
+  return `${region.naldRegionId}:${generateRandomInteger(10000, 99999999)}`
 }
 
 /**
@@ -279,7 +279,7 @@ export function generateReturnRequirementPointExternalId(region = null) {
  * @returns {string} - A random UPRN
  */
 export function generateUprn() {
-  return generateRandomInteger(100, 999999)
+  return generateRandomInteger(100, 999999999999)
 }
 
 /**
