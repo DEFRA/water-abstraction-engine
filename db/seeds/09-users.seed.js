@@ -131,14 +131,13 @@ async function _insert(user, password) {
   //
   // `username = 'admin-internal@wrls.gov.uk' && application = 'water_admin'`
   //
-  // does not exist. _But_ a user with ID 100000 does! So, we do want to insert our record, but we can't use the ID
+  // does not exist. _But_ a user with ID 100000 does! So, we do want to insert our record, but we can't use the userID
   // because it is already in use. We only really face this problem when running the seed in our AWS environments.
   const idInUse = await _idInUse(userId)
 
   if (idInUse) {
     return UserModel.query().insert({
       id,
-      userId,
       application,
       badLogins,
       enabled,
