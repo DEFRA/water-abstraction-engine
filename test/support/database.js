@@ -24,6 +24,7 @@ import { seed as returnCyclesSeeder } from '../../db/seeds/16-return-cycles.seed
 import { seed as rolesSeeder } from '../../db/seeds/07-roles.seed.js'
 import { seed as secondaryPurposesSeeder } from '../../db/seeds/04-secondary-purposes.seed.js'
 import { seed as sourcesSeeder } from '../../db/seeds/15-sources.seed.js'
+import { seed as supportedSourcesSeeder } from '../../db/seeds/20-supported-sources.seed.js'
 import { seed as userGroupsSeeder } from '../../db/seeds/10-user-groups.seed.js'
 import { seed as userRolesSeeder } from '../../db/seeds/17-user-roles.seed.js'
 import { seed as usersSeeder } from '../../db/seeds/09-users.seed.js'
@@ -38,7 +39,7 @@ const LEGACY_SCHEMAS = ['crm', 'crm_v2', 'idm', 'permit', 'returns', 'water']
  */
 const STATIC_REFERENCE_TABLES = {
   permit: ['regime'],
-  water: ['billing_supported_sources', 'notify_templates']
+  water: ['notify_templates']
 }
 
 /**
@@ -124,6 +125,7 @@ async function _seed() {
   await returnCyclesSeeder()
   await entitiesSeeder()
   await monitoringStationsSeeder()
+  await supportedSourcesSeeder()
 }
 
 async function _tableNames(schema, excludedTables = []) {
