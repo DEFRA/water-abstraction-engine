@@ -5,8 +5,7 @@ import { timestampForPostgres } from '../../src/lib/general.lib.js'
 /**
  * Seeds the supported sources reference data using an upsert
  *
- * The IDs match those in production, so every environment has the same IDs. Where a supported source already exists
- * with a different ID (the legacy migration that first seeded them let the DB generate the IDs), it is updated to match.
+ * New supported sources are inserted with the IDs from pre-production. Existing ones keep their IDs.
  *
  * Previous table name - water.billing_supported_sources
  *
@@ -22,5 +21,5 @@ async function _upsert(supportedSource) {
   return SupportedSourceModel.query()
     .insert({ ...supportedSource, createdAt: timestampForPostgres(), updatedAt: timestampForPostgres() })
     .onConflict('reference')
-    .merge(['id', 'name', 'order', 'region', 'updatedAt'])
+    .merge(['name', 'order', 'region', 'updatedAt'])
 }
