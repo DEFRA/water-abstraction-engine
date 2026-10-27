@@ -8,6 +8,7 @@ export default {
       changed: !ci,
       // Files and folders to exclude from coverage measurement entirely
       exclude: [
+        'cli/**',
         'db/**',
         'eslint-rules/**',
         'src/config/**',
@@ -47,6 +48,7 @@ export default {
           hookTimeout: 10000,
           // Glob patterns that select which test files belong to this project
           include: [
+            'test/cli/**/*.test.js',
             'test/controllers/**/*.test.js',
             'test/errors/**/*.test.js',
             'test/lib/**/*.test.js',
