@@ -15,17 +15,17 @@ import { determineReturnsPeriods } from '../../lib/return-periods.lib.js'
  *
  * @param {module:ReturnRequirementModel} returnRequirement - the return requirement to generate return logs for
  * @param {module:ReturnCycleModel} returnCycle - the return cycle to generate return logs against
- * @param {Date} [licenceEndDate=null] - the licence end date if there is one
  * @param {boolean} setOldReturnsDueDate - whether to set the due date on return logs that end before quarterly returns
  * started on 1 April 2025, as the `ENABLE_SET_OLD_RETURNS_DUE_DATE` feature flag does in the system
+ * @param {Date} [licenceEndDate=null] - the licence end date if there is one
  *
  * @returns {object[]} the generated return logs data
  */
 export default function generateReturnLogsService(
   returnRequirement,
   returnCycle,
-  licenceEndDate = null,
-  setOldReturnsDueDate
+  setOldReturnsDueDate,
+  licenceEndDate = null
 ) {
   const isQuarterlyReturn = returnRequirement.returnVersion.quarterlyReturns
   const returnLogs = []

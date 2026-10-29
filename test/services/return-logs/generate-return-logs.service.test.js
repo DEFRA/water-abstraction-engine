@@ -50,6 +50,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -68,6 +69,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -86,6 +88,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -223,6 +226,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -241,6 +245,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -259,6 +264,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -405,6 +411,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -423,6 +430,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -441,6 +449,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -578,6 +587,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -596,6 +606,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -614,6 +625,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -763,6 +775,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -781,6 +794,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -799,6 +813,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -936,6 +951,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -954,6 +970,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -972,6 +989,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1109,6 +1127,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1127,6 +1146,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1145,6 +1165,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1303,6 +1324,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1321,6 +1343,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1339,6 +1362,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1476,6 +1500,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1494,6 +1519,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1512,6 +1538,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1654,6 +1681,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1672,6 +1700,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1693,6 +1722,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 results = GenerateReturnLogsService(
                   returnRequirement,
                   returnCycle,
+                  false,
                   returnRequirement.returnVersion.licence.expiredDate
                 )
 
@@ -1705,7 +1735,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 returnRequirement.returnVersion.licence.startDate = new Date('2025-05-01')
               })
 
-              it('will generate 4 return logs, the first starting on the licence start dates', () => {
+              it('will generate 4 return logs, the first starting on the licence start date', () => {
                 results = GenerateReturnLogsService(returnRequirement, returnCycle)
 
                 const returnLogPrefix = ReturnRequirementsFixture.returnLogPrefix(returnRequirement)
@@ -1805,7 +1835,7 @@ describe('Return Logs - Generate Return Logs service', () => {
                 returnRequirement.returnVersion.startDate = new Date('2025-05-01')
               })
 
-              it('will generate 4 return logs, the first starting on the return version start dates', () => {
+              it('will generate 4 return logs, the first starting on the return version start date', () => {
                 results = GenerateReturnLogsService(returnRequirement, returnCycle)
 
                 const returnLogPrefix = ReturnRequirementsFixture.returnLogPrefix(returnRequirement)
