@@ -6,25 +6,42 @@
 import crypto from 'crypto'
 
 import RegionHelper from './helpers/region.helper.js'
+import { faker } from './faker.js'
 import { formatDateObjectToISO } from '../../src/lib/dates.lib.js'
-import { generateNoticeReferenceCode, generateRandomInteger, generateUUID } from '../../src/lib/general.lib.js'
+import { generateNoticeReferenceCode, generateUUID } from '../../src/lib/general.lib.js'
 
-export { generateNoticeReferenceCode, generateRandomInteger, generateUUID }
+export { generateNoticeReferenceCode, generateUUID }
 
 const VERIFICATION_CODE_CHARACTERS = '23456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXY'
 const VERIFICATION_CODE_LENGTH = 5
 
 /**
- * Generates a random account number
+ * Generates an account number
  *
- * The account number is in the format 'T########A', where '#' is a digit.
+ * The account number is in the format '[charge region id]########A'. The leading letter must match the region's
+ * charge region id - the app filters a company's existing billing accounts by whether the account number starts
+ * with the selected region's code, so a mismatched prefix makes the app treat the company as having none. Pass the
+ * region's charge region id when that matters.
  *
- * @returns {string} - The generated account number
+ * @param {string} [chargeRegionId='T'] - the letter the account number starts with
+ *
+ * @returns {string} - An account number
  */
-export function generateAccountNumber() {
-  const numbering = generateRandomInteger(10000000, 99999999)
+export function generateAccountNumber(chargeRegionId = 'T') {
+  return `${chargeRegionId}${generateRandomInteger(10000000, 99999999)}A`
+}
 
-  return `T${numbering}A`
+/**
+ * Generates an address
+ *
+ * We pick from a list of real Environment Agency office addresses (source:
+ * https://www.gov.uk/government/organisations/environment-agency/about/access-and-opening) rather than generating
+ * one, because a downstream service checks that the postcode we provide actually exists.
+ *
+ * @returns {object} An address object
+ */
+export function generateAddress() {
+  return faker.helpers.arrayElement(_environmentAgencyAddresses)
 }
 
 /**
@@ -44,6 +61,51 @@ export function generateAddressExternalId(region = null) {
   const addressId = generateRandomInteger(100, 99998)
 
   return `${region.naldRegionId}:${addressId}`
+}
+
+/**
+ * Generates a Bill run number
+ *
+ * @param {object} region - the region
+ * @returns {number} - A bill run number
+ */
+export function generateBillRunNumber(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
+  return Number(`${region.naldRegionId}${generateRandomInteger(10000, 99999)}`)
+}
+
+/**
+ * Generates a company contact
+ *
+ * @param {string} companyName - The name of the company
+ *
+ * @returns {object} A company contact object
+ */
+export function generateCompanyContact(companyName) {
+  const firstName = faker.person.firstName()
+  const lastName = faker.person.lastName()
+
+  const email = faker.internet.email({ firstName, lastName, provider: `${_provider(companyName)}.com` }).toLowerCase()
+
+  return {
+    department: `${firstName} ${lastName}`,
+    firstName,
+    lastName,
+    email
+  }
+}
+
+/**
+ * Generate a company email address
+ *
+ * @param {string} companyName - The name of the company (e.g., "Hamill & Jones")
+ * @returns {string} An email address (e.g., "daryl.denesik34@hamill-jones.com")
+ */
+export function generateCompanyEmailAddress(companyName) {
+  return faker.internet.email({ provider: `${_provider(companyName)}.com` }).toLowerCase()
 }
 
 /**
@@ -93,6 +155,51 @@ export function generateContactHashId(contactName, address) {
   const combinedString = `${contactName}${addressLine1}${addressLine2}${addressLine3}${addressLine4}${postcode}${country}`
 
   return crypto.createHash('md5').update(combinedString).digest('hex')
+}
+
+/**
+ * Generate a unique email address (external)
+ *
+ * We use 'acceptance.test.' to delete all relevant test email address.
+ *
+ * We use 'Date.now()' to ensure all email are unique.
+ *
+ * @returns {string} - An email address
+ */
+export function generateExternalEmailAddress() {
+  return faker.internet.email().toLowerCase()
+}
+
+/**
+ * Generate a unique GOV UK email address (internal)
+ *
+ *
+ *
+ * @returns {string} - A defra.gov.uk email address
+ */
+export function generateGovUKEmail() {
+  return faker.internet.email({ provider: 'defra.gov.uk' }).toLowerCase()
+}
+
+/**
+ * Generates an Invoice number
+ *
+ * The invoice number is in the format '[charge region id]AI#######T'. Real invoice numbers are returned by the
+ * Charging Module when a bill run is sent - we don't call that service, so we generate our own that looks the same,
+ * e.g. 'SAI0001234T'.
+ *
+ * @param {object} region - the region the invoice number's charge region id prefix is generated for
+ *
+ * @returns {string} - An invoice number
+ */
+export function generateInvoiceNumber(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
+  const sequence = generateRandomInteger(1, 9999999).toString().padStart(7, '0')
+
+  return `${region.chargeRegionId}AI${sequence}T`
 }
 
 /**
@@ -186,6 +293,35 @@ export function generateNationalGridReference() {
   const codes = ['SD', 'SE', 'SJ', 'SK', 'SO', 'SP', 'ST', 'SU', 'SY', 'SZ', 'TA', 'TF', 'TL', 'TQ', 'TV', 'TG', 'TM']
 
   return `${codes[generateRandomInteger(0, 16)]} ${generateRandomInteger(100, 999)} ${generateRandomInteger(100, 999)}`
+}
+
+/**
+ * Generates a Point external id
+ *
+ * @param {object} region - the region
+ * @returns {string} - A point external id
+ */
+export function generatePointExternalId(region = null) {
+  if (!region) {
+    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
+  }
+
+  return `${region.naldRegionId}:${region.naldRegionId}${generateRandomInteger(100000, 99999999)}`
+}
+
+/**
+ * Generate a random integer within a range
+ *
+ * Uses the shared Faker instance rather than `crypto.randomInt()`, so seeding it with `faker.seed()` gives the same
+ * values on every machine. Like `crypto.randomInt()`, `min` is included and `max` is not.
+ *
+ * @param {number} min - the lowest number that can be returned
+ * @param {number} max - one more than the highest number that can be returned
+ *
+ * @returns {number} a random integer from `min` up to, but not including, `max`
+ */
+export function generateRandomInteger(min, max) {
+  return faker.number.int({ min, max: max - 1 })
 }
 
 /**
@@ -311,3 +447,176 @@ export function generateVerificationCode() {
     return VERIFICATION_CODE_CHARACTERS.charAt(generateRandomInteger(0, VERIFICATION_CODE_CHARACTERS.length - 1))
   }).join('')
 }
+
+/**
+ * Regex Explanation:
+ * 1. /[^a-z0-9]+/g     - Replaces any sequence of non-alphanumeric characters (spaces, symbols) with a single hyphen.
+ * 2. /^[-_]+|[-_]+$/g  - Strips any leftover hyphens or underscores from the start (^) or end ($) of the domain string.
+ *
+ * So "Acme Corporation!" becomes "acme-corporation"
+ *
+ * @private
+ */
+function _provider(companyName) {
+  return companyName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^[-_]+|[-_]+$/g, '')
+}
+
+const _environmentAgencyAddresses = [
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Orchard House',
+    address3: 'Endeavour Park, London Road',
+    address4: 'West Malling',
+    postcode: 'ME19 5SH'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Sunrise Business Park',
+    address3: 'Higher Shaftesbury Road',
+    address4: 'Blandford Forum',
+    postcode: 'DT11 8ST'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Sir John Moore House',
+    address3: 'Victoria Square',
+    address4: 'Bodmin',
+    postcode: 'PL31 1EB'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Rivers House',
+    address3: 'East Quay',
+    address4: 'Bridgwater',
+    postcode: 'TA6 4YS'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Manley House',
+    address3: 'Kestrel Way',
+    address4: 'Exeter',
+    postcode: 'EX2 7LQ'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Iceni House',
+    address3: 'Cobham Road',
+    address4: 'Ipswich',
+    postcode: 'IP3 9JD'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Lateral',
+    address3: '8 City Walk',
+    address4: 'Leeds',
+    postcode: 'LS11 9AT'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Sentinel House',
+    address3: '9 Wellington Crescent, Fradley Park',
+    address4: 'Lichfield',
+    postcode: 'WS13 8RR'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Ceres House',
+    address3: '2 Searby Road',
+    address4: 'Lincoln',
+    postcode: 'LN2 4DT'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Tyneside House',
+    address3: 'Skinnerburn Road, Newcastle Business Park',
+    address4: 'Newcastle upon Tyne',
+    postcode: 'NE4 7AR'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Dragonfly House',
+    address3: '2 Gilders Way',
+    address4: 'Norwich',
+    postcode: 'NR3 1UB'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Trentside',
+    address3: 'Scarrington Road',
+    address4: 'West Bridgford, Nottingham',
+    postcode: 'NG2 5FA'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Ghyll Mount',
+    address3: 'Gillan Way, Penrith 40 Business Park',
+    address4: 'Penrith',
+    postcode: 'CA11 9BP'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Lutra House',
+    address3: 'Dodd Way Off Seedlee Road, Walton Summit Centre',
+    address4: 'Bamber Bridge, Preston',
+    postcode: 'PR5 8BX'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Romsey Office',
+    address3: 'Canal Walk',
+    address4: 'Romsey',
+    postcode: 'SO51 8DU'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Hafren House',
+    address3: 'Welshpool Road, Shelton',
+    address4: 'Shrewsbury',
+    postcode: 'SY3 8BB'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Riversmeet House',
+    address3: 'Newtown Industrial Estate, Northway Lane',
+    address4: 'Tewkesbury',
+    postcode: 'GL20 8JG'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Red Kite House',
+    address3: 'Howbery Park, Crowmarsh Gifford',
+    address4: 'Wallingford',
+    postcode: 'OX10 8BD'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Richard Fairclough House',
+    address3: 'Knutsford Road, Latchford',
+    address4: 'Warrington',
+    postcode: 'WA4 1HT'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Alchemy',
+    address3: 'Bessemer Road',
+    address4: 'Welwyn Garden City',
+    postcode: 'AL7 1HE'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Teville Gate House',
+    address3: '25 Railway Approach',
+    address4: 'Worthing',
+    postcode: 'BN11 1UR'
+  },
+  {
+    address1: 'ENVIRONMENT AGENCY',
+    address2: 'Foss House',
+    address3: '1-2 Peasholme Green, Kingspool',
+    address4: 'York',
+    postcode: 'YO1 7PX'
+  }
+]
