@@ -315,7 +315,7 @@ export function generatePointExternalId(region = null) {
  * @returns {number} a random integer from `min` up to, but not including, `max`
  */
 export function generateRandomInteger(min, max) {
-  return faker.number.int({ min, max})
+  return faker.number.int({ min, max })
 }
 
 /**
