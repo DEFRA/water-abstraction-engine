@@ -173,8 +173,6 @@ export function generateExternalEmailAddress() {
 /**
  * Generate a unique GOV UK email address (internal)
  *
- *
- *
  * @returns {string} - A defra.gov.uk email address
  */
 export function generateGovUKEmail() {
