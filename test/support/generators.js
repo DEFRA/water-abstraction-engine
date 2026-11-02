@@ -160,10 +160,6 @@ export function generateContactHashId(contactName, address) {
 /**
  * Generate a unique email address (external)
  *
- * We use 'acceptance.test.' to delete all relevant test email address.
- *
- * We use 'Date.now()' to ensure all email are unique.
- *
  * @returns {string} - An email address
  */
 export function generateExternalEmailAddress() {
@@ -172,8 +168,6 @@ export function generateExternalEmailAddress() {
 
 /**
  * Generate a unique GOV UK email address (internal)
- *
- *
  *
  * @returns {string} - A defra.gov.uk email address
  */
@@ -321,7 +315,7 @@ export function generatePointExternalId(region = null) {
  * @returns {number} a random integer from `min` up to, but not including, `max`
  */
 export function generateRandomInteger(min, max) {
-  return faker.number.int({ min, max: max - 1 })
+  return faker.number.int({ min, max})
 }
 
 /**
