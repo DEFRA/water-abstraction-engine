@@ -1,13 +1,15 @@
 import ReturnCycleModel from '../../src/models/return-cycle.model.js'
+import { determineFinancialYearEnd } from '../../src/lib/dates.lib.js'
 import {
   determineCycleDueDate,
   determineCycleEndDate,
   determineCycleStartDate
 } from '../../src/lib/return-cycle-dates.lib.js'
-import { generateUUID, timestampForPostgres } from '../../src/lib/general.lib.js'
+import { generateUUID, timestampForPostgres, today } from '../../src/lib/general.lib.js'
 
 export async function seed() {
-  const currentYear = new Date().getFullYear()
+  const todaysDate = today()
+  const financialYearEnd = determineFinancialYearEnd(todaysDate)
 
   let year = 1959
   let determinationDate
@@ -22,14 +24,14 @@ export async function seed() {
       allYearReturnCycle.dueDate = new Date('2020-10-16')
     }
 
-    if (allYearReturnCycle.startDate <= new Date()) {
+    if (allYearReturnCycle.startDate <= todaysDate) {
       await _upsert(allYearReturnCycle)
     }
 
     await _upsert(summerReturnCycle)
 
     year++
-  } while (determinationDate < new Date(`${currentYear}-04-01`))
+  } while (determinationDate < new Date(`${financialYearEnd}-04-01`))
 }
 
 function _generateReturnCycle(summer, determinationDate) {
