@@ -1084,6 +1084,10 @@ describe('User model', () => {
       })
 
       describe('and "password" is not VOID', () => {
+        beforeEach(() => {
+          statusTestRecord.password = 'not-VOID'
+        })
+
         describe('and "lastLogin" is not null', () => {
           beforeEach(() => {
             statusTestRecord.lastLogin = new Date()
