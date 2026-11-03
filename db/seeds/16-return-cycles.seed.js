@@ -20,7 +20,8 @@ export async function seed() {
     const summerReturnCycle = _generateReturnCycle(true, determinationDate)
     const allYearReturnCycle = _generateReturnCycle(false, determinationDate)
 
-    if (allYearReturnCycle.startDate === new Date('2019-04-01')) {
+    // This special case is to replicate the extended due date for the 2019/20 all-year return cycle due to COVID-19
+    if (allYearReturnCycle.startDate.getTime() === new Date('2019-04-01').getTime()) {
       allYearReturnCycle.dueDate = new Date('2020-10-16')
     }
 
