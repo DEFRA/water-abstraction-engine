@@ -1,5 +1,5 @@
 import ReturnCycleModel from '../../src/models/return-cycle.model.js'
-import { determineFinancialYearEnd } from '../../src/lib/dates.lib.js'
+import { compareDates, determineFinancialYearEnd } from '../../src/lib/dates.lib.js'
 import {
   determineCycleDueDate,
   determineCycleEndDate,
@@ -25,7 +25,8 @@ export async function seed() {
       allYearReturnCycle.dueDate = new Date('2020-10-16')
     }
 
-    if (allYearReturnCycle.startDate <= todaysDate) {
+    // Only upsert all-year return cycles that have started
+    if (compareDates(allYearReturnCycle.startDate, todaysDate) <= 0) {
       await _upsert(allYearReturnCycle)
     }
 
