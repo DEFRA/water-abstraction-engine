@@ -129,7 +129,7 @@ export const NOTIFY_TEMPLATES = Object.freeze({
         'single licence': '9f74cea1-80b1-480e-8b47-bb82091f0710'
       },
       letter: {
-        'single licence': 'c6b2d742-b525-4448-82ee-70ccd2820f84'
+        'single licence': '686c68fd-5f25-4d87-a7d6-ba65ef618fa1'
       }
     },
     standard: {
