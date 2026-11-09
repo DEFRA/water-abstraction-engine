@@ -1,6 +1,6 @@
 /**
  * Formats recipients into notifications for a standard or ad-hoc returns invitation or reminder
- * @module ReturnsNoticeNotificationsPresenter
+ * @module ReturnsNotificationsPresenter
  */
 
 import { NOTIFY_TEMPLATES } from '../../../lib/notify-templates.lib.js'
@@ -35,7 +35,7 @@ const MESSAGE_REFS = {
  *
  * @returns {object[]} the recipients transformed into notifications
  */
-export default function returnsNoticeNotificationsPresenter(session, recipients, noticeId) {
+export default function returnsNotificationsPresenter(session, recipients, noticeId) {
   const notifications = []
 
   for (const recipient of recipients) {

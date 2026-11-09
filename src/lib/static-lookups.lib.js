@@ -312,10 +312,12 @@ export const noticeMappings = {
   'pdf.return_reminder': 'Paper reminder',
   paperReturnForms: 'Paper return',
   renewal: 'Renewal',
+  renewalFinal: 'Renewals final',
+  renewalInvitation: 'Renewals invitation',
+  renewalReminder: 'Renewals reminder',
   returnInvitation: 'Returns invitation',
   returnReminder: 'Returns reminder',
-  waterAbstractionAlerts: 'alert',
-  renewalInvitation: 'Renewals invitation'
+  waterAbstractionAlerts: 'alert'
 }
 
 export const NoticeType = Object.freeze({
@@ -324,7 +326,9 @@ export const NoticeType = Object.freeze({
   INVITATIONS: 'invitations',
   PAPER_RETURN: 'paperReturn',
   REMINDERS: 'reminders',
-  RENEWAL_INVITATIONS: 'renewalInvitations'
+  RENEWAL_FINALS: 'renewalFinals',
+  RENEWAL_INVITATIONS: 'renewalInvitations',
+  RENEWAL_REMINDERS: 'renewalReminders'
 })
 
 /**
@@ -344,12 +348,6 @@ export const NoticeTypes = Object.freeze({
     subType: 'paperReturnForms',
     notificationType: 'Paper returns'
   },
-  [NoticeType.RENEWAL_INVITATIONS]: {
-    name: 'Renewals: invitation',
-    prefix: 'REIN-',
-    subType: 'renewalInvitation',
-    notificationType: 'Renewals invitation'
-  },
   [NoticeType.INVITATIONS]: {
     name: 'Returns: invitation',
     prefix: 'RINV-',
@@ -361,6 +359,24 @@ export const NoticeTypes = Object.freeze({
     prefix: 'RREM-',
     subType: 'returnReminder',
     notificationType: 'Returns reminder'
+  },
+  [NoticeType.RENEWAL_FINALS]: {
+    name: 'Renewals: final',
+    prefix: 'REFN-',
+    subType: 'renewalFinal',
+    notificationType: 'Renewals final'
+  },
+  [NoticeType.RENEWAL_INVITATIONS]: {
+    name: 'Renewals: invitation',
+    prefix: 'REIN-',
+    subType: 'renewalInvitation',
+    notificationType: 'Renewals invitation'
+  },
+  [NoticeType.RENEWAL_REMINDERS]: {
+    name: 'Renewals: reminder',
+    prefix: 'RERM-',
+    subType: 'renewalReminder',
+    notificationType: 'Renewals reminder'
   }
 })
 
