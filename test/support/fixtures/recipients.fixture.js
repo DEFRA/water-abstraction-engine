@@ -138,14 +138,14 @@ function alertNoticePrimaryUser() {
 }
 
 /**
- * Creates a fixture for a renewal invitation licence holder recipient
+ * Creates a fixture for a renewal notice licence holder recipient
  *
- * This fixture generates a recipient object representing a licence holder contact for a renewal invitation with
+ * This fixture generates a recipient object representing a licence holder contact for a renewal notice with
  * predefined address and associated licence references.
  *
- * @returns {object} The renewal invitation licence holder recipient fixture
+ * @returns {object} The renewal notice licence holder recipient fixture
  */
-function renewalInvitationLicenceHolder() {
+function renewalNoticeLicenceHolder() {
   const contact = _contact('4', 'Renewal licence holder')
 
   const recipient = {
@@ -161,14 +161,14 @@ function renewalInvitationLicenceHolder() {
 }
 
 /**
- * Creates a fixture for a renewal invitation primary user recipient
+ * Creates a fixture for a renewal notice primary user recipient
  *
- * This fixture generates a recipient object representing a primary user for a renewal invitation with predefined
+ * This fixture generates a recipient object representing a primary user for a renewal notice with predefined
  * email and associated licence references.
  *
- * @returns {object} The renewal invitation primary user recipient fixture
+ * @returns {object} The renewal notice primary user recipient fixture
  */
-function renewalInvitationPrimaryUser() {
+function renewalNoticePrimaryUser() {
   const email = 'primary.user@renewal-invitation.com'
 
   const recipient = {
@@ -501,8 +501,8 @@ export default {
   alertNoticeAdditionalContact,
   alertNoticeLicenceHolder,
   alertNoticePrimaryUser,
-  renewalInvitationLicenceHolder,
-  renewalInvitationPrimaryUser,
+  renewalNoticeLicenceHolder,
+  renewalNoticePrimaryUser,
   returnsNoticeLicenceHolder,
   returnsNoticePrimaryUser,
   returnsNoticeReturnsAgent,

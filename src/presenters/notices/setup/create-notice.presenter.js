@@ -43,6 +43,7 @@ export default function createNoticePresenter(noticeData, recipients, issuer) {
 }
 
 function _additionalMetaData(notice, noticeData) {
+  const renewalNotices = [NoticeType.RENEWAL_FINALS, NoticeType.RENEWAL_INVITATIONS, NoticeType.RENEWAL_REMINDERS]
   const returnsNotices = [NoticeType.INVITATIONS, NoticeType.REMINDERS]
 
   if (noticeData.journey === NoticeJourney.ALERTS) {
@@ -57,7 +58,7 @@ function _additionalMetaData(notice, noticeData) {
     notice.metadata.returnCycle = _returnCycle(noticeData.determinedReturnsPeriod)
   }
 
-  if (noticeData.noticeType === NoticeType.RENEWAL_INVITATIONS) {
+  if (renewalNotices.includes(noticeData.noticeType)) {
     notice.metadata.expiryDate = formatDateObjectToISO(noticeData.expiryDate)
     notice.metadata.renewalDate = formatDateObjectToISO(noticeData.renewalDate)
   }
