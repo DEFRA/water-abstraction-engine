@@ -463,6 +463,87 @@ describe('Notices - Setup - Create Notice presenter', () => {
     })
   })
 
+  describe('when the notice type is "renewalFinals"', () => {
+    beforeEach(() => {
+      const fixtureData = RecipientsFixture.recipients()
+
+      recipients = [fixtureData.primaryUser, fixtureData.licenceHolder, fixtureData.licenceHolderWithMultipleLicences]
+
+      noticeData = {
+        expiryDate: new Date('2026-04-28'),
+        journey: 'standard',
+        name: 'Renewals: final',
+        noticeType: 'renewalFinals',
+        referenceCode: 'REFN-123',
+        renewalDate: new Date('2026-01-28'),
+        subType: 'renewalFinal'
+      }
+    })
+
+    it('correctly presents the data', () => {
+      const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+      expect(result).toEqual({
+        issuer: 'hello@world.com',
+        licences: [...recipients[0].licence_refs, ...recipients[1].licence_refs, ...recipients[2].licence_refs],
+        metadata: {
+          expiryDate: '2026-04-28',
+          name: 'Renewals: final',
+          recipients: 3,
+          renewalDate: '2026-01-28'
+        },
+        overallStatus: 'pending',
+        referenceCode: 'REFN-123',
+        status: 'completed',
+        statusCounts: { cancelled: 0, error: 0, pending: 3, returned: 0, sent: 0 },
+        subtype: 'renewalFinal',
+        type: 'notification'
+      })
+    })
+
+    describe('the "licences" property', () => {
+      it('correctly return a JSON string containing an array of all licences from all recipients', () => {
+        const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+        expect(result.licences).toEqual([
+          ...recipients[0].licence_refs,
+          ...recipients[1].licence_refs,
+          ...recipients[2].licence_refs
+        ])
+      })
+    })
+
+    describe('the "metadata" property', () => {
+      describe('the "name" property', () => {
+        it('correctly returns the "name"', () => {
+          const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+          expect(result.metadata.name).toEqual('Renewals: final')
+        })
+      })
+
+      describe('the "recipients" property', () => {
+        beforeEach(() => {
+          noticeData.recipients = [...Object.values(recipients)]
+        })
+
+        it('correctly returns the length of recipients', () => {
+          const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+          expect(result.metadata.recipients).toEqual(3)
+        })
+      })
+    })
+
+    describe('the "subType" property', () => {
+      it('correctly returns the "subType"', () => {
+        const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+        expect(result.subtype).toEqual('renewalFinal')
+      })
+    })
+  })
+
   describe('when the notice type is "renewalInvitations"', () => {
     beforeEach(() => {
       const fixtureData = RecipientsFixture.recipients()
@@ -540,6 +621,87 @@ describe('Notices - Setup - Create Notice presenter', () => {
         const result = CreateNoticePresenter(noticeData, recipients, issuer)
 
         expect(result.subtype).toEqual('renewalInvitation')
+      })
+    })
+  })
+
+  describe('when the notice type is "renewalReminders"', () => {
+    beforeEach(() => {
+      const fixtureData = RecipientsFixture.recipients()
+
+      recipients = [fixtureData.primaryUser, fixtureData.licenceHolder, fixtureData.licenceHolderWithMultipleLicences]
+
+      noticeData = {
+        expiryDate: new Date('2026-04-28'),
+        journey: 'standard',
+        name: 'Renewals: reminder',
+        noticeType: 'renewalReminders',
+        referenceCode: 'RERM-123',
+        renewalDate: new Date('2026-01-28'),
+        subType: 'renewalReminder'
+      }
+    })
+
+    it('correctly presents the data', () => {
+      const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+      expect(result).toEqual({
+        issuer: 'hello@world.com',
+        licences: [...recipients[0].licence_refs, ...recipients[1].licence_refs, ...recipients[2].licence_refs],
+        metadata: {
+          expiryDate: '2026-04-28',
+          name: 'Renewals: reminder',
+          recipients: 3,
+          renewalDate: '2026-01-28'
+        },
+        overallStatus: 'pending',
+        referenceCode: 'RERM-123',
+        status: 'completed',
+        statusCounts: { cancelled: 0, error: 0, pending: 3, returned: 0, sent: 0 },
+        subtype: 'renewalReminder',
+        type: 'notification'
+      })
+    })
+
+    describe('the "licences" property', () => {
+      it('correctly return a JSON string containing an array of all licences from all recipients', () => {
+        const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+        expect(result.licences).toEqual([
+          ...recipients[0].licence_refs,
+          ...recipients[1].licence_refs,
+          ...recipients[2].licence_refs
+        ])
+      })
+    })
+
+    describe('the "metadata" property', () => {
+      describe('the "name" property', () => {
+        it('correctly returns the "name"', () => {
+          const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+          expect(result.metadata.name).toEqual('Renewals: reminder')
+        })
+      })
+
+      describe('the "recipients" property', () => {
+        beforeEach(() => {
+          noticeData.recipients = [...Object.values(recipients)]
+        })
+
+        it('correctly returns the length of recipients', () => {
+          const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+          expect(result.metadata.recipients).toEqual(3)
+        })
+      })
+    })
+
+    describe('the "subType" property', () => {
+      it('correctly returns the "subType"', () => {
+        const result = CreateNoticePresenter(noticeData, recipients, issuer)
+
+        expect(result.subtype).toEqual('renewalReminder')
       })
     })
   })
