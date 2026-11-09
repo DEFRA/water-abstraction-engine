@@ -37,7 +37,9 @@ describe('Static Lookups', () => {
         INVITATIONS: 'invitations',
         PAPER_RETURN: 'paperReturn',
         REMINDERS: 'reminders',
-        RENEWAL_INVITATIONS: 'renewalInvitations'
+        RENEWAL_FINALS: 'renewalFinals',
+        RENEWAL_INVITATIONS: 'renewalInvitations',
+        RENEWAL_REMINDERS: 'renewalReminders'
       })
     })
 

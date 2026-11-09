@@ -57,26 +57,6 @@ export const NOTIFY_TEMPLATES = Object.freeze({
       }
     }
   },
-  renewalInvitations: {
-    adhoc: {
-      email: {
-        'single licence': '53c34f21-4f2e-43f7-97c6-7a7828079665'
-      },
-      letter: {
-        'single licence': 'c7538f40-2c9e-4b09-b539-4869b1cef2db'
-      }
-    },
-    standard: {
-      email: {
-        'multiple licences': '9ba5065b-6c09-4ca6-8c84-2e68610e3f6e',
-        'single licence': '53c34f21-4f2e-43f7-97c6-7a7828079665'
-      },
-      letter: {
-        'single licence': 'c7538f40-2c9e-4b09-b539-4869b1cef2db',
-        'multiple licences': '9d1b5d2d-4374-4f62-8393-b8fda12dcc36'
-      }
-    }
-  },
   reminders: {
     adhoc: {
       email: {
@@ -100,6 +80,66 @@ export const NOTIFY_TEMPLATES = Object.freeze({
         'licence holder': 'c01c808b-094b-4a3a-ab9f-a6e86bad36ba',
         'returns to': 'e9f132c7-a550-4e18-a5c1-78375f07aa2d',
         'single use': 'c01c808b-094b-4a3a-ab9f-a6e86bad36ba'
+      }
+    }
+  },
+  renewalFinals: {
+    adhoc: {
+      email: {
+        'single licence': '678f7d4b-f25f-455c-a3ba-f076b75c4fa2'
+      },
+      letter: {
+        'single licence': 'ae0f7ca8-d01b-4fb8-bd73-77a38576054c'
+      }
+    },
+    standard: {
+      email: {
+        'multiple licences': 'df75cc74-a298-498f-991f-8d2d4106d55b',
+        'single licence': '678f7d4b-f25f-455c-a3ba-f076b75c4fa2'
+      },
+      letter: {
+        'multiple licences': '94dbd6fa-4f6a-42fc-9f1d-5a6af57285e3',
+        'single licence': 'ae0f7ca8-d01b-4fb8-bd73-77a38576054c'
+      }
+    }
+  },
+  renewalInvitations: {
+    adhoc: {
+      email: {
+        'single licence': '53c34f21-4f2e-43f7-97c6-7a7828079665'
+      },
+      letter: {
+        'single licence': 'c7538f40-2c9e-4b09-b539-4869b1cef2db'
+      }
+    },
+    standard: {
+      email: {
+        'multiple licences': '9ba5065b-6c09-4ca6-8c84-2e68610e3f6e',
+        'single licence': '53c34f21-4f2e-43f7-97c6-7a7828079665'
+      },
+      letter: {
+        'multiple licences': '9d1b5d2d-4374-4f62-8393-b8fda12dcc36',
+        'single licence': 'c7538f40-2c9e-4b09-b539-4869b1cef2db'
+      }
+    }
+  },
+  renewalReminders: {
+    adhoc: {
+      email: {
+        'single licence': '9f74cea1-80b1-480e-8b47-bb82091f0710'
+      },
+      letter: {
+        'single licence': 'c6b2d742-b525-4448-82ee-70ccd2820f84'
+      }
+    },
+    standard: {
+      email: {
+        'multiple licences': 'a3504a61-dd99-4f90-b944-ad9a7d30f94b',
+        'single licence': '9f74cea1-80b1-480e-8b47-bb82091f0710'
+      },
+      letter: {
+        'multiple licences': 'c6b2d742-b525-4448-82ee-70ccd2820f84',
+        'single licence': '686c68fd-5f25-4d87-a7d6-ba65ef618fa1'
       }
     }
   },
