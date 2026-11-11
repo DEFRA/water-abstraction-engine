@@ -29,6 +29,8 @@ import * as SomeDal from '../../src/dal/some.dal.js'
 import SubjectUnderTest from '../../src/services/subject-under-test.service.js'
 ```
 
+- In the engine, shared helpers and modules are imported by relative path (as above). In the apps (system and external), import anything the engine provides through the package instead, e.g. `water-abstraction-engine/test/helpers/some-model.helper.js` or `water-abstraction-engine/models/return-log.model.js`
+
 - Use these section comments in order, omitting any that are not needed:
   1. `// Test framework` (omit entirely when only Vitest globals are needed — i.e. no other imports)
   2. `// Test helpers`
@@ -106,11 +108,11 @@ expect(result).toMatchObject(testRecord)
 
 ## Running tests
 
-Use the docker exec wrapper to run tests. You can pass specific files or patterns as additional arguments:
+Use the docker exec wrapper from the repo's `AGENTS.md`, replacing `<repo>` with the repo you are working in. You can pass specific files or patterns as additional arguments:
 
 ```sh
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run test -- test/services/notices/setup/my-service.test.js'
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run test -- test/services/notices/setup/foo.test.js test/services/notices/setup/bar.test.js'
+docker compose exec dev /bin/bash -c 'cd /home/repos/<repo> && npm run test -- test/services/notices/setup/my-service.test.js'
+docker compose exec dev /bin/bash -c 'cd /home/repos/<repo> && npm run test -- test/services/notices/setup/foo.test.js test/services/notices/setup/bar.test.js'
 ```
 
 Do not use `npx vitest` directly.
