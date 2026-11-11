@@ -44,7 +44,25 @@ describe('ESLint Rules - Alanisms rule', () => {
           )
         },
         {
-          code: _code('const page = {', '  // Explains b', '  b: 1,', '  a: 2', '}'),
+          code: _code('const page = {', '  // Explains b', '  b: 1,', '  // Explains a', '  a: 2', '}'),
+          errors: [{ messageId: 'objectKeys' }],
+          options: _only('objectKeys'),
+          output: _code('const page = {', '  // Explains a', '  a: 2,', '  // Explains b', '  b: 1', '}')
+        },
+        {
+          code: _code('const page = {', '  b: {', '    // Inside b', '    c: 1', '  },', '  a: 2', '}'),
+          errors: [{ messageId: 'objectKeys' }],
+          options: _only('objectKeys'),
+          output: _code('const page = {', '  a: 2,', '  b: {', '    // Inside b', '    c: 1', '  }', '}')
+        },
+        {
+          code: _code('const page = {', '  b: 1, // Explains b', '  a: 2', '}'),
+          errors: [{ messageId: 'objectKeys' }],
+          options: _only('objectKeys'),
+          output: null
+        },
+        {
+          code: _code('const page = {', '  b: 1,', '  a: 2', '  // Dangling at the end', '}'),
           errors: [{ messageId: 'objectKeys' }],
           options: _only('objectKeys'),
           output: null

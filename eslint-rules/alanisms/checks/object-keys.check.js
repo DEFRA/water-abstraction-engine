@@ -4,13 +4,16 @@
  * @module AlanismsObjectKeysCheck
  */
 
-import { compareNames, hasComments, reorderFixes } from '../helpers.js'
+import { compareNames } from '../helpers.js'
 
 /**
  * Check that the keys in every object literal are in A–Z order
  *
  * Spread elements and computed keys that are not plain values split an object into separate runs, because moving keys
  * across them could change the result. Each run is checked on its own.
+ *
+ * The fix moves each key together with any comment lines directly above it. If a comment sits at the end of a key's
+ * line, or after the last key, it is unclear which key it belongs to, so the object is reported but not fixed.
  *
  * @param {object} context - The ESLint rule context
  *
@@ -22,13 +25,13 @@ export default function objectKeysCheck(context) {
   return {
     ObjectExpression(node) {
       for (const run of _runs(node.properties)) {
-        _checkRun(context, sourceCode, node, run)
+        _checkRun(context, sourceCode, run)
       }
     }
   }
 }
 
-function _checkRun(context, sourceCode, objectNode, run) {
+function _checkRun(context, sourceCode, run) {
   if (run.length < 2) {
     return
   }
@@ -46,17 +49,54 @@ function _checkRun(context, sourceCode, objectNode, run) {
   const sorted = [...run].sort((first, second) => {
     return compareNames(_keyName(first), _keyName(second))
   })
+  const chunks = _chunks(sourceCode, run)
 
   context.report({
     data: { current: _keyName(property), previous: _keyName(previous) },
-    fix: hasComments(sourceCode, objectNode.range[0], objectNode)
-      ? null
-      : (fixer) => {
-          return reorderFixes(fixer, sourceCode, run, sorted)
-        },
+    fix: chunks
+      ? (fixer) => {
+          return run.map((runProperty, index) => {
+            const [start, end] = chunks.get(sorted[index])
+
+            return fixer.replaceTextRange(chunks.get(runProperty), sourceCode.text.slice(start, end))
+          })
+        }
+      : null,
     messageId: 'objectKeys',
     node: property
   })
+}
+
+function _chunks(sourceCode, run) {
+  const chunks = new Map()
+
+  for (const property of run) {
+    const previousToken = sourceCode.getTokenBefore(property)
+    const nextToken = sourceCode.getTokenAfter(property)
+    const leadingComments = sourceCode.getCommentsBefore(property)
+    const trailingComments = [
+      ...sourceCode.getCommentsAfter(property),
+      ...(nextToken.value === ',' ? sourceCode.getCommentsAfter(nextToken) : [])
+    ]
+
+    const leadingOnPreviousLine = leadingComments.some((comment) => {
+      return comment.loc.start.line === previousToken.loc.end.line
+    })
+    const trailingOnSameLine = trailingComments.some((comment) => {
+      return comment.loc.start.line === property.loc.end.line
+    })
+    const danglingAtEnd = nextToken.value === '}' && trailingComments.length > 0
+
+    if (leadingOnPreviousLine || trailingOnSameLine || danglingAtEnd) {
+      return null
+    }
+
+    const start = leadingComments.length > 0 ? leadingComments[0].range[0] : property.range[0]
+
+    chunks.set(property, [start, property.range[1]])
+  }
+
+  return chunks
 }
 
 function _keyName(property) {
