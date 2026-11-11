@@ -21,48 +21,46 @@ export default class LicenceVersionModel extends BaseModel {
   static get relationMappings() {
     return {
       address: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: AddressModel,
         join: {
           from: 'licenceVersions.addressId',
           to: 'addresses.id'
-        }
+        },
+        modelClass: AddressModel,
+        relation: Model.BelongsToOneRelation
       },
       company: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'licenceVersions.companyId',
           to: 'companies.id'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.BelongsToOneRelation
       },
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'licenceVersions.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceVersionPurposes: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionPurposeModel,
         join: {
           from: 'licenceVersions.id',
           to: 'licenceVersionPurposes.licenceVersionId'
-        }
+        },
+        modelClass: LicenceVersionPurposeModel,
+        relation: Model.HasManyRelation
       },
       modLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ModLogModel,
         join: {
           from: 'licenceVersions.id',
           to: 'modLogs.licenceVersionId'
-        }
+        },
+        modelClass: ModLogModel,
+        relation: Model.HasManyRelation
       },
       purposes: {
-        relation: Model.ManyToManyRelation,
-        modelClass: PurposeModel,
         join: {
           from: 'licenceVersions.id',
           through: {
@@ -70,7 +68,9 @@ export default class LicenceVersionModel extends BaseModel {
             to: 'licenceVersionPurposes.purposeId'
           },
           to: 'purposes.id'
-        }
+        },
+        modelClass: PurposeModel,
+        relation: Model.ManyToManyRelation
       }
     }
   }

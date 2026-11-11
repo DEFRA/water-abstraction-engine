@@ -40,9 +40,9 @@ async function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    billingAccountId: generateUUID(),
-    address: {},
     accountNumber: generateAccountNumber(),
+    address: {},
+    billingAccountId: generateUUID(),
     billRunId: generateUUID(),
     financialYearEnding: 2023
   }

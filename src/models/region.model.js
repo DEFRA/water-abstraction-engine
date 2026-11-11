@@ -18,28 +18,28 @@ export default class RegionModel extends BaseModel {
   static get relationMappings() {
     return {
       billRuns: {
-        relation: Model.HasManyRelation,
-        modelClass: BillRunModel,
         join: {
           from: 'regions.id',
           to: 'billRuns.regionId'
-        }
+        },
+        modelClass: BillRunModel,
+        relation: Model.HasManyRelation
       },
       companies: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'regions.id',
           to: 'companies.regionId'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.HasManyRelation
       },
       licences: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'regions.id',
           to: 'licences.regionId'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.HasManyRelation
       }
     }
   }

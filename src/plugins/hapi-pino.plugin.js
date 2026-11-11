@@ -13,6 +13,7 @@ import HapiPino from 'hapi-pino'
 import HapiPinoIgnoreRequestService from '../services/plugins/hapi-pino-ignore-request.service.js'
 import HapiPinoLogInTestService from '../services/plugins/hapi-pino-log-in-test.service.js'
 import HapiPinoSerializersService from '../services/plugins/hapi-pino-serializers.service.js'
+
 import LogConfig from '../config/log.config.js'
 
 export default {
@@ -25,7 +26,7 @@ export default {
     // Spawning it in test would leave worker threads alive after each Hapi server is created, possibly causing the
     // test suite from exiting and hanging. Test logging is suppressed via HapiPinoLogInTestService anyway.
     transport:
-      process.env.NODE_ENV === 'development' ? { target: 'pino-pretty', options: { colorize: true } } : undefined,
+      process.env.NODE_ENV === 'development' ? { options: { colorize: true }, target: 'pino-pretty' } : undefined,
     // Redact Authorization headers, see https://getpino.io/#/docs/redaction
     redact: ['req.headers.authorization'],
     // Adding this here means it will be passed to HapiPinoIgnoreRequestService() within the `options` arg when

@@ -16,21 +16,21 @@ export default class LicenceSupplementaryYearModel extends BaseModel {
 
   static get relationMappings() {
     return {
-      licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
-        join: {
-          from: 'licenceSupplementaryYears.licenceId',
-          to: 'licences.id'
-        }
-      },
       billRun: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillRunModel,
         join: {
           from: 'licenceSupplementaryYears.billRunId',
           to: 'billRuns.id'
-        }
+        },
+        modelClass: BillRunModel,
+        relation: Model.BelongsToOneRelation
+      },
+      licence: {
+        join: {
+          from: 'licenceSupplementaryYears.licenceId',
+          to: 'licences.id'
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

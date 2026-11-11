@@ -38,8 +38,8 @@ describe('Billing Account Address model', () => {
     // Test record
     testRecord = await BillingAccountAddressHelper.add({
       addressId: testAddress.id,
-      companyId: testCompany.id,
       billingAccountId: testBillingAccount.id,
+      companyId: testCompany.id,
       contactId: testContact.id
     })
   })

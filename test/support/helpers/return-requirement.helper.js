@@ -42,10 +42,10 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    abstractionPeriodStartDay: 1,
-    abstractionPeriodStartMonth: 4,
     abstractionPeriodEndDay: 31,
     abstractionPeriodEndMonth: 3,
+    abstractionPeriodStartDay: 1,
+    abstractionPeriodStartMonth: 4,
     returnsFrequency: 'day',
     returnVersionId: generateUUID(),
     siteDescription: 'BOREHOLE AT AVALON'

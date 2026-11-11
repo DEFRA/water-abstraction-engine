@@ -36,7 +36,6 @@ describe('Notify - Generate Preview Request', () => {
   describe('when the request succeeds', () => {
     beforeEach(() => {
       response = {
-        statusCode: HTTP_STATUS_OK,
         body: {
           body: 'Dear licence holder,\r\n',
           html: '"<p style="Margin: 0 0 20px 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">Dear licence holder,</p>',
@@ -45,12 +44,13 @@ describe('Notify - Generate Preview Request', () => {
           subject: 'Submit your water abstraction returns by 28th April 2025',
           type: 'email',
           version: 40
-        }
+        },
+        statusCode: HTTP_STATUS_OK
       }
 
       vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-        succeeded: true,
-        response
+        response,
+        succeeded: true
       })
     })
 
@@ -71,7 +71,6 @@ describe('Notify - Generate Preview Request', () => {
     describe('because the request did not return a 2xx/3xx response', () => {
       beforeEach(async () => {
         response = {
-          statusCode: HTTP_STATUS_BAD_REQUEST,
           body: {
             errors: [
               {
@@ -80,12 +79,13 @@ describe('Notify - Generate Preview Request', () => {
               }
             ],
             status_code: HTTP_STATUS_BAD_REQUEST
-          }
+          },
+          statusCode: HTTP_STATUS_BAD_REQUEST
         }
 
         vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-          succeeded: false,
-          response
+          response,
+          succeeded: false
         })
       })
 

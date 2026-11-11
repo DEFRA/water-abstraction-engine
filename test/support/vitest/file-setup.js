@@ -11,15 +11,18 @@ const _replacements = []
 
 vi.replaceProperty = (obj, prop, value) => {
   const descriptor = Object.getOwnPropertyDescriptor(obj, prop)
-  _replacements.push({ obj, prop, descriptor })
+
+  _replacements.push({ descriptor, obj, prop })
   obj[prop] = value
 }
 
 const _originalRestoreAllMocks = vi.restoreAllMocks.bind(vi)
+
 vi.restoreAllMocks = () => {
   _originalRestoreAllMocks()
   while (_replacements.length > 0) {
     const { obj, prop, descriptor } = _replacements.pop()
+
     if (descriptor) {
       Object.defineProperty(obj, prop, descriptor)
     }

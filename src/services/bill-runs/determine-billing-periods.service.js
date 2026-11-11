@@ -39,15 +39,15 @@ export default function determineBillingPeriodsService(billRunType, financialYea
 
 function _addBillingPeriod(billingPeriods, startYear, endYear) {
   billingPeriods.push({
-    startDate: new Date(startYear, APRIL, FIRST),
-    endDate: new Date(endYear, MARCH, THIRTY_FIRST)
+    endDate: new Date(endYear, MARCH, THIRTY_FIRST),
+    startDate: new Date(startYear, APRIL, FIRST)
   })
 }
 
 function _billingPeriods(billRunType, financialYear) {
   const billingPeriods = []
 
-  const years = { startYear: financialYear.startDate.getFullYear(), endYear: financialYear.endDate.getFullYear() }
+  const years = { endYear: financialYear.endDate.getFullYear(), startYear: financialYear.startDate.getFullYear() }
 
   // Annual, two-part tariff, and two-part tariff supplementary bill runs will always be a single period
   if (['annual', 'two_part_tariff', 'two_part_supplementary'].includes(billRunType)) {
@@ -74,7 +74,7 @@ function _billingPeriods(billRunType, financialYear) {
 
 function _financialYear(financialYearEnding) {
   return {
-    startDate: new Date(financialYearEnding - 1, APRIL, FIRST),
-    endDate: new Date(financialYearEnding, MARCH, THIRTY_FIRST)
+    endDate: new Date(financialYearEnding, MARCH, THIRTY_FIRST),
+    startDate: new Date(financialYearEnding - 1, APRIL, FIRST)
   }
 }

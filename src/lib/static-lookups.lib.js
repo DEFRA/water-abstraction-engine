@@ -1,8 +1,8 @@
 export const billRunStatuses = Object.freeze({
-  processing: 'Building',
   cancel: 'Cancelling',
   empty: 'Empty',
   error: 'Error',
+  processing: 'Building',
   ready: 'Ready',
   review: 'Review',
   sent: 'Sent'
@@ -11,8 +11,8 @@ export const billRunStatuses = Object.freeze({
 export const billRunTypes = Object.freeze({
   annual: 'Annual',
   supplementary: 'Supplementary',
-  two_part_tariff: 'Two-part tariff',
-  two_part_supplementary: 'Two-part tariff supplementary'
+  two_part_supplementary: 'Two-part tariff supplementary',
+  two_part_tariff: 'Two-part tariff'
 })
 
 export const companyTypes = ['person', 'organisation']
@@ -228,7 +228,7 @@ export const countries = [
   'Zimbabwe'
 ]
 
-export const engineTriggers = { both: 'both', current: 'current', old: 'old', neither: 'neither' }
+export const engineTriggers = { both: 'both', current: 'current', neither: 'neither', old: 'old' }
 
 /**
  * When checking notifications are sent to an email we want to ignore these message ref types
@@ -249,40 +249,40 @@ export const ignoreMessageRef = [
 ]
 
 export const naldAreaCodes = {
+  AACOR: 'Cornwall',
+  AADEV: 'Devon',
+  AANWX: 'North Wessex',
+
+  AASWX: 'South Wessex',
+  AGY2N: 'West',
+  AGY2S: 'West',
+
+  AGY3N: 'North East',
+  AGY3S: 'North East',
+  AGY4N: 'South East',
+
+  AGY4S: 'South East',
   ARCA: 'Central',
   AREA: 'Eastern',
   ARNA: 'Northern',
-
   DALES: 'Dales',
+  HAAR: 'Hampshire & Isle of Wight',
+
+  KAEA: 'Kent',
+  MIDLS: 'Lower Severn',
+  MIDLT: 'Lower Trent',
+  MIDUS: 'Upper Severn',
+
+  MIDUT: 'Upper Trent',
+  N: 'Northern',
   NAREA: 'Northumbria',
-  RIDIN: 'Ridings',
 
   NWCEN: 'Central',
   NWNTH: 'North',
   NWSTH: 'South',
+  RIDIN: 'Ridings',
 
-  AGY2N: 'West',
-  AGY2S: 'West',
-  AGY3N: 'North East',
-  AGY3S: 'North East',
-  AGY4N: 'South East',
-  AGY4S: 'South East',
-
-  MIDLS: 'Lower Severn',
-  MIDLT: 'Lower Trent',
-  MIDUS: 'Upper Severn',
-  MIDUT: 'Upper Trent',
-
-  HAAR: 'Hampshire & Isle of Wight',
-  KAEA: 'Kent',
   SAAR: 'Sussex',
-
-  AACOR: 'Cornwall',
-  AADEV: 'Devon',
-  AANWX: 'North Wessex',
-  AASWX: 'South Wessex',
-
-  N: 'Northern',
   SE: 'South East'
 }
 
@@ -308,9 +308,9 @@ export const noticeMappings = {
   'hof-resume': 'HOF resume',
   'hof-stop': 'HOF stop',
   'hof-warning': 'HOF warning',
+  paperReturnForms: 'Paper return',
   'pdf.return_form': 'Paper return',
   'pdf.return_reminder': 'Paper reminder',
-  paperReturnForms: 'Paper return',
   renewal: 'Renewal',
   renewalFinal: 'Renewals final',
   renewalInvitation: 'Renewals invitation',
@@ -338,45 +338,45 @@ export const NoticeType = Object.freeze({
 export const NoticeTypes = Object.freeze({
   [NoticeType.ABSTRACTION_ALERTS]: {
     name: 'Water abstraction alert',
+    notificationType: 'Abstraction alert',
     prefix: 'WAA-',
-    subType: 'waterAbstractionAlerts',
-    notificationType: 'Abstraction alert'
+    subType: 'waterAbstractionAlerts'
   },
   [NoticeType.PAPER_RETURN]: {
     name: 'Paper returns',
+    notificationType: 'Paper returns',
     prefix: 'PRTF-',
-    subType: 'paperReturnForms',
-    notificationType: 'Paper returns'
+    subType: 'paperReturnForms'
   },
   [NoticeType.INVITATIONS]: {
     name: 'Returns: invitation',
+    notificationType: 'Returns invitation',
     prefix: 'RINV-',
-    subType: 'returnInvitation',
-    notificationType: 'Returns invitation'
+    subType: 'returnInvitation'
   },
   [NoticeType.REMINDERS]: {
     name: 'Returns: reminder',
+    notificationType: 'Returns reminder',
     prefix: 'RREM-',
-    subType: 'returnReminder',
-    notificationType: 'Returns reminder'
+    subType: 'returnReminder'
   },
   [NoticeType.RENEWAL_FINALS]: {
     name: 'Renewals: final',
+    notificationType: 'Renewals final',
     prefix: 'REFN-',
-    subType: 'renewalFinal',
-    notificationType: 'Renewals final'
+    subType: 'renewalFinal'
   },
   [NoticeType.RENEWAL_INVITATIONS]: {
     name: 'Renewals: invitation',
+    notificationType: 'Renewals invitation',
     prefix: 'REIN-',
-    subType: 'renewalInvitation',
-    notificationType: 'Renewals invitation'
+    subType: 'renewalInvitation'
   },
   [NoticeType.RENEWAL_REMINDERS]: {
     name: 'Renewals: reminder',
+    notificationType: 'Renewals reminder',
     prefix: 'RERM-',
-    subType: 'renewalReminder',
-    notificationType: 'Renewals reminder'
+    subType: 'renewalReminder'
   }
 })
 
@@ -402,25 +402,25 @@ export const returnCycleDates = {
  * The start, end and due dates for each quarterly return period
  */
 export const quarterlyReturnPeriods = {
+  quarterFour: {
+    dueDate: { day: 28, month: 3 },
+    endDate: { day: 31, month: 2 },
+    startDate: { day: 1, month: 0 }
+  },
   quarterOne: {
     dueDate: { day: 28, month: 6 },
     endDate: { day: 30, month: 5 },
     startDate: { day: 1, month: 3 }
-  },
-  quarterTwo: {
-    dueDate: { day: 28, month: 9 },
-    endDate: { day: 30, month: 8 },
-    startDate: { day: 1, month: 6 }
   },
   quarterThree: {
     dueDate: { day: 28, month: 0 },
     endDate: { day: 31, month: 11 },
     startDate: { day: 1, month: 9 }
   },
-  quarterFour: {
-    dueDate: { day: 28, month: 3 },
-    endDate: { day: 31, month: 2 },
-    startDate: { day: 1, month: 0 }
+  quarterTwo: {
+    dueDate: { day: 28, month: 9 },
+    endDate: { day: 30, month: 8 },
+    startDate: { day: 1, month: 6 }
   }
 }
 
@@ -451,10 +451,10 @@ export const returnPeriodDates = {
 
 export const returnRequirementFrequencies = {
   day: 'daily',
-  week: 'weekly',
   fortnight: 'fortnightly',
   month: 'monthly',
   quarter: 'quarterly',
+  week: 'weekly',
   year: 'yearly'
 }
 
@@ -493,36 +493,36 @@ export const returnRequirementReasons = {
  */
 export const roles = Object.freeze({
   'abstraction-alerts': Object.freeze({
-    name: 'abstractionAlerts',
-    label: 'Abstraction alerts'
+    label: 'Abstraction alerts',
+    name: 'abstractionAlerts'
   }),
   'additional-contact': Object.freeze({
-    name: 'additionalContact',
-    label: 'Additional contact'
+    label: 'Additional contact',
+    name: 'additionalContact'
   }),
   'basic-user': Object.freeze({
-    name: 'basicUser',
-    label: 'Basic user'
+    label: 'Basic user',
+    name: 'basicUser'
   }),
   billing: Object.freeze({
-    name: 'billing',
-    label: 'Billing'
+    label: 'Billing',
+    name: 'billing'
   }),
   'licence-holder': Object.freeze({
-    name: 'licenceHolder',
-    label: 'Licence holder'
+    label: 'Licence holder',
+    name: 'licenceHolder'
   }),
   'primary-user': Object.freeze({
-    name: 'primaryUser',
-    label: 'Primary user'
+    label: 'Primary user',
+    name: 'primaryUser'
   }),
   'returns-to': Object.freeze({
-    name: 'returnsTo',
-    label: 'Returns to'
+    label: 'Returns to',
+    name: 'returnsTo'
   }),
   'returns-user': Object.freeze({
-    name: 'returnsUser',
-    label: 'Returns user'
+    label: 'Returns user',
+    name: 'returnsUser'
   })
 })
 
@@ -546,33 +546,33 @@ export const unitConversion = {
 
 export const unitNames = {
   CUBIC_METRES: 'm³',
+  GALLONS: 'gal',
   LITRES: 'l',
-  MEGALITRES: 'Ml',
-  GALLONS: 'gal'
+  MEGALITRES: 'Ml'
 }
 
 export const returnUnits = {
-  [unitNames.CUBIC_METRES]: { multiplier: 1, label: 'cubic metres', name: 'cubicMetres' },
-  [unitNames.LITRES]: { multiplier: 1000, label: 'litres', name: 'litres' },
-  [unitNames.MEGALITRES]: { multiplier: 0.001, label: 'megalitres', name: 'megalitres' },
-  [unitNames.GALLONS]: { multiplier: 219.969248299, label: 'gallons', name: 'gallons' }
+  [unitNames.CUBIC_METRES]: { label: 'cubic metres', multiplier: 1, name: 'cubicMetres' },
+  [unitNames.LITRES]: { label: 'litres', multiplier: 1000, name: 'litres' },
+  [unitNames.MEGALITRES]: { label: 'megalitres', multiplier: 0.001, name: 'megalitres' },
+  [unitNames.GALLONS]: { label: 'gallons', multiplier: 219.969248299, name: 'gallons' }
 }
 
 export const sources = ['nald', 'wrls']
 
 export const thresholdUnits = {
-  MEGALITRES_PER_DAY: { value: 'Ml/d', label: 'megalitres per day' },
-  CUBIC_METRES_PER_SECOND: { value: 'm3/s', label: 'cubic metres per second' },
-  CUBIC_METRES_PER_DAY: { value: 'm3/d', label: 'cubic metres per day' },
-  LITRES_PER_SECOND: { value: 'l/s', label: 'litres per second' },
-  METRES_ABOVE_ORDNANCE_DATUM: { value: 'mAOD', label: 'metres above ordnance datum' },
-  METRES_BELOW_ORDNANCE_DATUM: { value: 'mBOD', label: 'metres below ordnance datum' },
-  METRES_ABOVE_SEA_DATUM: { value: 'mASD', label: 'metres above sea datum' },
-  METRES: { value: 'm', label: 'metres' },
-  SOUTH_LEVEL_DATUM: { value: 'SLD', label: 'south level datum' },
-  CUBIC_FOOT_PER_SECOND: { value: 'ft3/s', label: 'cubic foot per second' },
-  GALLONS_PER_DAY: { value: 'gpd', label: 'gallons per day' },
-  MILLION_GALLONS_PER_DAY: { value: 'Mgpd', label: 'million gallons per day' }
+  CUBIC_FOOT_PER_SECOND: { label: 'cubic foot per second', value: 'ft3/s' },
+  CUBIC_METRES_PER_DAY: { label: 'cubic metres per day', value: 'm3/d' },
+  CUBIC_METRES_PER_SECOND: { label: 'cubic metres per second', value: 'm3/s' },
+  GALLONS_PER_DAY: { label: 'gallons per day', value: 'gpd' },
+  LITRES_PER_SECOND: { label: 'litres per second', value: 'l/s' },
+  MEGALITRES_PER_DAY: { label: 'megalitres per day', value: 'Ml/d' },
+  METRES: { label: 'metres', value: 'm' },
+  METRES_ABOVE_ORDNANCE_DATUM: { label: 'metres above ordnance datum', value: 'mAOD' },
+  METRES_ABOVE_SEA_DATUM: { label: 'metres above sea datum', value: 'mASD' },
+  METRES_BELOW_ORDNANCE_DATUM: { label: 'metres below ordnance datum', value: 'mBOD' },
+  MILLION_GALLONS_PER_DAY: { label: 'million gallons per day', value: 'Mgpd' },
+  SOUTH_LEVEL_DATUM: { label: 'south level datum', value: 'SLD' }
 }
 
 /*
@@ -596,9 +596,9 @@ export const twoPartTariffReviewIssues = {
   'no-returns-received': 'No returns received',
   'over-abstraction': 'Over abstraction',
   'overlap-of-charge-dates': 'Overlap of charge dates',
-  'returns-received-not-processed': 'Returns received but not processed',
-  'returns-late': 'Returns received late',
   'return-split-over-refs': 'Return split over charge references',
+  'returns-late': 'Returns received late',
+  'returns-received-not-processed': 'Returns received but not processed',
   'some-returns-not-received': 'Some returns not received',
   'unable-to-match-return': 'Unable to match return'
 }

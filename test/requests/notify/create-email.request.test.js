@@ -41,7 +41,6 @@ describe('Notify - Create Email Request', () => {
   describe('when the request succeeds', () => {
     beforeEach(() => {
       response = {
-        statusCode: HTTP_STATUS_OK,
         body: {
           content: {
             body: 'Dear licence holder,\r\n',
@@ -58,12 +57,13 @@ describe('Notify - Create Email Request', () => {
             version: 40
           },
           uri: 'https://api.notifications.service.gov.uk/v2/notifications/a8023182-5cb3-4ee3-b777-2fb82cde7fc5'
-        }
+        },
+        statusCode: HTTP_STATUS_OK
       }
 
       vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-        succeeded: true,
-        response
+        response,
+        succeeded: true
       })
     })
 
@@ -84,7 +84,6 @@ describe('Notify - Create Email Request', () => {
     describe('because the request did not return a 2xx/3xx response', () => {
       beforeEach(async () => {
         response = {
-          statusCode: HTTP_STATUS_BAD_REQUEST,
           body: {
             errors: [
               {
@@ -93,12 +92,13 @@ describe('Notify - Create Email Request', () => {
               }
             ],
             status_code: HTTP_STATUS_BAD_REQUEST
-          }
+          },
+          statusCode: HTTP_STATUS_BAD_REQUEST
         }
 
         vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-          succeeded: false,
-          response
+          response,
+          succeeded: false
         })
       })
 

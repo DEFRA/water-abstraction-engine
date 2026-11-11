@@ -18,28 +18,28 @@ export default class ChargeElementModel extends BaseModel {
   static get relationMappings() {
     return {
       chargeReference: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeReferenceModel,
         join: {
           from: 'chargeElements.chargeReferenceId',
           to: 'chargeReferences.id'
-        }
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.BelongsToOneRelation
       },
       purpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PurposeModel,
         join: {
           from: 'chargeElements.purposeId',
           to: 'purposes.id'
-        }
+        },
+        modelClass: PurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       reviewChargeElements: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewChargeElementModel,
         join: {
           from: 'chargeElements.id',
           to: 'reviewChargeElements.chargeElementId'
-        }
+        },
+        modelClass: ReviewChargeElementModel,
+        relation: Model.HasManyRelation
       }
     }
   }

@@ -1,6 +1,6 @@
 import PurposeModel from '../../src/models/purpose.model.js'
-import { data as purposes } from './data/purposes.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
+import { data as purposes } from './data/purposes.js'
 
 /**
  * Seeds the purposes reference data using an upsert

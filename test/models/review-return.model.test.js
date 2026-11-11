@@ -36,8 +36,8 @@ describe('Review Return model', () => {
       testReviewChargeElements.push(testReviewChargeElement)
 
       const reviewChargeElementReturn = await ReviewChargeElementReturnHelper.add({
-        reviewReturnId: testRecord.id,
-        reviewChargeElementId: testReviewChargeElement.id
+        reviewChargeElementId: testReviewChargeElement.id,
+        reviewReturnId: testRecord.id
       })
 
       testReviewChargeElementReturns.push(reviewChargeElementReturn)

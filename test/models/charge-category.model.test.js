@@ -20,8 +20,8 @@ describe('Charge Category model', () => {
     testChargeReferences = []
     for (let i = 0; i < 2; i++) {
       const chargeReference = await ChargeReferenceHelper.add({
-        description: `CE ${i}`,
-        chargeCategoryId: testRecord.id
+        chargeCategoryId: testRecord.id,
+        description: `CE ${i}`
       })
 
       testChargeReferences.push(chargeReference)

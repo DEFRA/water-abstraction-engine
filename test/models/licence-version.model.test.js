@@ -424,13 +424,13 @@ describe('Licence Version model', () => {
 
           await ModLogHelper.add({
             externalId: `${regionCode}:${firstNaldId}`,
-            reasonDescription: null,
-            licenceVersionId
+            licenceVersionId,
+            reasonDescription: null
           })
           await ModLogHelper.add({
             externalId: `${regionCode}:${firstNaldId + 1}`,
-            reasonDescription: 'New licence',
-            licenceVersionId
+            licenceVersionId,
+            reasonDescription: 'New licence'
           })
 
           reasonRecord = await LicenceVersionModel.query().findById(secondIncrementLicenceVersion.id).modify('history')

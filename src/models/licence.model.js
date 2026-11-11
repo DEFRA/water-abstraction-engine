@@ -34,140 +34,140 @@ export default class LicenceModel extends BaseModel {
   static get relationMappings() {
     return {
       billLicences: {
-        relation: Model.HasManyRelation,
-        modelClass: BillLicenceModel,
         join: {
           from: 'licences.id',
           to: 'billLicences.licenceId'
-        }
+        },
+        modelClass: BillLicenceModel,
+        relation: Model.HasManyRelation
       },
       chargeVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'licences.id',
           to: 'chargeVersions.licenceId'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.HasManyRelation
       },
       licenceAgreements: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceAgreementModel,
         join: {
           from: 'licences.licenceRef',
           to: 'licenceAgreements.licenceRef'
-        }
+        },
+        modelClass: LicenceAgreementModel,
+        relation: Model.HasManyRelation
       },
       licenceDocument: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceDocumentModel,
         join: {
           from: 'licences.licenceRef',
           to: 'licenceDocuments.licenceRef'
-        }
+        },
+        modelClass: LicenceDocumentModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceDocumentHeader: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceDocumentHeaderModel,
         join: {
           from: 'licences.licenceRef',
           to: 'licenceDocumentHeaders.licenceRef'
-        }
+        },
+        modelClass: LicenceDocumentHeaderModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceEndDateChanges: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceEndDateChangeModel,
         join: {
           from: 'licences.id',
           to: 'licenceEndDateChanges.licenceId'
-        }
+        },
+        modelClass: LicenceEndDateChangeModel,
+        relation: Model.HasManyRelation
       },
       licenceMonitoringStations: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceMonitoringStationModel,
         join: {
           from: 'licences.id',
           to: 'licenceMonitoringStations.licenceId'
-        }
+        },
+        modelClass: LicenceMonitoringStationModel,
+        relation: Model.HasManyRelation
       },
       licenceSupplementaryYears: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceSupplementaryYearModel,
         join: {
           from: 'licences.id',
           to: 'licenceSupplementaryYears.licenceId'
-        }
+        },
+        modelClass: LicenceSupplementaryYearModel,
+        relation: Model.HasManyRelation
       },
       licenceUnregistrations: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceUnregistrationModel,
         join: {
           from: 'licences.id',
           to: 'licenceUnregistrations.licenceId'
-        }
+        },
+        modelClass: LicenceUnregistrationModel,
+        relation: Model.HasManyRelation
       },
       licenceVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionModel,
         join: {
           from: 'licences.id',
           to: 'licenceVersions.licenceId'
-        }
+        },
+        modelClass: LicenceVersionModel,
+        relation: Model.HasManyRelation
       },
       modLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ModLogModel,
         join: {
           from: 'licences.id',
           to: 'modLogs.licenceId'
-        }
+        },
+        modelClass: ModLogModel,
+        relation: Model.HasManyRelation
       },
       permitLicence: {
-        relation: Model.HasOneRelation,
-        modelClass: PermitLicenceModel,
         join: {
           from: 'licences.licenceRef',
           to: 'permitLicences.licenceRef'
-        }
+        },
+        modelClass: PermitLicenceModel,
+        relation: Model.HasOneRelation
       },
       region: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: RegionModel,
         join: {
           from: 'licences.regionId',
           to: 'regions.id'
-        }
+        },
+        modelClass: RegionModel,
+        relation: Model.BelongsToOneRelation
       },
       returnLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnLogModel,
         join: {
           from: 'licences.licenceRef',
           to: 'returnLogs.licenceRef'
-        }
+        },
+        modelClass: ReturnLogModel,
+        relation: Model.HasManyRelation
       },
       returnVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnVersionModel,
         join: {
           from: 'licences.id',
           to: 'returnVersions.licenceId'
-        }
+        },
+        modelClass: ReturnVersionModel,
+        relation: Model.HasManyRelation
       },
       reviewLicences: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewLicenceModel,
         join: {
           from: 'licences.id',
           to: 'reviewLicences.licenceId'
-        }
+        },
+        modelClass: ReviewLicenceModel,
+        relation: Model.HasManyRelation
       },
       workflows: {
-        relation: Model.HasManyRelation,
-        modelClass: WorkflowModel,
         join: {
           from: 'licences.id',
           to: 'workflows.licenceId'
-        }
+        },
+        modelClass: WorkflowModel,
+        relation: Model.HasManyRelation
       }
     }
   }
@@ -200,7 +200,7 @@ export default class LicenceModel extends BaseModel {
               { column: 'licenceId', order: 'asc' },
               { column: 'issue', order: 'desc' },
               { column: 'increment', order: 'desc' },
-              { column: 'endDate', order: 'desc', nulls: 'first' }
+              { column: 'endDate', nulls: 'first', order: 'desc' }
             ])
         })
       },

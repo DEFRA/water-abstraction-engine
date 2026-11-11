@@ -5,8 +5,8 @@
 import RoleHelper from './role.helper.js'
 import UserRoleModel from '../../../src/models/user-role.model.js'
 import { selectRandomEntry } from '../general.js'
+import { generateUserId, generateUUID } from '../generators.js'
 import { data as userRoles } from '../../../db/seeds/data/user-roles.js'
-import { generateUUID, generateUserId } from '../generators.js'
 
 const data = userRoles
 
@@ -79,8 +79,8 @@ function select(index = -1) {
 }
 
 export default {
-  data,
   add,
+  data,
   defaults,
   select
 }

@@ -54,18 +54,18 @@ function defaults(data = {}) {
   const { id: purposeSecondaryId } = SecondaryPurposeHelper.select()
 
   const defaults = {
-    chargeReferenceId: generateUUID(),
-    abstractionPeriodStartDay: 1,
-    abstractionPeriodStartMonth: 4,
     abstractionPeriodEndDay: 31,
     abstractionPeriodEndMonth: 3,
+    abstractionPeriodStartDay: 1,
+    abstractionPeriodStartMonth: 4,
     authorisedAnnualQuantity: 200,
-    loss: 'low',
-    factorsOverridden: false,
+    chargeReferenceId: generateUUID(),
     description: 'Mineral washing',
+    factorsOverridden: false,
+    loss: 'low',
+    purposeId,
     purposePrimaryId,
-    purposeSecondaryId,
-    purposeId
+    purposeSecondaryId
   }
 
   return {

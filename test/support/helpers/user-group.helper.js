@@ -5,8 +5,8 @@
 import GroupHelper from './group.helper.js'
 import UserGroupModel from '../../../src/models/user-group.model.js'
 import { selectRandomEntry } from '../general.js'
+import { generateUserId, generateUUID } from '../generators.js'
 import { data as userGroups } from '../../../db/seeds/data/user-groups.js'
-import { generateUUID, generateUserId } from '../generators.js'
 
 const data = userGroups
 
@@ -81,9 +81,9 @@ function select(index = -1) {
 }
 
 export default {
+  add,
   data,
   DEFAULT_INDEX,
-  add,
   defaults,
   select
 }

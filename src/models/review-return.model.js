@@ -24,16 +24,22 @@ export default class ReviewReturnModel extends BaseModel {
   static get relationMappings() {
     return {
       returnLog: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnLogModel,
         join: {
           from: 'reviewReturns.returnLogId',
           to: 'returnLogs.id'
-        }
+        },
+        modelClass: ReturnLogModel,
+        relation: Model.BelongsToOneRelation
+      },
+      reviewChargeElementReturns: {
+        join: {
+          from: 'reviewReturns.id',
+          to: 'reviewChargeElementReturns.reviewReturnId'
+        },
+        modelClass: ReviewChargeElementReturnModel,
+        relation: Model.HasManyRelation
       },
       reviewChargeElements: {
-        relation: Model.ManyToManyRelation,
-        modelClass: ReviewChargeElementModel,
         join: {
           from: 'reviewReturns.id',
           through: {
@@ -41,23 +47,17 @@ export default class ReviewReturnModel extends BaseModel {
             to: 'reviewChargeElementReturns.reviewChargeElementId'
           },
           to: 'reviewChargeElements.id'
-        }
-      },
-      reviewChargeElementReturns: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewChargeElementReturnModel,
-        join: {
-          from: 'reviewReturns.id',
-          to: 'reviewChargeElementReturns.reviewReturnId'
-        }
+        },
+        modelClass: ReviewChargeElementModel,
+        relation: Model.ManyToManyRelation
       },
       reviewLicence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReviewLicenceModel,
         join: {
           from: 'reviewReturns.reviewLicenceId',
           to: 'reviewLicences.id'
-        }
+        },
+        modelClass: ReviewLicenceModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

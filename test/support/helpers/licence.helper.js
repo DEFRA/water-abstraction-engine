@@ -43,11 +43,11 @@ function defaults(data = {}) {
   const { id: regionId } = RegionHelper.select()
 
   const defaults = {
-    waterUndertaker: false,
     licenceRef: generateLicenceRef(),
     regionId,
     regions: { historicalAreaCode: 'SAAR', regionalChargeArea: 'Southern' },
-    startDate: new Date('2022-01-01')
+    startDate: new Date('2022-01-01'),
+    waterUndertaker: false
   }
 
   return {

@@ -28,17 +28,17 @@ describe('Notify - Create Precompiled File Request', () => {
       content = new TextEncoder().encode('Test data').buffer
 
       response = {
-        statusCode: HTTP_STATUS_CREATED,
         body: {
           id: 'f39a18b7-f12a-4149-9aad-da18d6972b48',
           postage: 'second',
           reference: referenceCode
-        }
+        },
+        statusCode: HTTP_STATUS_CREATED
       }
 
       vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-        succeeded: true,
-        response
+        response,
+        succeeded: true
       })
     })
 
@@ -67,7 +67,6 @@ describe('Notify - Create Precompiled File Request', () => {
     describe('because the request did not return a 2xx/3xx response', () => {
       beforeEach(async () => {
         response = {
-          statusCode: HTTP_STATUS_BAD_REQUEST,
           body: {
             errors: [
               {
@@ -76,12 +75,13 @@ describe('Notify - Create Precompiled File Request', () => {
               }
             ],
             status_code: HTTP_STATUS_BAD_REQUEST
-          }
+          },
+          statusCode: HTTP_STATUS_BAD_REQUEST
         }
 
         vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-          succeeded: false,
-          response
+          response,
+          succeeded: false
         })
       })
 

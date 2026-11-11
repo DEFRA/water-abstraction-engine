@@ -17,20 +17,20 @@ export default class LicenceAgreementModel extends BaseModel {
   static get relationMappings() {
     return {
       financialAgreement: {
-        relation: Model.HasOneRelation,
-        modelClass: FinancialAgreementModel,
         join: {
           from: 'licenceAgreements.financialAgreementId',
           to: 'financialAgreements.id'
-        }
+        },
+        modelClass: FinancialAgreementModel,
+        relation: Model.HasOneRelation
       },
       licence: {
-        relation: Model.HasOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'licenceAgreements.licenceRef',
           to: 'licences.licenceRef'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.HasOneRelation
       }
     }
   }

@@ -19,36 +19,36 @@ export default class ReturnRequirementPurposeModel extends BaseModel {
   static get relationMappings() {
     return {
       primaryPurpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PrimaryPurposeModel,
         join: {
           from: 'returnRequirementPurposes.primaryPurposeId',
           to: 'primaryPurposes.id'
-        }
+        },
+        modelClass: PrimaryPurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       purpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PurposeModel,
         join: {
           from: 'returnRequirementPurposes.purposeId',
           to: 'purposes.id'
-        }
+        },
+        modelClass: PurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       returnRequirement: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnRequirementModel,
         join: {
           from: 'returnRequirementPurposes.returnRequirementId',
           to: 'returnRequirements.id'
-        }
+        },
+        modelClass: ReturnRequirementModel,
+        relation: Model.BelongsToOneRelation
       },
       secondaryPurpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: SecondaryPurposeModel,
         join: {
           from: 'returnRequirementPurposes.secondaryPurposeId',
           to: 'secondaryPurposes.id'
-        }
+        },
+        modelClass: SecondaryPurposeModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

@@ -11,8 +11,8 @@ import ReturnRequirementModel from '../../src/models/return-requirement.model.js
 import ReturnVersionHelper from '../support/helpers/return-version.helper.js'
 import UserHelper from '../support/helpers/user.helper.js'
 import UserModel from '../../src/models/user.model.js'
-import { generateRandomInteger } from '../support/generators.js'
 import { randomRegionCode } from '../support/general.js'
+import { generateRandomInteger } from '../support/generators.js'
 
 // Thing under test
 import ReturnVersionModel from '../../src/models/return-version.model.js'
@@ -41,8 +41,8 @@ describe('Return Version model', () => {
     testReturnRequirements = []
     for (let i = 0; i < 2; i++) {
       const returnRequirement = await ReturnRequirementHelper.add({
-        siteDescription: `TEST RTN REQ ${i}`,
-        returnVersionId: testRecord.id
+        returnVersionId: testRecord.id,
+        siteDescription: `TEST RTN REQ ${i}`
       })
 
       testReturnRequirements.push(returnRequirement)

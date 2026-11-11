@@ -21,18 +21,18 @@ describe('Notify - View Health Request', () => {
   describe('when the request succeeds', () => {
     beforeEach(() => {
       response = {
-        statusCode: HTTP_STATUS_OK,
         body: {
           build_time: '2025-08-20:07:53:38',
           db_version: '0511_process_type_nullable',
           git_commit: '9a404353ee55a7f7cb3b8348b169ad00cc2d540a',
           status: 'ok'
-        }
+        },
+        statusCode: HTTP_STATUS_OK
       }
 
       vi.spyOn(NotifyRequest, 'getRequest').mockResolvedValue({
-        succeeded: true,
-        response
+        response,
+        succeeded: true
       })
     })
 
@@ -53,17 +53,17 @@ describe('Notify - View Health Request', () => {
     describe('because the request did not return a 2xx/3xx response', () => {
       beforeEach(async () => {
         response = {
-          statusCode: HTTP_STATUS_NOT_FOUND,
           body: {
             message:
               'The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.',
             result: 'error'
-          }
+          },
+          statusCode: HTTP_STATUS_NOT_FOUND
         }
 
         vi.spyOn(NotifyRequest, 'getRequest').mockResolvedValue({
-          succeeded: false,
-          response
+          response,
+          succeeded: false
         })
       })
 

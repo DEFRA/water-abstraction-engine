@@ -17,20 +17,20 @@ export default class SecondaryPurposeModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceVersionPurposes: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionPurposeModel,
         join: {
           from: 'secondaryPurposes.id',
           to: 'licenceVersionPurposes.secondaryPurposeId'
-        }
+        },
+        modelClass: LicenceVersionPurposeModel,
+        relation: Model.HasManyRelation
       },
       returnRequirementPurposes: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnRequirementPurposeModel,
         join: {
           from: 'secondaryPurposes.id',
           to: 'returnRequirementPurposes.secondaryPurposeId'
-        }
+        },
+        modelClass: ReturnRequirementPurposeModel,
+        relation: Model.HasManyRelation
       }
     }
   }

@@ -20,11 +20,11 @@
  * @module WaterKnex
  */
 
+import { spawnSync } from 'child_process'
 import { config } from 'dotenv'
 import { existsSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
-import { spawnSync } from 'child_process'
 import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 // Load the calling app's .env before spawning knex. The knex CLI changes process.cwd() to the knexfile's directory
 // before loading it, which would cause dotenv inside the knexfile to load water-abstraction-engine's .env by default,

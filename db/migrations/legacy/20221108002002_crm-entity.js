@@ -24,10 +24,10 @@ export function up(knex) {
       // Matches the row inserted by the original production migration:
       // water-abstraction-tactical-crm/migrations/sqls/20171201091402-crm-up.sql
       return knex('entity').withSchema('crm').insert({
+        entity_definition: {},
         entity_id: '0434dc31-a34e-7158-5775-4694af7a60cf',
         entity_nm: 'water-abstraction',
-        entity_type: 'regime',
-        entity_definition: {}
+        entity_type: 'regime'
       })
     })
 }

@@ -59,14 +59,14 @@ describe('Static Lookups', () => {
       const result = StaticLookups.roles
 
       expect(result).toEqual({
-        'abstraction-alerts': { name: 'abstractionAlerts', label: 'Abstraction alerts' },
-        'additional-contact': { name: 'additionalContact', label: 'Additional contact' },
-        'basic-user': { name: 'basicUser', label: 'Basic user' },
-        billing: { name: 'billing', label: 'Billing' },
-        'licence-holder': { name: 'licenceHolder', label: 'Licence holder' },
-        'primary-user': { name: 'primaryUser', label: 'Primary user' },
-        'returns-to': { name: 'returnsTo', label: 'Returns to' },
-        'returns-user': { name: 'returnsUser', label: 'Returns user' }
+        'abstraction-alerts': { label: 'Abstraction alerts', name: 'abstractionAlerts' },
+        'additional-contact': { label: 'Additional contact', name: 'additionalContact' },
+        'basic-user': { label: 'Basic user', name: 'basicUser' },
+        billing: { label: 'Billing', name: 'billing' },
+        'licence-holder': { label: 'Licence holder', name: 'licenceHolder' },
+        'primary-user': { label: 'Primary user', name: 'primaryUser' },
+        'returns-to': { label: 'Returns to', name: 'returnsTo' },
+        'returns-user': { label: 'Returns user', name: 'returnsUser' }
       })
     })
 

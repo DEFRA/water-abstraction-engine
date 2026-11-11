@@ -16,12 +16,12 @@ export default class SourceModel extends BaseModel {
   static get relationMappings() {
     return {
       points: {
-        relation: Model.HasManyRelation,
-        modelClass: PointModel,
         join: {
           from: 'sources.id',
           to: 'points.sourceId'
-        }
+        },
+        modelClass: PointModel,
+        relation: Model.HasManyRelation
       }
     }
   }

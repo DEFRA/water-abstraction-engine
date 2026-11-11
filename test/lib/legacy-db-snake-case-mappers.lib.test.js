@@ -22,10 +22,10 @@ describe('Legacy DB Snake Case Mappers Lib', () => {
       const dbResult = [
         {
           address_line_1: '10 Downing Street',
-          purpose: 'Residence of the prime minster',
+          crm_v2: 'I am really a schema disguised as a table column :-)',
           is_occupied: true,
-          section_127_Agreement: false,
-          crm_v2: 'I am really a schema disguised as a table column :-)'
+          purpose: 'Residence of the prime minster',
+          section_127_Agreement: false
         }
       ]
 
@@ -36,10 +36,10 @@ describe('Legacy DB Snake Case Mappers Lib', () => {
         expect(result).toEqual([
           {
             addressLine1: '10 Downing Street',
-            purpose: 'Residence of the prime minster',
+            crm_v2: 'I am really a schema disguised as a table column :-)',
             isOccupied: true,
-            section127Agreement: false,
-            crm_v2: 'I am really a schema disguised as a table column :-)'
+            purpose: 'Residence of the prime minster',
+            section127Agreement: false
           }
         ])
       })

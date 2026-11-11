@@ -2,10 +2,10 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
-import BillRunChargeVersionYearHelper from '../support/helpers/bill-run-charge-version-year.helper.js'
-import BillRunChargeVersionYearModel from '../../src/models/bill-run-charge-version-year.model.js'
 import BillingAccountHelper from '../support/helpers/billing-account.helper.js'
 import BillingAccountModel from '../../src/models/billing-account.model.js'
+import BillRunChargeVersionYearHelper from '../support/helpers/bill-run-charge-version-year.helper.js'
+import BillRunChargeVersionYearModel from '../../src/models/bill-run-charge-version-year.model.js'
 import ChangeReasonHelper from '../support/helpers/change-reason.helper.js'
 import ChangeReasonModel from '../../src/models/change-reason.model.js'
 import ChargeReferenceHelper from '../support/helpers/charge-reference.helper.js'
@@ -56,8 +56,8 @@ describe('Charge Version model', () => {
     testRecord = await ChargeVersionHelper.add({
       billingAccountId: testBillingAccount.id,
       changeReasonId: testChangeReason.id,
-      noteId: testNote.id,
-      licenceId: testLicence.id
+      licenceId: testLicence.id,
+      noteId: testNote.id
     })
 
     // Link bill run charge version years
@@ -327,16 +327,16 @@ describe('Charge Version model', () => {
 
         createdAtModLogs.push(
           await ModLogHelper.add({
+            chargeVersionId: createdAtTestRecord.id,
             externalId: `${regionCode}:${firstNaldId}`,
-            naldDate: new Date('2012-06-01'),
-            chargeVersionId: createdAtTestRecord.id
+            naldDate: new Date('2012-06-01')
           })
         )
         createdAtModLogs.push(
           await ModLogHelper.add({
+            chargeVersionId: createdAtTestRecord.id,
             externalId: `${regionCode}:${firstNaldId + 1}`,
-            naldDate: new Date('2012-06-02'),
-            chargeVersionId: createdAtTestRecord.id
+            naldDate: new Date('2012-06-02')
           })
         )
 
@@ -373,8 +373,8 @@ describe('Charge Version model', () => {
         testUser = UserHelper.select()
 
         createdByTestRecord = await ChargeVersionHelper.add({
-          source: 'wrls',
-          createdBy: { id: testUser.id, email: testUser.username }
+          createdBy: { email: testUser.username, id: testUser.id },
+          source: 'wrls'
         })
       })
 
@@ -429,15 +429,15 @@ describe('Charge Version model', () => {
 
           createdByModLogs.push(
             await ModLogHelper.add({
-              externalId: `${regionCode}:${firstNaldId}`,
               chargeVersionId: createdByTestRecord.id,
+              externalId: `${regionCode}:${firstNaldId}`,
               userId: 'FIRST'
             })
           )
           createdByModLogs.push(
             await ModLogHelper.add({
-              externalId: `${regionCode}:${firstNaldId + 1}`,
               chargeVersionId: createdByTestRecord.id,
+              externalId: `${regionCode}:${firstNaldId + 1}`,
               userId: 'SECOND'
             })
           )
@@ -534,16 +534,16 @@ describe('Charge Version model', () => {
 
             notesModLogs.push(
               await ModLogHelper.add({
+                chargeVersionId: notesTestRecord.id,
                 externalId: `${regionCode}:${firstNaldId}`,
-                note: null,
-                chargeVersionId: notesTestRecord.id
+                note: null
               })
             )
             notesModLogs.push(
               await ModLogHelper.add({
+                chargeVersionId: notesTestRecord.id,
                 externalId: `${regionCode}:${firstNaldId + 1}`,
-                note: null,
-                chargeVersionId: notesTestRecord.id
+                note: null
               })
             )
 
@@ -565,16 +565,16 @@ describe('Charge Version model', () => {
 
             notesModLogs.push(
               await ModLogHelper.add({
+                chargeVersionId: notesTestRecord.id,
                 externalId: `${regionCode}:${firstNaldId}`,
-                note: null,
-                chargeVersionId: notesTestRecord.id
+                note: null
               })
             )
             notesModLogs.push(
               await ModLogHelper.add({
+                chargeVersionId: notesTestRecord.id,
                 externalId: `${regionCode}:${firstNaldId + 1}`,
-                note: 'Transfer per app 12-DEF',
-                chargeVersionId: notesTestRecord.id
+                note: 'Transfer per app 12-DEF'
               })
             )
 
@@ -647,16 +647,16 @@ describe('Charge Version model', () => {
 
             reasonModLogs.push(
               await ModLogHelper.add({
+                chargeVersionId: reasonTestRecord.id,
                 externalId: `${regionCode}:${firstNaldId}`,
-                reasonDescription: null,
-                chargeVersionId: reasonTestRecord.id
+                reasonDescription: null
               })
             )
             reasonModLogs.push(
               await ModLogHelper.add({
+                chargeVersionId: reasonTestRecord.id,
                 externalId: `${regionCode}:${firstNaldId + 1}`,
-                reasonDescription: 'Transferred',
-                chargeVersionId: reasonTestRecord.id
+                reasonDescription: 'Transferred'
               })
             )
 
@@ -678,16 +678,16 @@ describe('Charge Version model', () => {
 
           reasonModLogs.push(
             await ModLogHelper.add({
+              chargeVersionId: reasonTestRecord.id,
               externalId: `${regionCode}:${firstNaldId}`,
-              reasonDescription: 'Formal Variation',
-              chargeVersionId: reasonTestRecord.id
+              reasonDescription: 'Formal Variation'
             })
           )
           reasonModLogs.push(
             await ModLogHelper.add({
+              chargeVersionId: reasonTestRecord.id,
               externalId: `${regionCode}:${firstNaldId + 1}`,
-              reasonDescription: 'Transferred',
-              chargeVersionId: reasonTestRecord.id
+              reasonDescription: 'Transferred'
             })
           )
 

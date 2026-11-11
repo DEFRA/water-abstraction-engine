@@ -21,12 +21,12 @@ export default class EventModel extends BaseModel {
   static get relationMappings() {
     return {
       notifications: {
-        relation: Model.HasManyRelation,
-        modelClass: NotificationModel,
         join: {
           from: 'events.id',
           to: 'notifications.eventId'
-        }
+        },
+        modelClass: NotificationModel,
+        relation: Model.HasManyRelation
       }
     }
   }

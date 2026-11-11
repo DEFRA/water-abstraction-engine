@@ -25,8 +25,8 @@ export default async function createPrecompiledFileRequest(content, reference) {
   const path = 'v2/notifications/letter'
 
   const body = {
-    reference,
-    content: Buffer.from(content).toString('base64')
+    content: Buffer.from(content).toString('base64'),
+    reference
   }
 
   return postRequest(path, body)

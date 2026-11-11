@@ -45,21 +45,21 @@ export default class UserVerificationDocumentModel extends BaseModel {
 
   static get relationMappings() {
     return {
-      userVerification: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserVerificationModel,
-        join: {
-          from: 'userVerificationDocuments.userVerificationId',
-          to: 'userVerifications.id'
-        }
-      },
       licenceDocumentHeader: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceDocumentHeaderModel,
         join: {
           from: 'userVerificationDocuments.licenceDocumentHeaderId',
           to: 'licenceDocumentHeaders.id'
-        }
+        },
+        modelClass: LicenceDocumentHeaderModel,
+        relation: Model.BelongsToOneRelation
+      },
+      userVerification: {
+        join: {
+          from: 'userVerificationDocuments.userVerificationId',
+          to: 'userVerifications.id'
+        },
+        modelClass: UserVerificationModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

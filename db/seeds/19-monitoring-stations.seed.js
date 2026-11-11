@@ -1,6 +1,7 @@
 import MonitoringStationModel from '../../src/models/monitoring-station.model.js'
-import ServerConfig from '../../src/config/server.config.js'
 import { data as monitoringStations } from './data/monitoring-stations.js'
+
+import ServerConfig from '../../src/config/server.config.js'
 
 const BATCH_SIZE = 1000
 

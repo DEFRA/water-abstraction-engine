@@ -40,9 +40,9 @@ import UserHelper from '../support/helpers/user.helper.js'
 import UserModel from '../../src/models/user.model.js'
 import WorkflowHelper from '../support/helpers/workflow.helper.js'
 import WorkflowModel from '../../src/models/workflow.model.js'
-import { generateUUID } from '../support/generators.js'
-import { today } from '../../src/lib/general.lib.js'
 import { tomorrow, yesterday } from '../support/general.js'
+import { today } from '../../src/lib/general.lib.js'
+import { generateUUID } from '../support/generators.js'
 
 // Thing under test
 import LicenceModel from '../../src/models/licence.model.js'
@@ -87,61 +87,74 @@ describe('Licence model', () => {
 
     for (let i = 0; i < 2; i++) {
       // Create test bill licences
-      const billLicence = await BillLicenceHelper.add({ licenceRef: testRecord.licenceRef, licenceId: testRecord.id })
+      const billLicence = await BillLicenceHelper.add({ licenceId: testRecord.id, licenceRef: testRecord.licenceRef })
+
       billLicences.push(billLicence)
 
       // Create test charge versions
       const chargeVersion = await ChargeVersionHelper.add({
-        licenceRef: testRecord.licenceRef,
-        licenceId: testRecord.id
+        licenceId: testRecord.id,
+        licenceRef: testRecord.licenceRef
       })
+
       chargeVersions.push(chargeVersion)
 
       // Create test licence agreements
       const licenceAgreement = await LicenceAgreementHelper.add({ licenceRef: testRecord.licenceRef })
+
       licenceAgreements.push(licenceAgreement)
 
       // Create test licence end date changes
       const dateTypes = ['expired', 'revoked']
       const licenceEndDateChange = await LicenceEndDateChangeHelper.add({
-        licenceId: testRecord.id,
-        dateType: dateTypes[i]
+        dateType: dateTypes[i],
+        licenceId: testRecord.id
       })
+
       licenceEndDateChanges.push(licenceEndDateChange)
 
       // Create test licence monitoring stations
       const licenceMonitoringStation = await LicenceMonitoringStationHelper.add({ licenceId: testRecord.id })
+
       licenceMonitoringStations.push(licenceMonitoringStation)
 
       // Create test licence supplementary years
       const licenceSupplementaryYear = await LicenceSupplementaryYearHelper.add({ licenceId: testRecord.id })
+
       licenceSupplementaryYears.push(licenceSupplementaryYear)
 
       // Create test licence unregistrations
       const licenceUnregistration = await LicenceUnregistrationHelper.add({ licenceId: testRecord.id })
+
       licenceUnregistrations.push(licenceUnregistration)
 
       // Create test licence versions
       const licenceVersion = await LicenceVersionHelper.add({ licenceId: testRecord.id })
+
       licenceVersions.push(licenceVersion)
 
       // Create test mod logs
-      const modLog = await ModLogHelper.add({ licenceRef: testRecord.licenceRef, licenceId: testRecord.id })
+      const modLog = await ModLogHelper.add({ licenceId: testRecord.id, licenceRef: testRecord.licenceRef })
+
       modLogs.push(modLog)
 
       // Create test return logs
       const returnLog = await ReturnLogHelper.add({ licenceRef: testRecord.licenceRef })
+
       returnLogs.push(returnLog)
 
       // Create test return versions
       const returnVersion = await ReturnVersionHelper.add({ licenceId: testRecord.id })
+
       returnVersions.push(returnVersion)
 
       // Create test review licences
       const reviewLicence = await ReviewLicenceHelper.add({ licenceId: testRecord.id })
+
       reviewLicences.push(reviewLicence)
 
       const workflow = await WorkflowHelper.add({ licenceId: testRecord.id })
+
       workflows.push(workflow)
     }
 
@@ -618,8 +631,8 @@ describe('Licence model', () => {
             await LicenceVersionHelper.add({
               endDate: null,
               increment: 0,
-              issueDate: new Date('2022-01-01'),
               issue: 2,
+              issueDate: new Date('2022-01-01'),
               licenceId: otherLicence.id,
               startDate: new Date('2022-01-01'),
               status: 'current'
@@ -650,8 +663,8 @@ describe('Licence model', () => {
               endDate: new Date('2022-03-31'),
               increment: 0,
               issue: 1,
-              licenceId: otherLicence.id,
               issueDate: new Date('2021-01-01'),
+              licenceId: otherLicence.id,
               startDate: new Date('2021-01-01'),
               status: 'superseded'
             }),
@@ -661,8 +674,8 @@ describe('Licence model', () => {
               endDate: new Date('2022-04-01'),
               increment: 0,
               issue: 2,
-              licenceId: otherLicence.id,
               issueDate: new Date('2022-04-01'),
+              licenceId: otherLicence.id,
               startDate: new Date('2022-04-01'),
               status: 'superseded'
             }),
@@ -672,8 +685,8 @@ describe('Licence model', () => {
               endDate: null,
               increment: 1,
               issue: 2,
-              licenceId: otherLicence.id,
               issueDate: new Date('2022-04-01'),
+              licenceId: otherLicence.id,
               startDate: new Date('2022-04-01'),
               status: 'current'
             })
@@ -714,8 +727,8 @@ describe('Licence model', () => {
         const result = await LicenceModel.query().select(['id']).findById(testRecord.id).modify('ended')
 
         expect(result).toEqual({
-          id: testRecord.id,
           expiredDate: null,
+          id: testRecord.id,
           lapsedDate: null,
           revokedDate: null
         })
@@ -1121,8 +1134,8 @@ describe('Licence model', () => {
               companyId: company.id,
               endDate: null,
               increment: 0,
-              issueDate: new Date('2022-01-01'),
               issue: 2,
+              issueDate: new Date('2022-01-01'),
               licenceId: otherLicence.id,
               startDate: new Date('2022-01-01'),
               status: 'current'
@@ -1148,8 +1161,8 @@ describe('Licence model', () => {
               companyId: futureCompany.id,
               endDate: null,
               increment: 0,
-              issueDate: today(),
               issue: 2,
+              issueDate: today(),
               licenceId: otherLicence.id,
               startDate: tomorrow(),
               status: 'current'
@@ -1196,8 +1209,8 @@ describe('Licence model', () => {
     describe('when the instance has been set with the additional properties needed', () => {
       beforeEach(async () => {
         otherLicenceDocumentHeader = await LicenceDocumentHeaderHelper.add({
-          licenceRef: otherLicence.licenceRef,
-          licenceName: 'My custom licence name'
+          licenceName: 'My custom licence name',
+          licenceRef: otherLicence.licenceRef
         })
 
         licenceNameRecord = await LicenceModel.query().findById(otherLicence.id).modify('licenceName')
@@ -1264,8 +1277,8 @@ describe('Licence model', () => {
 
         otherLicenceDocumentHeader = await LicenceDocumentHeaderHelper.add({
           companyEntityId,
-          licenceRef: otherLicence.licenceRef,
-          licenceName: 'My custom licence name'
+          licenceName: 'My custom licence name',
+          licenceRef: otherLicence.licenceRef
         })
 
         primaryUserRecord = await LicenceModel.query().findById(otherLicence.id).modify('primaryUser')

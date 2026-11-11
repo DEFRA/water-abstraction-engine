@@ -17,20 +17,20 @@ export default class ReturnRequirementPointModel extends BaseModel {
   static get relationMappings() {
     return {
       point: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PointModel,
         join: {
           from: 'returnRequirementPoints.pointId',
           to: 'points.id'
-        }
+        },
+        modelClass: PointModel,
+        relation: Model.BelongsToOneRelation
       },
       returnRequirement: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnRequirementModel,
         join: {
           from: 'returnRequirementPoints.returnRequirementId',
           to: 'returnRequirements.id'
-        }
+        },
+        modelClass: ReturnRequirementModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

@@ -19,8 +19,6 @@ export default class ReturnRequirementModel extends BaseModel {
   static get relationMappings() {
     return {
       points: {
-        relation: Model.ManyToManyRelation,
-        modelClass: PointModel,
         join: {
           from: 'returnRequirements.id',
           through: {
@@ -28,31 +26,33 @@ export default class ReturnRequirementModel extends BaseModel {
             to: 'returnRequirementPoints.pointId'
           },
           to: 'points.id'
-        }
+        },
+        modelClass: PointModel,
+        relation: Model.ManyToManyRelation
       },
       returnLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnLogModel,
         join: {
           from: 'returnRequirements.id',
           to: 'returnLogs.returnRequirementId'
-        }
+        },
+        modelClass: ReturnLogModel,
+        relation: Model.HasManyRelation
       },
       returnRequirementPurposes: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnRequirementPurposeModel,
         join: {
           from: 'returnRequirements.id',
           to: 'returnRequirementPurposes.returnRequirementId'
-        }
+        },
+        modelClass: ReturnRequirementPurposeModel,
+        relation: Model.HasManyRelation
       },
       returnVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnVersionModel,
         join: {
           from: 'returnRequirements.returnVersionId',
           to: 'returnVersions.id'
-        }
+        },
+        modelClass: ReturnVersionModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

@@ -1,5 +1,5 @@
-import { noticeMappings } from '../lib/static-lookups.lib.js'
 import { convertFromCubicMetres, today } from '../lib/general.lib.js'
+import { noticeMappings } from '../lib/static-lookups.lib.js'
 
 const DUE_PERIOD_DAYS = 27
 
@@ -93,7 +93,7 @@ export function formatChargingModuleDate(date) {
  * @returns {string} The date formatted as a 'MMMM YYYY' string
  */
 export function formatDateMonthYear(date) {
-  return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })
+  return date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })
 }
 
 /**
@@ -154,7 +154,7 @@ export function formatLongDate(date) {
 
   const localDate = new Date(date)
 
-  return localDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
+  return localDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
 /**
@@ -166,12 +166,12 @@ export function formatLongDate(date) {
  */
 export function formatLongDateTime(date) {
   return date.toLocaleDateString('en-GB', {
-    year: 'numeric',
-    month: 'long',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    second: '2-digit'
+    month: 'long',
+    second: '2-digit',
+    year: 'numeric'
   })
 }
 
@@ -203,7 +203,7 @@ export function formatMoney(valueInPence, signed = false) {
   // Determine if we should add a sign (the caller said they want one and the original value in pence was negative)
   const sign = signed && valueInPence < 0 ? '-' : ''
 
-  return `${sign}£${positiveValueInPounds.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+  return `${sign}£${positiveValueInPounds.toLocaleString('en-GB', { maximumFractionDigits: 2, minimumFractionDigits: 2 })}`
 }
 
 /**
@@ -247,7 +247,7 @@ export function formatNumber(number, minimumFractionDigits = 0, maximumFractionD
     return null
   }
 
-  return number.toLocaleString('en-GB', { minimumFractionDigits, maximumFractionDigits })
+  return number.toLocaleString('en-GB', { maximumFractionDigits, minimumFractionDigits })
 }
 
 /**

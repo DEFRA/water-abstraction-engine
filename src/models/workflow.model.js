@@ -16,12 +16,12 @@ export default class WorkflowModel extends BaseModel {
   static get relationMappings() {
     return {
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'workflows.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

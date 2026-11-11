@@ -3,8 +3,8 @@
  * @module BaseRequest
  */
 
-import { HttpsProxyAgent } from 'hpagent'
 import got from 'got'
+import { HttpsProxyAgent } from 'hpagent'
 
 import serverConfig from '../config/server.config.js'
 
@@ -180,9 +180,9 @@ function _beforeRetryHook(error, retryCount) {
  */
 function _logFailure(method, result, url, additionalOptions) {
   const data = {
+    additionalOptions,
     method,
-    url,
-    additionalOptions
+    url
   }
 
   if (result.response instanceof Error) {
@@ -193,11 +193,11 @@ function _logFailure(method, result, url, additionalOptions) {
   }
 
   data.result = {
-    succeeded: result.succeeded,
     response: {
-      statusCode: result.response.statusCode,
-      body: result.response.body
-    }
+      body: result.response.body,
+      statusCode: result.response.statusCode
+    },
+    succeeded: result.succeeded
   }
 
   globalThis.GlobalNotifier.omg(`${method} request failed`, data)
@@ -218,8 +218,8 @@ function _requestOptions(additionalOptions) {
 
 async function _sendRequest(method, url, additionalOptions) {
   const result = {
-    succeeded: false,
-    response: null
+    response: null,
+    succeeded: false
   }
 
   try {

@@ -34,12 +34,12 @@ export default function previousAndNextPresenter(arrayOfElements, anchorElement)
   const index = _indexOfAnchorId(arrayOfElements, anchorElement)
 
   if (index === -1) {
-    return { previous: null, next: null }
+    return { next: null, previous: null }
   }
 
   return {
-    previous: arrayOfElements[index - 1] ?? null,
-    next: arrayOfElements[index + 1] ?? null
+    next: arrayOfElements[index + 1] ?? null,
+    previous: arrayOfElements[index - 1] ?? null
   }
 }
 

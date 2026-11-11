@@ -12,8 +12,8 @@ const { HTTP_STATUS_OK } = http2.constants
 export async function airbrake(request, _h) {
   // First section tests connecting to Airbrake through a manual notification
   request.server.app.airbrake.notify({
-    message: 'Airbrake manual health check',
     error: new Error('Airbrake manual health check error'),
+    message: 'Airbrake manual health check',
     session: {
       req: {
         id: request.info.id

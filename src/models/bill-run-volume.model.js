@@ -17,20 +17,20 @@ export default class BillRunVolumeModel extends BaseModel {
   static get relationMappings() {
     return {
       billRun: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillRunModel,
         join: {
           from: 'billRunVolumes.billRunId',
           to: 'billRuns.id'
-        }
+        },
+        modelClass: BillRunModel,
+        relation: Model.BelongsToOneRelation
       },
       chargeReference: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeReferenceModel,
         join: {
           from: 'billRunVolumes.chargeReferenceId',
           to: 'chargeReferences.id'
-        }
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }
@@ -38,16 +38,16 @@ export default class BillRunVolumeModel extends BaseModel {
   // NOTE: When we checked the live data the only statuses we could find in use were; 10, 40, 50, 60, 70, 90 and 100
   static get twoPartTariffStatuses() {
     return {
-      noReturnsSubmitted: 10,
-      underQuery: 20,
-      received: 30,
-      someReturnsDue: 40,
       lateReturns: 50,
-      overAbstraction: 60,
+      noMatchingChargeElement: 100,
       noReturnsForMatching: 70,
+      noReturnsSubmitted: 10,
       notDueForBilling: 80,
+      overAbstraction: 60,
+      received: 30,
       returnLineOverlapsChargePeriod: 90,
-      noMatchingChargeElement: 100
+      someReturnsDue: 40,
+      underQuery: 20
     }
   }
 

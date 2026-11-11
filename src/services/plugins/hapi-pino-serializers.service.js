@@ -104,8 +104,8 @@ function _req(req) {
   return {
     id: req.id,
     method: 'get',
-    url: req.url,
-    query: req.query
+    query: req.query,
+    url: req.url
   }
 }
 

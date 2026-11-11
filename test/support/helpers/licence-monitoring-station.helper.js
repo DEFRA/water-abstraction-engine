@@ -3,8 +3,8 @@
  */
 
 import LicenceMonitoringStationModel from '../../../src/models/licence-monitoring-station.model.js'
-import { generateUUID } from '../generators.js'
 import { timestampForPostgres } from '../../../src/lib/general.lib.js'
+import { generateUUID } from '../generators.js'
 
 /**
  * Add a new licence monitoring station

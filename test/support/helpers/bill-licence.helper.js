@@ -39,8 +39,8 @@ async function add(data = {}) {
 function defaults(data = {}) {
   const defaults = {
     billId: generateUUID(),
-    licenceRef: generateLicenceRef(),
-    licenceId: data.licenceId || generateUUID()
+    licenceId: data.licenceId || generateUUID(),
+    licenceRef: generateLicenceRef()
   }
 
   return {

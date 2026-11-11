@@ -18,28 +18,28 @@ export default class LicenceRoleModel extends BaseModel {
   static get relationMappings() {
     return {
       companyAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyAddressModel,
         join: {
           from: 'licenceRoles.id',
           to: 'companyAddresses.licenceRoleId'
-        }
+        },
+        modelClass: CompanyAddressModel,
+        relation: Model.HasManyRelation
       },
       companyContacts: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyContactModel,
         join: {
           from: 'licenceRoles.id',
           to: 'companyContacts.licenceRoleId'
-        }
+        },
+        modelClass: CompanyContactModel,
+        relation: Model.HasManyRelation
       },
       licenceDocumentRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceDocumentRoleModel,
         join: {
           from: 'licenceRoles.id',
           to: 'licenceDocumentRoles.licenceRoleId'
-        }
+        },
+        modelClass: LicenceDocumentRoleModel,
+        relation: Model.HasManyRelation
       }
     }
   }

@@ -54,7 +54,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is not configured for plain output (redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/not-found/not-plain'
-          server.route({ method: 'GET', options: { auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { auth: false }, path })
         })
 
         it('returns our 404 error HTML page', async () => {
@@ -70,7 +70,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is configured for plain output (do not redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/not-found/plain'
-          server.route({ method: 'GET', options: { app: { plainOutput: true }, auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { app: { plainOutput: true }, auth: false }, path })
         })
 
         it('returns a plain response', async () => {
@@ -94,7 +94,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is not configured for plain output (redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/forbidden/not-plain'
-          server.route({ method: 'GET', options: { auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { auth: false }, path })
         })
 
         it('returns our 404 error HTML page', async () => {
@@ -110,7 +110,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is configured for plain output (do not redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/forbidden/plain'
-          server.route({ method: 'GET', options: { app: { plainOutput: true }, auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { app: { plainOutput: true }, auth: false }, path })
         })
 
         it('returns a plain response', async () => {
@@ -134,7 +134,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is not configured for plain output (redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/session/not-plain'
-          server.route({ method: 'GET', options: { auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { auth: false }, path })
         })
 
         it('returns our 410 error HTML page', async () => {
@@ -150,7 +150,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is configured for plain output (do not redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/session/plain'
-          server.route({ method: 'GET', options: { app: { plainOutput: true }, auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { app: { plainOutput: true }, auth: false }, path })
         })
 
         it('returns a plain response', async () => {
@@ -174,7 +174,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is not configured for plain output (redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/bad/not-plain'
-          server.route({ method: 'GET', options: { auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { auth: false }, path })
         })
 
         it('returns our 500 (there is a problem) error HTML page', async () => {
@@ -190,7 +190,7 @@ describe('Error Pages Plugin', () => {
       describe('and the route is configured for plain output (do not redirect to error page)', () => {
         beforeEach(async () => {
           path = '/error-pages/bad/plain'
-          server.route({ method: 'GET', options: { app: { plainOutput: true }, auth: false }, path, handler })
+          server.route({ handler, method: 'GET', options: { app: { plainOutput: true }, auth: false }, path })
         })
 
         it('returns a plain response', async () => {
@@ -215,7 +215,7 @@ describe('Error Pages Plugin', () => {
     describe('and the route is not configured for plain output (do not redirect to error page)', () => {
       beforeEach(async () => {
         path = '/error-pages/good/not-plain'
-        server.route({ method: 'GET', options: { auth: false }, path, handler })
+        server.route({ handler, method: 'GET', options: { auth: false }, path })
       })
 
       it('lets the response continue without change', async () => {
@@ -229,7 +229,7 @@ describe('Error Pages Plugin', () => {
     describe('and the route is configured for plain output (do not redirect to error page)', () => {
       beforeEach(async () => {
         path = '/error-pages/good/plain'
-        server.route({ method: 'GET', options: { app: { plainOutput: true }, auth: false }, path, handler })
+        server.route({ handler, method: 'GET', options: { app: { plainOutput: true }, auth: false }, path })
       })
 
       it('lets the response continue without change', async () => {

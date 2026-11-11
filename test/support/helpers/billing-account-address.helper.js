@@ -38,8 +38,8 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    billingAccountId: generateUUID(),
     addressId: generateUUID(),
+    billingAccountId: generateUUID(),
     startDate: new Date('2023-08-18')
   }
 

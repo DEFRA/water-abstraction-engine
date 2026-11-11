@@ -12,7 +12,7 @@ export default [
     options: {
       handler: {
         // confine: false required — default confine: '.' blocks paths outside the consuming app's CWD (e.g. npm link)
-        file: { path: join(govukFrontendDir, 'govuk', 'all.js'), confine: false }
+        file: { confine: false, path: join(govukFrontendDir, 'govuk', 'all.js') }
       },
       app: {
         plainOutput: true
@@ -22,8 +22,11 @@ export default [
   },
   {
     method: 'GET',
-    path: '/assets/{path*}',
     options: {
+      app: {
+        plainOutput: true
+      },
+      auth: false,
       handler: {
         directory: {
           path: [
@@ -33,11 +36,8 @@ export default [
             join(govukFrontendDir, 'govuk', 'assets')
           ]
         }
-      },
-      app: {
-        plainOutput: true
-      },
-      auth: false
-    }
+      }
+    },
+    path: '/assets/{path*}'
   }
 ]

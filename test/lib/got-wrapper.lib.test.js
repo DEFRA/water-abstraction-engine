@@ -47,10 +47,10 @@ describe('Got Wrapper Lib', () => {
 
     it('calls back with response and body', async () => {
       const result = await wrapRequest(request, {
-        url: 'http://example.com/post',
-        method: 'POST',
         body: 'payload',
-        headers: { 'content-type': 'text/plain' }
+        headers: { 'content-type': 'text/plain' },
+        method: 'POST',
+        url: 'http://example.com/post'
       })
 
       expect(result.res.statusCode).toEqual(HTTP_STATUS_CREATED)
@@ -80,9 +80,9 @@ function wrapRequest(request, opts) {
   return new Promise((resolve) => {
     request(opts, (err, res, body) => {
       if (err) {
-        resolve({ err, res, body })
+        resolve({ body, err, res })
       } else {
-        resolve({ res, body })
+        resolve({ body, res })
       }
     })
   })

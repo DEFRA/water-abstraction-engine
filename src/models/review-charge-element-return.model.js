@@ -17,20 +17,20 @@ export default class ReviewChargeElementReturnModel extends BaseModel {
   static get relationMappings() {
     return {
       reviewChargeElement: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReviewChargeElementModel,
         join: {
           from: 'reviewChargeElementReturns.reviewChargeElementId',
           to: 'reviewChargeElements.id'
-        }
+        },
+        modelClass: ReviewChargeElementModel,
+        relation: Model.BelongsToOneRelation
       },
       reviewReturn: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReviewReturnModel,
         join: {
           from: 'reviewChargeElementReturns.reviewReturnId',
           to: 'reviewReturns.id'
-        }
+        },
+        modelClass: ReviewReturnModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

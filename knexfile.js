@@ -1,5 +1,5 @@
-import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import DatabaseConfig from './src/config/database.config.js'
 
@@ -11,36 +11,36 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const defaultConfig = {
   client: 'postgres',
-  useNullAsDefault: true,
   seeds: {
     directory: join(__dirname, 'db/seeds')
-  }
+  },
+  useNullAsDefault: true
 }
 
 const defaultConnection = {
-  host: DatabaseConfig.host,
-  user: DatabaseConfig.user,
-  password: DatabaseConfig.password,
+  charset: 'utf8',
   database: DatabaseConfig.database,
+  host: DatabaseConfig.host,
+  password: DatabaseConfig.password,
   port: DatabaseConfig.port,
-  charset: 'utf8'
+  user: DatabaseConfig.user
 }
 
 const development = {
   ...defaultConfig,
+  connection: defaultConnection,
   migrations: {
-    tableName: 'knex_migrations',
-    directory: join(__dirname, 'db/migrations/public')
-  },
-  connection: defaultConnection
+    directory: join(__dirname, 'db/migrations/public'),
+    tableName: 'knex_migrations'
+  }
 }
 
 const test = {
   ...defaultConfig,
   migrations: {
+    directory: [join(__dirname, 'db/migrations/legacy'), join(__dirname, 'db/migrations/public')],
     sortDirsSeparately: true,
-    tableName: 'knex_migrations',
-    directory: [join(__dirname, 'db/migrations/legacy'), join(__dirname, 'db/migrations/public')]
+    tableName: 'knex_migrations'
   },
   connection: {
     ...defaultConnection,
@@ -63,11 +63,11 @@ const test = {
 
 const production = {
   ...defaultConfig,
+  connection: defaultConnection,
   migrations: {
-    tableName: 'knex_migrations',
-    directory: join(__dirname, 'db/migrations/public')
-  },
-  connection: defaultConnection
+    directory: join(__dirname, 'db/migrations/public'),
+    tableName: 'knex_migrations'
+  }
 }
 
-export default { development, test, production }
+export default { development, production, test }

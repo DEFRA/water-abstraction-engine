@@ -19,8 +19,8 @@ describe('Bill Runs - Determine Billing Periods service', () => {
 
       expect(result).toHaveLength(1)
       expect(result[0]).toEqual({
-        startDate: new Date('2024-04-01'),
-        endDate: new Date('2025-03-31')
+        endDate: new Date('2025-03-31'),
+        startDate: new Date('2024-04-01')
       })
     })
   })
@@ -36,8 +36,8 @@ describe('Bill Runs - Determine Billing Periods service', () => {
 
       expect(result).toHaveLength(1)
       expect(result[0]).toEqual({
-        startDate: new Date('2023-04-01'),
-        endDate: new Date('2024-03-31')
+        endDate: new Date('2024-03-31'),
+        startDate: new Date('2023-04-01')
       })
     })
   })
@@ -53,8 +53,8 @@ describe('Bill Runs - Determine Billing Periods service', () => {
 
       expect(result).toHaveLength(1)
       expect(result[0]).toEqual({
-        startDate: new Date('2023-04-01'),
-        endDate: new Date('2024-03-31')
+        endDate: new Date('2024-03-31'),
+        startDate: new Date('2023-04-01')
       })
     })
   })
@@ -74,9 +74,9 @@ describe('Bill Runs - Determine Billing Periods service', () => {
 
         expect(result).toHaveLength(3)
         expect(result).toEqual([
-          { startDate: new Date('2024-04-01'), endDate: new Date('2025-03-31') },
-          { startDate: new Date('2023-04-01'), endDate: new Date('2024-03-31') },
-          { startDate: new Date('2022-04-01'), endDate: new Date('2023-03-31') }
+          { endDate: new Date('2025-03-31'), startDate: new Date('2024-04-01') },
+          { endDate: new Date('2024-03-31'), startDate: new Date('2023-04-01') },
+          { endDate: new Date('2023-03-31'), startDate: new Date('2022-04-01') }
         ])
       })
     })
@@ -91,12 +91,12 @@ describe('Bill Runs - Determine Billing Periods service', () => {
 
         expect(result).toHaveLength(6)
         expect(result).toEqual([
-          { startDate: new Date('2027-04-01'), endDate: new Date('2028-03-31') },
-          { startDate: new Date('2026-04-01'), endDate: new Date('2027-03-31') },
-          { startDate: new Date('2025-04-01'), endDate: new Date('2026-03-31') },
-          { startDate: new Date('2024-04-01'), endDate: new Date('2025-03-31') },
-          { startDate: new Date('2023-04-01'), endDate: new Date('2024-03-31') },
-          { startDate: new Date('2022-04-01'), endDate: new Date('2023-03-31') }
+          { endDate: new Date('2028-03-31'), startDate: new Date('2027-04-01') },
+          { endDate: new Date('2027-03-31'), startDate: new Date('2026-04-01') },
+          { endDate: new Date('2026-03-31'), startDate: new Date('2025-04-01') },
+          { endDate: new Date('2025-03-31'), startDate: new Date('2024-04-01') },
+          { endDate: new Date('2024-03-31'), startDate: new Date('2023-04-01') },
+          { endDate: new Date('2023-03-31'), startDate: new Date('2022-04-01') }
         ])
       })
     })

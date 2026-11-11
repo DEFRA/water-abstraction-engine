@@ -46,13 +46,13 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
-    licenceId: generateUUID(),
-    issue: 1,
-    increment: 0,
-    status: 'current',
-    startDate: new Date('2022-01-01'),
-    externalId: generateLicenceVersionExternalId(),
     createdAt: timestamp,
+    externalId: generateLicenceVersionExternalId(),
+    increment: 0,
+    issue: 1,
+    licenceId: generateUUID(),
+    startDate: new Date('2022-01-01'),
+    status: 'current',
     updatedAt: timestamp
   }
 

@@ -3,8 +3,8 @@
  * @module CreateNoticePresenter
  */
 
-import { formatDateObjectToISO } from '../../../lib/dates.lib.js'
 import { futureDueDate } from '../base.presenter.js'
+import { formatDateObjectToISO } from '../../../lib/dates.lib.js'
 import { NoticeJourney, NoticeType } from '../../../lib/static-lookups.lib.js'
 
 /**
@@ -48,8 +48,8 @@ function _additionalMetaData(notice, noticeData) {
 
   if (noticeData.journey === NoticeJourney.ALERTS) {
     notice.metadata.options = {
-      sendingAlertType: noticeData.alertType,
-      monitoringStationId: noticeData.monitoringStationId
+      monitoringStationId: noticeData.monitoringStationId,
+      sendingAlertType: noticeData.alertType
     }
   }
 

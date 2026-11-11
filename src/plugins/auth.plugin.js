@@ -73,8 +73,8 @@ export default function authPlugin(authService) {
           const isValid = token === NotifyConfig.callbackToken
 
           return {
-            isValid,
-            credentials: isValid ? { token } : null
+            credentials: isValid ? { token } : null,
+            isValid
           }
         }
       })

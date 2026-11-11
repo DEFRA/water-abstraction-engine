@@ -20,44 +20,44 @@ export default class LicenceDocumentRoleModel extends BaseModel {
   static get relationMappings() {
     return {
       address: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: AddressModel,
         join: {
           from: 'licenceDocumentRoles.addressId',
           to: 'addresses.id'
-        }
+        },
+        modelClass: AddressModel,
+        relation: Model.BelongsToOneRelation
       },
       company: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'licenceDocumentRoles.companyId',
           to: 'companies.id'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.BelongsToOneRelation
       },
       contact: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ContactModel,
         join: {
           from: 'licenceDocumentRoles.contactId',
           to: 'contacts.id'
-        }
+        },
+        modelClass: ContactModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceDocument: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceDocumentModel,
         join: {
           from: 'licenceDocumentRoles.licenceDocumentId',
           to: 'licenceDocuments.id'
-        }
+        },
+        modelClass: LicenceDocumentModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceRole: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceRoleModel,
         join: {
           from: 'licenceDocumentRoles.licenceRoleId',
           to: 'licenceRoles.id'
-        }
+        },
+        modelClass: LicenceRoleModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

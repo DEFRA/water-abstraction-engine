@@ -40,11 +40,11 @@ async function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
+    companyEntityId: generateUUID(),
     id: generateUUID(),
     licenceEntityId: generateUUID(),
-    role: 'primary_user',
     regimeEntityId: generateUUID(),
-    companyEntityId: generateUUID()
+    role: 'primary_user'
   }
 
   return {

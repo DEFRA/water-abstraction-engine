@@ -12,10 +12,10 @@ import { vi } from 'vitest'
  */
 export default function yarStub() {
   return {
+    clear: vi.fn(),
     flash: vi.fn(),
     get: vi.fn(),
     set: vi.fn(),
-    clear: vi.fn(),
     touch: vi.fn()
   }
 }

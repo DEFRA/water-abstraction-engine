@@ -24,20 +24,20 @@ export default class ReturnSubmissionModel extends BaseModel {
   static get relationMappings() {
     return {
       returnLog: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnLogModel,
         join: {
           from: 'returnSubmissions.returnLogId',
           to: 'returnLogs.id'
-        }
+        },
+        modelClass: ReturnLogModel,
+        relation: Model.BelongsToOneRelation
       },
       returnSubmissionLines: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnSubmissionLineModel,
         join: {
           from: 'returnSubmissions.id',
           to: 'returnSubmissionLines.returnSubmissionId'
-        }
+        },
+        modelClass: ReturnSubmissionLineModel,
+        relation: Model.HasManyRelation
       }
     }
   }

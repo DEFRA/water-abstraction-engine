@@ -16,12 +16,12 @@ export default class LicenceEndDateChangeModel extends BaseModel {
   static get relationMappings() {
     return {
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'licenceEndDateChanges.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

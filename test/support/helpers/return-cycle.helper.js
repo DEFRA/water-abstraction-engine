@@ -3,9 +3,9 @@
  */
 
 import ReturnCycleModel from '../../../src/models/return-cycle.model.js'
-import { generateUUID } from '../generators.js'
 import { selectRandomEntry } from '../general.js'
 import { timestampForPostgres } from '../../../src/lib/general.lib.js'
+import { generateUUID } from '../generators.js'
 
 /**
  * Add a new return cycle
@@ -47,13 +47,13 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
-    id: generateUUID(),
     createdAt: timestamp,
     dueDate: new Date('2023-04-28'),
     endDate: new Date('2023-03-31'),
+    id: generateUUID(),
+    startDate: new Date('2022-04-01'),
     submittedInWrls: false,
     summer: false,
-    startDate: new Date('2022-04-01'),
     updatedAt: timestamp
   }
 

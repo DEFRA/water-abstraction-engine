@@ -2,8 +2,8 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Test helpers
-import { returnCycleDates } from '../../src/lib/static-lookups.lib.js'
 import { today } from '../../src/lib/general.lib.js'
+import { returnCycleDates } from '../../src/lib/static-lookups.lib.js'
 
 // Thing under test
 import * as ReturnCycleDatesLib from '../../src/lib/return-cycle-dates.lib.js'

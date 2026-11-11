@@ -3,8 +3,8 @@
  */
 
 import RoleModel from '../../../src/models/role.model.js'
-import { data as roles } from '../../../db/seeds/data/roles.js'
 import { selectRandomEntry } from '../general.js'
+import { data as roles } from '../../../db/seeds/data/roles.js'
 
 const data = roles
 

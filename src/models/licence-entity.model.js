@@ -40,36 +40,36 @@ export default class LicenceEntityModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceDocumentHeaders: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceDocumentHeaderModel,
         join: {
           from: 'licenceEntities.id',
           to: 'licenceDocumentHeaders.companyEntityId'
-        }
+        },
+        modelClass: LicenceDocumentHeaderModel,
+        relation: Model.HasManyRelation
       },
       licenceEntityRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceEntityRoleModel,
         join: {
           from: 'licenceEntities.id',
           to: 'licenceEntityRoles.licenceEntityId'
-        }
+        },
+        modelClass: LicenceEntityRoleModel,
+        relation: Model.HasManyRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'licenceEntities.id',
           to: 'users.licenceEntityId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       },
       userVerifications: {
-        relation: Model.HasManyRelation,
-        modelClass: UserVerificationModel,
         join: {
           from: 'licenceEntities.id',
           to: 'userVerifications.licenceEntityId'
-        }
+        },
+        modelClass: UserVerificationModel,
+        relation: Model.HasManyRelation
       }
     }
   }

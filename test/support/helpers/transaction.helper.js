@@ -77,8 +77,8 @@ function defaults(data = {}) {
     endDate,
     loss: 'medium',
     purposes: [{}],
-    season: 'all year',
     scheme: 'sroc',
+    season: 'all year',
     source: 'non-tidal',
     startDate,
     volume: 11

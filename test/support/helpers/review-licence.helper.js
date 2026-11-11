@@ -41,10 +41,10 @@ function add(data = {}) {
 function defaults(data = {}) {
   const defaults = {
     billRunId: generateUUID(),
-    licenceId: generateUUID(),
-    licenceRef: generateLicenceRef(),
+    issues: '',
     licenceHolder: 'Licence Holder Ltd',
-    issues: ''
+    licenceId: generateUUID(),
+    licenceRef: generateLicenceRef()
   }
 
   return {

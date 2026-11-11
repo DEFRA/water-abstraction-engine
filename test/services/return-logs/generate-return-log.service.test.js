@@ -40,13 +40,13 @@ describe('Return Logs - Generate Return Log service', () => {
             isTwoPartTariff: false,
             isUpload: false,
             nald: {
-              regionCode: 4,
               areaCode: 'SAAR',
               formatId: returnRequirement.reference,
+              periodEndDay: '31',
+              periodEndMonth: '3',
               periodStartDay: '1',
               periodStartMonth: '4',
-              periodEndDay: '31',
-              periodEndMonth: '3'
+              regionCode: 4
             },
             points: [
               {
@@ -186,13 +186,13 @@ describe('Return Logs - Generate Return Log service', () => {
               const result = GenerateReturnLogService(returnRequirement, returnCycle, true)
 
               expect(result.metadata.nald).toEqual({
-                regionCode: 4,
                 areaCode: 'SAAR',
                 formatId: returnRequirement.reference,
+                periodEndDay: '31',
+                periodEndMonth: '3',
                 periodStartDay: '1',
                 periodStartMonth: '4',
-                periodEndDay: '31',
-                periodEndMonth: '3'
+                regionCode: 4
               })
             })
           })
@@ -211,13 +211,13 @@ describe('Return Logs - Generate Return Log service', () => {
               const result = GenerateReturnLogService(returnRequirement, returnCycle, true)
 
               expect(result.metadata.nald).toEqual({
-                regionCode: 4,
                 areaCode: 'SAAR',
                 formatId: returnRequirement.reference,
+                periodEndDay: 'null',
+                periodEndMonth: 'null',
                 periodStartDay: 'null',
                 periodStartMonth: 'null',
-                periodEndDay: 'null',
-                periodEndMonth: 'null'
+                regionCode: 4
               })
             })
           })
@@ -282,13 +282,13 @@ describe('Return Logs - Generate Return Log service', () => {
             isTwoPartTariff: false,
             isUpload: false,
             nald: {
-              regionCode: 4,
               areaCode: 'SAAR',
               formatId: returnRequirement.reference,
+              periodEndDay: '31',
+              periodEndMonth: '3',
               periodStartDay: '1',
               periodStartMonth: '4',
-              periodEndDay: '31',
-              periodEndMonth: '3'
+              regionCode: 4
             },
             points: [
               {

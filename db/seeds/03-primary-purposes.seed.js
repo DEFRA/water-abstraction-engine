@@ -1,6 +1,6 @@
 import PrimaryPurposeModel from '../../src/models/primary-purpose.model.js'
-import { data as primaryPurposes } from './data/primary-purposes.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
+import { data as primaryPurposes } from './data/primary-purposes.js'
 
 /**
  * Seeds the primary purpose reference data using an upsert

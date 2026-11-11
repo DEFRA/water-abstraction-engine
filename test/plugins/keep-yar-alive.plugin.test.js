@@ -32,21 +32,21 @@ describe('Keep Yar Alive Plugin', () => {
 
     // A route that when called will result in the session being touched
     server.route({
-      method: 'GET',
-      path: '/',
       handler: (_request, _h) => {
         return 'ok'
-      }
+      },
+      method: 'GET',
+      path: '/'
     })
 
     // A route with skipSessionTouch = true to confirm we don't touch the session if applied
     server.route({
-      method: 'GET',
-      path: '/skip',
-      options: { app: { skipSessionTouch: true } },
       handler: (_request, _h) => {
         return 'skipped'
-      }
+      },
+      method: 'GET',
+      options: { app: { skipSessionTouch: true } },
+      path: '/skip'
     })
 
     notifierStub = GlobalNotifierStub()

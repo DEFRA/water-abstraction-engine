@@ -49,7 +49,7 @@ export default {
           },
           secret,
           {
-            header: { typ: 'JWT', alg: 'HS256' }
+            header: { alg: 'HS256', typ: 'JWT' }
           }
         )
       },

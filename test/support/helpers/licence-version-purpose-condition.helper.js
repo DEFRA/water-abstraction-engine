@@ -47,11 +47,11 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
-    licenceVersionPurposeId: generateUUID(),
-    licenceVersionPurposeConditionTypeId,
-    externalId: `9:${generateRandomInteger(10000, 99999)}:1:0`,
-    source: 'nald',
     createdAt: timestamp,
+    externalId: `9:${generateRandomInteger(10000, 99999)}:1:0`,
+    licenceVersionPurposeConditionTypeId,
+    licenceVersionPurposeId: generateUUID(),
+    source: 'nald',
     updatedAt: timestamp
   }
 

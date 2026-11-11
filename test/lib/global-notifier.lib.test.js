@@ -12,10 +12,10 @@ describe('Global Notifier Lib', () => {
   let pinoFake
 
   beforeEach(async () => {
-    airbrakeFake = { notify: vi.fn().mockResolvedValue({ id: 1 }), flush: vi.fn() }
+    airbrakeFake = { flush: vi.fn(), notify: vi.fn().mockResolvedValue({ id: 1 }) }
     vi.spyOn(BaseNotifierLib.prototype, '_setNotifier').mockReturnValue(airbrakeFake)
 
-    pinoFake = { info: vi.fn(), error: vi.fn() }
+    pinoFake = { error: vi.fn(), info: vi.fn() }
     vi.spyOn(BaseNotifierLib.prototype, '_setLogger').mockReturnValue(pinoFake)
   })
 

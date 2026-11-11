@@ -3,13 +3,14 @@
  * @module BaseNotifierLib
  */
 
-import { Notifier } from '@airbrake/node'
 import Pino from 'pino'
+import { Notifier } from '@airbrake/node'
+
+import createEmailRequest from '../requests/notify/create-email.request.js'
+import { NOTIFY_TEMPLATES } from './notify-templates.lib.js'
 
 import AirbrakeConfig from '../config/airbrake.config.js'
-import { NOTIFY_TEMPLATES } from './notify-templates.lib.js'
 import NotifyConfig from '../config/notify.config.js'
-import createEmailRequest from '../requests/notify/create-email.request.js'
 
 /**
  * Based class for combined logging and Airbrake (Errbit) notification managers
@@ -242,11 +243,11 @@ class BaseNotifierLib {
     }
 
     return new Notifier({
-      host: AirbrakeConfig.host,
-      projectId: AirbrakeConfig.projectId,
-      projectKey: AirbrakeConfig.projectKey,
       environment: AirbrakeConfig.environment,
-      performanceStats: false
+      host: AirbrakeConfig.host,
+      performanceStats: false,
+      projectId: AirbrakeConfig.projectId,
+      projectKey: AirbrakeConfig.projectKey
     })
   }
 }

@@ -9,9 +9,9 @@
  */
 
 import Nunjucks from 'nunjucks'
+import path from 'node:path'
 import Vision from '@hapi/vision'
 import { existsSync } from 'node:fs'
-import path from 'node:path'
 
 import MarkdownFilter from '../../views/filters/markdown.filter.js'
 
@@ -148,9 +148,9 @@ export default function ViewsPlugin(config) {
       auth: {
         authenticated: request.auth.isAuthenticated,
         authorized: request.auth.isAuthorized,
-        user: request.auth.credentials?.user,
+        permission: request.auth.credentials?.permission,
         scope: request.auth.credentials?.scope,
-        permission: request.auth.credentials?.permission
+        user: request.auth.credentials?.user
       },
       // The navigation links, if any, to display in the top-level GOV.UK header
       navigationLinks: request.auth.isAuthenticated ? navigationLinks : []

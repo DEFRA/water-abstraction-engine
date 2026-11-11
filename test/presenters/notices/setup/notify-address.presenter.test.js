@@ -300,6 +300,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
 
         expect(result).toEqual({
           address_line_1: 'Mr J H Watson',
+          address_line_10: 'England',
           address_line_2: 'INVALID ADDRESS - Needs a valid postcode or country outside the UK',
           address_line_3: 'Sherlock Holmes Consulting Detective',
           address_line_4: '221b Baker Street',
@@ -307,8 +308,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
           address_line_6: 'Westminster',
           address_line_7: 'London',
           address_line_8: 'Central London',
-          address_line_9: '80802',
-          address_line_10: 'England'
+          address_line_9: '80802'
         })
       })
     })
@@ -323,6 +323,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
 
         expect(result).toEqual({
           address_line_1: 'Mr J H Watson',
+          address_line_10: 'England',
           address_line_2: 'INVALID ADDRESS - A line starts with special character',
           address_line_3: 'Sherlock Holmes Consulting Detective',
           address_line_4: '(Admin) 221b Baker Street',
@@ -330,8 +331,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
           address_line_6: 'Westminster',
           address_line_7: 'London',
           address_line_8: 'Central London',
-          address_line_9: 'NW1 6XE',
-          address_line_10: 'England'
+          address_line_9: 'NW1 6XE'
         })
       })
     })

@@ -8,8 +8,8 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains values with extra whitespace', () => {
     it('can remove them from simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        customerName: 'Bert & Ernie  '
+        customerName: 'Bert & Ernie  ',
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -19,11 +19,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('can remove them from nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         details: {
           firstName: ' Bert',
           lastName: ' Ernie '
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -35,8 +35,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('can remove them from arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        codes: [' ABD1 ', 'B1 ', ' C2']
+        codes: [' ABD1 ', 'B1 ', ' C2'],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -46,11 +46,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('can remove them from objects in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         contacts: [
           { firstName: ' Bert', lastName: ' Ernie ' },
           { firstName: 'Big', lastName: 'Bird' }
-        ]
+        ],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -63,8 +63,8 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains values which are just whitespace', () => {
     it('removes them from simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        customerName: ' '
+        customerName: ' ',
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -74,11 +74,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         details: {
           firstName: ' ',
           lastName: 'Ernie'
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -89,8 +89,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        codes: [' ABD1 ', ' ', 'C2']
+        codes: [' ABD1 ', ' ', 'C2'],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -100,11 +100,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from objects in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         contacts: [
           { firstName: 'Bert', lastName: ' ' },
           { firstName: 'Big', lastName: 'Bird' }
-        ]
+        ],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -117,8 +117,8 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains values which are empty', () => {
     it('removes them from simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        customerName: ''
+        customerName: '',
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -128,11 +128,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         details: {
           firstName: '',
           lastName: 'Ernie'
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -143,8 +143,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        codes: [' ABD1 ', '', 'C2']
+        codes: [' ABD1 ', '', 'C2'],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -154,11 +154,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from objects in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         contacts: [
           { firstName: 'Bert', lastName: '' },
           { firstName: 'Big', lastName: 'Bird' }
-        ]
+        ],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -171,8 +171,8 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains null values', () => {
     it('removes them from simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        customerName: null
+        customerName: null,
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -182,11 +182,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         details: {
           firstName: null,
           lastName: 'Ernie'
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -197,8 +197,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        codes: [' ABD1 ', null, 'C2']
+        codes: [' ABD1 ', null, 'C2'],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -208,11 +208,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes them from objects in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         contacts: [
           { firstName: 'Bert', lastName: null },
           { firstName: 'Big', lastName: 'Bird' }
-        ]
+        ],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -225,9 +225,9 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains boolean values', () => {
     it('leaves them untouched in simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         existingCustomer: true,
-        hasOrders: false
+        hasOrders: false,
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -237,11 +237,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('leaves them untouched in nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         orderStatus: {
           packed: true,
           shipped: false
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -251,8 +251,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('leaves them untouched in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        preferences: [true, false, true]
+        preferences: [true, false, true],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -264,9 +264,9 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains number values', () => {
     it('leaves them untouched in simple objects', () => {
       const dirtyObject = {
+        lines: 5,
         reference: 'BESESAME001',
-        value: 120.3,
-        lines: 5
+        value: 120.3
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -276,11 +276,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('leaves them untouched in nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         orderDetails: {
-          value: 121.33,
-          lines: 6
-        }
+          lines: 6,
+          value: 121.33
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -290,8 +290,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('leaves them untouched in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        lineValues: [10.0, 11.54, 2.99]
+        lineValues: [10.0, 11.54, 2.99],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -303,8 +303,8 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object has values that contain characters like &, <, and >', () => {
     it('leaves them untouched in simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        customerName: 'Bert< & >Ernie'
+        customerName: 'Bert< & >Ernie',
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -314,11 +314,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('leaves them untouched in nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         details: {
           firstName: 'Bert <',
           lastName: '>Ernie<'
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -328,8 +328,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('leaves them untouched in arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        codes: ['A1&', 'B2<', 'C3>']
+        codes: ['A1&', 'B2<', 'C3>'],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -341,8 +341,8 @@ describe('Plugins - Payload Cleaning Service', () => {
   describe('when an object contains dangerous content', () => {
     it('removes it from simple objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        customerName: '<script>alert(1)</script>'
+        customerName: '<script>alert(1)</script>',
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -352,11 +352,11 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes it from nested objects', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
         details: {
           firstName: '<script>alert(1)</script>',
           lastName: 'Ernie'
-        }
+        },
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)
@@ -367,8 +367,8 @@ describe('Plugins - Payload Cleaning Service', () => {
 
     it('removes it from arrays', () => {
       const dirtyObject = {
-        reference: 'BESESAME001',
-        codes: ['ABD1', '<script>alert(1)</script>', 'C2']
+        codes: ['ABD1', '<script>alert(1)</script>', 'C2'],
+        reference: 'BESESAME001'
       }
 
       const cleanedObject = PayloadCleaningService(dirtyObject)

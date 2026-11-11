@@ -17,20 +17,20 @@ export default class LicenceUnregistrationModel extends BaseModel {
   static get relationMappings() {
     return {
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'licenceUnregistrations.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'licenceUnregistrations.createdBy',
           to: 'users.id'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

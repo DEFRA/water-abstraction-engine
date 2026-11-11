@@ -2,11 +2,11 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
-import { NOTIFY_TEMPLATES } from '../../../../src/lib/notify-templates.lib.js'
 import RecipientsFixture from '../../../support/fixtures/recipients.fixture.js'
 import { formatLongDate } from '../../../../src/presenters/base.presenter.js'
 import { futureDueDate } from '../../../../src/presenters/notices/base.presenter.js'
 import { generateUUID } from '../../../support/generators.js'
+import { NOTIFY_TEMPLATES } from '../../../../src/lib/notify-templates.lib.js'
 
 // Thing under test
 import ReturnsNotificationsPresenter from '../../../../src/presenters/notices/setup/returns-notifications.presenter.js'
@@ -322,10 +322,10 @@ describe('Notices - Setup - Returns Notifications presenter', () => {
           address_line_5: 'Surrey',
           address_line_6: 'WD25 7LR',
           licenceNumber: recipients[2].licence_refs[0],
+          name: 'Returnsholder',
           periodEndDate: '31 March 2025',
           periodStartDate: '1 January 2025',
-          returnDueDate: formatLongDate(recipients[2].notificationDueDate),
-          name: 'Returnsholder'
+          returnDueDate: formatLongDate(recipients[2].notificationDueDate)
         })
       })
     })

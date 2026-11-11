@@ -25,44 +25,44 @@ export default class ReturnLogModel extends BaseModel {
   static get relationMappings() {
     return {
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'returnLogs.licenceRef',
           to: 'licences.licenceRef'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       returnCycle: {
-        relation: Model.HasOneRelation,
-        modelClass: ReturnCycleModel,
         join: {
           from: 'returnLogs.returnCycleId',
           to: 'returnCycles.id'
-        }
+        },
+        modelClass: ReturnCycleModel,
+        relation: Model.HasOneRelation
       },
       returnRequirement: {
-        relation: Model.HasOneRelation,
-        modelClass: ReturnRequirementModel,
         join: {
           from: 'returnLogs.returnRequirementId',
           to: 'returnRequirements.id'
-        }
+        },
+        modelClass: ReturnRequirementModel,
+        relation: Model.HasOneRelation
       },
       returnSubmissions: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnSubmissionModel,
         join: {
           from: 'returnLogs.id',
           to: 'returnSubmissions.returnLogId'
-        }
+        },
+        modelClass: ReturnSubmissionModel,
+        relation: Model.HasManyRelation
       },
       reviewReturns: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewReturnModel,
         join: {
           from: 'returnLogs.id',
           to: 'reviewReturns.returnLogId'
-        }
+        },
+        modelClass: ReviewReturnModel,
+        relation: Model.HasManyRelation
       }
     }
   }

@@ -16,21 +16,21 @@ export default class GroupRoleModel extends BaseModel {
 
   static get relationMappings() {
     return {
-      role: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: RoleModel,
-        join: {
-          from: 'groupRoles.roleId',
-          to: 'roles.id'
-        }
-      },
       group: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: GroupModel,
         join: {
           from: 'groupRoles.groupId',
           to: 'groups.id'
-        }
+        },
+        modelClass: GroupModel,
+        relation: Model.BelongsToOneRelation
+      },
+      role: {
+        join: {
+          from: 'groupRoles.roleId',
+          to: 'roles.id'
+        },
+        modelClass: RoleModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

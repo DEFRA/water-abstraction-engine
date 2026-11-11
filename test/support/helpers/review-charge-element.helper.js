@@ -39,8 +39,8 @@ function add(data = {}) {
 function defaults(data = {}) {
   const defaults = {
     chargeElementId: generateUUID(),
-    reviewChargeReferenceId: generateUUID(),
-    issues: ''
+    issues: '',
+    reviewChargeReferenceId: generateUUID()
   }
 
   return {

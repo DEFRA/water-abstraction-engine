@@ -17,20 +17,20 @@ export default class ChargeVersionNote extends BaseModel {
   static get relationMappings() {
     return {
       chargeVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'chargeVersionNotes.id',
           to: 'chargeVersions.noteId'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.BelongsToOneRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'chargeVersionNotes.userId',
           to: 'users.userId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

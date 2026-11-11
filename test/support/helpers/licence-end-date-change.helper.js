@@ -41,9 +41,9 @@ function defaults(data = {}) {
   const changeDate = formatDateObjectToISO(new Date())
 
   const defaults = {
-    licenceId: generateUUID(),
+    changeDate,
     dateType: 'revoked',
-    changeDate
+    licenceId: generateUUID()
   }
 
   return {

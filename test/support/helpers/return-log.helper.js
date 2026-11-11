@@ -56,10 +56,10 @@ function defaults(data = {}) {
   const dueDate = data.dueDate ? new Date(data.dueDate) : null
 
   const defaults = {
-    id: generateUUID(),
     createdAt: timestamp,
     dueDate,
     endDate,
+    id: generateUUID(),
     licenceRef,
     metadata: {
       description: 'BOREHOLE AT AVALON',
@@ -69,13 +69,13 @@ function defaults(data = {}) {
       isTwoPartTariff: false,
       isUpload: false,
       nald: {
-        regionCode: 9,
         areaCode: 'ARCA',
         formatId: returnReference,
+        periodEndDay: 28,
+        periodEndMonth: 4,
         periodStartDay: 1,
         periodStartMonth: 4,
-        periodEndDay: 28,
-        periodEndMonth: 4
+        regionCode: 9
       },
       points: [],
       purposes: [],

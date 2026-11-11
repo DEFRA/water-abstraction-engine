@@ -19,36 +19,36 @@ export default class BillingAccountAddressModel extends BaseModel {
   static get relationMappings() {
     return {
       address: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: AddressModel,
         join: {
           from: 'billingAccountAddresses.addressId',
           to: 'addresses.id'
-        }
+        },
+        modelClass: AddressModel,
+        relation: Model.BelongsToOneRelation
       },
       billingAccount: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillingAccountModel,
         join: {
           from: 'billingAccountAddresses.billingAccountId',
           to: 'billingAccounts.id'
-        }
+        },
+        modelClass: BillingAccountModel,
+        relation: Model.BelongsToOneRelation
       },
       company: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'billingAccountAddresses.companyId',
           to: 'companies.id'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.BelongsToOneRelation
       },
       contact: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ContactModel,
         join: {
           from: 'billingAccountAddresses.contactId',
           to: 'contacts.id'
-        }
+        },
+        modelClass: ContactModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

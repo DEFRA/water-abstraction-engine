@@ -23,8 +23,8 @@ describe('Plugins - Hapi Pino Log In Test Service', () => {
         const result = HapiPinoLogInTestService(false)
 
         expect(result).toEqual({
-          logEvents: false,
-          ignoredEventTags: { log: ['DEBUG', 'INFO'], request: ['DEBUG', 'INFO'] }
+          ignoredEventTags: { log: ['DEBUG', 'INFO'], request: ['DEBUG', 'INFO'] },
+          logEvents: false
         })
       })
     })

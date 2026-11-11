@@ -22,8 +22,8 @@ export function up(knex) {
 
     // Constraints
     table.unique(['system_id', 'system_internal_id', 'regime_entity_id'], {
-      useConstraint: true,
-      indexName: 'external_key'
+      indexName: 'external_key',
+      useConstraint: true
     })
 
     table.unique([
@@ -37,8 +37,8 @@ export function up(knex) {
     ])
 
     table.unique(['system_external_id'], {
-      useConstraint: true,
-      indexName: 'document_header_system_external_id_index'
+      indexName: 'document_header_system_external_id_index',
+      useConstraint: true
     })
   })
 }

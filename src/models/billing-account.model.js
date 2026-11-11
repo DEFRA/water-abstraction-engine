@@ -6,8 +6,8 @@
 import { Model } from 'objection'
 
 import BaseModel from './base.model.js'
-import BillModel from './bill.model.js'
 import BillingAccountAddressModel from './billing-account-address.model.js'
+import BillModel from './bill.model.js'
 import ChargeVersionModel from './charge-version.model.js'
 import CompanyModel from './company.model.js'
 
@@ -19,36 +19,36 @@ export default class BillingAccountModel extends BaseModel {
   static get relationMappings() {
     return {
       billingAccountAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: BillingAccountAddressModel,
         join: {
           from: 'billingAccounts.id',
           to: 'billingAccountAddresses.billingAccountId'
-        }
+        },
+        modelClass: BillingAccountAddressModel,
+        relation: Model.HasManyRelation
       },
       bills: {
-        relation: Model.HasManyRelation,
-        modelClass: BillModel,
         join: {
           from: 'billingAccounts.id',
           to: 'bills.billingAccountId'
-        }
+        },
+        modelClass: BillModel,
+        relation: Model.HasManyRelation
       },
       chargeVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'billingAccounts.id',
           to: 'chargeVersions.billingAccountId'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.HasManyRelation
       },
       company: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'billingAccounts.companyId',
           to: 'companies.id'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

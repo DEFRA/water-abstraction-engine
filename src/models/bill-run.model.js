@@ -19,51 +19,51 @@ export default class BillRunModel extends BaseModel {
   static get relationMappings() {
     return {
       billRunVolumes: {
-        relation: Model.HasManyRelation,
-        modelClass: BillRunVolumeModel,
         join: {
           from: 'billRuns.id',
           to: 'billRunVolumes.billRunId'
-        }
+        },
+        modelClass: BillRunVolumeModel,
+        relation: Model.HasManyRelation
       },
       bills: {
-        relation: Model.HasManyRelation,
-        modelClass: BillModel,
         join: {
           from: 'billRuns.id',
           to: 'bills.billRunId'
-        }
+        },
+        modelClass: BillModel,
+        relation: Model.HasManyRelation
       },
       region: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: RegionModel,
         join: {
           from: 'billRuns.regionId',
           to: 'regions.id'
-        }
+        },
+        modelClass: RegionModel,
+        relation: Model.BelongsToOneRelation
       },
       reviewLicences: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewLicenceModel,
         join: {
           from: 'billRuns.id',
           to: 'reviewLicences.billRunId'
-        }
+        },
+        modelClass: ReviewLicenceModel,
+        relation: Model.HasManyRelation
       }
     }
   }
 
   static get errorCodes() {
     return {
-      failedToPopulateChargeVersions: 10,
-      failedToProcessChargeVersions: 20,
-      failedToPrepareTransactions: 30,
-      failedToCreateCharge: 40,
       failedToCreateBillRun: 50,
+      failedToCreateCharge: 40,
       failedToDeleteInvoice: 60,
-      failedToProcessTwoPartTariff: 70,
       failedToGetChargeModuleBillRunSummary: 80,
-      failedToProcessRebilling: 90
+      failedToPopulateChargeVersions: 10,
+      failedToPrepareTransactions: 30,
+      failedToProcessChargeVersions: 20,
+      failedToProcessRebilling: 90,
+      failedToProcessTwoPartTariff: 70
     }
   }
 }

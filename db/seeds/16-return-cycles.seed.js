@@ -1,11 +1,11 @@
 import ReturnCycleModel from '../../src/models/return-cycle.model.js'
 import { compareDates, determineFinancialYearEnd } from '../../src/lib/dates.lib.js'
+import { generateUUID, timestampForPostgres, today } from '../../src/lib/general.lib.js'
 import {
   determineCycleDueDate,
   determineCycleEndDate,
   determineCycleStartDate
 } from '../../src/lib/return-cycle-dates.lib.js'
-import { generateUUID, timestampForPostgres, today } from '../../src/lib/general.lib.js'
 
 export async function seed() {
   const todaysDate = today()
@@ -38,12 +38,12 @@ export async function seed() {
 
 function _generateReturnCycle(summer, determinationDate) {
   return {
+    dueDate: determineCycleDueDate(summer, determinationDate),
+    endDate: determineCycleEndDate(summer, determinationDate),
     id: generateUUID(),
     startDate: determineCycleStartDate(summer, determinationDate),
-    endDate: determineCycleEndDate(summer, determinationDate),
-    dueDate: determineCycleDueDate(summer, determinationDate),
-    summer,
-    submittedInWrls: true
+    submittedInWrls: true,
+    summer
   }
 }
 

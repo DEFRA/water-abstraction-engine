@@ -18,8 +18,6 @@ export default class PointModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceVersionPurposes: {
-        relation: Model.ManyToManyRelation,
-        modelClass: LicenceVersionPurposeModel,
         join: {
           from: 'points.id',
           through: {
@@ -27,11 +25,11 @@ export default class PointModel extends BaseModel {
             to: 'licenceVersionPurposePoints.licenceVersionPurposeId'
           },
           to: 'licenceVersionPurposes.id'
-        }
+        },
+        modelClass: LicenceVersionPurposeModel,
+        relation: Model.ManyToManyRelation
       },
       returnRequirements: {
-        relation: Model.ManyToManyRelation,
-        modelClass: ReturnRequirementModel,
         join: {
           from: 'points.id',
           through: {
@@ -39,15 +37,17 @@ export default class PointModel extends BaseModel {
             to: 'returnRequirementPoints.returnRequirementId'
           },
           to: 'returnRequirements.id'
-        }
+        },
+        modelClass: ReturnRequirementModel,
+        relation: Model.ManyToManyRelation
       },
       source: {
-        relation: Model.HasOneRelation,
-        modelClass: SourceModel,
         join: {
           from: 'points.sourceId',
           to: 'sources.id'
-        }
+        },
+        modelClass: SourceModel,
+        relation: Model.HasOneRelation
       }
     }
   }

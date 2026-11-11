@@ -43,16 +43,16 @@ function summerReturnRequirement() {
     externalId: `${returnVersion.licence.region.naldRegionId}:${reference}`,
     id: generateUUID(),
     legacyId: reference,
+    points: [_point('Summer cycle - live licence - live return version - summer return requirement')],
     reference,
     reportingFrequency: 'day',
+    returnRequirementPurposes: [_returnRequirementPurpose()],
+    returnVersion,
     returnVersionId: returnVersion.id,
     siteDescription: 'PUMP AT TINTAGEL',
     summer: true,
-    twoPartTariff: false,
-    returnVersion,
-    points: [_point('Summer cycle - live licence - live return version - summer return requirement')],
 
-    returnRequirementPurposes: [_returnRequirementPurpose()]
+    twoPartTariff: false
   }
 }
 
@@ -81,15 +81,15 @@ function winterReturnRequirement(quarterlyReturns = false) {
     externalId: `${returnVersion.licence.region.naldRegionId}:${reference}`,
     id: generateUUID(),
     legacyId: reference,
+    points: [_point('Winter cycle - live licence - live return version - winter return requirement')],
     reference,
     reportingFrequency: 'day',
+    returnRequirementPurposes: [_returnRequirementPurpose()],
+    returnVersion,
     returnVersionId: returnVersion.id,
     siteDescription: 'BOREHOLE AT AVALON',
     summer: false,
-    twoPartTariff: false,
-    returnVersion,
-    points: [_point('Winter cycle - live licence - live return version - winter return requirement')],
-    returnRequirementPurposes: [_returnRequirementPurpose()]
+    twoPartTariff: false
   }
 }
 
@@ -119,23 +119,23 @@ function _returnVersion(quarterlyReturns) {
   return {
     endDate: null,
     id: generateUUID(),
-    reason: 'new-licence',
-    startDate: new Date('2022-04-01'),
     licence: {
       areacode: 'SAAR',
       expiredDate: null,
       id: generateUUID(),
       lapsedDate: null,
       licenceRef: generateLicenceRef(),
-      revokedDate: null,
       region: {
         id: region.id,
         naldRegionId: region.naldRegionId
       },
+      revokedDate: null,
       startDate: new Date('2022-04-01')
     },
+    multipleUpload: false,
     quarterlyReturns,
-    multipleUpload: false
+    reason: 'new-licence',
+    startDate: new Date('2022-04-01')
   }
 }
 

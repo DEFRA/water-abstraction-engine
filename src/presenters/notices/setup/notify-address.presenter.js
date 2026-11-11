@@ -287,6 +287,7 @@ function _invalidAddressParts(contact) {
   // We want to tailor the address depending on why its invalid. In this case special characters trumps no country
   // and postcode
   let message = 'INVALID ADDRESS - Needs a valid postcode or country outside the UK'
+
   if (hasSpecialChars) {
     message = 'INVALID ADDRESS - A line starts with special character'
   }

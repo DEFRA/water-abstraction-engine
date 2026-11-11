@@ -64,8 +64,8 @@ function _calculateAbstractionOverlapPeriod(referencePeriod, abstractionPeriod) 
   const earliestEndDateTimestamp = Math.min(abstractionPeriod.endDate, referencePeriod.endDate)
 
   return {
-    startDate: new Date(latestStartDateTimestamp),
-    endDate: new Date(earliestEndDateTimestamp)
+    endDate: new Date(earliestEndDateTimestamp),
+    startDate: new Date(latestStartDateTimestamp)
   }
 }
 
@@ -75,8 +75,8 @@ function _determineYears(referencePeriod, startDay, startMonth, endDay, endMonth
   // Reminder! Because of the unique qualities of Javascript, Year and Day are literal values, month is an index! So,
   // January is actually 0, February is 1 etc. This is why we are always deducting 1 from the months.
   const firstPeriod = {
-    startDate: new Date(periodStartYear, startMonth - 1, startDay),
-    endDate: new Date(periodStartYear, endMonth - 1, endDay)
+    endDate: new Date(periodStartYear, endMonth - 1, endDay),
+    startDate: new Date(periodStartYear, startMonth - 1, startDay)
   }
 
   // Determine if this is an out-year abstraction period by checking whether the end date is before the start date. If
@@ -88,10 +88,10 @@ function _determineYears(referencePeriod, startDay, startMonth, endDay, endMonth
   // Create periods for the previous year and the following year, covering all possible abstraction periods that our
   // reference period could overlap
   const previousPeriod = {
-    startDate: _subtractOneYear(firstPeriod.startDate),
-    endDate: _subtractOneYear(firstPeriod.endDate)
+    endDate: _subtractOneYear(firstPeriod.endDate),
+    startDate: _subtractOneYear(firstPeriod.startDate)
   }
-  const nextPeriod = { startDate: _addOneYear(firstPeriod.startDate), endDate: _addOneYear(firstPeriod.endDate) }
+  const nextPeriod = { endDate: _addOneYear(firstPeriod.endDate), startDate: _addOneYear(firstPeriod.startDate) }
 
   // Filter out any periods which don't overlap our reference period and return the ones which do
   return [previousPeriod, firstPeriod, nextPeriod].filter((abstractionPeriod) => {

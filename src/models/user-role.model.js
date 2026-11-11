@@ -17,20 +17,20 @@ export default class UserRoleModel extends BaseModel {
   static get relationMappings() {
     return {
       role: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: RoleModel,
         join: {
           from: 'userRoles.roleId',
           to: 'roles.id'
-        }
+        },
+        modelClass: RoleModel,
+        relation: Model.BelongsToOneRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'userRoles.userId',
           to: 'users.userId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

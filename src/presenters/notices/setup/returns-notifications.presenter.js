@@ -3,9 +3,9 @@
  * @module ReturnsNotificationsPresenter
  */
 
-import { NOTIFY_TEMPLATES } from '../../../lib/notify-templates.lib.js'
 import NotifyAddressPresenter from './notify-address.presenter.js'
 import { formatLongDate } from '../../base.presenter.js'
+import { NOTIFY_TEMPLATES } from '../../../lib/notify-templates.lib.js'
 
 const MESSAGE_REFS = {
   alternateInvitations: {
@@ -63,8 +63,8 @@ function _email(recipient, noticeId, session) {
     dueDate: recipient.notificationDueDate,
     eventId: noticeId,
     licences: recipient.licence_refs,
-    messageType,
     messageRef: MESSAGE_REFS[noticeType][journey],
+    messageType,
     personalisation: {
       licenceNumber: recipient.licence_refs[0],
       periodEndDate: formatLongDate(determinedReturnsPeriod?.endDate),

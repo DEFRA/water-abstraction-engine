@@ -2,7 +2,7 @@
  * @module Faker
  */
 
-import { Faker, base, en } from '@faker-js/faker'
+import { base, en, Faker } from '@faker-js/faker'
 
 /**
  * A shared Faker instance

@@ -123,7 +123,7 @@ describe('Submit Page Lib', () => {
       it('returns the expected results, "openFilter" is set to FALSE', () => {
         const result = SubmitPageLib.processSavedFilters(yarStub, filterKey)
 
-        expect(result).toEqual({ regions: [], status: null, openFilter: false })
+        expect(result).toEqual({ openFilter: false, regions: [], status: null })
       })
     })
 
@@ -136,7 +136,7 @@ describe('Submit Page Lib', () => {
       it('returns the expected results, "openFilter" is set to TRUE', () => {
         const result = SubmitPageLib.processSavedFilters(yarStub, filterKey)
 
-        expect(result).toEqual({ regions: ['south', 'north'], openFilter: true })
+        expect(result).toEqual({ openFilter: true, regions: ['south', 'north'] })
       })
     })
 
@@ -149,7 +149,7 @@ describe('Submit Page Lib', () => {
       it('returns the expected results, "openFilter" is set to TRUE', () => {
         const result = SubmitPageLib.processSavedFilters(yarStub, filterKey)
 
-        expect(result).toEqual({ status: 'review', openFilter: true })
+        expect(result).toEqual({ openFilter: true, status: 'review' })
       })
     })
   })

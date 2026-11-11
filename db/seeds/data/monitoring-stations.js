@@ -1,5 +1,5 @@
-import { fileURLToPath } from 'node:url'
 import { existsSync, readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 
 const DATA_FILE = fileURLToPath(new URL('./monitoring-stations.json', import.meta.url))
 
