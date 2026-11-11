@@ -18,6 +18,8 @@ export function up(knex) {
     table.boolean('is_test').notNullable().defaultTo(false)
     table.uuid('company_id')
     table.uuid('address_id')
+    table.text('criticality_code')
+    table.text('criticality_description')
 
     // Legacy timestamps
     // NOTE: They are not automatically set
