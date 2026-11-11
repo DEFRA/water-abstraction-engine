@@ -49,6 +49,7 @@ export default {
           include: [
             'test/controllers/**/*.test.js',
             'test/errors/**/*.test.js',
+            'test/eslint-rules/**/*.test.js',
             'test/lib/**/*.test.js',
             'test/models/**/*.test.js',
             'test/plugins/**/*.test.js',
