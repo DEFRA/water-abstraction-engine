@@ -1,4 +1,10 @@
 /**
+ * Validation helpers for the address lines we send to Notify
+ *
+ * @module NotifyAddressLineValidator
+ */
+
+/**
  * Checks if the given string starts with any of the special characters
  * given in the startCharacters array.
  *

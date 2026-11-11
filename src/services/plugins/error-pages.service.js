@@ -1,11 +1,11 @@
-import http2 from 'node:http2'
-
-import SessionNotFoundError from '../../errors/session-not-found.error.js'
-
 /**
  * Used by the `ErrorPagesPlugin` to process unhandled exceptions in the service
  * @module ErrorPagesService
  */
+
+import http2 from 'node:http2'
+
+import SessionNotFoundError from '../../errors/session-not-found.error.js'
 
 const { HTTP_STATUS_BAD_REQUEST, HTTP_STATUS_FORBIDDEN, HTTP_STATUS_NOT_FOUND, HTTP_STATUS_GONE, HTTP_STATUS_OK } =
   http2.constants

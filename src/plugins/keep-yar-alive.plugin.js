@@ -1,3 +1,9 @@
+/**
+ * Plugin that touches the user's Yar session on each request, so it does not expire while they are active
+ *
+ * @module KeepYarAlivePlugin
+ */
+
 export default {
   name: 'keepYarAlive',
   register: (server, _options) => {

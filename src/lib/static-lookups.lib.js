@@ -1,3 +1,9 @@
+/**
+ * Static lookup values, such as statuses, types and dates, used across the service
+ *
+ * @module StaticLookupsLib
+ */
+
 export const billRunStatuses = Object.freeze({
   cancel: 'Cancelling',
   empty: 'Empty',

@@ -1,3 +1,9 @@
+/**
+ * Formatting functions shared by our presenters
+ *
+ * @module BasePresenter
+ */
+
 import { convertFromCubicMetres, today } from '../lib/general.lib.js'
 import { noticeMappings } from '../lib/static-lookups.lib.js'
 

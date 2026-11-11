@@ -1,3 +1,9 @@
+/**
+ * Shared ESLint config, used by the engine and the apps that depend on it
+ *
+ * @module EslintConfig
+ */
+
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import globals from 'globals'
 import importPlugin from 'eslint-plugin-import-x'
@@ -104,9 +110,10 @@ export default [
     }
   },
   // Migrations and seeds are exempt from the @module check, for the same reason they are exempt from jsdoc/require-jsdoc
-  // above: their purpose is obvious from the file name
+  // above: their purpose is obvious from the file name. bin/templates/helper.js is a snippet that bin/scaffold.sh pastes
+  // into existing files, so it must not have a @module block of its own
   {
-    files: ['db/migrations/**/*', 'db/seeds/**/*'],
+    files: ['bin/templates/helper.js', 'db/migrations/**/*', 'db/seeds/**/*'],
     rules: {
       'local/alanisms': ['error', { moduleJsdoc: false }]
     }

@@ -1,3 +1,9 @@
+/**
+ * Knex config for each environment, used to run migrations and seeds from the engine and the apps
+ *
+ * @module Knexfile
+ */
+
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 

@@ -1,6 +1,12 @@
 /**
  * Custom Joi validator that fails when the provided flag is true
  *
+ * @module IsFalseValidator
+ */
+
+/**
+ * Custom Joi validator that fails when the provided flag is true
+ *
  * @param {boolean} booleanToCheck - Flag indicating whether validation should fail
  * @param {string} [errorKey='custom.isFalse'] - The Joi error key to return on failure
  *

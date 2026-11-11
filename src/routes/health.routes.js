@@ -1,3 +1,9 @@
+/**
+ * Routes for the health check endpoints
+ *
+ * @module HealthRoutes
+ */
+
 import { airbrake, database } from '../controllers/health.controller.js'
 
 export default [

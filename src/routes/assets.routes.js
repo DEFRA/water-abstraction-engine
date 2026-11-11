@@ -1,3 +1,9 @@
+/**
+ * Routes that serve the static assets, including those provided by govuk-frontend
+ *
+ * @module AssetsRoutes
+ */
+
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
 

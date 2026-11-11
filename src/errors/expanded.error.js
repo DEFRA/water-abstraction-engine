@@ -1,3 +1,9 @@
+/**
+ * Custom error that allows additional data properties to be assigned to the error instance
+ *
+ * @module ExpandedError
+ */
+
 export default class ExpandedError extends Error {
   // eslint-disable-next-line jsdoc/lines-before-block
   /**

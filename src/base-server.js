@@ -1,3 +1,9 @@
+/**
+ * Creates the Hapi server shared by the apps, registering the plugins they all need
+ *
+ * @module BaseServer
+ */
+
 import Cookie from '@hapi/cookie'
 import Hapi from '@hapi/hapi'
 import Inert from '@hapi/inert'

@@ -1,3 +1,9 @@
+/**
+ * Creates the Knex database connection for the current environment, shared across the engine and the apps
+ *
+ * @module Db
+ */
+
 import Knex from 'knex'
 import pg from 'pg'
 
