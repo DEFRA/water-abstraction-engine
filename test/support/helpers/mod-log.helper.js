@@ -45,14 +45,14 @@ function defaults(data = {}) {
   const regionCode = randomRegionCode()
 
   const defaults = {
-    externalId: generateRegionNaldPatternExternalId(regionCode),
     eventCode: 'DRFVER',
     eventDescription: 'Draft version created',
-    naldDate: new Date('2012-06-01'),
-    userId: 'TTESTER',
-    licenceRef: generateLicenceRef(),
+    externalId: generateRegionNaldPatternExternalId(regionCode),
     // The licence and mod log share the same external ID pattern: [region code:NALD ID]
-    licenceExternalId: generateRegionNaldPatternExternalId(regionCode)
+    licenceExternalId: generateRegionNaldPatternExternalId(regionCode),
+    licenceRef: generateLicenceRef(),
+    naldDate: new Date('2012-06-01'),
+    userId: 'TTESTER'
   }
 
   return {

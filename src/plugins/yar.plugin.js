@@ -71,7 +71,6 @@ import YarConfig from '../config/yar.config.js'
 const FIFTEEN_MINUTES_IN_MILLISECONDS = 15 * 60 * 1000
 
 export default {
-  plugin: Yar,
   options: {
     cookieOptions: {
       password: YarConfig.password,
@@ -81,5 +80,6 @@ export default {
       ttl: FIFTEEN_MINUTES_IN_MILLISECONDS
     },
     name: YarConfig.sessionName
-  }
+  },
+  plugin: Yar
 }

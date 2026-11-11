@@ -45,13 +45,6 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    id: generateUUID(),
-    returnLogId: generateUUID(),
-    returnId: generateReturnId(),
-    userId: 'admin-internal@wrls.gov.uk',
-    userType: 'internal',
-    version: 1,
-    metadata: {},
     // INFO: The lines table does not have a default for the date_created column. But it is set as
     // 'not nullable'! So, we need to ensure we set it when creating a new record, something we'll never actually need
     // to do because it's a static table. Also, we can't use Date.now() because Javascript returns the time since the
@@ -59,9 +52,16 @@ function defaults(data = {}) {
     // an ISO string though ('2023-01-05T08:37:05.575Z') and PostgreSQL can do the conversion
     // https://stackoverflow.com/a/61912776/6117745
     createdAt: new Date('2022-11-16 09:42:11.000').toISOString(),
-    updatedAt: null,
+    current: true,
+    id: generateUUID(),
+    metadata: {},
     nilReturn: false,
-    current: true
+    returnId: generateReturnId(),
+    returnLogId: generateUUID(),
+    updatedAt: null,
+    userId: 'admin-internal@wrls.gov.uk',
+    userType: 'internal',
+    version: 1
   }
 
   return {

@@ -55,17 +55,17 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
-    abstractionPeriodStartDay: 1,
-    abstractionPeriodStartMonth: 1,
     abstractionPeriodEndDay: 31,
     abstractionPeriodEndMonth: 3,
+    abstractionPeriodStartDay: 1,
+    abstractionPeriodStartMonth: 1,
+    // INFO: The table does not have a default for the date columns
+    createdAt: timestamp,
     externalId: generateLicenceVersionPurposeExternalId(),
     licenceVersionId: generateUUID(),
     primaryPurposeId,
     purposeId,
     secondaryPurposeId,
-    // INFO: The table does not have a default for the date columns
-    createdAt: timestamp,
     updatedAt: timestamp
   }
 

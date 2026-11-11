@@ -33,16 +33,13 @@ export function defaultOptions() {
           }
         }
       : {}),
-    // If we don't have this setting Got will throw its own HTTPError unless the result is 2xx or 3xx. That makes it
-    // impossible to see what the status code was because it doesn't get set on the response object Got provides when
-    // an error is thrown. With this set Got will treat a 404 in the same way it treats a 204.
-    throwHttpErrors: false,
+    hooks: {
+      beforeRetry: [_beforeRetryHook]
+    },
     // Got has a built in retry mechanism. We have found though you have to be careful with what gets retried. Our
     // preference is to only retry in the event of a timeout on assumption the destination server might be busy but has
     // a chance to succeed when attempted again
     retry: {
-      // The default is also 2 retries before erroring. We specify it to make this fact visible
-      limit: 2,
       // In v15.0.0, retry.enforceRetryRules defaults to true. To maintain backward compatibility and ensure our custom
       // retry logic works as expected, we disable it.
       enforceRetryRules: false,
@@ -50,20 +47,23 @@ export function defaultOptions() {
       // the other side being overloaded which can happen when we are trying to send high volumes of requests, for
       // example, when creating a bill run
       errorCodes: ['ECONNRESET', 'ETIMEDOUT'],
+      // The default is also 2 retries before erroring. We specify it to make this fact visible
+      limit: 2,
       // By default, Got does not retry PATCH and POST requests. As we only retry certain errors there is no risk in
       // retrying our PATCH and POST requests. So, we set the methods to be Got's defaults plus 'PATCH' and 'POST'
       methods: ['GET', 'PATCH', 'POST', 'PUT', 'HEAD', 'DELETE', 'OPTIONS', 'TRACE'],
       // We set statusCodes as an empty array to ensure that 4xx, 5xx etc. errors are not retried
       statusCodes: []
     },
+    // If we don't have this setting Got will throw its own HTTPError unless the result is 2xx or 3xx. That makes it
+    // impossible to see what the status code was because it doesn't get set on the response object Got provides when
+    // an error is thrown. With this set Got will treat a 404 in the same way it treats a 204.
+    throwHttpErrors: false,
     // Got states
     //
     // > It is a good practice to set a timeout to prevent hanging requests. By default, there is no timeout set.
     timeout: {
       request: serverConfig.requestTimeout
-    },
-    hooks: {
-      beforeRetry: [_beforeRetryHook]
     }
   }
 }

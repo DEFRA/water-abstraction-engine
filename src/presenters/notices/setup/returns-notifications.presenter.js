@@ -89,16 +89,16 @@ function _letter(recipient, noticeId, session) {
     dueDate: recipient.notificationDueDate,
     eventId: noticeId,
     licences: recipient.licence_refs,
-    messageType,
     messageRef: MESSAGE_REFS[noticeType][journey],
+    messageType,
     personalisation: {
       ...address,
       licenceNumber: recipient.licence_refs[0],
+      // NOTE: Address line 1 is always set to the recipient's name
+      name: address.address_line_1,
       periodEndDate: formatLongDate(determinedReturnsPeriod?.endDate),
       periodStartDate: formatLongDate(determinedReturnsPeriod?.startDate),
-      returnDueDate: formatLongDate(recipient.notificationDueDate),
-      // NOTE: Address line 1 is always set to the recipient's name
-      name: address.address_line_1
+      returnDueDate: formatLongDate(recipient.notificationDueDate)
     },
     returnLogIds: recipient.return_log_ids,
     status: 'pending',

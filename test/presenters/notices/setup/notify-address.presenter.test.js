@@ -11,8 +11,6 @@ describe('Notices - Setup - Notify Address presenter', () => {
     // NOTE: To remove some setup duplication, we start with a fully populated address and then amend accordingly in the
     // tests
     contact = {
-      // Name
-      name: 'Mr J H Watson',
       // Address
       address1: 'Sherlock Holmes Consulting Detective',
       address2: '221b Baker Street',
@@ -20,8 +18,10 @@ describe('Notices - Setup - Notify Address presenter', () => {
       address4: 'Westminster',
       address5: 'London',
       address6: 'Central London',
-      postcode: 'NW1 6XE',
-      country: 'England'
+      country: 'England',
+      // Name
+      name: 'Mr J H Watson',
+      postcode: 'NW1 6XE'
     }
   })
 
@@ -171,8 +171,6 @@ describe('Notices - Setup - Notify Address presenter', () => {
   describe('when the contact has an international address', () => {
     beforeEach(() => {
       contact = {
-        // Name
-        name: 'Professor J H Moriarty',
         // Address
         address1: 'Mathematical Computer Consulting',
         address2: 'Gasthaus Zwirgi',
@@ -180,8 +178,10 @@ describe('Notices - Setup - Notify Address presenter', () => {
         address4: 'Scheideggstrasse 451',
         address5: 'Meiringen',
         address6: null,
-        postcode: '3860 Schattenhalb',
-        country: 'Switzerland'
+        country: 'Switzerland',
+        // Name
+        name: 'Professor J H Moriarty',
+        postcode: '3860 Schattenhalb'
       }
     })
 

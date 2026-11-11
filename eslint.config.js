@@ -46,9 +46,9 @@ export default [
       sourceType: 'module'
     },
     plugins: {
+      import: importPlugin,
       // https://github.com/gajus/eslint-plugin-jsdoc
       jsdoc: jsdocPlugin,
-      import: importPlugin,
       local: {
         rules: {
           alanisms
@@ -59,22 +59,21 @@ export default [
     rules: {
       // Enforce .js extension when importing local files; ignore bare package specifiers (e.g. 'dotenv/config')
       'import/extensions': ['error', 'always', { ignorePackages: true }],
-      // Enforces the alanisms in .agents/skills/standards/alanisms.md (object key order, import order and groups, blank
-      // lines after declarations, @module JSDoc first) plus one export style per file. See eslint-rules/alanisms/
-      'local/alanisms': 'error',
+      // Require a blank line after the last import statement, separating imports from the rest of the file
+      'import/newline-after-import': 'error',
       'jsdoc/check-alignment': 'error',
       'jsdoc/check-indentation': 'error',
-      'jsdoc/check-types': 'error',
       'jsdoc/check-tag-names': 'error',
+      'jsdoc/check-types': 'error',
       'jsdoc/lines-before-block': 'error',
-      'jsdoc/newline-after-description': 'off', // does not work with 'use strict'
       'jsdoc/require-description': 'error',
       'jsdoc/require-hyphen-before-param-description': 'error',
       'jsdoc/require-jsdoc': ['error', { publicOnly: true }],
       'jsdoc/require-param': ['error', { exemptedBy: ['private'] }],
       'jsdoc/require-returns': ['error', { publicOnly: true }],
-      // Require a blank line after the last import statement, separating imports from the rest of the file
-      'import/newline-after-import': 'error'
+      // Enforces the alanisms in .agents/skills/standards/alanisms.md (object key order, import order and groups, blank
+      // lines after declarations, @module JSDoc first) plus one export style per file. See eslint-rules/alanisms/
+      'local/alanisms': 'error'
     },
     settings: {
       jsdoc: {

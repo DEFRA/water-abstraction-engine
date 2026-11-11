@@ -43,10 +43,10 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
-    hydrologyStationId: generateUUID(),
-    label: 'MONITOR PLACE',
     // INFO: The table does not have a default for the date columns
     createdAt: timestamp,
+    hydrologyStationId: generateUUID(),
+    label: 'MONITOR PLACE',
     updatedAt: timestamp
   }
 

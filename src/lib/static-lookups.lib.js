@@ -536,17 +536,17 @@ export const roles = Object.freeze({
  * Conversion multipliers to normalise flow units to litres per day (L/d) and level units to metres (m)
  */
 export const unitConversion = {
-  'Ml/d': 1_000_000,
+  'ft3/s': 28_316.8466 * 86400, // NOSONAR: S7749 - 5-digit number can't have consistent groups of 3
+  gpd: 3.78541,
+  'l/s': 86_400,
+  m: 1,
   'm3/d': 1_000,
   'm3/s': 86_400_000,
-  'l/s': 86_400,
-  gpd: 3.78541,
-  Mgpd: 3_785_410,
-  'ft3/s': 28_316.8466 * 86400, // NOSONAR: S7749 - 5-digit number can't have consistent groups of 3
-  m: 1,
   mAOD: 1,
   mASD: 1,
   mBOD: 1,
+  Mgpd: 3_785_410,
+  'Ml/d': 1_000_000,
   SLD: 1
 }
 

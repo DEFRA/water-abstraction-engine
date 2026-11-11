@@ -14,17 +14,17 @@ const govukFrontendDir = dirname(_require.resolve('govuk-frontend/package.json')
 export default [
   {
     method: 'GET',
-    path: '/assets/all.js',
     options: {
-      handler: {
-        // confine: false required — default confine: '.' blocks paths outside the consuming app's CWD (e.g. npm link)
-        file: { confine: false, path: join(govukFrontendDir, 'govuk', 'all.js') }
-      },
       app: {
         plainOutput: true
       },
-      auth: false
-    }
+      auth: false,
+      handler: {
+        // confine: false required — default confine: '.' blocks paths outside the consuming app's CWD (e.g. npm link)
+        file: { confine: false, path: join(govukFrontendDir, 'govuk', 'all.js') }
+      }
+    },
+    path: '/assets/all.js'
   },
   {
     method: 'GET',
