@@ -72,8 +72,8 @@ export default [
     },
     settings: {
       jsdoc: {
-        mode: 'jsdoc',
-        ignorePrivate: true
+        ignorePrivate: true,
+        mode: 'jsdoc'
       }
     }
   },
@@ -101,6 +101,14 @@ export default [
     files: ['bin/templates/*.test.js', 'test/**/*'],
     rules: {
       'local/alanisms': ['error', { imports: 'sections', moduleJsdoc: false }]
+    }
+  },
+  // Migrations and seeds are exempt from the @module check, for the same reason they are exempt from jsdoc/require-jsdoc
+  // above: their purpose is obvious from the file name
+  {
+    files: ['db/migrations/**/*', 'db/seeds/**/*'],
+    rules: {
+      'local/alanisms': ['error', { moduleJsdoc: false }]
     }
   },
   // Adds prettier ESLint rules. It automatically sets up eslint-config-prettier, which turns off any rules declared
