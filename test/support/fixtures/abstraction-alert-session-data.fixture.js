@@ -1,5 +1,9 @@
 import { generateLicenceRef, generateUUID } from '../generators.js'
 
+/* eslint-disable local/alanisms -- The stations are numbered and their key order is their order in the session data,
+because `get()` and `relevantLicenceMonitoringStations()` build lists with Object.values(). Sorting the keys A–Z would
+put 'three' before 'two' and change what the tests expect */
+
 /**
  * Create licence monitoring station test data
  *
@@ -25,6 +29,24 @@ function licenceMonitoringStations() {
       thresholdUnit: 'm',
       thresholdValue: 1000
     },
+    two: {
+      abstractionPeriodEndDay: 31,
+      abstractionPeriodEndMonth: 3,
+      abstractionPeriodStartDay: 1,
+      abstractionPeriodStartMonth: 1,
+      id: generateUUID(),
+      latestNotification: null,
+      licence: {
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
+      },
+      measureType: 'flow',
+      notes: 'I have a bad feeling about this',
+      restrictionType: 'stop',
+      thresholdGroup: 'flow-100-m3/s',
+      thresholdUnit: 'm3/s',
+      thresholdValue: 100
+    },
     three: {
       abstractionPeriodEndDay: 31,
       abstractionPeriodEndMonth: 3,
@@ -42,6 +64,34 @@ function licenceMonitoringStations() {
       thresholdGroup: 'level-100-m',
       thresholdUnit: 'm',
       thresholdValue: 100
+    }
+  }
+}
+
+/**
+ * Create licence monitoring station test data
+ *
+ * @returns {object} - Returns nine unique unsorted licence monitoring stations
+ */
+function unsortedLicenceMonitoringStations() {
+  return {
+    one: {
+      abstractionPeriodEndDay: 1,
+      abstractionPeriodEndMonth: 1,
+      abstractionPeriodStartDay: 1,
+      abstractionPeriodStartMonth: 2,
+      id: generateUUID(),
+      latestNotification: null,
+      licence: {
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
+      },
+      measureType: 'level',
+      notes: null,
+      restrictionType: 'reduce',
+      thresholdGroup: 'level-1000-m',
+      thresholdUnit: 'm',
+      thresholdValue: 1000
     },
     two: {
       abstractionPeriodEndDay: 31,
@@ -60,38 +110,10 @@ function licenceMonitoringStations() {
       thresholdGroup: 'flow-100-m3/s',
       thresholdUnit: 'm3/s',
       thresholdValue: 100
-    }
-  }
-}
-
-/**
- * Create licence monitoring station test data
- *
- * @returns {object} - Returns nine unique unsorted licence monitoring stations
- */
-function unsortedLicenceMonitoringStations() {
-  return {
-    eight: {
-      abstractionPeriodEndDay: 31,
-      abstractionPeriodEndMonth: 12,
-      abstractionPeriodStartDay: 1,
-      abstractionPeriodStartMonth: 1,
-      id: generateUUID(),
-      latestNotification: null,
-      licence: {
-        id: generateUUID(),
-        licenceRef: generateLicenceRef()
-      },
-      measureType: 'flow',
-      notes: 'uses imperial units',
-      restrictionType: 'stop',
-      thresholdGroup: 'flow-1-Mgpd',
-      thresholdUnit: 'Mgpd',
-      thresholdValue: 1
     },
-    five: {
+    three: {
       abstractionPeriodEndDay: 31,
-      abstractionPeriodEndMonth: 12,
+      abstractionPeriodEndMonth: 3,
       abstractionPeriodStartDay: 1,
       abstractionPeriodStartMonth: 1,
       id: generateUUID(),
@@ -100,12 +122,12 @@ function unsortedLicenceMonitoringStations() {
         id: generateUUID(),
         licenceRef: generateLicenceRef()
       },
-      measureType: 'flow',
-      notes: 'minor abstraction',
+      measureType: 'level',
+      notes: null,
       restrictionType: 'stop',
-      thresholdGroup: 'flow-5000-gpd',
-      thresholdUnit: 'gpd',
-      thresholdValue: 5000
+      thresholdGroup: 'level-100-m',
+      thresholdUnit: 'm',
+      thresholdValue: 100
     },
     four: {
       abstractionPeriodEndDay: 31,
@@ -125,47 +147,11 @@ function unsortedLicenceMonitoringStations() {
       thresholdUnit: 'l/s',
       thresholdValue: 10
     },
-    nine: {
+    five: {
       abstractionPeriodEndDay: 31,
-      abstractionPeriodEndMonth: 8,
+      abstractionPeriodEndMonth: 12,
       abstractionPeriodStartDay: 1,
-      abstractionPeriodStartMonth: 5,
-      id: generateUUID(),
-      latestNotification: null,
-      licence: {
-        id: generateUUID(),
-        licenceRef: generateLicenceRef()
-      },
-      measureType: 'level',
-      notes: null,
-      restrictionType: 'reduce',
-      thresholdGroup: 'level-50-SLD',
-      thresholdUnit: 'SLD',
-      thresholdValue: 50
-    },
-    one: {
-      abstractionPeriodEndDay: 1,
-      abstractionPeriodEndMonth: 1,
-      abstractionPeriodStartDay: 1,
-      abstractionPeriodStartMonth: 2,
-      id: generateUUID(),
-      latestNotification: null,
-      licence: {
-        id: generateUUID(),
-        licenceRef: generateLicenceRef()
-      },
-      measureType: 'level',
-      notes: null,
-      restrictionType: 'reduce',
-      thresholdGroup: 'level-1000-m',
-      thresholdUnit: 'm',
-      thresholdValue: 1000
-    },
-    seven: {
-      abstractionPeriodEndDay: 30,
-      abstractionPeriodEndMonth: 9,
-      abstractionPeriodStartDay: 1,
-      abstractionPeriodStartMonth: 4,
+      abstractionPeriodStartMonth: 1,
       id: generateUUID(),
       latestNotification: null,
       licence: {
@@ -173,11 +159,11 @@ function unsortedLicenceMonitoringStations() {
         licenceRef: generateLicenceRef()
       },
       measureType: 'flow',
-      notes: null,
+      notes: 'minor abstraction',
       restrictionType: 'stop',
-      thresholdGroup: 'flow-0.5-Ml/d',
-      thresholdUnit: 'Ml/d',
-      thresholdValue: 0.5
+      thresholdGroup: 'flow-5000-gpd',
+      thresholdUnit: 'gpd',
+      thresholdValue: 5000
     },
     six: {
       abstractionPeriodEndDay: 15,
@@ -197,27 +183,27 @@ function unsortedLicenceMonitoringStations() {
       thresholdUnit: 'mBOD',
       thresholdValue: 2
     },
-    three: {
-      abstractionPeriodEndDay: 31,
-      abstractionPeriodEndMonth: 3,
+    seven: {
+      abstractionPeriodEndDay: 30,
+      abstractionPeriodEndMonth: 9,
       abstractionPeriodStartDay: 1,
-      abstractionPeriodStartMonth: 1,
+      abstractionPeriodStartMonth: 4,
       id: generateUUID(),
       latestNotification: null,
       licence: {
         id: generateUUID(),
         licenceRef: generateLicenceRef()
       },
-      measureType: 'level',
+      measureType: 'flow',
       notes: null,
       restrictionType: 'stop',
-      thresholdGroup: 'level-100-m',
-      thresholdUnit: 'm',
-      thresholdValue: 100
+      thresholdGroup: 'flow-0.5-Ml/d',
+      thresholdUnit: 'Ml/d',
+      thresholdValue: 0.5
     },
-    two: {
+    eight: {
       abstractionPeriodEndDay: 31,
-      abstractionPeriodEndMonth: 3,
+      abstractionPeriodEndMonth: 12,
       abstractionPeriodStartDay: 1,
       abstractionPeriodStartMonth: 1,
       id: generateUUID(),
@@ -227,14 +213,34 @@ function unsortedLicenceMonitoringStations() {
         licenceRef: generateLicenceRef()
       },
       measureType: 'flow',
-      notes: 'I have a bad feeling about this',
+      notes: 'uses imperial units',
       restrictionType: 'stop',
-      thresholdGroup: 'flow-100-m3/s',
-      thresholdUnit: 'm3/s',
-      thresholdValue: 100
+      thresholdGroup: 'flow-1-Mgpd',
+      thresholdUnit: 'Mgpd',
+      thresholdValue: 1
+    },
+    nine: {
+      abstractionPeriodEndDay: 31,
+      abstractionPeriodEndMonth: 8,
+      abstractionPeriodStartDay: 1,
+      abstractionPeriodStartMonth: 5,
+      id: generateUUID(),
+      latestNotification: null,
+      licence: {
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
+      },
+      measureType: 'level',
+      notes: null,
+      restrictionType: 'reduce',
+      thresholdGroup: 'level-50-SLD',
+      thresholdUnit: 'SLD',
+      thresholdValue: 50
     }
   }
 }
+
+/* eslint-enable local/alanisms */
 
 /**
  * Represents a complete response from `MonitoringStationService`
