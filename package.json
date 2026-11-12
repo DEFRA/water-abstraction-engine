@@ -37,6 +37,7 @@
   "scripts": {
     "docs": "jsdoc -c .jsdoc.json",
     "lint": "eslint .",
+    "lint:file": "eslint --",
     "migrate:make": "knex migrate:make --",
     "migrate:make:test": "NODE_ENV=test knex migrate:make --migrations-directory db/migrations/legacy --",
     "migrate:test": "NODE_ENV=test node db/wipe.database.js && NODE_ENV=test knex migrate:latest",
