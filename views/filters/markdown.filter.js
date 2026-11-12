@@ -1,3 +1,9 @@
+/**
+ * Nunjucks filter that converts Notify's flavour of markdown into HTML
+ *
+ * @module MarkdownFilter
+ */
+
 import { marked } from 'marked'
 
 /**

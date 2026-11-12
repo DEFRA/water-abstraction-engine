@@ -5,9 +5,9 @@ import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { ValidationError } from 'joi'
 import LicenceVersionModel from '../../src/models/licence-version.model.js'
 import ReturnVersionModel from '../../src/models/return-version.model.js'
-import { generateUUID } from '../support/generators.js'
-import { today } from '../../src/lib/general.lib.js'
 import { tomorrow, yesterday } from '../support/general.js'
+import { today } from '../../src/lib/general.lib.js'
+import { generateUUID } from '../support/generators.js'
 
 // Thing under test
 import * as BasePresenter from '../../src/presenters/base.presenter.js'
@@ -598,12 +598,12 @@ describe('Base Presenter', () => {
       beforeEach(() => {
         validationResult = {
           value: {
+            fromDate: new Date('2025-09-01'),
             noticeTypes: ['returnReminder', 'returnInvitation'],
             reference: 'RREM-VB9EFA',
             sentFromDay: '01',
             sentFromMonth: '09',
             sentFromYear: '2025',
-            fromDate: new Date('2025-09-01'),
             toDate: undefined
           }
         }
@@ -620,21 +620,21 @@ describe('Base Presenter', () => {
       beforeEach(() => {
         const error = new ValidationError('Enter an email address in the correct format, like name@example.com', [
           {
+            context: {
+              invalids: ['fudge'],
+              key: 'email',
+              label: 'email',
+              value: 'fudge'
+            },
             message: 'Enter an email address in the correct format, like name@example.com',
             path: ['email'],
-            type: 'string.email',
-            context: {
-              value: 'fudge',
-              invalids: ['fudge'],
-              label: 'email',
-              key: 'email'
-            }
+            type: 'string.email'
           }
         ])
 
         validationResult = {
-          value: { type: 'email', email: 'fudge' },
-          error
+          error,
+          value: { email: 'fudge', type: 'email' }
         }
       })
 
@@ -642,15 +642,15 @@ describe('Base Presenter', () => {
         const result = BasePresenter.formatValidationResult(validationResult)
 
         expect(result).toEqual({
+          email: {
+            text: 'Enter an email address in the correct format, like name@example.com'
+          },
           errorList: [
             {
               href: '#email',
               text: 'Enter an email address in the correct format, like name@example.com'
             }
-          ],
-          email: {
-            text: 'Enter an email address in the correct format, like name@example.com'
-          }
+          ]
         })
       })
     })
@@ -661,52 +661,52 @@ describe('Base Presenter', () => {
           'Enter a valid from date. Reference must be 11 characters or less. Enter a valid to date',
           [
             {
+              context: {
+                format: ['YYYY-MM-DD'],
+                key: 'fromDate',
+                label: 'fromDate',
+                value: '--01'
+              },
               message: 'Enter a valid from date',
               path: ['fromDate'],
-              type: 'date.format',
-              context: {
-                format: ['YYYY-MM-DD'],
-                label: 'fromDate',
-                value: '--01',
-                key: 'fromDate'
-              }
+              type: 'date.format'
             },
             {
+              context: {
+                encoding: undefined,
+                key: 'reference',
+                label: 'reference',
+                limit: 11,
+                value: 'jkdfshfhkfhsdjkfsdjkfghadshj'
+              },
               message: 'Reference must be 11 characters or less',
               path: ['reference'],
-              type: 'string.max',
-              context: {
-                limit: 11,
-                value: 'jkdfshfhkfhsdjkfsdjkfghadshj',
-                encoding: undefined,
-                label: 'reference',
-                key: 'reference'
-              }
+              type: 'string.max'
             },
             {
-              message: 'Enter a valid to date',
-              path: ['toDate'],
-              type: 'date.format',
               context: {
                 format: ['YYYY-MM-DD'],
+                key: 'toDate',
                 label: 'toDate',
-                value: '-04-',
-                key: 'toDate'
-              }
+                value: '-04-'
+              },
+              message: 'Enter a valid to date',
+              path: ['toDate'],
+              type: 'date.format'
             }
           ]
         )
 
         validationResult = {
+          error,
           value: {
+            fromDate: '--01',
+            noticeTypes: [],
             reference: 'jkdfshfhkfhsdjkfsdjkfghadshj',
             sentFromDay: '01',
             sentToMonth: '04',
-            noticeTypes: [],
-            fromDate: '--01',
             toDate: '-04-'
-          },
-          error
+          }
         }
       })
 
@@ -735,42 +735,42 @@ describe('Base Presenter', () => {
           'Enter a valid from date. Reference must be 11 characters or less. Enter a valid to date',
           [
             {
+              context: {
+                encoding: undefined,
+                key: 'reference',
+                label: 'reference',
+                limit: 11,
+                value: 'jkdfshfhkfhsdjkfsdjkfghadshj'
+              },
               message: 'Reference must be 11 characters or less',
               path: ['reference'],
-              type: 'string.max',
-              context: {
-                limit: 11,
-                value: 'jkdfshfhkfhsdjkfsdjkfghadshj',
-                encoding: undefined,
-                label: 'reference',
-                key: 'reference'
-              }
+              type: 'string.max'
             },
             {
+              context: {
+                encoding: undefined,
+                key: 'reference',
+                label: 'reference',
+                limit: 11,
+                value: '1'
+              },
               message: 'Reference must be more then 1 character',
               path: ['reference'],
-              type: 'string.max',
-              context: {
-                limit: 11,
-                value: '1',
-                encoding: undefined,
-                label: 'reference',
-                key: 'reference'
-              }
+              type: 'string.max'
             }
           ]
         )
 
         validationResult = {
+          error,
           value: {
+            fromDate: '--01',
+            noticeTypes: [],
             reference: 'jkdfshfhkfhsdjkfsdjkfghadshj',
             sentFromDay: '01',
             sentToMonth: '04',
-            noticeTypes: [],
-            fromDate: '--01',
             toDate: '-04-'
-          },
-          error
+          }
         }
       })
 
@@ -962,8 +962,8 @@ describe('Base Presenter', () => {
             // intentionally when the user does not have the "billing" role
             modLog = {
               id: generateUUID(),
-              returnVersionId: version.id,
               naldDate: new Date('2022-04-01'),
+              returnVersionId: version.id,
               userId: 'PSTEWART'
             }
 
@@ -1027,8 +1027,8 @@ describe('Base Presenter', () => {
           beforeEach(() => {
             modLog = {
               id: generateUUID(),
-              returnVersionId: version.id,
-              naldDate: new Date('2022-04-01')
+              naldDate: new Date('2022-04-01'),
+              returnVersionId: version.id
             }
 
             version.modLogs = [modLog]

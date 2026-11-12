@@ -17,29 +17,29 @@ export default class ReviewChargeReferenceModel extends BaseModel {
 
   static get relationMappings() {
     return {
-      reviewChargeVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReviewChargeVersionModel,
-        join: {
-          from: 'reviewChargeReferences.reviewChargeVersionId',
-          to: 'reviewChargeVersions.id'
-        }
-      },
-      reviewChargeElements: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewChargeElementModel,
-        join: {
-          from: 'reviewChargeReferences.id',
-          to: 'reviewChargeElements.reviewChargeReferenceId'
-        }
-      },
       chargeReference: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeReferenceModel,
         join: {
           from: 'reviewChargeReferences.chargeReferenceId',
           to: 'chargeReferences.id'
-        }
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.BelongsToOneRelation
+      },
+      reviewChargeElements: {
+        join: {
+          from: 'reviewChargeReferences.id',
+          to: 'reviewChargeElements.reviewChargeReferenceId'
+        },
+        modelClass: ReviewChargeElementModel,
+        relation: Model.HasManyRelation
+      },
+      reviewChargeVersion: {
+        join: {
+          from: 'reviewChargeReferences.reviewChargeVersionId',
+          to: 'reviewChargeVersions.id'
+        },
+        modelClass: ReviewChargeVersionModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

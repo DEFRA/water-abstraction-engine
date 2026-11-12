@@ -18,9 +18,10 @@
 
 import { Notifier } from '@airbrake/node'
 
+import { gotWrapper } from '../lib/got-wrapper.lib.js'
+
 import AirbrakeConfig from '../config/airbrake.config.js'
 import ServerConfig from '../config/server.config.js'
-import { gotWrapper } from '../lib/got-wrapper.lib.js'
 
 // The `Notifier` constructor unconditionally hooks `process.on('uncaughtException' | 'unhandledRejection' |
 // 'beforeExit', ...)` and never removes these listeners. In production this plugin is only ever registered once, so
@@ -42,23 +43,23 @@ export default {
 
     // When Hapi emits a request event with an error we capture the details and use Airbrake to send a request to our
     // Errbit instance
-    server.events.on({ name: 'request', channels: 'error' }, (request, event, _tags) => {
+    server.events.on({ channels: 'error', name: 'request' }, (request, event, _tags) => {
       server.app.airbrake
         .notify({
           error: event.error,
           session: {
-            route: request.route.path,
             method: request.method,
+            route: request.route.path,
             url: request.url.href
           }
         })
         .then((notice) => {
           if (!notice.id) {
-            server.logger.error({ message: `Airbrake notification failed: ${notice.error}`, error: notice.error })
+            server.logger.error({ error: notice.error, message: `Airbrake notification failed: ${notice.error}` })
           }
         })
         .catch((error) => {
-          server.logger.error({ message: `Airbrake notification errored: ${error}`, error })
+          server.logger.error({ error, message: `Airbrake notification errored: ${error}` })
         })
     })
   }
@@ -66,12 +67,12 @@ export default {
 
 async function _notifierArgs() {
   const args = {
-    host: AirbrakeConfig.host,
-    projectId: AirbrakeConfig.projectId,
-    projectKey: AirbrakeConfig.projectKey,
     environment: AirbrakeConfig.environment,
     errorNotifications: true,
+    host: AirbrakeConfig.host,
     performanceStats: false,
+    projectId: AirbrakeConfig.projectId,
+    projectKey: AirbrakeConfig.projectKey,
     remoteConfig: false
   }
 

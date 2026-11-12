@@ -29,7 +29,7 @@ describe('Contact model', () => {
       // NOTE: A constraint in the billing_account_addresses table means you cannot have 2 records with the same
       // billingAccountId and start date
       const startDate = i === 0 ? new Date(2023, 8, 4) : new Date(2023, 8, 3)
-      const billingAccountAddress = await BillingAccountAddressHelper.add({ startDate, contactId: testRecord.id })
+      const billingAccountAddress = await BillingAccountAddressHelper.add({ contactId: testRecord.id, startDate })
 
       testBillingAccountAddresses.push(billingAccountAddress)
     }

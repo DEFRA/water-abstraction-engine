@@ -5,9 +5,10 @@
 
 import http2 from 'node:http2'
 
-import notifyConfig from '../config/notify.config.js'
-import { pause } from '../lib/general.lib.js'
 import { getRequest as baseGetRequest, postRequest as basePostRequest } from './base.request.js'
+import { pause } from '../lib/general.lib.js'
+
+import notifyConfig from '../config/notify.config.js'
 
 const { HTTP_STATUS_TOO_MANY_REQUESTS } = http2.constants
 
@@ -74,11 +75,11 @@ function _parseResult(result) {
 
   if (body) {
     return {
-      succeeded: result.succeeded,
       response: {
-        statusCode,
-        body
-      }
+        body,
+        statusCode
+      },
+      succeeded: result.succeeded
     }
   }
 
@@ -98,14 +99,14 @@ function _parseResult(result) {
  */
 function _requestOptions(accessToken, body) {
   return {
-    prefixUrl: notifyConfig.url,
     headers: {
       authorization: `Bearer ${accessToken}`
     },
+    json: body,
+    prefixUrl: notifyConfig.url,
     responseType: 'json',
     timeout: {
       request: notifyConfig.timeout
-    },
-    json: body
+    }
   }
 }

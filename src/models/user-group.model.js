@@ -17,20 +17,20 @@ export default class UserGroupModel extends BaseModel {
   static get relationMappings() {
     return {
       group: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: GroupModel,
         join: {
           from: 'userGroups.groupId',
           to: 'groups.id'
-        }
+        },
+        modelClass: GroupModel,
+        relation: Model.BelongsToOneRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'userGroups.userId',
           to: 'users.userId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

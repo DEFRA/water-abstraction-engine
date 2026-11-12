@@ -11,8 +11,8 @@ import { vi } from 'vitest'
  */
 export default function globalNotifierStub() {
   return {
-    omg: vi.fn(),
     omfg: vi.fn(),
+    omg: vi.fn(),
     redAlert: vi.fn()
   }
 }

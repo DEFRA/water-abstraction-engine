@@ -40,11 +40,11 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    reviewLicenceId: generateUUID(),
-    chargeVersionId: generateUUID(),
     changeReason: 'Strategic review of charges (SRoC)',
+    chargePeriodEndDate: new Date('2022-06-05'),
     chargePeriodStartDate: new Date('2022-04-01'),
-    chargePeriodEndDate: new Date('2022-06-05')
+    chargeVersionId: generateUUID(),
+    reviewLicenceId: generateUUID()
   }
 
   return {

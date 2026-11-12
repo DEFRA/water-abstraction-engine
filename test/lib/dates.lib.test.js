@@ -64,16 +64,16 @@ describe('Dates Lib', () => {
 
         expect(results).toEqual([
           {
-            startDate: new Date('2023-04-01'),
-            endDate: new Date('2023-04-01')
+            endDate: new Date('2023-04-01'),
+            startDate: new Date('2023-04-01')
           },
           {
-            startDate: new Date('2023-04-02'),
-            endDate: new Date('2023-04-02')
+            endDate: new Date('2023-04-02'),
+            startDate: new Date('2023-04-02')
           },
           {
-            startDate: new Date('2023-04-03'),
-            endDate: new Date('2023-04-03')
+            endDate: new Date('2023-04-03'),
+            startDate: new Date('2023-04-03')
           }
         ])
       })
@@ -142,6 +142,7 @@ describe('Dates Lib', () => {
 
       it('returns null', () => {
         const result = DateLib.determineEarliestDate(dates)
+
         expect(result).toBeNull()
       })
     })
@@ -153,6 +154,7 @@ describe('Dates Lib', () => {
 
       it('returns null', () => {
         const result = DateLib.determineEarliestDate(dates)
+
         expect(result).toBeNull()
       })
     })
@@ -399,16 +401,16 @@ describe('Dates Lib', () => {
 
         expect(results).toEqual([
           {
-            startDate: new Date('2025-02-01'),
-            endDate: new Date('2025-02-28')
+            endDate: new Date('2025-02-28'),
+            startDate: new Date('2025-02-01')
           },
           {
-            startDate: new Date('2025-03-01'),
-            endDate: new Date('2025-03-31')
+            endDate: new Date('2025-03-31'),
+            startDate: new Date('2025-03-01')
           },
           {
-            startDate: new Date('2025-04-01'),
-            endDate: new Date('2025-04-30')
+            endDate: new Date('2025-04-30'),
+            startDate: new Date('2025-04-01')
           }
         ])
       })
@@ -424,8 +426,8 @@ describe('Dates Lib', () => {
         const results = DateLib.monthsFromPeriod(startDate, endDate)
 
         expect(results[0]).toEqual({
-          startDate: new Date('2025-02-01'),
-          endDate: new Date('2025-02-28')
+          endDate: new Date('2025-02-28'),
+          startDate: new Date('2025-02-01')
         })
       })
     })
@@ -441,8 +443,8 @@ describe('Dates Lib', () => {
           const results = DateLib.monthsFromPeriod(startDate, endDate)
 
           expect(results[0]).toEqual({
-            startDate: new Date('2025-07-01'),
-            endDate: new Date('2025-07-31')
+            endDate: new Date('2025-07-31'),
+            startDate: new Date('2025-07-01')
           })
         })
       })
@@ -463,8 +465,8 @@ describe('Dates Lib', () => {
           const results = DateLib.monthsFromPeriod(startDate, endDate)
 
           expect(results[0]).toEqual({
-            startDate: new Date('2026-01-01'),
-            endDate: new Date('2026-01-31')
+            endDate: new Date('2026-01-31'),
+            startDate: new Date('2026-01-01')
           })
         })
       })
@@ -480,8 +482,8 @@ describe('Dates Lib', () => {
         const results = DateLib.monthsFromPeriod(startDate, endDate)
 
         expect(results[results.length - 1]).toEqual({
-          startDate: new Date('2025-04-01'),
-          endDate: new Date('2025-04-30')
+          endDate: new Date('2025-04-30'),
+          startDate: new Date('2025-04-01')
         })
       })
     })
@@ -535,16 +537,16 @@ describe('Dates Lib', () => {
 
         expect(results).toEqual([
           {
-            startDate: new Date('2025-02-02'),
-            endDate: new Date('2025-02-08')
+            endDate: new Date('2025-02-08'),
+            startDate: new Date('2025-02-02')
           },
           {
-            startDate: new Date('2025-02-09'),
-            endDate: new Date('2025-02-15')
+            endDate: new Date('2025-02-15'),
+            startDate: new Date('2025-02-09')
           },
           {
-            startDate: new Date('2025-02-16'),
-            endDate: new Date('2025-02-22')
+            endDate: new Date('2025-02-22'),
+            startDate: new Date('2025-02-16')
           }
         ])
       })
@@ -561,8 +563,8 @@ describe('Dates Lib', () => {
         const results = DateLib.weeksFromPeriod(startDate, endDate)
 
         expect(results[0]).toEqual({
-          startDate: new Date('2025-02-02'),
-          endDate: new Date('2025-02-08')
+          endDate: new Date('2025-02-08'),
+          startDate: new Date('2025-02-02')
         })
       })
     })
@@ -579,8 +581,8 @@ describe('Dates Lib', () => {
         const results = DateLib.weeksFromPeriod(startDate, endDate)
 
         expect(results[results.length - 1]).toEqual({
-          startDate: new Date('2025-02-16'),
-          endDate: new Date('2025-02-22')
+          endDate: new Date('2025-02-22'),
+          startDate: new Date('2025-02-16')
         })
       })
     })

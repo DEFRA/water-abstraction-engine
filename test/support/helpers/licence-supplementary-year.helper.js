@@ -37,8 +37,8 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    licenceId: generateUUID(),
-    financialYearEnd: 2023
+    financialYearEnd: 2023,
+    licenceId: generateUUID()
   }
 
   return {

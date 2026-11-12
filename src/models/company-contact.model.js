@@ -19,44 +19,44 @@ export default class CompanyContactModel extends BaseModel {
   static get relationMappings() {
     return {
       company: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'companyContacts.companyId',
           to: 'companies.id'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.BelongsToOneRelation
       },
       contact: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ContactModel,
         join: {
           from: 'companyContacts.contactId',
           to: 'contacts.id'
-        }
+        },
+        modelClass: ContactModel,
+        relation: Model.BelongsToOneRelation
       },
       createdByUser: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'companyContacts.createdBy',
           to: 'users.id'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceRole: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceRoleModel,
         join: {
           from: 'companyContacts.licenceRoleId',
           to: 'licenceRoles.id'
-        }
+        },
+        modelClass: LicenceRoleModel,
+        relation: Model.BelongsToOneRelation
       },
       updatedByUser: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'companyContacts.updatedBy',
           to: 'users.id'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

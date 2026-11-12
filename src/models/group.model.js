@@ -19,16 +19,14 @@ export default class GroupModel extends BaseModel {
   static get relationMappings() {
     return {
       groupRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: GroupRoleModel,
         join: {
           from: 'groups.id',
           to: 'groupRoles.groupId'
-        }
+        },
+        modelClass: GroupRoleModel,
+        relation: Model.HasManyRelation
       },
       roles: {
-        relation: Model.ManyToManyRelation,
-        modelClass: RoleModel,
         join: {
           from: 'groups.id',
           through: {
@@ -36,19 +34,19 @@ export default class GroupModel extends BaseModel {
             to: 'groupRoles.roleId'
           },
           to: 'roles.id'
-        }
+        },
+        modelClass: RoleModel,
+        relation: Model.ManyToManyRelation
       },
       userGroups: {
-        relation: Model.HasManyRelation,
-        modelClass: UserGroupModel,
         join: {
           from: 'groups.id',
           to: 'userGroups.groupId'
-        }
+        },
+        modelClass: UserGroupModel,
+        relation: Model.HasManyRelation
       },
       users: {
-        relation: Model.ManyToManyRelation,
-        modelClass: UserModel,
         join: {
           from: 'groups.id',
           through: {
@@ -56,7 +54,9 @@ export default class GroupModel extends BaseModel {
             to: 'userGroups.userId'
           },
           to: 'users.userId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.ManyToManyRelation
       }
     }
   }

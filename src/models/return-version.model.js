@@ -20,36 +20,36 @@ export default class ReturnVersionModel extends BaseModel {
   static get relationMappings() {
     return {
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'returnVersions.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       modLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ModLogModel,
         join: {
           from: 'returnVersions.id',
           to: 'modLogs.returnVersionId'
-        }
+        },
+        modelClass: ModLogModel,
+        relation: Model.HasManyRelation
       },
       returnRequirements: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnRequirementModel,
         join: {
           from: 'returnVersions.id',
           to: 'returnRequirements.returnVersionId'
-        }
+        },
+        modelClass: ReturnRequirementModel,
+        relation: Model.HasManyRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'returnVersions.createdBy',
           to: 'users.userId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

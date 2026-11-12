@@ -1,3 +1,9 @@
+/**
+ * The GOV.UK Notify template IDs used when sending notifications
+ *
+ * @module NotifyTemplatesLib
+ */
+
 export const NOTIFY_TEMPLATES = Object.freeze({
   alerts: {
     email: {

@@ -1,3 +1,9 @@
+/**
+ * Creates the Hapi server shared by the apps, registering the plugins they all need
+ *
+ * @module BaseServer
+ */
+
 import Cookie from '@hapi/cookie'
 import Hapi from '@hapi/hapi'
 import Inert from '@hapi/inert'
@@ -11,7 +17,6 @@ import CrumbPlugin from './plugins/crumb.plugin.js'
 import ErrorPagesPlugin from './plugins/error-pages.plugin.js'
 import GlobalHapiServerMethodsPlugin from './plugins/global-hapi-server-methods.plugin.js'
 import GlobalNotifierPlugin from './plugins/global-notifier.plugin.js'
-import HapiConfig from './config/hapi.config.js'
 import HapiPinoPlugin from './plugins/hapi-pino.plugin.js'
 import KeepYarAlivePlugin from './plugins/keep-yar-alive.plugin.js'
 import NotifyTokenCachePlugin from './plugins/notify-token-cache.plugin.js'
@@ -20,6 +25,8 @@ import RouterPlugin from './plugins/router.plugin.js'
 import StopPlugin from './plugins/stop.plugin.js'
 import ViewsPlugin from './plugins/views.plugin.js'
 import YarPlugin from './plugins/yar.plugin.js'
+
+import HapiConfig from './config/hapi.config.js'
 
 /**
  * Prep an instance of Hapi server with all the base plugins registered

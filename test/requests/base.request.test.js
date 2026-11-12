@@ -95,8 +95,8 @@ describe('Base Request', () => {
           expect(logDataArg.additionalOptions).toEqual({})
           expect(logDataArg.result.succeeded).toBe(false)
           expect(logDataArg.result.response).toEqual({
-            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR,
-            body: '{"data":"hello world"}'
+            body: '{"data":"hello world"}',
+            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR
           })
         })
 
@@ -375,8 +375,8 @@ describe('Base Request', () => {
           expect(logDataArg.additionalOptions).toEqual({})
           expect(logDataArg.result.succeeded).toBe(false)
           expect(logDataArg.result.response).toEqual({
-            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR,
-            body: '{"data":"hello world"}'
+            body: '{"data":"hello world"}',
+            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR
           })
         })
 
@@ -655,8 +655,8 @@ describe('Base Request', () => {
           expect(logDataArg.additionalOptions).toEqual({})
           expect(logDataArg.result.succeeded).toBe(false)
           expect(logDataArg.result.response).toEqual({
-            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR,
-            body: '{"data":"hello world"}'
+            body: '{"data":"hello world"}',
+            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR
           })
         })
 
@@ -935,8 +935,8 @@ describe('Base Request', () => {
           expect(logDataArg.additionalOptions).toEqual({})
           expect(logDataArg.result.succeeded).toBe(false)
           expect(logDataArg.result.response).toEqual({
-            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR,
-            body: '{"data":"hello world"}'
+            body: '{"data":"hello world"}',
+            statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR
           })
         })
 

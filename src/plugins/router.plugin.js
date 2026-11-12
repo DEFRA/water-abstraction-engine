@@ -9,11 +9,12 @@
  * @module RouterPlugin
  */
 
-import AirbrakeConfig from '../config/airbrake.config.js'
 import AssetRoutes from '../routes/assets.routes.js'
 import FilterRoutesService from '../services/plugins/filter-routes.service.js'
 import HealthRoutes from '../routes/health.routes.js'
 import RootRoutes from '../routes/root.routes.js'
+
+import AirbrakeConfig from '../config/airbrake.config.js'
 
 const routes = [...RootRoutes, ...AssetRoutes, ...HealthRoutes]
 

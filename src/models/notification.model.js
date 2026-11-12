@@ -22,20 +22,20 @@ export default class NotificationModel extends BaseModel {
   static get relationMappings() {
     return {
       event: {
-        relation: Model.HasOneRelation,
-        modelClass: EventModel,
         join: {
           from: 'notifications.eventId',
           to: 'events.id'
-        }
+        },
+        modelClass: EventModel,
+        relation: Model.HasOneRelation
       },
       licenceMonitoringStation: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceMonitoringStationModel,
         join: {
           from: 'notifications.licenceMonitoringStationId',
           to: 'licenceMonitoringStations.id'
-        }
+        },
+        modelClass: LicenceMonitoringStationModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

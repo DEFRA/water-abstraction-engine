@@ -3,8 +3,8 @@
  * @module ReturnPeriodLib
  */
 
-import { returnPeriodDates } from './static-lookups.lib.js'
 import { compareDates, sameDate } from './dates.lib.js'
+import { returnPeriodDates } from './static-lookups.lib.js'
 
 /**
  * Determine return periods for a given return cycle.
@@ -20,28 +20,28 @@ import { compareDates, sameDate } from './dates.lib.js'
 export function determineReturnsPeriods(returnCycle) {
   return [
     {
-      startDate: _startDate(returnCycle.startDate, returnPeriodDates.quarterOne),
+      dueDate: _dueDate(returnCycle.startDate, returnPeriodDates.quarterOne),
       endDate: _endDate(returnCycle.startDate, returnPeriodDates.quarterOne),
       id: returnCycle.id,
-      dueDate: _dueDate(returnCycle.startDate, returnPeriodDates.quarterOne)
+      startDate: _startDate(returnCycle.startDate, returnPeriodDates.quarterOne)
     },
     {
-      startDate: _startDate(returnCycle.startDate, returnPeriodDates.quarterTwo),
+      dueDate: _dueDate(returnCycle.startDate, returnPeriodDates.quarterTwo),
       endDate: _endDate(returnCycle.startDate, returnPeriodDates.quarterTwo),
       id: returnCycle.id,
-      dueDate: _dueDate(returnCycle.startDate, returnPeriodDates.quarterTwo)
+      startDate: _startDate(returnCycle.startDate, returnPeriodDates.quarterTwo)
     },
     {
-      startDate: _startDateQuarterThree(returnCycle.startDate, returnPeriodDates.quarterThree),
+      dueDate: _dueQuarterThree(returnCycle.startDate, returnPeriodDates.quarterThree),
       endDate: _endDateQuarterThree(returnCycle.startDate, returnPeriodDates.quarterThree),
       id: returnCycle.id,
-      dueDate: _dueQuarterThree(returnCycle.startDate, returnPeriodDates.quarterThree)
+      startDate: _startDateQuarterThree(returnCycle.startDate, returnPeriodDates.quarterThree)
     },
     {
-      startDate: _startDate(returnCycle.endDate, returnPeriodDates.quarterFour),
+      dueDate: _dueDate(returnCycle.endDate, returnPeriodDates.quarterFour),
       endDate: _endDate(returnCycle.endDate, returnPeriodDates.quarterFour),
       id: returnCycle.id,
-      dueDate: _dueDate(returnCycle.endDate, returnPeriodDates.quarterFour)
+      startDate: _startDate(returnCycle.endDate, returnPeriodDates.quarterFour)
     }
   ]
 }
@@ -64,40 +64,40 @@ export function determineUpcomingReturnsPeriods(date = new Date()) {
 
   return {
     allYear: {
-      startDate: _cycleStartDate(determinationDate, returnPeriodDates.allYear),
-      endDate: _endDate(determinationDate, returnPeriodDates.allYear),
       dueDate: _dueDate(determinationDate, returnPeriodDates.allYear),
-      quarterly: false
-    },
-    summer: {
-      startDate: _cycleStartDate(determinationDate, returnPeriodDates.summer),
-      endDate: _endDate(determinationDate, returnPeriodDates.summer),
-      dueDate: _dueDate(determinationDate, returnPeriodDates.summer),
-      quarterly: false
-    },
-    quarterOne: {
-      startDate: _startDate(determinationDate, returnPeriodDates.quarterOne),
-      endDate: _endDate(determinationDate, returnPeriodDates.quarterOne),
-      dueDate: _dueDate(determinationDate, returnPeriodDates.quarterOne),
-      quarterly: true
-    },
-    quarterTwo: {
-      startDate: _startDate(determinationDate, returnPeriodDates.quarterTwo),
-      endDate: _endDate(determinationDate, returnPeriodDates.quarterTwo),
-      dueDate: _dueDate(determinationDate, returnPeriodDates.quarterTwo),
-      quarterly: true
-    },
-    quarterThree: {
-      startDate: _startDateQuarterThree(determinationDate, returnPeriodDates.quarterThree),
-      endDate: _endDateQuarterThree(determinationDate, returnPeriodDates.quarterThree),
-      dueDate: _dueQuarterThree(determinationDate, returnPeriodDates.quarterThree),
-      quarterly: true
+      endDate: _endDate(determinationDate, returnPeriodDates.allYear),
+      quarterly: false,
+      startDate: _cycleStartDate(determinationDate, returnPeriodDates.allYear)
     },
     quarterFour: {
-      startDate: _startDate(determinationDate, returnPeriodDates.quarterFour),
-      endDate: _endDate(determinationDate, returnPeriodDates.quarterFour),
       dueDate: _dueDate(determinationDate, returnPeriodDates.quarterFour),
-      quarterly: true
+      endDate: _endDate(determinationDate, returnPeriodDates.quarterFour),
+      quarterly: true,
+      startDate: _startDate(determinationDate, returnPeriodDates.quarterFour)
+    },
+    quarterOne: {
+      dueDate: _dueDate(determinationDate, returnPeriodDates.quarterOne),
+      endDate: _endDate(determinationDate, returnPeriodDates.quarterOne),
+      quarterly: true,
+      startDate: _startDate(determinationDate, returnPeriodDates.quarterOne)
+    },
+    quarterThree: {
+      dueDate: _dueQuarterThree(determinationDate, returnPeriodDates.quarterThree),
+      endDate: _endDateQuarterThree(determinationDate, returnPeriodDates.quarterThree),
+      quarterly: true,
+      startDate: _startDateQuarterThree(determinationDate, returnPeriodDates.quarterThree)
+    },
+    quarterTwo: {
+      dueDate: _dueDate(determinationDate, returnPeriodDates.quarterTwo),
+      endDate: _endDate(determinationDate, returnPeriodDates.quarterTwo),
+      quarterly: true,
+      startDate: _startDate(determinationDate, returnPeriodDates.quarterTwo)
+    },
+    summer: {
+      dueDate: _dueDate(determinationDate, returnPeriodDates.summer),
+      endDate: _endDate(determinationDate, returnPeriodDates.summer),
+      quarterly: false,
+      startDate: _cycleStartDate(determinationDate, returnPeriodDates.summer)
     }
   }
 }
@@ -327,6 +327,7 @@ function _newYearElapsedQuarterThreeDueDate(determinationDate, period) {
 export function determineUpcomingReturnPeriods(determinationDate = new Date()) {
   const returnPeriods = determineUpcomingReturnsPeriods(determinationDate)
   const mappedReturnPeriods = _mapReturnsPeriods(returnPeriods)
+
   return _sortByDueDate(mappedReturnPeriods)
 }
 

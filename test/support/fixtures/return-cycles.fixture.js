@@ -7,12 +7,12 @@ import { generateUUID } from '../generators.js'
  */
 function summerCycle() {
   return {
+    dueDate: new Date('2026-11-28'),
+    endDate: new Date('2026-10-31'),
     id: generateUUID(),
     startDate: new Date('2025-11-01'),
-    endDate: new Date('2026-10-31'),
-    dueDate: new Date('2026-11-28'),
-    summer: true,
-    submittedInWrls: true
+    submittedInWrls: true,
+    summer: true
   }
 }
 
@@ -23,12 +23,12 @@ function summerCycle() {
  */
 function winterCycle() {
   return {
+    dueDate: new Date('2026-04-28'),
+    endDate: new Date('2026-03-31'),
     id: generateUUID(),
     startDate: new Date('2025-04-01'),
-    endDate: new Date('2026-03-31'),
-    dueDate: new Date('2026-04-28'),
-    summer: false,
-    submittedInWrls: true
+    submittedInWrls: true,
+    summer: false
   }
 }
 
@@ -43,36 +43,36 @@ function returnCycles(numberOfCycles = 2) {
     summerCycle(),
     winterCycle(),
     {
+      dueDate: new Date('2025-11-28'),
+      endDate: new Date('2025-10-31'),
       id: generateUUID(),
       startDate: new Date('2024-11-01'),
-      endDate: new Date('2025-10-31'),
-      dueDate: new Date('2025-11-28'),
-      summer: true,
-      submittedInWrls: true
+      submittedInWrls: true,
+      summer: true
     },
     {
+      dueDate: new Date('2025-04-28'),
+      endDate: new Date('2025-03-31'),
       id: generateUUID(),
       startDate: new Date('2024-04-01'),
-      endDate: new Date('2025-03-31'),
-      dueDate: new Date('2025-04-28'),
-      summer: false,
-      submittedInWrls: true
+      submittedInWrls: true,
+      summer: false
     },
     {
+      dueDate: new Date('2024-11-28'),
+      endDate: new Date('2024-10-31'),
       id: generateUUID(),
       startDate: new Date('2023-11-01'),
-      endDate: new Date('2024-10-31'),
-      dueDate: new Date('2024-11-28'),
-      summer: true,
-      submittedInWrls: true
+      submittedInWrls: true,
+      summer: true
     },
     {
+      dueDate: new Date('2024-04-28'),
+      endDate: new Date('2024-03-31'),
       id: generateUUID(),
       startDate: new Date('2023-04-01'),
-      endDate: new Date('2024-03-31'),
-      dueDate: new Date('2024-04-28'),
-      summer: false,
-      submittedInWrls: true
+      submittedInWrls: true,
+      summer: false
     }
   ]
 
@@ -80,7 +80,7 @@ function returnCycles(numberOfCycles = 2) {
 }
 
 export default {
+  returnCycles,
   summerCycle,
-  winterCycle,
-  returnCycles
+  winterCycle
 }

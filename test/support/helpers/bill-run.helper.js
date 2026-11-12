@@ -44,13 +44,13 @@ function defaults(data = {}) {
   const { id: regionId } = RegionHelper.select()
 
   const defaults = {
-    regionId,
     batchType: 'supplementary',
     fromFinancialYearEnding: 2023,
-    toFinancialYearEnding: 2023,
-    status: 'queued',
+    regionId,
     scheme: 'sroc',
-    source: 'wrls'
+    source: 'wrls',
+    status: 'queued',
+    toFinancialYearEnding: 2023
   }
 
   return {

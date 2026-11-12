@@ -4,8 +4,8 @@
  */
 
 import Big from 'big.js'
-import { setTimeout } from 'node:timers/promises'
 import { randomInt, randomUUID } from 'node:crypto'
+import { setTimeout } from 'node:timers/promises'
 
 import { returnUnits } from './static-lookups.lib.js'
 
@@ -170,7 +170,7 @@ export function determineCurrentFinancialYear() {
     endYear = currentYear + 1
   }
 
-  return { startDate: new Date(startYear, 3, 1), endDate: new Date(endYear, 2, 31) }
+  return { endDate: new Date(endYear, 2, 31), startDate: new Date(startYear, 3, 1) }
 }
 
 /**

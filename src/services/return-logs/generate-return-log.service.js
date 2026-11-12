@@ -42,9 +42,9 @@ export default function generateReturnLogService(returnRequirement, returnCycle,
     quarterly: returnRequirement.returnVersion.quarterlyReturns,
     returnCycleId,
     returnId: _returnId(returnVersion, reference, startDate, endDate),
-    returnsFrequency: _returnsFrequency(reportingFrequency),
     returnReference: reference.toString(),
     returnRequirementId,
+    returnsFrequency: _returnsFrequency(reportingFrequency),
     source: 'WRLS',
     startDate,
     status: 'due'
@@ -115,13 +115,13 @@ function _metadata(returnRequirement, endDate, returnCycleEndDate) {
     isTwoPartTariff: twoPartTariff,
     isUpload: returnVersion.multipleUpload,
     nald: {
-      regionCode: returnVersion.licence.region.naldRegionId,
       areaCode: returnVersion.licence.areacode,
       formatId: reference,
+      periodEndDay: _abstractionPeriodValue(abstractionPeriodEndDay),
+      periodEndMonth: _abstractionPeriodValue(abstractionPeriodEndMonth),
       periodStartDay: _abstractionPeriodValue(abstractionPeriodStartDay),
       periodStartMonth: _abstractionPeriodValue(abstractionPeriodStartMonth),
-      periodEndDay: _abstractionPeriodValue(abstractionPeriodEndDay),
-      periodEndMonth: _abstractionPeriodValue(abstractionPeriodEndMonth)
+      regionCode: returnVersion.licence.region.naldRegionId
     },
     points: _points(points),
     purposes: _purposes(returnRequirementPurposes),

@@ -19,36 +19,36 @@ export default class ReviewLicenceModel extends BaseModel {
   static get relationMappings() {
     return {
       billRun: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillRunModel,
         join: {
           from: 'reviewLicences.billRunId',
           to: 'billRuns.id'
-        }
+        },
+        modelClass: BillRunModel,
+        relation: Model.BelongsToOneRelation
       },
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'reviewLicences.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       reviewChargeVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewChargeVersionModel,
         join: {
           from: 'reviewLicences.id',
           to: 'reviewChargeVersions.reviewLicenceId'
-        }
+        },
+        modelClass: ReviewChargeVersionModel,
+        relation: Model.HasManyRelation
       },
       reviewReturns: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewReturnModel,
         join: {
           from: 'reviewLicences.id',
           to: 'reviewReturns.reviewLicenceId'
-        }
+        },
+        modelClass: ReviewReturnModel,
+        relation: Model.HasManyRelation
       }
     }
   }

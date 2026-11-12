@@ -3,8 +3,8 @@
  */
 
 import LicenceMonitoringStationModel from '../../../src/models/licence-monitoring-station.model.js'
-import { generateUUID } from '../generators.js'
 import { timestampForPostgres } from '../../../src/lib/general.lib.js'
+import { generateUUID } from '../generators.js'
 
 /**
  * Add a new licence monitoring station
@@ -46,14 +46,14 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
+    // INFO: The table does not have a default for the date columns
+    createdAt: timestamp,
     licenceId: generateUUID(),
     measureType: 'flow',
     monitoringStationId: generateUUID(),
     source: 'wrls',
     thresholdUnit: 'm3/s',
     thresholdValue: 100,
-    // INFO: The table does not have a default for the date columns
-    createdAt: timestamp,
     updatedAt: timestamp
   }
 

@@ -44,7 +44,6 @@ describe('Notify - Create Letter Request', () => {
   describe('when the request succeeds', () => {
     beforeEach(() => {
       response = {
-        statusCode: HTTP_STATUS_OK,
         body: {
           content: {
             body: 'Dear Amala Bird,\r\n',
@@ -59,12 +58,13 @@ describe('Notify - Create Letter Request', () => {
             version: 32
           },
           uri: 'https://api.notifications.service.gov.uk/v2/notifications/0f864b1c-eddf-463e-9df6-035e1e83b550'
-        }
+        },
+        statusCode: HTTP_STATUS_OK
       }
 
       vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-        succeeded: true,
-        response
+        response,
+        succeeded: true
       })
     })
 
@@ -85,7 +85,6 @@ describe('Notify - Create Letter Request', () => {
     describe('because the request did not return a 2xx/3xx response', () => {
       beforeEach(async () => {
         response = {
-          statusCode: HTTP_STATUS_BAD_REQUEST,
           body: {
             errors: [
               {
@@ -94,12 +93,13 @@ describe('Notify - Create Letter Request', () => {
               }
             ],
             status_code: HTTP_STATUS_BAD_REQUEST
-          }
+          },
+          statusCode: HTTP_STATUS_BAD_REQUEST
         }
 
         vi.spyOn(NotifyRequest, 'postRequest').mockResolvedValue({
-          succeeded: false,
-          response
+          response,
+          succeeded: false
         })
       })
 

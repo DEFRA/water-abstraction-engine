@@ -21,12 +21,12 @@ export default class MonitoringStationModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceMonitoringStations: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceMonitoringStationModel,
         join: {
           from: 'monitoringStations.id',
           to: 'licenceMonitoringStations.monitoringStationId'
-        }
+        },
+        modelClass: LicenceMonitoringStationModel,
+        relation: Model.HasManyRelation
       }
     }
   }

@@ -22,32 +22,30 @@ export default class LicenceVersionPurposeModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceVersionModel,
         join: {
           from: 'licenceVersionPurposes.licenceVersionId',
           to: 'licenceVersions.id'
-        }
+        },
+        modelClass: LicenceVersionModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceVersionPurposeConditions: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionPurposeConditionModel,
         join: {
           from: 'licenceVersionPurposes.id',
           to: 'licenceVersionPurposeConditions.licenceVersionPurposeId'
-        }
+        },
+        modelClass: LicenceVersionPurposeConditionModel,
+        relation: Model.HasManyRelation
       },
       licenceVersionPurposePoints: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionPurposePointModel,
         join: {
           from: 'licenceVersionPurposes.id',
           to: 'licenceVersionPurposePoints.licenceVersionPurposeId'
-        }
+        },
+        modelClass: LicenceVersionPurposePointModel,
+        relation: Model.HasManyRelation
       },
       points: {
-        relation: Model.ManyToManyRelation,
-        modelClass: PointModel,
         join: {
           from: 'licenceVersionPurposes.id',
           through: {
@@ -55,31 +53,33 @@ export default class LicenceVersionPurposeModel extends BaseModel {
             to: 'licenceVersionPurposePoints.pointId'
           },
           to: 'points.id'
-        }
+        },
+        modelClass: PointModel,
+        relation: Model.ManyToManyRelation
       },
       primaryPurpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PrimaryPurposeModel,
         join: {
           from: 'licenceVersionPurposes.primaryPurposeId',
           to: 'primaryPurposes.id'
-        }
+        },
+        modelClass: PrimaryPurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       purpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PurposeModel,
         join: {
           from: 'licenceVersionPurposes.purposeId',
           to: 'purposes.id'
-        }
+        },
+        modelClass: PurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       secondaryPurpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: SecondaryPurposeModel,
         join: {
           from: 'licenceVersionPurposes.secondaryPurposeId',
           to: 'secondaryPurposes.id'
-        }
+        },
+        modelClass: SecondaryPurposeModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

@@ -47,9 +47,9 @@ function defaults(data = {}) {
     address2: 'HORIZON HOUSE',
     address3: 'DEANERY ROAD',
     address4: 'BRISTOL',
-    postcode: 'BS1 5AH',
     country: 'United Kingdom',
     dataSource: 'wrls',
+    postcode: 'BS1 5AH',
     uprn: generateUprn()
   }
 

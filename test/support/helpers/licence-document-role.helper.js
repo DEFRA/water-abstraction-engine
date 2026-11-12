@@ -40,9 +40,9 @@ async function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    licenceDocumentId: generateUUID(),
-    companyId: generateUUID(),
     addressId: generateUUID(),
+    companyId: generateUUID(),
+    licenceDocumentId: generateUUID(),
     licenceRoleId: generateUUID(),
     startDate: new Date('2022-01-01')
   }

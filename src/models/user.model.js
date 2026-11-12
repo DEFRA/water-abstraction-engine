@@ -3,8 +3,8 @@
  * @module UserModel
  */
 
-import { Model } from 'objection'
 import { hashSync } from 'bcryptjs'
+import { Model } from 'objection'
 
 import BaseModel from './base.model.js'
 import ChargeVersionNoteModel from './charge-version-note.model.js'
@@ -28,24 +28,22 @@ export default class UserModel extends BaseModel {
   static get relationMappings() {
     return {
       chargeVersionNotes: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeVersionNoteModel,
         join: {
           from: 'users.userId',
           to: 'chargeVersionNotes.userId'
-        }
+        },
+        modelClass: ChargeVersionNoteModel,
+        relation: Model.HasManyRelation
       },
       createdCompanyContacts: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyContactModel,
         join: {
           from: 'users.id',
           to: 'companyContacts.createdBy'
-        }
+        },
+        modelClass: CompanyContactModel,
+        relation: Model.HasManyRelation
       },
       groups: {
-        relation: Model.ManyToManyRelation,
-        modelClass: GroupModel,
         join: {
           from: 'users.userId',
           through: {
@@ -53,43 +51,43 @@ export default class UserModel extends BaseModel {
             to: 'userGroups.groupId'
           },
           to: 'groups.id'
-        }
+        },
+        modelClass: GroupModel,
+        relation: Model.ManyToManyRelation
       },
       licenceEntity: {
-        relation: Model.HasOneRelation,
-        modelClass: LicenceEntityModel,
         join: {
           from: 'users.licenceEntityId',
           to: 'licenceEntities.id'
-        }
+        },
+        modelClass: LicenceEntityModel,
+        relation: Model.HasOneRelation
       },
       licenceMonitoringStations: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceMonitoringStationModel,
         join: {
           from: 'users.userId',
           to: 'licenceMonitoringStations.createdBy'
-        }
+        },
+        modelClass: LicenceMonitoringStationModel,
+        relation: Model.HasManyRelation
       },
       licenceUnregistrations: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceUnregistrationModel,
         join: {
           from: 'users.id',
           to: 'licenceUnregistrations.createdBy'
-        }
+        },
+        modelClass: LicenceUnregistrationModel,
+        relation: Model.HasManyRelation
       },
       returnVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnVersionModel,
         join: {
           from: 'users.userId',
           to: 'returnVersions.createdBy'
-        }
+        },
+        modelClass: ReturnVersionModel,
+        relation: Model.HasManyRelation
       },
       roles: {
-        relation: Model.ManyToManyRelation,
-        modelClass: RoleModel,
         join: {
           from: 'users.userId',
           through: {
@@ -97,31 +95,33 @@ export default class UserModel extends BaseModel {
             to: 'userRoles.roleId'
           },
           to: 'roles.id'
-        }
+        },
+        modelClass: RoleModel,
+        relation: Model.ManyToManyRelation
       },
       updatedCompanyContacts: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyContactModel,
         join: {
           from: 'users.id',
           to: 'companyContacts.updatedBy'
-        }
+        },
+        modelClass: CompanyContactModel,
+        relation: Model.HasManyRelation
       },
       userGroups: {
-        relation: Model.HasManyRelation,
-        modelClass: UserGroupModel,
         join: {
           from: 'users.userId',
           to: 'userGroups.userId'
-        }
+        },
+        modelClass: UserGroupModel,
+        relation: Model.HasManyRelation
       },
       userRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: UserRoleModel,
         join: {
           from: 'users.userId',
           to: 'userRoles.userId'
-        }
+        },
+        modelClass: UserRoleModel,
+        relation: Model.HasManyRelation
       }
     }
   }

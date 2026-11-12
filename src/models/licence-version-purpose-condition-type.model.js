@@ -16,12 +16,12 @@ export default class LicenceVersionPurposeConditionTypeModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceVersionPurposeConditions: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionPurposeConditionModel,
         join: {
           from: 'licenceVersionPurposeConditionTypes.id',
           to: 'licenceVersionPurposeConditions.licenceVersionPurposeConditionTypeId'
-        }
+        },
+        modelClass: LicenceVersionPurposeConditionModel,
+        relation: Model.HasManyRelation
       }
     }
   }

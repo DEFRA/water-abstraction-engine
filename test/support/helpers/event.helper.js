@@ -48,20 +48,20 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    type: 'billing-batch',
-    subtype: 'supplementary',
     issuer: 'test.user@defra.gov.uk',
     metadata: {
       batch: {
         id: generateUUID(),
-        type: 'supplementary',
         region: {
           id: generateUUID()
         },
-        scheme: 'sroc'
+        scheme: 'sroc',
+        type: 'supplementary'
       }
     },
-    status: 'start'
+    status: 'start',
+    subtype: 'supplementary',
+    type: 'billing-batch'
   }
 
   return {

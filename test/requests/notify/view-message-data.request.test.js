@@ -23,7 +23,6 @@ describe('Notify - View Message Data Request', () => {
   describe('when the request succeeds', () => {
     beforeEach(() => {
       response = {
-        statusCode: HTTP_STATUS_OK,
         body: {
           body: 'Dear licence holder,\r\n',
           completed_at: '2025-08-21T17:26:20.737851Z',
@@ -55,12 +54,13 @@ describe('Notify - View Message Data Request', () => {
             version: 40
           },
           type: 'email'
-        }
+        },
+        statusCode: HTTP_STATUS_OK
       }
 
       vi.spyOn(NotifyRequest, 'getRequest').mockResolvedValue({
-        succeeded: true,
-        response
+        response,
+        succeeded: true
       })
     })
 
@@ -81,7 +81,6 @@ describe('Notify - View Message Data Request', () => {
     describe('because the request did not return a 2xx/3xx response', () => {
       beforeEach(async () => {
         response = {
-          statusCode: HTTP_STATUS_NOT_FOUND,
           body: {
             errors: [
               {
@@ -90,12 +89,13 @@ describe('Notify - View Message Data Request', () => {
               }
             ],
             status_code: HTTP_STATUS_NOT_FOUND
-          }
+          },
+          statusCode: HTTP_STATUS_NOT_FOUND
         }
 
         vi.spyOn(NotifyRequest, 'getRequest').mockResolvedValue({
-          succeeded: false,
-          response
+          response,
+          succeeded: false
         })
       })
 

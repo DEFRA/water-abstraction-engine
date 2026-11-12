@@ -49,12 +49,12 @@ function defaults(data = {}) {
   const externalId = `9:${generateRandomInteger(100, 99999)}:${primaryPurpose.legacyId}:${secondaryPurpose.legacyId}:${purpose.legacyId}`
 
   const defaults = {
-    externalId,
-    purposeId: purpose.id,
-    primaryPurposeId: primaryPurpose.id,
     alias: 'Purpose alias',
-    secondaryPurposeId: secondaryPurpose.id,
-    returnRequirementId: generateUUID()
+    externalId,
+    primaryPurposeId: primaryPurpose.id,
+    purposeId: purpose.id,
+    returnRequirementId: generateUUID(),
+    secondaryPurposeId: secondaryPurpose.id
   }
 
   return {

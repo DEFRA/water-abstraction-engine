@@ -45,8 +45,8 @@ function defaults(data = {}) {
 
   const defaults = {
     chargeVersionId: generateUUID(),
-    source: 'non-tidal',
     loss: 'low',
+    source: 'non-tidal',
     volume
   }
 

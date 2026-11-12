@@ -3,8 +3,8 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 // Test helpers
 import RecipientsFixture from '../../../support/fixtures/recipients.fixture.js'
-import { formatDateObjectToISO } from '../../../../src/lib/dates.lib.js'
 import { futureDueDate } from '../../../../src/presenters/notices/base.presenter.js'
+import { formatDateObjectToISO } from '../../../../src/lib/dates.lib.js'
 
 // Thing under test
 import CreateNoticePresenter from '../../../../src/presenters/notices/setup/create-notice.presenter.js'
@@ -128,18 +128,18 @@ describe('Notices - Setup - Create Notice presenter', () => {
       ]
 
       noticeData = {
-        returnsPeriod: 'quarterFour',
-        removeLicences: [],
-        journey: 'standard',
-        referenceCode: 'RINV-123',
         determinedReturnsPeriod: {
           dueDate: new Date(`2025-07-28`),
           endDate: new Date(`2025-06-30`),
           startDate: new Date(`2025-04-01`),
           summer: 'true'
         },
+        journey: 'standard',
         name: 'Returns: invitation',
         noticeType: 'invitations',
+        referenceCode: 'RINV-123',
+        removeLicences: [],
+        returnsPeriod: 'quarterFour',
         subType: 'returnInvitation'
       }
     })
@@ -302,18 +302,18 @@ describe('Notices - Setup - Create Notice presenter', () => {
       ]
 
       noticeData = {
-        returnsPeriod: 'quarterFour',
-        removeLicences: [],
-        journey: 'standard',
-        referenceCode: 'RREM-123',
         determinedReturnsPeriod: {
           dueDate: new Date(`2025-07-28`),
           endDate: new Date(`2025-06-30`),
           startDate: new Date(`2025-04-01`),
           summer: 'true'
         },
+        journey: 'standard',
         name: 'Returns: reminder',
         noticeType: 'reminders',
+        referenceCode: 'RREM-123',
+        removeLicences: [],
+        returnsPeriod: 'quarterFour',
         subType: 'returnReminder'
       }
     })

@@ -22,60 +22,60 @@ export default class ChargeReferenceModel extends BaseModel {
   static get relationMappings() {
     return {
       billRunVolumes: {
-        relation: Model.HasManyRelation,
-        modelClass: BillRunVolumeModel,
         join: {
           from: 'chargeReferences.id',
           to: 'billRunVolumes.chargeReferenceId'
-        }
+        },
+        modelClass: BillRunVolumeModel,
+        relation: Model.HasManyRelation
       },
       chargeCategory: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeCategoryModel,
         join: {
           from: 'chargeReferences.chargeCategoryId',
           to: 'chargeCategories.id'
-        }
+        },
+        modelClass: ChargeCategoryModel,
+        relation: Model.BelongsToOneRelation
       },
       chargeElements: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeElementModel,
         join: {
           from: 'chargeReferences.id',
           to: 'chargeElements.chargeReferenceId'
-        }
+        },
+        modelClass: ChargeElementModel,
+        relation: Model.HasManyRelation
       },
       chargeVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'chargeReferences.chargeVersionId',
           to: 'chargeVersions.id'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.BelongsToOneRelation
       },
       purpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PurposeModel,
         join: {
           from: 'chargeReferences.purposeId',
           to: 'purposes.id'
-        }
+        },
+        modelClass: PurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       reviewChargeReferences: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewChargeReferenceModel,
         join: {
           from: 'chargeReferences.id',
           to: 'reviewChargeReferences.chargeReferenceId'
-        }
+        },
+        modelClass: ReviewChargeReferenceModel,
+        relation: Model.HasManyRelation
       },
       transactions: {
-        relation: Model.HasManyRelation,
-        modelClass: TransactionModel,
         join: {
           from: 'chargeReferences.id',
           to: 'transactions.chargeReferenceId'
-        }
+        },
+        modelClass: TransactionModel,
+        relation: Model.HasManyRelation
       }
     }
   }

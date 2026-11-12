@@ -16,12 +16,12 @@ export default class ReturnSubmissionLineModel extends BaseModel {
   static get relationMappings() {
     return {
       returnSubmission: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnSubmissionModel,
         join: {
           from: 'returnSubmissionLines.returnSubmissionId',
           to: 'returnSubmissions.id'
-        }
+        },
+        modelClass: ReturnSubmissionModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

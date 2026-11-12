@@ -3,8 +3,8 @@
  * @module GeneralHelper
  */
 
-import { generateRandomInteger } from './generators.js'
 import { today } from '../../src/lib/general.lib.js'
+import { generateRandomInteger } from './generators.js'
 
 /**
  * Generate the POST request options needed for `server.inject()`
@@ -48,19 +48,19 @@ export function postRequestOptions(
 ) {
   const options = {
     method: 'POST',
-    url: path,
-    payload: { ...payload }
+    payload: { ...payload },
+    url: path
   }
 
   if (scope) {
     options.auth = {
-      strategy: 'session',
       credentials: {
         scope,
         user: {
           id: 1000
         }
-      }
+      },
+      strategy: 'session'
     }
   }
 

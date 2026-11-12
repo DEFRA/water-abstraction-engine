@@ -16,21 +16,21 @@ export default class TransactionModel extends BaseModel {
 
   static get relationMappings() {
     return {
-      chargeReference: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeReferenceModel,
-        join: {
-          from: 'transactions.chargeReferenceId',
-          to: 'chargeReferences.id'
-        }
-      },
       billLicence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillLicenceModel,
         join: {
           from: 'transactions.billLicenceId',
           to: 'billLicences.id'
-        }
+        },
+        modelClass: BillLicenceModel,
+        relation: Model.BelongsToOneRelation
+      },
+      chargeReference: {
+        join: {
+          from: 'transactions.chargeReferenceId',
+          to: 'chargeReferences.id'
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

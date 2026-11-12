@@ -19,36 +19,36 @@ export default class AddressModel extends BaseModel {
   static get relationMappings() {
     return {
       billingAccountAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: BillingAccountAddressModel,
         join: {
           from: 'addresses.id',
           to: 'billingAccountAddresses.addressId'
-        }
+        },
+        modelClass: BillingAccountAddressModel,
+        relation: Model.HasManyRelation
       },
       companyAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyAddressModel,
         join: {
           from: 'addresses.id',
           to: 'companyAddresses.addressId'
-        }
+        },
+        modelClass: CompanyAddressModel,
+        relation: Model.HasManyRelation
       },
       licenceDocumentRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceDocumentRoleModel,
         join: {
           from: 'addresses.id',
           to: 'licenceDocumentRoles.addressId'
-        }
+        },
+        modelClass: LicenceDocumentRoleModel,
+        relation: Model.HasManyRelation
       },
       licenceVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionModel,
         join: {
           from: 'addresses.id',
           to: 'licenceVersions.addressId'
-        }
+        },
+        modelClass: LicenceVersionModel,
+        relation: Model.HasManyRelation
       }
     }
   }

@@ -44,15 +44,15 @@ async function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    licenceRef: generateLicenceRef(),
-    scheme: 'sroc',
-    versionNumber: 1,
-    startDate: new Date('2022-04-01'),
-    regionCode: 1,
-    source: 'wrls',
     billingAccountId: generateUUID(),
+    licenceId: generateUUID(),
+    licenceRef: generateLicenceRef(),
+    regionCode: 1,
+    scheme: 'sroc',
+    source: 'wrls',
+    startDate: new Date('2022-04-01'),
     status: 'current',
-    licenceId: generateUUID()
+    versionNumber: 1
   }
 
   return {

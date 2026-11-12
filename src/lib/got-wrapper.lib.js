@@ -41,13 +41,13 @@ async function requestLike(options, callback, got, defaults) {
   const url = options.url || options.uri
 
   const gotOptions = {
-    method: options.method || defaults.method || 'GET',
-    headers: { ...defaults.headers, ...options.headers },
-    body: options.body || defaults.body,
     agent: {
       http: new HttpProxyAgent({ proxy: defaults.proxy }),
       https: new HttpsProxyAgent({ proxy: defaults.proxy })
     },
+    body: options.body || defaults.body,
+    headers: { ...defaults.headers, ...options.headers },
+    method: options.method || defaults.method || 'GET',
     responseType: 'text'
   }
 
@@ -55,9 +55,9 @@ async function requestLike(options, callback, got, defaults) {
     const response = await got(url, gotOptions)
 
     const returnedResponse = {
-      statusCode: response.statusCode,
+      body: response.body,
       headers: response.headers,
-      body: response.body
+      statusCode: response.statusCode
     }
 
     callback(null, returnedResponse, response.body)

@@ -27,7 +27,6 @@
 import Blankie from 'blankie'
 
 export default {
-  plugin: Blankie,
   options: {
     baseUri: ['self'],
     connectSrc: ['self'],
@@ -38,5 +37,6 @@ export default {
     scriptSrc: ['self'],
     styleSrc: ['self'],
     workerSrc: ['self']
-  }
+  },
+  plugin: Blankie
 }

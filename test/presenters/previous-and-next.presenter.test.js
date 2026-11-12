@@ -41,8 +41,8 @@ describe('Previous And Next Presenter', () => {
         const result = PreviousAndNextPresenter(arrayOfElements, anchorElement)
 
         expect(result).toEqual({
-          previous: previousElement,
-          next: nextElement
+          next: nextElement,
+          previous: previousElement
         })
       })
     })
@@ -56,8 +56,8 @@ describe('Previous And Next Presenter', () => {
         const result = PreviousAndNextPresenter(arrayOfElements, anchorElement)
 
         expect(result).toEqual({
-          previous: previousElement,
-          next: null
+          next: null,
+          previous: previousElement
         })
       })
     })
@@ -71,8 +71,8 @@ describe('Previous And Next Presenter', () => {
         const result = PreviousAndNextPresenter(arrayOfElements, anchorElement)
 
         expect(result).toEqual({
-          previous: null,
-          next: nextElement
+          next: nextElement,
+          previous: null
         })
       })
     })
@@ -86,8 +86,8 @@ describe('Previous And Next Presenter', () => {
         const result = PreviousAndNextPresenter(arrayOfElements, anchorElement)
 
         expect(result).toEqual({
-          previous: null,
-          next: null
+          next: null,
+          previous: null
         })
       })
     })
@@ -109,8 +109,8 @@ describe('Previous And Next Presenter', () => {
       const result = PreviousAndNextPresenter(arrayOfElements, anchorElement)
 
       expect(result).toEqual({
-        previous: null,
-        next: null
+        next: null,
+        previous: null
       })
     })
   })

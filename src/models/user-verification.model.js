@@ -32,17 +32,15 @@ export default class UserVerificationModel extends BaseModel {
     return {
       // The "company" entity (just a notional group of licences) that the user is claiming the licences for
       companyEntity: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceEntityModel,
         join: {
           from: 'userVerifications.companyEntityId',
           to: 'licenceEntities.id'
-        }
+        },
+        modelClass: LicenceEntityModel,
+        relation: Model.BelongsToOneRelation
       },
       // The group of licences being claimed
       licenceDocumentHeaders: {
-        relation: Model.ManyToManyRelation,
-        modelClass: LicenceDocumentHeaderModel,
         join: {
           from: 'userVerifications.id',
           through: {
@@ -50,16 +48,18 @@ export default class UserVerificationModel extends BaseModel {
             to: 'userVerificationDocuments.licenceDocumentHeaderId'
           },
           to: 'licenceDocumentHeaders.id'
-        }
+        },
+        modelClass: LicenceDocumentHeaderModel,
+        relation: Model.ManyToManyRelation
       },
       // The "individual" entity (the registered user) that is claiming the licence
       licenceEntity: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceEntityModel,
         join: {
           from: 'userVerifications.licenceEntityId',
           to: 'licenceEntities.id'
-        }
+        },
+        modelClass: LicenceEntityModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

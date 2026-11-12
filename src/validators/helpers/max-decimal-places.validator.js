@@ -1,4 +1,10 @@
 /**
+ * Custom Joi validator to check a value does not have more than the specified number of decimal places
+ *
+ * @module MaxDecimalPlacesValidator
+ */
+
+/**
  * Custom JOI validator to check a value does not have more than the specified number of decimal places
  *
  * Due to limitations in Joi validation for decimals, achieving validation for numbers with more than the specified

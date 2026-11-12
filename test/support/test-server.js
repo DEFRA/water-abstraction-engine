@@ -38,7 +38,7 @@ process.on('unhandledRejection', (err) => {
 })
 
 function _authService(_request, _session) {
-  return { isValid: true, credentials: {} }
+  return { credentials: {}, isValid: true }
 }
 
 /**

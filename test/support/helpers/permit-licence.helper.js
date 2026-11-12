@@ -41,11 +41,11 @@ async function add(data = {}) {
 function defaults(data = {}) {
   const licenceRef = data.licenceRef ? data.licenceRef : generateLicenceRef()
   const defaults = {
-    licenceStatusId: 1,
-    licenceTypeId: 8,
+    licenceDataValue: _licenceDataValue(licenceRef),
     licenceRef,
     licenceRegimeId: 1,
-    licenceDataValue: _licenceDataValue(licenceRef)
+    licenceStatusId: 1,
+    licenceTypeId: 8
   }
 
   return {
@@ -74,367 +74,367 @@ function defaults(data = {}) {
  */
 function _licenceDataValue(licenceRef) {
   return {
-    ID: '9000000',
     data: {
       cams: [],
-      roles: [
-        {
-          array: [
-            {
-              CODE: 'WP',
-              DESCR: 'Work Phone',
-              CONT_NO: '01234 567 567',
-              ACON_AADD_ID: '9000020',
-              ACON_APAR_ID: '9999999',
-              FGAC_REGION_CODE: '6'
-            }
-          ],
-          role_type: {
-            CODE: 'EO',
-            DESCR: 'Enforcement Officer'
-          },
-          role_party: {
-            ID: '9999999',
-            NAME: 'Test',
-            DESCR: 'Test role description',
-            FORENAME: 'Test role first name',
-            INITIALS: 'N',
-            APAR_TYPE: 'PER',
-            SALUTATION: 'Ms'
-          },
-          role_detail: {
-            ID: '9000004',
-            EFF_ST_DATE: '01/04/2022',
-            ACON_AADD_ID: '9000020',
-            ACON_APAR_ID: '9999999',
-            EFF_END_DATE: '01/04/2023'
-          },
-          role_address: {
-            ID: '9000022',
-            TOWN: 'Test town',
-            COUNTY: 'Test county',
-            COUNTRY: 'null',
-            POSTCODE: 'AT1 1AT',
-            ADDR_LINE1: 'Test address line 1',
-            ADDR_LINE2: 'Test address line 2',
-            ADDR_LINE3: 'Test address line 3',
-            ADDR_LINE4: 'Test address line 4',
-            FGAC_REGION_CODE: '9'
-          }
-        }
-      ],
-      purposes: [
-        {
-          ID: '9000007',
-          LANDS: 'Boldly outlined on map',
-          NOTES: 'null',
-          purpose: [
-            {
-              purpose_primary: {
-                CODE: 'P',
-                DESCR: 'Production Of Energy'
-              },
-              purpose_tertiary: {
-                CODE: '80',
-                DESCR: 'Evaporative Cooling',
-                ALSF_CODE: 'H'
-              },
-              purpose_secondary: {
-                CODE: 'ELC',
-                DESCR: 'Electricity'
-              }
-            }
-          ],
-          INST_QTY: '12',
-          DAILY_QTY: '123',
-          ANNUAL_QTY: '12345',
-          HOURLY_QTY: '12',
-          PERIOD_ST_DAY: '1',
-          purposePoints: [
-            {
-              NOTES: 'null',
-              point_detail: {
-                ID: '90000012',
-                NGR1_EAST: '1234',
-                LOCAL_NAME: 'Test purpose local name',
-                NGR1_NORTH: '1234',
-                NGR1_SHEET: 'TQ',
-                FGAC_REGION_CODE: '9'
-              },
-              point_source: {
-                CODE: 'ABC',
-                NAME: 'Test source name',
-                NOTES: 'Test source notes',
-                CART_NORTH: '1234',
-                LOCAL_NAME: 'Test local name',
-                FGAC_REGION_CODE: '9'
-              },
-              FGAC_REGION_CODE: '9',
-              means_of_abstraction: {
-                CODE: 'ABC',
-                DESCR: 'Test means of abstraction',
-                NOTES: 'null'
-              }
-            }
-          ],
-          APUR_APPR_CODE: 'P',
-          APUR_APSE_CODE: 'ELC',
-          APUR_APUS_CODE: '80',
-          PERIOD_END_DAY: '31',
-          PERIOD_ST_MONTH: '1',
-          TIMELTD_ST_DATE: 'null',
-          FGAC_REGION_CODE: '9',
-          PERIOD_END_MONTH: '12',
-          TIMELTD_END_DATE: 'null',
-          licenceAgreements: [],
-          licenceConditions: []
-        }
-      ],
-      versions: [
-        {
-          APP_NO: licenceRef,
-          STATUS: 'CURR',
-          INCR_NO: '0',
-          parties: [
-            {
-              ID: '9999999',
-              NAME: 'Test party name',
-              DESCR: 'null',
-              FORENAME: 'null',
-              INITIALS: 'null',
-              contacts: [
-                {
-                  AADD_ID: '9000020',
-                  APAR_ID: '9999999',
-                  party_address: {
-                    ID: '9000022',
-                    TOWN: 'Test town',
-                    COUNTY: 'Test county',
-                    COUNTRY: 'null',
-                    POSTCODE: 'AT1 1AT',
-                    ADDR_LINE1: 'Test address line 1',
-                    ADDR_LINE2: 'Test address line 2',
-                    ADDR_LINE3: 'Test address line 3',
-                    ADDR_LINE4: 'Test address line 4',
-                    FGAC_REGION_CODE: '9'
-                  },
-                  FGAC_REGION_CODE: '9'
-                }
-              ],
-              APAR_TYPE: 'ORG',
-              LOCAL_NAME: 'null',
-              SALUTATION: 'null',
-              FGAC_REGION_CODE: '9'
-            }
-          ],
-          ISSUE_NO: '100',
-          EFF_ST_DATE: '01/04/2022',
-          RETURNS_REQ: 'Y',
-          ACON_AADD_ID: '9000020',
-          ACON_APAR_ID: '9999999',
-          EFF_END_DATE: '01/04/2023',
-          LIC_SIG_DATE: '01/04/2022',
-          FGAC_REGION_CODE: '9'
-        }
-      ],
       current_version: {
-        party: {
-          ID: '9999999',
-          NAME: 'Testing',
-          DESCR: 'null',
-          FORENAME: 'null',
-          INITIALS: 'null',
-          APAR_TYPE: 'ORG',
-          LOCAL_NAME: 'null',
-          SALUTATION: 'null',
-          FGAC_REGION_CODE: '9',
-          ASIC_ASID_DIVISION: 'null'
-        },
         address: {
-          ID: '9000022',
-          TOWN: 'Test town',
-          COUNTY: 'Test county',
-          COUNTRY: 'null',
-          POSTCODE: 'AT1 1AT',
           ADDR_LINE1: 'Test address line 1',
           ADDR_LINE2: 'Test address line 2',
           ADDR_LINE3: 'Test address line 3',
           ADDR_LINE4: 'Test address line 4',
-          FGAC_REGION_CODE: '9'
+          COUNTRY: 'null',
+          COUNTY: 'Test county',
+          FGAC_REGION_CODE: '9',
+          ID: '9000022',
+          POSTCODE: 'AT1 1AT',
+          TOWN: 'Test town'
         },
+        expiry_date: '01/04/2023',
         formats: [
           {
-            ID: '9000025',
-            DESCR: 'Test format description',
+            ABS_PERIOD_END_DAY: '31',
+            ABS_PERIOD_END_MONTH: '12',
+            ABS_PERIOD_ST_DAY: '1',
+            ABS_PERIOD_ST_MONTH: '1',
+            ANNUAL_QTY: '1234',
+            ARTC_REC_FREQ_CODE: 'D',
+            ARTC_RET_FREQ_CODE: 'A',
             CC_IND: 'N',
+            DESCR: 'Test format description',
+            FGAC_REGION_CODE: '9',
+            FORM_PRODN_MONTH: '10',
+            FORMS_REQ_ALL_YEAR: 'Y',
+            ID: '9000025',
             points: [
               {
-                ID: '9000026',
                 AADD_ID: '9000020',
-                NGR1_EAST: '1234',
+                FGAC_REGION_CODE: '9',
+                ID: '9000026',
                 LOCAL_NAME: 'Test point local name',
+                NGR1_EAST: '1234',
                 NGR1_NORTH: '1234',
-                NGR1_SHEET: 'TQ',
-                FGAC_REGION_CODE: '9'
+                NGR1_SHEET: 'TQ'
               }
             ],
-            TPT_FLAG: 'N',
             purposes: [
               {
-                ARTY_ID: '9000027',
-                PURP_ALIAS: 'Evaporative Cooling',
                 APUR_APPR_CODE: 'P',
                 APUR_APSE_CODE: 'ELC',
                 APUR_APUS_CODE: '80',
-                primary_purpose: 'Production Of Energy',
+                ARTY_ID: '9000027',
                 FGAC_REGION_CODE: '9',
-                tertiary_purpose: 'Evaporative Cooling',
-                secondary_purpose: 'Electricity'
+                primary_purpose: 'Production Of Energy',
+                PURP_ALIAS: 'Evaporative Cooling',
+                secondary_purpose: 'Electricity',
+                tertiary_purpose: 'Evaporative Cooling'
               }
             ],
-            ANNUAL_QTY: '1234',
             SITE_DESCR: 'Test site description',
-            TIMELTD_ST_DATE: 'null',
-            FGAC_REGION_CODE: '9',
-            FORM_PRODN_MONTH: '10',
             TIMELTD_END_DATE: 'null',
-            ABS_PERIOD_ST_DAY: '1',
-            ABS_PERIOD_END_DAY: '31',
-            ARTC_REC_FREQ_CODE: 'D',
-            ARTC_RET_FREQ_CODE: 'A',
-            FORMS_REQ_ALL_YEAR: 'Y',
-            ABS_PERIOD_ST_MONTH: '1',
-            ABS_PERIOD_END_MONTH: '12'
+            TIMELTD_ST_DATE: 'null',
+            TPT_FLAG: 'N'
           }
         ],
         licence: {
-          CODE: 'FULL',
-          DESCR: 'Full Licence (>=28 Days)',
-          party: [
-            {
-              ID: '9000029',
-              NAME: 'Test party name',
-              APAR_TYPE: 'ORG',
-              FGAC_REGION_CODE: '9'
-            }
-          ],
-          STATUS: 'CURR',
-          INCR_NO: '0',
-          ISSUE_NO: '100',
-          EFF_ST_DATE: '01/04/2022',
-          RETURNS_REQ: 'Y',
           ACON_AADD_ID: '9000020',
           ACON_APAR_ID: '9999999',
+          CODE: 'FULL',
+          DESCR: 'Full Licence (>=28 Days)',
           EFF_END_DATE: 'null',
+          EFF_ST_DATE: '01/04/2022',
+          FGAC_REGION_CODE: '9',
+          INCR_NO: '0',
+          ISSUE_NO: '100',
           LIC_SIG_DATE: '01/04/2022',
-          FGAC_REGION_CODE: '9'
+          party: [
+            {
+              APAR_TYPE: 'ORG',
+              FGAC_REGION_CODE: '9',
+              ID: '9000029',
+              NAME: 'Test party name'
+            }
+          ],
+          RETURNS_REQ: 'Y',
+          STATUS: 'CURR'
+        },
+        original_effective_date: '20220401',
+        party: {
+          APAR_TYPE: 'ORG',
+          ASIC_ASID_DIVISION: 'null',
+          DESCR: 'null',
+          FGAC_REGION_CODE: '9',
+          FORENAME: 'null',
+          ID: '9999999',
+          INITIALS: 'null',
+          LOCAL_NAME: 'null',
+          NAME: 'Testing',
+          SALUTATION: 'null'
         },
         purposes: [
           {
+            ANNUAL_QTY: '12345',
+            APUR_APPR_CODE: 'P',
+            APUR_APSE_CODE: 'ELC',
+            APUR_APUS_CODE: '80',
+            DAILY_QTY: '123',
+            FGAC_REGION_CODE: '9',
+            HOURLY_QTY: '12',
             ID: '9000030',
+            INST_QTY: '12',
             LANDS: 'Boldly outlined on map',
+            licenceAgreements: [],
+            licenceConditions: [],
             NOTES: 'null',
+            PERIOD_END_DAY: '31',
+            PERIOD_END_MONTH: '12',
+            PERIOD_ST_DAY: '1',
+            PERIOD_ST_MONTH: '1',
             purpose: [
               {
                 purpose_primary: {
                   CODE: 'P',
                   DESCR: 'Production Of Energy'
                 },
-                purpose_tertiary: {
-                  CODE: '80',
-                  DESCR: 'Evaporative Cooling',
-                  ALSF_CODE: 'H'
-                },
                 purpose_secondary: {
                   CODE: 'ELC',
                   DESCR: 'Electricity'
+                },
+                purpose_tertiary: {
+                  ALSF_CODE: 'H',
+                  CODE: '80',
+                  DESCR: 'Evaporative Cooling'
                 }
               }
             ],
-            INST_QTY: '12',
-            DAILY_QTY: '123',
-            ANNUAL_QTY: '12345',
-            HOURLY_QTY: '12',
-            PERIOD_ST_DAY: '1',
             purposePoints: [
               {
-                NOTES: 'null',
-                point_detail: {
-                  ID: '9000031',
-                  AADD_ID: '9000020',
-                  NGR1_EAST: '1234',
-                  LOCAL_NAME: 'Test local name 1',
-                  NGR1_NORTH: '1234',
-                  NGR1_SHEET: 'TQ',
-                  FGAC_REGION_CODE: '9'
-                },
-                point_source: {
-                  CODE: 'ABC',
-                  NAME: 'Test point source name 1',
-                  NOTES: 'Test point source notes 1',
-                  CART_NORTH: '1234',
-                  LOCAL_NAME: 'Test local name 1',
-                  FGAC_REGION_CODE: '9'
-                },
                 FGAC_REGION_CODE: '9',
                 means_of_abstraction: {
                   CODE: 'UNP',
                   DESCR: 'Unspecified Pump 1'
+                },
+                NOTES: 'null',
+                point_detail: {
+                  AADD_ID: '9000020',
+                  FGAC_REGION_CODE: '9',
+                  ID: '9000031',
+                  LOCAL_NAME: 'Test local name 1',
+                  NGR1_EAST: '1234',
+                  NGR1_NORTH: '1234',
+                  NGR1_SHEET: 'TQ'
+                },
+                point_source: {
+                  CART_NORTH: '1234',
+                  CODE: 'ABC',
+                  FGAC_REGION_CODE: '9',
+                  LOCAL_NAME: 'Test local name 1',
+                  NAME: 'Test point source name 1',
+                  NOTES: 'Test point source notes 1'
                 }
               },
               {
-                NOTES: 'null',
-                point_detail: {
-                  ID: '9000032',
-                  AADD_ID: '9000022',
-                  NGR1_EAST: '5678',
-                  LOCAL_NAME: 'Test local name 2',
-                  NGR1_NORTH: '5678',
-                  NGR1_SHEET: 'TT',
-                  FGAC_REGION_CODE: '9'
-                },
-                point_source: {
-                  CODE: 'DEF',
-                  NAME: 'Test point source name 2',
-                  NOTES: 'Test point source notes 2',
-                  CART_NORTH: '5678',
-                  LOCAL_NAME: 'Test local name 2',
-                  FGAC_REGION_CODE: '9'
-                },
                 FGAC_REGION_CODE: '9',
                 means_of_abstraction: {
                   CODE: 'UNP',
                   DESCR: 'Unspecified Pump 2'
+                },
+                NOTES: 'null',
+                point_detail: {
+                  AADD_ID: '9000022',
+                  FGAC_REGION_CODE: '9',
+                  ID: '9000032',
+                  LOCAL_NAME: 'Test local name 2',
+                  NGR1_EAST: '5678',
+                  NGR1_NORTH: '5678',
+                  NGR1_SHEET: 'TT'
+                },
+                point_source: {
+                  CART_NORTH: '5678',
+                  CODE: 'DEF',
+                  FGAC_REGION_CODE: '9',
+                  LOCAL_NAME: 'Test local name 2',
+                  NAME: 'Test point source name 2',
+                  NOTES: 'Test point source notes 2'
                 }
               }
             ],
-            APUR_APPR_CODE: 'P',
-            APUR_APSE_CODE: 'ELC',
-            APUR_APUS_CODE: '80',
-            PERIOD_END_DAY: '31',
-            PERIOD_ST_MONTH: '1',
-            TIMELTD_ST_DATE: 'null',
-            FGAC_REGION_CODE: '9',
-            PERIOD_END_MONTH: '12',
             TIMELTD_END_DATE: 'null',
-            licenceAgreements: [],
-            licenceConditions: []
+            TIMELTD_ST_DATE: 'null'
           }
         ],
-        expiry_date: '01/04/2023',
-        version_effective_date: '20220401',
-        original_effective_date: '20220401'
-      }
+        version_effective_date: '20220401'
+      },
+      purposes: [
+        {
+          ANNUAL_QTY: '12345',
+          APUR_APPR_CODE: 'P',
+          APUR_APSE_CODE: 'ELC',
+          APUR_APUS_CODE: '80',
+          DAILY_QTY: '123',
+          FGAC_REGION_CODE: '9',
+          HOURLY_QTY: '12',
+          ID: '9000007',
+          INST_QTY: '12',
+          LANDS: 'Boldly outlined on map',
+          licenceAgreements: [],
+          licenceConditions: [],
+          NOTES: 'null',
+          PERIOD_END_DAY: '31',
+          PERIOD_END_MONTH: '12',
+          PERIOD_ST_DAY: '1',
+          PERIOD_ST_MONTH: '1',
+          purpose: [
+            {
+              purpose_primary: {
+                CODE: 'P',
+                DESCR: 'Production Of Energy'
+              },
+              purpose_secondary: {
+                CODE: 'ELC',
+                DESCR: 'Electricity'
+              },
+              purpose_tertiary: {
+                ALSF_CODE: 'H',
+                CODE: '80',
+                DESCR: 'Evaporative Cooling'
+              }
+            }
+          ],
+          purposePoints: [
+            {
+              FGAC_REGION_CODE: '9',
+              means_of_abstraction: {
+                CODE: 'ABC',
+                DESCR: 'Test means of abstraction',
+                NOTES: 'null'
+              },
+              NOTES: 'null',
+              point_detail: {
+                FGAC_REGION_CODE: '9',
+                ID: '90000012',
+                LOCAL_NAME: 'Test purpose local name',
+                NGR1_EAST: '1234',
+                NGR1_NORTH: '1234',
+                NGR1_SHEET: 'TQ'
+              },
+              point_source: {
+                CART_NORTH: '1234',
+                CODE: 'ABC',
+                FGAC_REGION_CODE: '9',
+                LOCAL_NAME: 'Test local name',
+                NAME: 'Test source name',
+                NOTES: 'Test source notes'
+              }
+            }
+          ],
+          TIMELTD_END_DATE: 'null',
+          TIMELTD_ST_DATE: 'null'
+        }
+      ],
+      roles: [
+        {
+          array: [
+            {
+              ACON_AADD_ID: '9000020',
+              ACON_APAR_ID: '9999999',
+              CODE: 'WP',
+              CONT_NO: '01234 567 567',
+              DESCR: 'Work Phone',
+              FGAC_REGION_CODE: '6'
+            }
+          ],
+          role_address: {
+            ADDR_LINE1: 'Test address line 1',
+            ADDR_LINE2: 'Test address line 2',
+            ADDR_LINE3: 'Test address line 3',
+            ADDR_LINE4: 'Test address line 4',
+            COUNTRY: 'null',
+            COUNTY: 'Test county',
+            FGAC_REGION_CODE: '9',
+            ID: '9000022',
+            POSTCODE: 'AT1 1AT',
+            TOWN: 'Test town'
+          },
+          role_detail: {
+            ACON_AADD_ID: '9000020',
+            ACON_APAR_ID: '9999999',
+            EFF_END_DATE: '01/04/2023',
+            EFF_ST_DATE: '01/04/2022',
+            ID: '9000004'
+          },
+          role_party: {
+            APAR_TYPE: 'PER',
+            DESCR: 'Test role description',
+            FORENAME: 'Test role first name',
+            ID: '9999999',
+            INITIALS: 'N',
+            NAME: 'Test',
+            SALUTATION: 'Ms'
+          },
+          role_type: {
+            CODE: 'EO',
+            DESCR: 'Enforcement Officer'
+          }
+        }
+      ],
+      versions: [
+        {
+          ACON_AADD_ID: '9000020',
+          ACON_APAR_ID: '9999999',
+          APP_NO: licenceRef,
+          EFF_END_DATE: '01/04/2023',
+          EFF_ST_DATE: '01/04/2022',
+          FGAC_REGION_CODE: '9',
+          INCR_NO: '0',
+          ISSUE_NO: '100',
+          LIC_SIG_DATE: '01/04/2022',
+          parties: [
+            {
+              APAR_TYPE: 'ORG',
+              contacts: [
+                {
+                  AADD_ID: '9000020',
+                  APAR_ID: '9999999',
+                  FGAC_REGION_CODE: '9',
+                  party_address: {
+                    ADDR_LINE1: 'Test address line 1',
+                    ADDR_LINE2: 'Test address line 2',
+                    ADDR_LINE3: 'Test address line 3',
+                    ADDR_LINE4: 'Test address line 4',
+                    COUNTRY: 'null',
+                    COUNTY: 'Test county',
+                    FGAC_REGION_CODE: '9',
+                    ID: '9000022',
+                    POSTCODE: 'AT1 1AT',
+                    TOWN: 'Test town'
+                  }
+                }
+              ],
+              DESCR: 'null',
+              FGAC_REGION_CODE: '9',
+              FORENAME: 'null',
+              ID: '9999999',
+              INITIALS: 'null',
+              LOCAL_NAME: 'null',
+              NAME: 'Test party name',
+              SALUTATION: 'null'
+            }
+          ],
+          RETURNS_REQ: 'Y',
+          STATUS: 'CURR'
+        }
+      ]
     },
-    NOTES: 'Licence notes',
-    LIC_NO: licenceRef,
-    REV_DATE: 'null',
-    vmlVersion: 2,
     EXPIRY_DATE: '01/04/2023',
+    FGAC_REGION_CODE: '9',
+    ID: '9000000',
     LAPSED_DATE: 'null',
+    LIC_NO: licenceRef,
+    NOTES: 'Licence notes',
     ORIG_EFF_DATE: '01/04/2022',
     ORIG_SIG_DATE: '01/04/2022',
-    FGAC_REGION_CODE: '9'
+    REV_DATE: 'null',
+    vmlVersion: 2
   }
 }
 

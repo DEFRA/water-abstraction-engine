@@ -16,12 +16,12 @@ export default class ReturnCycleModel extends BaseModel {
   static get relationMappings() {
     return {
       returnLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnLogModel,
         join: {
           from: 'returnCycles.id',
           to: 'returnLogs.returnCycleId'
-        }
+        },
+        modelClass: ReturnLogModel,
+        relation: Model.HasManyRelation
       }
     }
   }

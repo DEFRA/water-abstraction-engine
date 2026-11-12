@@ -11,8 +11,6 @@ describe('Notices - Setup - Notify Address presenter', () => {
     // NOTE: To remove some setup duplication, we start with a fully populated address and then amend accordingly in the
     // tests
     contact = {
-      // Name
-      name: 'Mr J H Watson',
       // Address
       address1: 'Sherlock Holmes Consulting Detective',
       address2: '221b Baker Street',
@@ -20,8 +18,10 @@ describe('Notices - Setup - Notify Address presenter', () => {
       address4: 'Westminster',
       address5: 'London',
       address6: 'Central London',
-      postcode: 'NW1 6XE',
-      country: 'England'
+      country: 'England',
+      // Name
+      name: 'Mr J H Watson',
+      postcode: 'NW1 6XE'
     }
   })
 
@@ -171,8 +171,6 @@ describe('Notices - Setup - Notify Address presenter', () => {
   describe('when the contact has an international address', () => {
     beforeEach(() => {
       contact = {
-        // Name
-        name: 'Professor J H Moriarty',
         // Address
         address1: 'Mathematical Computer Consulting',
         address2: 'Gasthaus Zwirgi',
@@ -180,8 +178,10 @@ describe('Notices - Setup - Notify Address presenter', () => {
         address4: 'Scheideggstrasse 451',
         address5: 'Meiringen',
         address6: null,
-        postcode: '3860 Schattenhalb',
-        country: 'Switzerland'
+        country: 'Switzerland',
+        // Name
+        name: 'Professor J H Moriarty',
+        postcode: '3860 Schattenhalb'
       }
     })
 
@@ -300,6 +300,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
 
         expect(result).toEqual({
           address_line_1: 'Mr J H Watson',
+          address_line_10: 'England',
           address_line_2: 'INVALID ADDRESS - Needs a valid postcode or country outside the UK',
           address_line_3: 'Sherlock Holmes Consulting Detective',
           address_line_4: '221b Baker Street',
@@ -307,8 +308,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
           address_line_6: 'Westminster',
           address_line_7: 'London',
           address_line_8: 'Central London',
-          address_line_9: '80802',
-          address_line_10: 'England'
+          address_line_9: '80802'
         })
       })
     })
@@ -323,6 +323,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
 
         expect(result).toEqual({
           address_line_1: 'Mr J H Watson',
+          address_line_10: 'England',
           address_line_2: 'INVALID ADDRESS - A line starts with special character',
           address_line_3: 'Sherlock Holmes Consulting Detective',
           address_line_4: '(Admin) 221b Baker Street',
@@ -330,8 +331,7 @@ describe('Notices - Setup - Notify Address presenter', () => {
           address_line_6: 'Westminster',
           address_line_7: 'London',
           address_line_8: 'Central London',
-          address_line_9: 'NW1 6XE',
-          address_line_10: 'England'
+          address_line_9: 'NW1 6XE'
         })
       })
     })

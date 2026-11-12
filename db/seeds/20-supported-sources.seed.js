@@ -1,6 +1,6 @@
 import SupportedSourceModel from '../../src/models/supported-source.model.js'
-import { data as supportedSources } from './data/supported-sources.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
+import { data as supportedSources } from './data/supported-sources.js'
 
 /**
  * Seeds the supported sources reference data using an upsert

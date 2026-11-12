@@ -45,28 +45,28 @@ export default class ContactModel extends BaseModel {
   static get relationMappings() {
     return {
       billingAccountAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: BillingAccountAddressModel,
         join: {
           from: 'contacts.id',
           to: 'billingAccountAddresses.contactId'
-        }
+        },
+        modelClass: BillingAccountAddressModel,
+        relation: Model.HasManyRelation
       },
       companyContacts: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyContactModel,
         join: {
           from: 'contacts.id',
           to: 'companyContacts.contactId'
-        }
+        },
+        modelClass: CompanyContactModel,
+        relation: Model.HasManyRelation
       },
       licenceDocumentRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceDocumentRoleModel,
         join: {
           from: 'contacts.id',
           to: 'licenceDocumentRoles.contactId'
-        }
+        },
+        modelClass: LicenceDocumentRoleModel,
+        relation: Model.HasManyRelation
       }
     }
   }

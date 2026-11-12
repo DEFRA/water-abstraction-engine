@@ -34,11 +34,11 @@ import { camelCase, knexIdentifierMappers, snakeCase } from 'objection/lib/utils
  */
 export function legacyDbSnakeCaseMappers(opt = {}) {
   return knexIdentifierMappers({
-    parse: (str) => {
-      return _legacyCamelCase(str, opt)
-    },
     format: (str) => {
       return _legacySnakeCase(str, opt)
+    },
+    parse: (str) => {
+      return _legacyCamelCase(str, opt)
     }
   })
 }
@@ -59,5 +59,5 @@ function _legacySnakeCase(
     return str
   }
 
-  return snakeCase(str, { upperCase, underscoreBeforeDigits, underscoreBetweenUppercaseLetters })
+  return snakeCase(str, { underscoreBeforeDigits, underscoreBetweenUppercaseLetters, upperCase })
 }

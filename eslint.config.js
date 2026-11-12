@@ -1,11 +1,16 @@
+/**
+ * Shared ESLint config, used by the engine and the apps that depend on it
+ *
+ * @module EslintConfig
+ */
+
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import globals from 'globals'
 import importPlugin from 'eslint-plugin-import-x'
 import jsdocPlugin from 'eslint-plugin-jsdoc'
 import neostandard from 'neostandard'
 
-import noMixedExports from './eslint-rules/no-mixed-exports.js'
-import orderWithinImportGroups from './eslint-rules/order-within-import-groups.js'
+import alanisms from './eslint-rules/alanisms/index.js'
 
 export default [
   // Ignore the folder created when JSDocs are generated
@@ -41,13 +46,12 @@ export default [
       sourceType: 'module'
     },
     plugins: {
+      import: importPlugin,
       // https://github.com/gajus/eslint-plugin-jsdoc
       jsdoc: jsdocPlugin,
-      import: importPlugin,
       local: {
         rules: {
-          'no-mixed-exports': noMixedExports,
-          'order-within-import-groups': orderWithinImportGroups
+          alanisms
         }
       }
     },
@@ -55,44 +59,26 @@ export default [
     rules: {
       // Enforce .js extension when importing local files; ignore bare package specifiers (e.g. 'dotenv/config')
       'import/extensions': ['error', 'always', { ignorePackages: true }],
-      // A file must use one export style only: either a single default export, or one or more named exports, never both
-      'local/no-mixed-exports': 'error',
+      // Require a blank line after the last import statement, separating imports from the rest of the file
+      'import/newline-after-import': 'error',
       'jsdoc/check-alignment': 'error',
       'jsdoc/check-indentation': 'error',
-      'jsdoc/check-types': 'error',
       'jsdoc/check-tag-names': 'error',
+      'jsdoc/check-types': 'error',
       'jsdoc/lines-before-block': 'error',
-      'jsdoc/newline-after-description': 'off', // does not work with 'use strict'
       'jsdoc/require-description': 'error',
       'jsdoc/require-hyphen-before-param-description': 'error',
       'jsdoc/require-jsdoc': ['error', { publicOnly: true }],
       'jsdoc/require-param': ['error', { exemptedBy: ['private'] }],
       'jsdoc/require-returns': ['error', { publicOnly: true }],
-      // Enforce `import * as X` before `import X` before `import { x }`, alphabetically sorted within each group.
-      // allowSeparatedGroups lets us keep the "Test helpers" / "Thing under test" blocks independently sorted
-      'sort-imports': [
-        'error',
-        { memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none'], allowSeparatedGroups: true }
-      ],
-      // Group external imports (Node builtins and node_modules packages) before internal (relative path) imports,
-      // with a blank line between the two groups
-      'import/order': [
-        'error',
-        {
-          groups: [
-            ['builtin', 'external'],
-            ['internal', 'parent', 'sibling', 'index']
-          ],
-          'newlines-between': 'always'
-        }
-      ],
-      // Require a blank line after the last import statement, separating imports from the rest of the file
-      'import/newline-after-import': 'error'
+      // Enforces the alanisms in .agents/skills/standards/alanisms.md (object key order, import order and groups, blank
+      // lines after declarations, @module JSDoc first) plus one export style per file. See eslint-rules/alanisms/
+      'local/alanisms': 'error'
     },
     settings: {
       jsdoc: {
-        mode: 'jsdoc',
-        ignorePrivate: true
+        ignorePrivate: true,
+        mode: 'jsdoc'
       }
     }
   },
@@ -114,24 +100,21 @@ export default [
       'import/extensions': 'off'
     }
   },
-  // Test files use blank lines to separate "Test helpers" / "Things we need to stub" / "Thing under test" blocks,
-  // a different convention to external-vs-internal grouping, so exempt them from import/order. Instead,
-  // 'local/order-within-import-groups' enforces external-before-internal ordering *within* each of those
-  // blank-line-separated blocks, replacing sort-imports (which has no concept of external vs internal) for these files
+  // Test files split their imports into commented "Test helpers" / "Things we need to stub" / "Thing under test"
+  // sections, so the alanisms import order is applied within each section. Test files also have no @module block
   {
     files: ['bin/templates/*.test.js', 'test/**/*'],
     rules: {
-      'import/order': 'off',
-      'sort-imports': 'off',
-      'local/order-within-import-groups': 'error'
+      'local/alanisms': ['error', { imports: 'sections', moduleJsdoc: false }]
     }
   },
-  // This file deliberately separates its two imports with a large explanatory comment, which import/order treats as
-  // a disallowed blank line within the group
+  // Migrations and seeds are exempt from the @module check, for the same reason they are exempt from jsdoc/require-jsdoc
+  // above: their purpose is obvious from the file name. bin/templates/helper.js is a snippet that bin/scaffold.sh pastes
+  // into existing files, so it must not have a @module block of its own
   {
-    files: ['knexfile.application.js'],
+    files: ['bin/templates/helper.js', 'db/migrations/**/*', 'db/seeds/**/*'],
     rules: {
-      'import/order': 'off'
+      'local/alanisms': ['error', { moduleJsdoc: false }]
     }
   },
   // Adds prettier ESLint rules. It automatically sets up eslint-config-prettier, which turns off any rules declared

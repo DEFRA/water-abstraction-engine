@@ -42,14 +42,14 @@ export default {
 
         return jwt.sign(
           {
-            iss: serviceId,
             // iat (issued at) is the current time in UTC in epoch seconds. Notify will consider the token expired 30
             // secs after this
-            iat: Math.round(Date.now() / 1000)
+            iat: Math.round(Date.now() / 1000),
+            iss: serviceId
           },
           secret,
           {
-            header: { typ: 'JWT', alg: 'HS256' }
+            header: { alg: 'HS256', typ: 'JWT' }
           }
         )
       },

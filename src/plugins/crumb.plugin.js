@@ -39,8 +39,8 @@ import Crumb from '@hapi/crumb'
  * ```
  */
 export default {
-  plugin: Crumb,
   options: {
     key: 'wrlsCrumb'
-  }
+  },
+  plugin: Crumb
 }

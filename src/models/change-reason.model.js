@@ -16,12 +16,12 @@ export default class ChangeReasonModel extends BaseModel {
   static get relationMappings() {
     return {
       chargeVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'changeReasons.id',
           to: 'chargeVersions.changeReasonId'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.HasManyRelation
       }
     }
   }

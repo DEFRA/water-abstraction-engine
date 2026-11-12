@@ -22,16 +22,16 @@ const {
 
 describe('Plugins - Error Pages Service', () => {
   const boom403Response = {
-    message: "can't touch this",
     isBoom: true,
+    message: "can't touch this",
     output: {
       statusCode: HTTP_STATUS_FORBIDDEN
     }
   }
 
   const boom404Response = {
-    message: 'where has my boom gone?',
     isBoom: true,
+    message: 'where has my boom gone?',
     output: {
       statusCode: HTTP_STATUS_NOT_FOUND
     }
@@ -44,8 +44,8 @@ describe('Plugins - Error Pages Service', () => {
   }
 
   const boom500Response = {
-    message: 'tick, tick, tick, tick boom!',
     isBoom: true,
+    message: 'tick, tick, tick, tick boom!',
     output: {
       statusCode: HTTP_STATUS_INTERNAL_SERVER_ERROR
     }
@@ -71,9 +71,9 @@ describe('Plugins - Error Pages Service', () => {
   describe('when the response is a boom 500 error', () => {
     beforeEach(() => {
       request = {
+        path,
         response: boom500Response,
-        route: { settings: {} },
-        path
+        route: { settings: {} }
       }
     })
 
@@ -119,9 +119,9 @@ describe('Plugins - Error Pages Service', () => {
   describe('when the response is a boom 404 error', () => {
     beforeEach(() => {
       request = {
+        path,
         response: boom404Response,
-        route: { settings: {} },
-        path
+        route: { settings: {} }
       }
     })
 
@@ -161,9 +161,9 @@ describe('Plugins - Error Pages Service', () => {
   describe('when the response is a boom 403 error', () => {
     beforeEach(() => {
       request = {
+        path,
         response: boom403Response,
-        route: { settings: {} },
-        path
+        route: { settings: {} }
       }
     })
 
@@ -209,9 +209,9 @@ describe('Plugins - Error Pages Service', () => {
   describe('when the response is a boom 410 error', () => {
     beforeEach(() => {
       request = {
+        path,
         response: boom410Response,
-        route: { settings: {} },
-        path
+        route: { settings: {} }
       }
     })
 
@@ -257,9 +257,9 @@ describe('Plugins - Error Pages Service', () => {
   describe('when the response is not a boom error', () => {
     beforeEach(() => {
       request = {
+        path,
         response: standardResponse,
-        route: { settings: {} },
-        path
+        route: { settings: {} }
       }
     })
 

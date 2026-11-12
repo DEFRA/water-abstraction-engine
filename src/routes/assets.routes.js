@@ -1,3 +1,9 @@
+/**
+ * Routes that serve the static assets, including those provided by govuk-frontend
+ *
+ * @module AssetsRoutes
+ */
+
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
 
@@ -8,22 +14,25 @@ const govukFrontendDir = dirname(_require.resolve('govuk-frontend/package.json')
 export default [
   {
     method: 'GET',
-    path: '/assets/all.js',
     options: {
-      handler: {
-        // confine: false required — default confine: '.' blocks paths outside the consuming app's CWD (e.g. npm link)
-        file: { path: join(govukFrontendDir, 'govuk', 'all.js'), confine: false }
-      },
       app: {
         plainOutput: true
       },
-      auth: false
-    }
+      auth: false,
+      handler: {
+        // confine: false required — default confine: '.' blocks paths outside the consuming app's CWD (e.g. npm link)
+        file: { confine: false, path: join(govukFrontendDir, 'govuk', 'all.js') }
+      }
+    },
+    path: '/assets/all.js'
   },
   {
     method: 'GET',
-    path: '/assets/{path*}',
     options: {
+      app: {
+        plainOutput: true
+      },
+      auth: false,
       handler: {
         directory: {
           path: [
@@ -33,11 +42,8 @@ export default [
             join(govukFrontendDir, 'govuk', 'assets')
           ]
         }
-      },
-      app: {
-        plainOutput: true
-      },
-      auth: false
-    }
+      }
+    },
+    path: '/assets/{path*}'
   }
 ]

@@ -18,28 +18,28 @@ export default class BillLicenceModel extends BaseModel {
   static get relationMappings() {
     return {
       bill: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillModel,
         join: {
           from: 'billLicences.billId',
           to: 'bills.id'
-        }
-      },
-      transactions: {
-        relation: Model.HasManyRelation,
-        modelClass: TransactionModel,
-        join: {
-          from: 'billLicences.id',
-          to: 'transactions.billLicenceId'
-        }
+        },
+        modelClass: BillModel,
+        relation: Model.BelongsToOneRelation
       },
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'billLicences.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
+      },
+      transactions: {
+        join: {
+          from: 'billLicences.id',
+          to: 'transactions.billLicenceId'
+        },
+        modelClass: TransactionModel,
+        relation: Model.HasManyRelation
       }
     }
   }

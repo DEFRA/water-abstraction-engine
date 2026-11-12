@@ -30,20 +30,20 @@ export default class BillRunChargeVersionYearModel extends BaseModel {
   static get relationMappings() {
     return {
       billRun: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillRunModel,
         join: {
           from: 'billRunChargeVersionYears.billRunId',
           to: 'billRuns.id'
-        }
+        },
+        modelClass: BillRunModel,
+        relation: Model.BelongsToOneRelation
       },
       chargeVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'billRunChargeVersionYears.chargeVersionId',
           to: 'chargeVersions.id'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

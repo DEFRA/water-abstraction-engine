@@ -279,8 +279,8 @@ describe('Licence Version Purpose model', () => {
       beforeEach(async () => {
         const licenceVersionPurpose = await LicenceVersionPurposeHelper.add({
           primaryPurposeId: invalidPrimaryPurpose.id,
-          secondaryPurposeId: validSecondaryPurpose.id,
-          purposeId: validPurpose.id
+          purposeId: validPurpose.id,
+          secondaryPurposeId: validSecondaryPurpose.id
         })
 
         testRecord = await LicenceVersionPurposeModel.query().findById(licenceVersionPurpose.id).modify('allPurposes')
@@ -297,8 +297,8 @@ describe('Licence Version Purpose model', () => {
       beforeEach(async () => {
         const licenceVersionPurpose = await LicenceVersionPurposeHelper.add({
           primaryPurposeId: validPrimaryPurpose.id,
-          secondaryPurposeId: invalidSecondaryPurpose.id,
-          purposeId: validPurpose.id
+          purposeId: validPurpose.id,
+          secondaryPurposeId: invalidSecondaryPurpose.id
         })
 
         testRecord = await LicenceVersionPurposeModel.query().findById(licenceVersionPurpose.id).modify('allPurposes')
@@ -315,8 +315,8 @@ describe('Licence Version Purpose model', () => {
       beforeEach(async () => {
         const licenceVersionPurpose = await LicenceVersionPurposeHelper.add({
           primaryPurposeId: validPrimaryPurpose.id,
-          secondaryPurposeId: validSecondaryPurpose.id,
-          purposeId: invalidPurpose.id
+          purposeId: invalidPurpose.id,
+          secondaryPurposeId: validSecondaryPurpose.id
         })
 
         testRecord = await LicenceVersionPurposeModel.query().findById(licenceVersionPurpose.id).modify('allPurposes')
@@ -333,8 +333,8 @@ describe('Licence Version Purpose model', () => {
       beforeEach(async () => {
         const licenceVersionPurpose = await LicenceVersionPurposeHelper.add({
           primaryPurposeId: validPrimaryPurpose.id,
-          secondaryPurposeId: validSecondaryPurpose.id,
-          purposeId: validPurpose.id
+          purposeId: validPurpose.id,
+          secondaryPurposeId: validSecondaryPurpose.id
         })
 
         testRecord = await LicenceVersionPurposeModel.query().findById(licenceVersionPurpose.id).modify('allPurposes')

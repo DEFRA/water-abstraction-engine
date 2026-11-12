@@ -1,6 +1,6 @@
 import SourceModel from '../../src/models/source.model.js'
-import { data as sources } from './data/sources.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
+import { data as sources } from './data/sources.js'
 
 export async function seed() {
   for (const source of sources) {

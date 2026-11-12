@@ -65,18 +65,21 @@ describe('User model', () => {
     testUpdatedCompanyContacts = []
     for (let i = 0; i < 2; i++) {
       const chargeVersionNote = await ChargeVersionNoteHelper.add({ note: `Test note ${i}`, userId: testRecord.userId })
+
       testChargeVersionNotes.push(chargeVersionNote)
 
       const createdCompanyContact = await CompanyContactHelper.add({
-        startDate: `2022-04-0${i + 1}`,
-        createdBy: testRecord.id
+        createdBy: testRecord.id,
+        startDate: `2022-04-0${i + 1}`
       })
+
       testCreatedCompanyContacts.push(createdCompanyContact)
 
       const updatedCompanyContact = await CompanyContactHelper.add({
         startDate: `2022-04-0${i + 1}`,
         updatedBy: testRecord.id
       })
+
       testUpdatedCompanyContacts.push(updatedCompanyContact)
     }
   })

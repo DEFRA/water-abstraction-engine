@@ -19,36 +19,36 @@ export default class ModLogModel extends BaseModel {
   static get relationMappings() {
     return {
       chargeVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChargeVersionModel,
         join: {
           from: 'modLogs.chargeVersionId',
           to: 'chargeVersions.id'
-        }
+        },
+        modelClass: ChargeVersionModel,
+        relation: Model.BelongsToOneRelation
       },
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'modLogs.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceVersionModel,
         join: {
           from: 'modLogs.licenceVersionId',
           to: 'licenceVersions.id'
-        }
+        },
+        modelClass: LicenceVersionModel,
+        relation: Model.BelongsToOneRelation
       },
       returnVersion: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ReturnVersionModel,
         join: {
           from: 'modLogs.returnVersionId',
           to: 'returnVersions.id'
-        }
+        },
+        modelClass: ReturnVersionModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

@@ -80,8 +80,8 @@ describe('Return Period Lib', () => {
         expect(result.allYear).toEqual({
           dueDate: dates.dueDate,
           endDate: dates.endDate,
-          startDate: dates.startDate,
-          quarterly: false
+          quarterly: false,
+          startDate: dates.startDate
         })
       })
     })
@@ -97,8 +97,8 @@ describe('Return Period Lib', () => {
         expect(result.summer).toEqual({
           dueDate: dates.dueDate,
           endDate: dates.endDate,
-          startDate: dates.startDate,
-          quarterly: false
+          quarterly: false,
+          startDate: dates.startDate
         })
       })
     })
@@ -117,8 +117,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterFour).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -136,8 +136,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterFour).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -155,8 +155,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterFour).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -176,8 +176,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterOne).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -195,8 +195,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterOne).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -214,8 +214,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterOne).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -235,8 +235,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterTwo).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -254,8 +254,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterTwo).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -273,8 +273,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterTwo).toEqual({
             dueDate: dates.dueDate,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -297,8 +297,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterThree).toEqual({
             dueDate: dueDateNextYear,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -314,16 +314,18 @@ describe('Return Period Lib', () => {
           dates = _getPeriodDates(returnPeriodDates.quarterThree, year)
 
           const startDate = new Date(dates.startDate)
+
           startDate.setFullYear(startDate.getFullYear() - 1)
 
           const endDate = new Date(dates.endDate)
+
           endDate.setFullYear(endDate.getFullYear() - 1)
 
           expect(result.quarterThree).toEqual({
             dueDate: dates.dueDate,
             endDate,
-            startDate,
-            quarterly: true
+            quarterly: true,
+            startDate
           })
         })
       })
@@ -344,8 +346,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterThree).toEqual({
             dueDate: dueDateNextYear,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -366,8 +368,8 @@ describe('Return Period Lib', () => {
           expect(result.quarterThree).toEqual({
             dueDate: dueDateNextYear,
             endDate: dates.endDate,
-            startDate: dates.startDate,
-            quarterly: true
+            quarterly: true,
+            startDate: dates.startDate
           })
         })
       })
@@ -647,39 +649,42 @@ describe('Return Period Lib', () => {
 
 function _getPeriodDates(period, year) {
   return {
-    startDate: new Date(`${year}-${period.startDate.month + 1}-${period.startDate.day}`),
+    dueDate: new Date(`${year}-${period.dueDate.month + 1}-${period.dueDate.day}`),
     endDate: new Date(`${year}-${period.endDate.month + 1}-${period.endDate.day}`),
-    dueDate: new Date(`${year}-${period.dueDate.month + 1}-${period.dueDate.day}`)
+    startDate: new Date(`${year}-${period.startDate.month + 1}-${period.startDate.day}`)
   }
 }
 
 function _getPeriodDatesQuarterThree(year) {
   const period = returnPeriodDates.quarterThree
+
   return {
-    startDate: new Date(`${year}-${period.startDate.month + 1}-${period.startDate.day}`),
+    dueDate: new Date(`${year + 1}-${period.dueDate.month + 1}-${period.dueDate.day}`),
     endDate: new Date(`${year}-${period.endDate.month + 1}-${period.endDate.day}`),
-    dueDate: new Date(`${year + 1}-${period.dueDate.month + 1}-${period.dueDate.day}`)
+    startDate: new Date(`${year}-${period.startDate.month + 1}-${period.startDate.day}`)
   }
 }
 
 function _getSummerDates(year, lastYear) {
   return {
+    dueDate: new Date(`${year}-${returnPeriodDates.summer.dueDate.month + 1}-${returnPeriodDates.summer.dueDate.day}`),
+    endDate: new Date(`${year}-${returnPeriodDates.summer.endDate.month + 1}-${returnPeriodDates.summer.endDate.day}`),
     startDate: new Date(
       `${lastYear}-${returnPeriodDates.summer.startDate.month + 1}-${returnPeriodDates.summer.startDate.day}`
-    ),
-    endDate: new Date(`${year}-${returnPeriodDates.summer.endDate.month + 1}-${returnPeriodDates.summer.endDate.day}`),
-    dueDate: new Date(`${year}-${returnPeriodDates.summer.dueDate.month + 1}-${returnPeriodDates.summer.dueDate.day}`)
+    )
   }
 }
 
 function _getAllYearDates(year, startDateYear) {
   return {
-    startDate: new Date(
-      `${startDateYear}-${returnPeriodDates.allYear.startDate.month + 1}-${returnPeriodDates.allYear.startDate.day}`
+    dueDate: new Date(
+      `${year}-${returnPeriodDates.allYear.dueDate.month + 1}-${returnPeriodDates.allYear.dueDate.day}`
     ),
     endDate: new Date(
       `${year}-${returnPeriodDates.allYear.endDate.month + 1}-${returnPeriodDates.allYear.endDate.day}`
     ),
-    dueDate: new Date(`${year}-${returnPeriodDates.allYear.dueDate.month + 1}-${returnPeriodDates.allYear.dueDate.day}`)
+    startDate: new Date(
+      `${startDateYear}-${returnPeriodDates.allYear.startDate.month + 1}-${returnPeriodDates.allYear.startDate.day}`
+    )
   }
 }

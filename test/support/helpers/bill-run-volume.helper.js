@@ -39,10 +39,10 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
+    billRunId: generateUUID(),
     chargeReferenceId: generateUUID(),
     financialYear: 2023,
-    summer: false,
-    billRunId: generateUUID()
+    summer: false
   }
 
   return {

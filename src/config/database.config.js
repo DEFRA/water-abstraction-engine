@@ -8,11 +8,11 @@
 import 'dotenv/config'
 
 export default {
+  database: process.env.POSTGRES_DB,
   // Used by any service which uses paging in its query and by the PaginatorPresenter
   defaultPageSize: Number.parseInt(process.env.DEFAULT_PAGE_SIZE) || 25,
   // Only used when seeding our dev/test user records
   defaultUserPassword: process.env.DEFAULT_USER_PASSWORD,
-  database: process.env.POSTGRES_DB,
   host: process.env.POSTGRES_HOST,
   password: process.env.POSTGRES_PASSWORD,
   port: process.env.POSTGRES_PORT,

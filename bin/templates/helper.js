@@ -32,26 +32,26 @@ async function __SUBMIT_SERVICE_NAME__(request, h) {
 const routes = [
   {
     method: 'GET',
-    path: '',
     options: {
-      handler: __VIEW_SERVICE_NAME__,
       auth: {
         access: {
           scope: ['']
         }
-      }
-    }
+      },
+      handler: __VIEW_SERVICE_NAME__
+    },
+    path: ''
   },
   {
     method: 'POST',
-    path: '',
     options: {
-      handler: __SUBMIT_SERVICE_NAME__,
       auth: {
         access: {
           scope: ['']
         }
-      }
-    }
+      },
+      handler: __SUBMIT_SERVICE_NAME__
+    },
+    path: ''
   }
 ]

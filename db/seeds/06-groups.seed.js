@@ -1,6 +1,6 @@
 import { db } from '../db.js'
-import { data as groups } from './data/groups.js'
 import { timestampForPostgres } from '../../src/lib/general.lib.js'
+import { data as groups } from './data/groups.js'
 
 export async function seed() {
   for (const group of groups) {
@@ -13,11 +13,11 @@ async function _upsert(group) {
   // But because of the reason detailed below, the payload we send in the insert has to match how the underlying table
   // is structured. Hence this transformation.
   const payload = {
-    groupId: group.id,
     application: 'water_admin',
-    group: group.group,
+    dateUpdated: timestampForPostgres(),
     description: group.description,
-    dateUpdated: timestampForPostgres()
+    group: group.group,
+    groupId: group.id
   }
 
   // NOTE: We've had to drop back to Knex rather than Objection.js because the view model doesn't expose a field

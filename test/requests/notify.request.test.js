@@ -47,11 +47,11 @@ describe('Notify Request', () => {
     describe('when the request succeeds', () => {
       beforeEach(async () => {
         vi.spyOn(BaseRequest, 'getRequest').mockResolvedValue({
-          succeeded: true,
           response: {
-            statusCode: HTTP_STATUS_OK,
-            body: { testObject: { test: 'yes' } }
-          }
+            body: { testObject: { test: 'yes' } },
+            statusCode: HTTP_STATUS_OK
+          },
+          succeeded: true
         })
       })
 
@@ -94,12 +94,12 @@ describe('Notify Request', () => {
     describe('when the request fails', () => {
       beforeEach(async () => {
         vi.spyOn(BaseRequest, 'getRequest').mockResolvedValue({
-          succeeded: false,
           response: {
+            body: { error: 'Not Found', message: 'Not Found', statusCode: HTTP_STATUS_NOT_FOUND },
             statusCode: HTTP_STATUS_NOT_FOUND,
-            statusMessage: 'Not Found',
-            body: { statusCode: HTTP_STATUS_NOT_FOUND, error: 'Not Found', message: 'Not Found' }
-          }
+            statusMessage: 'Not Found'
+          },
+          succeeded: false
         })
       })
 
@@ -127,11 +127,11 @@ describe('Notify Request', () => {
     describe('when the request succeeds', () => {
       beforeEach(async () => {
         vi.spyOn(BaseRequest, 'postRequest').mockResolvedValue({
-          succeeded: true,
           response: {
-            statusCode: HTTP_STATUS_OK,
-            body: { testObject: { test: 'yes' } }
-          }
+            body: { testObject: { test: 'yes' } },
+            statusCode: HTTP_STATUS_OK
+          },
+          succeeded: true
         })
       })
 
@@ -176,15 +176,15 @@ describe('Notify Request', () => {
       describe('because Notify rejects it (for example a validation error)', () => {
         beforeEach(async () => {
           vi.spyOn(BaseRequest, 'postRequest').mockResolvedValue({
-            succeeded: false,
             response: {
-              statusCode: HTTP_STATUS_BAD_REQUEST,
-              statusMessage: 'Bad Request',
               body: {
                 errors: [{ error: 'BadRequestError', message: 'email_address Not a valid email address' }],
                 status_code: HTTP_STATUS_BAD_REQUEST
-              }
-            }
+              },
+              statusCode: HTTP_STATUS_BAD_REQUEST,
+              statusMessage: 'Bad Request'
+            },
+            succeeded: false
           })
         })
 
@@ -217,10 +217,7 @@ describe('Notify Request', () => {
             .spyOn(BaseRequest, 'postRequest')
 
             .mockResolvedValueOnce({
-              succeeded: false,
               response: {
-                statusCode: HTTP_STATUS_TOO_MANY_REQUESTS,
-                statusMessage: 'Too Many Requests',
                 body: {
                   errors: [
                     {
@@ -229,16 +226,19 @@ describe('Notify Request', () => {
                     }
                   ],
                   status_code: HTTP_STATUS_TOO_MANY_REQUESTS
-                }
-              }
+                },
+                statusCode: HTTP_STATUS_TOO_MANY_REQUESTS,
+                statusMessage: 'Too Many Requests'
+              },
+              succeeded: false
             })
 
             .mockResolvedValueOnce({
-              succeeded: true,
               response: {
-                statusCode: HTTP_STATUS_OK,
-                body: { testObject: { test: 'yes' } }
-              }
+                body: { testObject: { test: 'yes' } },
+                statusCode: HTTP_STATUS_OK
+              },
+              succeeded: true
             })
         })
 

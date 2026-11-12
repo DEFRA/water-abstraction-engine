@@ -1,36 +1,42 @@
+/**
+ * Routes for the service's root, robots.txt and status pages
+ *
+ * @module RootRoutes
+ */
+
 import { index } from '../controllers/root.controller.js'
 
 export default [
   {
     method: 'GET',
-    path: '/',
     options: {
-      handler: index,
       app: {
         plainOutput: true
       },
-      auth: false
-    }
+      auth: false,
+      handler: index
+    },
+    path: '/'
   },
   {
     method: 'GET',
-    path: '/robots.txt',
     options: {
+      auth: false,
       handler: {
         file: 'src/public/static/robots.txt'
-      },
-      auth: false
-    }
+      }
+    },
+    path: '/robots.txt'
   },
   {
     method: 'GET',
-    path: '/status',
     options: {
-      handler: index,
       app: {
         plainOutput: true
       },
-      auth: false
-    }
+      auth: false,
+      handler: index
+    },
+    path: '/status'
   }
 ]

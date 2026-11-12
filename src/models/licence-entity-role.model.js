@@ -28,28 +28,28 @@ export default class LicenceEntityRoleModel extends BaseModel {
   static get relationMappings() {
     return {
       companyEntity: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceEntityModel,
         join: {
           from: 'licenceEntityRoles.companyEntityId',
           to: 'licenceEntities.id'
-        }
+        },
+        modelClass: LicenceEntityModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceEntity: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceEntityModel,
         join: {
           from: 'licenceEntityRoles.licenceEntityId',
           to: 'licenceEntities.id'
-        }
+        },
+        modelClass: LicenceEntityModel,
+        relation: Model.BelongsToOneRelation
       },
       regimeEntity: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceEntityModel,
         join: {
           from: 'licenceEntityRoles.regimeEntityId',
           to: 'licenceEntities.id'
-        }
+        },
+        modelClass: LicenceEntityModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

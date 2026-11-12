@@ -1,5 +1,9 @@
 import { generateLicenceRef, generateUUID } from '../generators.js'
 
+/* eslint-disable local/alanisms -- The stations are numbered and their key order is their order in the session data,
+because `get()` and `relevantLicenceMonitoringStations()` build lists with Object.values(). Sorting the keys A–Z would
+put 'three' before 'two' and change what the tests expect */
+
 /**
  * Create licence monitoring station test data
  *
@@ -15,8 +19,8 @@ function licenceMonitoringStations() {
       id: generateUUID(),
       latestNotification: null,
       licence: {
-        licenceRef: generateLicenceRef(),
-        id: generateUUID()
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
       },
       measureType: 'level',
       notes: null,
@@ -33,8 +37,8 @@ function licenceMonitoringStations() {
       id: generateUUID(),
       latestNotification: null,
       licence: {
-        licenceRef: generateLicenceRef(),
-        id: generateUUID()
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
       },
       measureType: 'flow',
       notes: 'I have a bad feeling about this',
@@ -51,8 +55,8 @@ function licenceMonitoringStations() {
       id: generateUUID(),
       latestNotification: null,
       licence: {
-        licenceRef: generateLicenceRef(),
-        id: generateUUID()
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
       },
       measureType: 'level',
       notes: null,
@@ -79,8 +83,8 @@ function unsortedLicenceMonitoringStations() {
       id: generateUUID(),
       latestNotification: null,
       licence: {
-        licenceRef: generateLicenceRef(),
-        id: generateUUID()
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
       },
       measureType: 'level',
       notes: null,
@@ -97,8 +101,8 @@ function unsortedLicenceMonitoringStations() {
       id: generateUUID(),
       latestNotification: null,
       licence: {
-        licenceRef: generateLicenceRef(),
-        id: generateUUID()
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
       },
       measureType: 'flow',
       notes: 'I have a bad feeling about this',
@@ -115,8 +119,8 @@ function unsortedLicenceMonitoringStations() {
       id: generateUUID(),
       latestNotification: null,
       licence: {
-        licenceRef: generateLicenceRef(),
-        id: generateUUID()
+        id: generateUUID(),
+        licenceRef: generateLicenceRef()
       },
       measureType: 'level',
       notes: null,
@@ -236,6 +240,8 @@ function unsortedLicenceMonitoringStations() {
   }
 }
 
+/* eslint-enable local/alanisms */
+
 /**
  * Represents a complete response from `MonitoringStationService`
  *
@@ -287,8 +293,8 @@ function relevantLicenceMonitoringStations(licenceRefs, _licenceMonitoringStatio
 }
 
 export default {
-  licenceMonitoringStations,
-  unsortedLicenceMonitoringStations,
   get,
-  relevantLicenceMonitoringStations
+  licenceMonitoringStations,
+  relevantLicenceMonitoringStations,
+  unsortedLicenceMonitoringStations
 }

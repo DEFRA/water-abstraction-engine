@@ -39,10 +39,10 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    firstName: 'Amara',
-    lastName: 'Gupta',
+    contactType: 'person',
     dataSource: 'wrls',
-    contactType: 'person'
+    firstName: 'Amara',
+    lastName: 'Gupta'
   }
 
   return {

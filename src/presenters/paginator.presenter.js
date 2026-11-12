@@ -181,10 +181,10 @@ function _complexPaginatorStart(currentPageNumber, numberOfPages, path, queryStr
 
 function _item(pageNumber, currentPageNumber, path, queryString) {
   return {
-    number: pageNumber,
-    visuallyHiddenText: `Page ${pageNumber}`,
+    current: pageNumber === currentPageNumber,
     href: `${path}?page=${pageNumber}${queryString}`,
-    current: pageNumber === currentPageNumber
+    number: pageNumber,
+    visuallyHiddenText: `Page ${pageNumber}`
   }
 }
 

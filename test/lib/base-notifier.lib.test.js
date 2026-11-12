@@ -24,9 +24,9 @@ describe('Base Notifier Lib', () => {
 
   beforeEach(async () => {
     // We use these fakes and the stubs in the tests to avoid Pino or Airbrake being instantiated during the test
-    airbrakeFake = { notify: vi.fn().mockResolvedValue({ id: 1 }), flush: vi.fn() }
+    airbrakeFake = { flush: vi.fn(), notify: vi.fn().mockResolvedValue({ id: 1 }) }
     createEmailRequestFake = { send: vi.fn().mockResolvedValue() }
-    pinoFake = { info: vi.fn(), error: vi.fn() }
+    pinoFake = { error: vi.fn(), info: vi.fn() }
   })
 
   afterEach(() => {
@@ -198,10 +198,10 @@ describe('Base Notifier Lib', () => {
       beforeEach(async () => {
         // We specifically use a mock so we can then use Vitest's mockImplementation() function. See the test
         // below where mockImplementation() is used for more details.
-        pinoFake = { info: vi.fn(), error: vi.fn() }
+        pinoFake = { error: vi.fn(), info: vi.fn() }
         vi.spyOn(BaseNotifierLib.prototype, '_setLogger').mockReturnValue(pinoFake)
 
-        airbrakeFake = { notify: vi.fn().mockResolvedValue({ name: 'foo', error: airbrakeFailure }) }
+        airbrakeFake = { notify: vi.fn().mockResolvedValue({ error: airbrakeFailure, name: 'foo' }) }
         vi.spyOn(BaseNotifierLib.prototype, '_setNotifier').mockReturnValue(airbrakeFake)
       })
 
@@ -236,7 +236,7 @@ describe('Base Notifier Lib', () => {
       const airbrakeError = new Error('Airbrake error')
 
       beforeEach(async () => {
-        pinoFake = { info: vi.fn(), error: vi.fn() }
+        pinoFake = { error: vi.fn(), info: vi.fn() }
         vi.spyOn(BaseNotifierLib.prototype, '_setLogger').mockReturnValue(pinoFake)
 
         airbrakeFake = { notify: vi.fn().mockRejectedValue(airbrakeError) }
@@ -330,7 +330,7 @@ describe('Base Notifier Lib', () => {
         vi.spyOn(BaseNotifierLib.prototype, '_setNotifier').mockReturnValue(airbrakeFake)
         vi.replaceProperty(NotifyConfig, 'alertEmailAddresses', 'admin-internal@wrls.gov.uk')
 
-        pinoFake = { info: vi.fn(), error: vi.fn() }
+        pinoFake = { error: vi.fn(), info: vi.fn() }
         vi.spyOn(BaseNotifierLib.prototype, '_setLogger').mockReturnValue(pinoFake)
         vi.spyOn(CreateEmailRequest, 'default').mockRejectedValue(new Error('CreateEmailRequest errored'))
       })
@@ -390,11 +390,11 @@ describe('Base Notifier Lib', () => {
       const testNotifier = new BaseNotifierLib(pinoFake)
 
       expect(testNotifier._notifier._opt).toMatchObject({
-        host: 'air',
-        projectKey: 'hosts',
-        projectId: 1,
         environment: 'plane',
-        performanceStats: false
+        host: 'air',
+        performanceStats: false,
+        projectId: 1,
+        projectKey: 'hosts'
       })
     })
   })

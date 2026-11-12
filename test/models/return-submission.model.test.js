@@ -28,9 +28,9 @@ describe('Return Submission model', () => {
       // NOTE: A constraint in the lines table means you cannot have 2 records with the same returnSubmissionId,
       // startDate and endDate
       const returnSubmissionLine = await ReturnSubmissionLineHelper.add({
+        endDate: new Date(2022, 11, 2 + i),
         returnSubmissionId: testRecord.id,
-        startDate: new Date(2022, 11, 1 + i),
-        endDate: new Date(2022, 11, 2 + i)
+        startDate: new Date(2022, 11, 1 + i)
       })
 
       testReturnSubmissionLines.push(returnSubmissionLine)
@@ -114,9 +114,9 @@ describe('Return Submission model', () => {
           ]
         },
         returnSubmissionLines: [
-          { startDate: new Date('2022-12-01'), endDate: new Date('2022-12-02') },
-          { startDate: new Date('2022-12-03'), endDate: new Date('2022-12-04') },
-          { startDate: new Date('2022-12-05'), endDate: new Date('2022-12-06') }
+          { endDate: new Date('2022-12-02'), startDate: new Date('2022-12-01') },
+          { endDate: new Date('2022-12-04'), startDate: new Date('2022-12-03') },
+          { endDate: new Date('2022-12-06'), startDate: new Date('2022-12-05') }
         ]
       })
     })

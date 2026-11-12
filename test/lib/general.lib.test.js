@@ -293,7 +293,7 @@ describe('General Lib', () => {
       const [flashType, notification] = yarStub.flash.mock.calls[0]
 
       expect(flashType).toEqual('notification')
-      expect(notification).toEqual({ titleText: 'Updated', text: 'Changes made' })
+      expect(notification).toEqual({ text: 'Changes made', titleText: 'Updated' })
     })
 
     it('returns the overridden notification { titleText: "Fancy new title", text: "better text" }', () => {
@@ -302,7 +302,7 @@ describe('General Lib', () => {
       const [flashType, notification] = yarStub.flash.mock.calls[0]
 
       expect(flashType).toEqual('notification')
-      expect(notification).toEqual({ titleText: 'Fancy new title', text: 'better text' })
+      expect(notification).toEqual({ text: 'better text', titleText: 'Fancy new title' })
     })
   })
 
@@ -311,7 +311,7 @@ describe('General Lib', () => {
 
     beforeEach(() => {
       yarStub = YarStub()
-      yarStub.flash.mockReturnValue([{ title: 'Updated', text: 'Changes made' }])
+      yarStub.flash.mockReturnValue([{ text: 'Changes made', title: 'Updated' }])
     })
 
     it('returns the flash notification', () => {
@@ -369,15 +369,15 @@ describe('General Lib', () => {
       beforeEach(() => {
         referencePeriod = [
           {
-            startDate: new Date('2023-02-01'),
-            endDate: new Date('2023-02-02')
+            endDate: new Date('2023-02-02'),
+            startDate: new Date('2023-02-01')
           }
         ]
 
         checkPeriod = [
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-01-31')
+            endDate: new Date('2023-01-31'),
+            startDate: new Date('2023-01-01')
           }
         ]
       })
@@ -393,15 +393,15 @@ describe('General Lib', () => {
       beforeEach(() => {
         referencePeriod = [
           {
-            startDate: new Date('2023-02-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-02-01')
           }
         ]
 
         checkPeriod = [
           {
-            startDate: new Date('2023-01-15'),
-            endDate: new Date('2023-02-15')
+            endDate: new Date('2023-02-15'),
+            startDate: new Date('2023-01-15')
           }
         ]
       })
@@ -417,15 +417,15 @@ describe('General Lib', () => {
       beforeEach(() => {
         referencePeriod = [
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-01-31')
+            endDate: new Date('2023-01-31'),
+            startDate: new Date('2023-01-01')
           }
         ]
 
         checkPeriod = [
           {
-            startDate: new Date('2023-01-15'),
-            endDate: new Date('2023-02-15')
+            endDate: new Date('2023-02-15'),
+            startDate: new Date('2023-01-15')
           }
         ]
       })
@@ -441,15 +441,15 @@ describe('General Lib', () => {
       beforeEach(() => {
         referencePeriod = [
           {
-            startDate: new Date('2023-02-01'),
-            endDate: new Date('2023-02-15')
+            endDate: new Date('2023-02-15'),
+            startDate: new Date('2023-02-01')
           }
         ]
 
         checkPeriod = [
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-01-01')
           }
         ]
       })
@@ -465,15 +465,15 @@ describe('General Lib', () => {
       beforeEach(() => {
         referencePeriod = [
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-01-01')
           }
         ]
 
         checkPeriod = [
           {
-            startDate: new Date('2023-02-01'),
-            endDate: new Date('2023-02-15')
+            endDate: new Date('2023-02-15'),
+            startDate: new Date('2023-02-01')
           }
         ]
       })
@@ -489,15 +489,15 @@ describe('General Lib', () => {
       beforeEach(() => {
         referencePeriod = [
           {
-            startDate: new Date('2023-02-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-02-01')
           }
         ]
 
         checkPeriod = [
           {
-            startDate: new Date('2023-02-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-02-01')
           }
         ]
       })
@@ -648,10 +648,10 @@ describe('General Lib', () => {
       // We add IDs just so we can tell them apart!
       leftTransaction = {
         ...TransactionHelper.defaults(),
-        id: 'cba29373-d9a2-423e-8f36-83c13b07d925',
         adjustmentFactor: 1,
         aggregateFactor: 1,
         chargeCategoryCode: '4.3.2',
+        id: 'cba29373-d9a2-423e-8f36-83c13b07d925',
         section126Factor: 1,
         section127Agreement: false,
         supportedSource: false,

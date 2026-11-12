@@ -39,8 +39,8 @@ function select(index = -1) {
 }
 
 export default {
-  data,
   BILL_RUN_REGION_INDEX,
-  TEST_REGION_INDEX,
-  select
+  data,
+  select,
+  TEST_REGION_INDEX
 }

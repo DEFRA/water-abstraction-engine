@@ -73,16 +73,16 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 2,
-              showingMessage: 'Showing 50 of 75 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false }
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 2,
+              showingMessage: 'Showing 50 of 75 notices'
             })
           })
         })
@@ -96,16 +96,16 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 2,
-              showingMessage: 'Showing 50 of 75 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: true }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: true, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' }
                 ],
                 previous: { href: '/system/bill-runs?page=1' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 2,
+              showingMessage: 'Showing 50 of 75 notices'
             })
           })
         })
@@ -125,17 +125,17 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 3,
-              showingMessage: 'Showing 50 of 125 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false }
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 3,
+              showingMessage: 'Showing 50 of 125 notices'
             })
           })
         })
@@ -149,18 +149,18 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 3,
-              showingMessage: 'Showing 50 of 125 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: true },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: true, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' }
                 ],
                 next: { href: '/system/bill-runs?page=3' },
                 previous: { href: '/system/bill-runs?page=1' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 3,
+              showingMessage: 'Showing 50 of 125 notices'
             })
           })
         })
@@ -174,17 +174,17 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 3,
-              showingMessage: 'Showing 50 of 125 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: true }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: true, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' }
                 ],
                 previous: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 3,
+              showingMessage: 'Showing 50 of 125 notices'
             })
           })
         })
@@ -204,18 +204,18 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 4,
-              showingMessage: 'Showing 50 of 175 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false }
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 4,
+              showingMessage: 'Showing 50 of 175 notices'
             })
           })
         })
@@ -229,19 +229,19 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 4,
-              showingMessage: 'Showing 50 of 175 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: true },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: true, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' }
                 ],
                 next: { href: '/system/bill-runs?page=3' },
                 previous: { href: '/system/bill-runs?page=1' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 4,
+              showingMessage: 'Showing 50 of 175 notices'
             })
           })
         })
@@ -255,18 +255,18 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 4,
-              showingMessage: 'Showing 50 of 175 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: true }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: true, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' }
                 ],
                 previous: { href: '/system/bill-runs?page=3' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 4,
+              showingMessage: 'Showing 50 of 175 notices'
             })
           })
         })
@@ -286,19 +286,19 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 5,
-              showingMessage: 'Showing 50 of 225 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false }
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 5,
+              showingMessage: 'Showing 50 of 225 notices'
             })
           })
         })
@@ -312,20 +312,20 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 5,
-              showingMessage: 'Showing 50 of 225 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: true },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: true, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' }
                 ],
                 next: { href: '/system/bill-runs?page=4' },
                 previous: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 5,
+              showingMessage: 'Showing 50 of 225 notices'
             })
           })
         })
@@ -339,19 +339,19 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 5,
-              showingMessage: 'Showing 50 of 225 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: true }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: true, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' }
                 ],
                 previous: { href: '/system/bill-runs?page=4' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 5,
+              showingMessage: 'Showing 50 of 225 notices'
             })
           })
         })
@@ -371,20 +371,20 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 6,
-              showingMessage: 'Showing 50 of 275 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false }
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 6,
+              showingMessage: 'Showing 50 of 275 notices'
             })
           })
         })
@@ -398,21 +398,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 6,
-              showingMessage: 'Showing 50 of 275 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: true },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: true, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' }
                 ],
                 next: { href: '/system/bill-runs?page=4' },
                 previous: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 6,
+              showingMessage: 'Showing 50 of 275 notices'
             })
           })
         })
@@ -426,20 +426,20 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 6,
-              showingMessage: 'Showing 50 of 275 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: true }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: true, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' }
                 ],
                 previous: { href: '/system/bill-runs?page=5' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 6,
+              showingMessage: 'Showing 50 of 275 notices'
             })
           })
         })
@@ -459,21 +459,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 7,
-              showingMessage: 'Showing 50 of 325 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: false }
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: false, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 7,
+              showingMessage: 'Showing 50 of 325 notices'
             })
           })
         })
@@ -487,22 +487,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 7,
-              showingMessage: 'Showing 50 of 325 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: true },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: false }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: true, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: false, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' }
                 ],
                 next: { href: '/system/bill-runs?page=5' },
                 previous: { href: '/system/bill-runs?page=3' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 7,
+              showingMessage: 'Showing 50 of 325 notices'
             })
           })
         })
@@ -516,21 +516,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 7,
-              showingMessage: 'Showing 50 of 325 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: true }
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: true, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' }
                 ],
                 previous: { href: '/system/bill-runs?page=6' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 7,
+              showingMessage: 'Showing 50 of 325 notices'
             })
           })
         })
@@ -550,21 +550,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
                   { ellipsis: true },
-                  { number: 8, visuallyHiddenText: 'Page 8', href: '/system/bill-runs?page=8', current: false }
+                  { current: false, href: '/system/bill-runs?page=8', number: 8, visuallyHiddenText: 'Page 8' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -578,22 +578,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: true },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: true, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
                   { ellipsis: true },
-                  { number: 8, visuallyHiddenText: 'Page 8', href: '/system/bill-runs?page=8', current: false }
+                  { current: false, href: '/system/bill-runs?page=8', number: 8, visuallyHiddenText: 'Page 8' }
                 ],
                 next: { href: '/system/bill-runs?page=5' },
                 previous: { href: '/system/bill-runs?page=3' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -607,22 +607,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: true },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: false },
-                  { number: 8, visuallyHiddenText: 'Page 8', href: '/system/bill-runs?page=8', current: false }
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: true, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: false, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' },
+                  { current: false, href: '/system/bill-runs?page=8', number: 8, visuallyHiddenText: 'Page 8' }
                 ],
                 next: { href: '/system/bill-runs?page=6' },
                 previous: { href: '/system/bill-runs?page=4' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -636,21 +636,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: false },
-                  { number: 8, visuallyHiddenText: 'Page 8', href: '/system/bill-runs?page=8', current: true }
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: false, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' },
+                  { current: true, href: '/system/bill-runs?page=8', number: 8, visuallyHiddenText: 'Page 8' }
                 ],
                 previous: { href: '/system/bill-runs?page=7' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -670,21 +670,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
                   { ellipsis: true },
-                  { number: 9, visuallyHiddenText: 'Page 9', href: '/system/bill-runs?page=9', current: false }
+                  { current: false, href: '/system/bill-runs?page=9', number: 9, visuallyHiddenText: 'Page 9' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -698,22 +698,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: true },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: true, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
                   { ellipsis: true },
-                  { number: 9, visuallyHiddenText: 'Page 9', href: '/system/bill-runs?page=9', current: false }
+                  { current: false, href: '/system/bill-runs?page=9', number: 9, visuallyHiddenText: 'Page 9' }
                 ],
                 next: { href: '/system/bill-runs?page=5' },
                 previous: { href: '/system/bill-runs?page=3' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -727,22 +727,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: true },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: true, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
                   { ellipsis: true },
-                  { number: 9, visuallyHiddenText: 'Page 9', href: '/system/bill-runs?page=9', current: false }
+                  { current: false, href: '/system/bill-runs?page=9', number: 9, visuallyHiddenText: 'Page 9' }
                 ],
                 next: { href: '/system/bill-runs?page=6' },
                 previous: { href: '/system/bill-runs?page=4' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -756,22 +756,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: true },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: false },
-                  { number: 8, visuallyHiddenText: 'Page 8', href: '/system/bill-runs?page=8', current: false },
-                  { number: 9, visuallyHiddenText: 'Page 9', href: '/system/bill-runs?page=9', current: false }
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: true, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: false, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' },
+                  { current: false, href: '/system/bill-runs?page=8', number: 8, visuallyHiddenText: 'Page 8' },
+                  { current: false, href: '/system/bill-runs?page=9', number: 9, visuallyHiddenText: 'Page 9' }
                 ],
                 next: { href: '/system/bill-runs?page=7' },
                 previous: { href: '/system/bill-runs?page=5' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -785,21 +785,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
-                  { number: 6, visuallyHiddenText: 'Page 6', href: '/system/bill-runs?page=6', current: false },
-                  { number: 7, visuallyHiddenText: 'Page 7', href: '/system/bill-runs?page=7', current: false },
-                  { number: 8, visuallyHiddenText: 'Page 8', href: '/system/bill-runs?page=8', current: false },
-                  { number: 9, visuallyHiddenText: 'Page 9', href: '/system/bill-runs?page=9', current: true }
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
+                  { current: false, href: '/system/bill-runs?page=6', number: 6, visuallyHiddenText: 'Page 6' },
+                  { current: false, href: '/system/bill-runs?page=7', number: 7, visuallyHiddenText: 'Page 7' },
+                  { current: false, href: '/system/bill-runs?page=8', number: 8, visuallyHiddenText: 'Page 8' },
+                  { current: true, href: '/system/bill-runs?page=9', number: 9, visuallyHiddenText: 'Page 9' }
                 ],
                 previous: { href: '/system/bill-runs?page=8' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -819,21 +819,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: true },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: false },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
+                  { current: true, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: false, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
                   { ellipsis: true },
-                  { number: 100, visuallyHiddenText: 'Page 100', href: '/system/bill-runs?page=100', current: false }
+                  { current: false, href: '/system/bill-runs?page=100', number: 100, visuallyHiddenText: 'Page 100' }
                 ],
                 next: { href: '/system/bill-runs?page=2' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -847,22 +847,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
-                  { number: 2, visuallyHiddenText: 'Page 2', href: '/system/bill-runs?page=2', current: false },
-                  { number: 3, visuallyHiddenText: 'Page 3', href: '/system/bill-runs?page=3', current: false },
-                  { number: 4, visuallyHiddenText: 'Page 4', href: '/system/bill-runs?page=4', current: true },
-                  { number: 5, visuallyHiddenText: 'Page 5', href: '/system/bill-runs?page=5', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
+                  { current: false, href: '/system/bill-runs?page=2', number: 2, visuallyHiddenText: 'Page 2' },
+                  { current: false, href: '/system/bill-runs?page=3', number: 3, visuallyHiddenText: 'Page 3' },
+                  { current: true, href: '/system/bill-runs?page=4', number: 4, visuallyHiddenText: 'Page 4' },
+                  { current: false, href: '/system/bill-runs?page=5', number: 5, visuallyHiddenText: 'Page 5' },
                   { ellipsis: true },
-                  { number: 100, visuallyHiddenText: 'Page 100', href: '/system/bill-runs?page=100', current: false }
+                  { current: false, href: '/system/bill-runs?page=100', number: 100, visuallyHiddenText: 'Page 100' }
                 ],
                 next: { href: '/system/bill-runs?page=5' },
                 previous: { href: '/system/bill-runs?page=3' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -876,22 +876,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 48, visuallyHiddenText: 'Page 48', href: '/system/bill-runs?page=48', current: false },
-                  { number: 49, visuallyHiddenText: 'Page 49', href: '/system/bill-runs?page=49', current: true },
-                  { number: 50, visuallyHiddenText: 'Page 50', href: '/system/bill-runs?page=50', current: false },
+                  { current: false, href: '/system/bill-runs?page=48', number: 48, visuallyHiddenText: 'Page 48' },
+                  { current: true, href: '/system/bill-runs?page=49', number: 49, visuallyHiddenText: 'Page 49' },
+                  { current: false, href: '/system/bill-runs?page=50', number: 50, visuallyHiddenText: 'Page 50' },
                   { ellipsis: true },
-                  { number: 100, visuallyHiddenText: 'Page 100', href: '/system/bill-runs?page=100', current: false }
+                  { current: false, href: '/system/bill-runs?page=100', number: 100, visuallyHiddenText: 'Page 100' }
                 ],
                 next: { href: '/system/bill-runs?page=50' },
                 previous: { href: '/system/bill-runs?page=48' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -905,22 +905,22 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 96, visuallyHiddenText: 'Page 96', href: '/system/bill-runs?page=96', current: false },
-                  { number: 97, visuallyHiddenText: 'Page 97', href: '/system/bill-runs?page=97', current: true },
-                  { number: 98, visuallyHiddenText: 'Page 98', href: '/system/bill-runs?page=98', current: false },
-                  { number: 99, visuallyHiddenText: 'Page 99', href: '/system/bill-runs?page=99', current: false },
-                  { number: 100, visuallyHiddenText: 'Page 100', href: '/system/bill-runs?page=100', current: false }
+                  { current: false, href: '/system/bill-runs?page=96', number: 96, visuallyHiddenText: 'Page 96' },
+                  { current: true, href: '/system/bill-runs?page=97', number: 97, visuallyHiddenText: 'Page 97' },
+                  { current: false, href: '/system/bill-runs?page=98', number: 98, visuallyHiddenText: 'Page 98' },
+                  { current: false, href: '/system/bill-runs?page=99', number: 99, visuallyHiddenText: 'Page 99' },
+                  { current: false, href: '/system/bill-runs?page=100', number: 100, visuallyHiddenText: 'Page 100' }
                 ],
                 next: { href: '/system/bill-runs?page=98' },
                 previous: { href: '/system/bill-runs?page=96' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -935,21 +935,21 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 3 of 4975 notices',
               component: {
                 items: [
-                  { number: 1, visuallyHiddenText: 'Page 1', href: '/system/bill-runs?page=1', current: false },
+                  { current: false, href: '/system/bill-runs?page=1', number: 1, visuallyHiddenText: 'Page 1' },
                   { ellipsis: true },
-                  { number: 96, visuallyHiddenText: 'Page 96', href: '/system/bill-runs?page=96', current: false },
-                  { number: 97, visuallyHiddenText: 'Page 97', href: '/system/bill-runs?page=97', current: false },
-                  { number: 98, visuallyHiddenText: 'Page 98', href: '/system/bill-runs?page=98', current: false },
-                  { number: 99, visuallyHiddenText: 'Page 99', href: '/system/bill-runs?page=99', current: false },
-                  { number: 100, visuallyHiddenText: 'Page 100', href: '/system/bill-runs?page=100', current: true }
+                  { current: false, href: '/system/bill-runs?page=96', number: 96, visuallyHiddenText: 'Page 96' },
+                  { current: false, href: '/system/bill-runs?page=97', number: 97, visuallyHiddenText: 'Page 97' },
+                  { current: false, href: '/system/bill-runs?page=98', number: 98, visuallyHiddenText: 'Page 98' },
+                  { current: false, href: '/system/bill-runs?page=99', number: 99, visuallyHiddenText: 'Page 99' },
+                  { current: true, href: '/system/bill-runs?page=100', number: 100, visuallyHiddenText: 'Page 100' }
                 ],
                 previous: { href: '/system/bill-runs?page=99' }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 3 of 4975 notices'
             })
           })
 
@@ -1000,28 +1000,28 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 2,
-              showingMessage: 'Showing 50 of 75 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 2,
+              showingMessage: 'Showing 50 of 75 notices'
             })
           })
         })
@@ -1035,28 +1035,28 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 2,
-              showingMessage: 'Showing 50 of 75 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: true,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 2,
+              showingMessage: 'Showing 50 of 75 notices'
             })
           })
         })
@@ -1076,34 +1076,34 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 3,
-              showingMessage: 'Showing 50 of 125 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 3,
+              showingMessage: 'Showing 50 of 125 notices'
             })
           })
         })
@@ -1117,28 +1117,25 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 3,
-              showingMessage: 'Showing 50 of 125 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: true,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   }
                 ],
                 next: {
@@ -1147,7 +1144,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 3,
+              showingMessage: 'Showing 50 of 125 notices'
             })
           })
         })
@@ -1161,34 +1161,34 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 3,
-              showingMessage: 'Showing 50 of 125 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: true,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 3,
+              showingMessage: 'Showing 50 of 125 notices'
             })
           })
         })
@@ -1208,40 +1208,40 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 4,
-              showingMessage: 'Showing 50 of 175 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 4,
+              showingMessage: 'Showing 50 of 175 notices'
             })
           })
         })
@@ -1255,34 +1255,31 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 4,
-              showingMessage: 'Showing 50 of 175 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: true,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   }
                 ],
                 next: {
@@ -1291,7 +1288,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 4,
+              showingMessage: 'Showing 50 of 175 notices'
             })
           })
         })
@@ -1305,40 +1305,40 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 4,
-              showingMessage: 'Showing 50 of 175 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: true,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 4,
+              showingMessage: 'Showing 50 of 175 notices'
             })
           })
         })
@@ -1358,46 +1358,46 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 5,
-              showingMessage: 'Showing 50 of 225 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 5,
+              showingMessage: 'Showing 50 of 225 notices'
             })
           })
         })
@@ -1411,40 +1411,37 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 5,
-              showingMessage: 'Showing 50 of 225 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: true,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   }
                 ],
                 next: {
@@ -1453,7 +1450,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 5,
+              showingMessage: 'Showing 50 of 225 notices'
             })
           })
         })
@@ -1467,46 +1467,46 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 5,
-              showingMessage: 'Showing 50 of 225 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: true,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 5,
+              showingMessage: 'Showing 50 of 225 notices'
             })
           })
         })
@@ -1526,52 +1526,52 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 6,
-              showingMessage: 'Showing 50 of 275 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 6,
+              showingMessage: 'Showing 50 of 275 notices'
             })
           })
         })
@@ -1585,46 +1585,43 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 6,
-              showingMessage: 'Showing 50 of 275 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: true,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   }
                 ],
                 next: {
@@ -1633,7 +1630,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 6,
+              showingMessage: 'Showing 50 of 275 notices'
             })
           })
         })
@@ -1647,52 +1647,52 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 6,
-              showingMessage: 'Showing 50 of 275 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: true,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 6,
+              showingMessage: 'Showing 50 of 275 notices'
             })
           })
         })
@@ -1712,58 +1712,58 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 7,
-              showingMessage: 'Showing 50 of 325 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: false,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 7,
+              showingMessage: 'Showing 50 of 325 notices'
             })
           })
         })
@@ -1777,52 +1777,49 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 7,
-              showingMessage: 'Showing 50 of 325 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: true,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: false,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   }
                 ],
                 next: {
@@ -1831,7 +1828,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 7,
+              showingMessage: 'Showing 50 of 325 notices'
             })
           })
         })
@@ -1845,58 +1845,58 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 7,
-              showingMessage: 'Showing 50 of 325 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: true,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 7,
+              showingMessage: 'Showing 50 of 325 notices'
             })
           })
         })
@@ -1916,53 +1916,53 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   { ellipsis: true },
                   {
-                    number: 8,
-                    visuallyHiddenText: 'Page 8',
+                    current: false,
                     href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 8,
+                    visuallyHiddenText: 'Page 8'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -1976,47 +1976,44 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: true,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   { ellipsis: true },
                   {
-                    number: 8,
-                    visuallyHiddenText: 'Page 8',
+                    current: false,
                     href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 8,
+                    visuallyHiddenText: 'Page 8'
                   }
                 ],
                 next: {
@@ -2025,7 +2022,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -2039,47 +2039,44 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: true,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: false,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   },
                   {
-                    number: 8,
-                    visuallyHiddenText: 'Page 8',
+                    current: false,
                     href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 8,
+                    visuallyHiddenText: 'Page 8'
                   }
                 ],
                 next: {
@@ -2088,7 +2085,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -2102,53 +2102,53 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 8,
-              showingMessage: 'Showing 50 of 375 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: false,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   },
                   {
-                    number: 8,
-                    visuallyHiddenText: 'Page 8',
+                    current: true,
                     href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 8,
+                    visuallyHiddenText: 'Page 8'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 8,
+              showingMessage: 'Showing 50 of 375 notices'
             })
           })
         })
@@ -2168,53 +2168,53 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   { ellipsis: true },
                   {
-                    number: 9,
-                    visuallyHiddenText: 'Page 9',
+                    current: false,
                     href: '/system/bill-runs?page=9&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 9,
+                    visuallyHiddenText: 'Page 9'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -2228,47 +2228,44 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: true,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   { ellipsis: true },
                   {
-                    number: 9,
-                    visuallyHiddenText: 'Page 9',
+                    current: false,
                     href: '/system/bill-runs?page=9&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 9,
+                    visuallyHiddenText: 'Page 9'
                   }
                 ],
                 next: {
@@ -2277,7 +2274,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -2291,42 +2291,39 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: true,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   { ellipsis: true },
                   {
-                    number: 9,
-                    visuallyHiddenText: 'Page 9',
+                    current: false,
                     href: '/system/bill-runs?page=9&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 9,
+                    visuallyHiddenText: 'Page 9'
                   }
                 ],
                 next: {
@@ -2335,7 +2332,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -2349,47 +2349,44 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: true,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: false,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   },
                   {
-                    number: 8,
-                    visuallyHiddenText: 'Page 8',
+                    current: false,
                     href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 8,
+                    visuallyHiddenText: 'Page 8'
                   },
                   {
-                    number: 9,
-                    visuallyHiddenText: 'Page 9',
+                    current: false,
                     href: '/system/bill-runs?page=9&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 9,
+                    visuallyHiddenText: 'Page 9'
                   }
                 ],
                 next: {
@@ -2398,7 +2395,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -2412,53 +2412,53 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 9,
-              showingMessage: 'Showing 50 of 425 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   {
-                    number: 6,
-                    visuallyHiddenText: 'Page 6',
+                    current: false,
                     href: '/system/bill-runs?page=6&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 6,
+                    visuallyHiddenText: 'Page 6'
                   },
                   {
-                    number: 7,
-                    visuallyHiddenText: 'Page 7',
+                    current: false,
                     href: '/system/bill-runs?page=7&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 7,
+                    visuallyHiddenText: 'Page 7'
                   },
                   {
-                    number: 8,
-                    visuallyHiddenText: 'Page 8',
+                    current: false,
                     href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 8,
+                    visuallyHiddenText: 'Page 8'
                   },
                   {
-                    number: 9,
-                    visuallyHiddenText: 'Page 9',
+                    current: true,
                     href: '/system/bill-runs?page=9&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 9,
+                    visuallyHiddenText: 'Page 9'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=8&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 9,
+              showingMessage: 'Showing 50 of 425 notices'
             })
           })
         })
@@ -2478,53 +2478,53 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: true,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: false,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   { ellipsis: true },
                   {
-                    number: 100,
-                    visuallyHiddenText: 'Page 100',
+                    current: false,
                     href: '/system/bill-runs?page=100&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 100,
+                    visuallyHiddenText: 'Page 100'
                   }
                 ],
                 next: {
                   href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -2538,47 +2538,44 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   {
-                    number: 2,
-                    visuallyHiddenText: 'Page 2',
+                    current: false,
                     href: '/system/bill-runs?page=2&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 2,
+                    visuallyHiddenText: 'Page 2'
                   },
                   {
-                    number: 3,
-                    visuallyHiddenText: 'Page 3',
+                    current: false,
                     href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 3,
+                    visuallyHiddenText: 'Page 3'
                   },
                   {
-                    number: 4,
-                    visuallyHiddenText: 'Page 4',
+                    current: true,
                     href: '/system/bill-runs?page=4&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 4,
+                    visuallyHiddenText: 'Page 4'
                   },
                   {
-                    number: 5,
-                    visuallyHiddenText: 'Page 5',
+                    current: false,
                     href: '/system/bill-runs?page=5&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 5,
+                    visuallyHiddenText: 'Page 5'
                   },
                   { ellipsis: true },
                   {
-                    number: 100,
-                    visuallyHiddenText: 'Page 100',
+                    current: false,
                     href: '/system/bill-runs?page=100&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 100,
+                    visuallyHiddenText: 'Page 100'
                   }
                 ],
                 next: {
@@ -2587,7 +2584,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=3&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -2601,42 +2601,39 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 48,
-                    visuallyHiddenText: 'Page 48',
+                    current: false,
                     href: '/system/bill-runs?page=48&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 48,
+                    visuallyHiddenText: 'Page 48'
                   },
                   {
-                    number: 49,
-                    visuallyHiddenText: 'Page 49',
+                    current: true,
                     href: '/system/bill-runs?page=49&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 49,
+                    visuallyHiddenText: 'Page 49'
                   },
                   {
-                    number: 50,
-                    visuallyHiddenText: 'Page 50',
+                    current: false,
                     href: '/system/bill-runs?page=50&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 50,
+                    visuallyHiddenText: 'Page 50'
                   },
                   { ellipsis: true },
                   {
-                    number: 100,
-                    visuallyHiddenText: 'Page 100',
+                    current: false,
                     href: '/system/bill-runs?page=100&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 100,
+                    visuallyHiddenText: 'Page 100'
                   }
                 ],
                 next: {
@@ -2645,7 +2642,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=48&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -2659,47 +2659,44 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 96,
-                    visuallyHiddenText: 'Page 96',
+                    current: false,
                     href: '/system/bill-runs?page=96&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 96,
+                    visuallyHiddenText: 'Page 96'
                   },
                   {
-                    number: 97,
-                    visuallyHiddenText: 'Page 97',
+                    current: true,
                     href: '/system/bill-runs?page=97&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 97,
+                    visuallyHiddenText: 'Page 97'
                   },
                   {
-                    number: 98,
-                    visuallyHiddenText: 'Page 98',
+                    current: false,
                     href: '/system/bill-runs?page=98&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 98,
+                    visuallyHiddenText: 'Page 98'
                   },
                   {
-                    number: 99,
-                    visuallyHiddenText: 'Page 99',
+                    current: false,
                     href: '/system/bill-runs?page=99&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 99,
+                    visuallyHiddenText: 'Page 99'
                   },
                   {
-                    number: 100,
-                    visuallyHiddenText: 'Page 100',
+                    current: false,
                     href: '/system/bill-runs?page=100&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 100,
+                    visuallyHiddenText: 'Page 100'
                   }
                 ],
                 next: {
@@ -2708,7 +2705,10 @@ describe('Paginator Presenter', () => {
                 previous: {
                   href: '/system/bill-runs?page=96&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })
@@ -2722,53 +2722,53 @@ describe('Paginator Presenter', () => {
             const result = PaginatorPresenter(numberOfRecords, selectedPage, path, currentAmount, message, queryArgs)
 
             expect(result).toEqual({
-              currentPageNumber: selectedPage,
-              numberOfPages: 100,
-              showingMessage: 'Showing 50 of 4975 notices',
               component: {
                 items: [
                   {
-                    number: 1,
-                    visuallyHiddenText: 'Page 1',
+                    current: false,
                     href: '/system/bill-runs?page=1&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 1,
+                    visuallyHiddenText: 'Page 1'
                   },
                   { ellipsis: true },
                   {
-                    number: 96,
-                    visuallyHiddenText: 'Page 96',
+                    current: false,
                     href: '/system/bill-runs?page=96&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 96,
+                    visuallyHiddenText: 'Page 96'
                   },
                   {
-                    number: 97,
-                    visuallyHiddenText: 'Page 97',
+                    current: false,
                     href: '/system/bill-runs?page=97&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 97,
+                    visuallyHiddenText: 'Page 97'
                   },
                   {
-                    number: 98,
-                    visuallyHiddenText: 'Page 98',
+                    current: false,
                     href: '/system/bill-runs?page=98&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 98,
+                    visuallyHiddenText: 'Page 98'
                   },
                   {
-                    number: 99,
-                    visuallyHiddenText: 'Page 99',
+                    current: false,
                     href: '/system/bill-runs?page=99&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: false
+                    number: 99,
+                    visuallyHiddenText: 'Page 99'
                   },
                   {
-                    number: 100,
-                    visuallyHiddenText: 'Page 100',
+                    current: true,
                     href: '/system/bill-runs?page=100&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b',
-                    current: true
+                    number: 100,
+                    visuallyHiddenText: 'Page 100'
                   }
                 ],
                 previous: {
                   href: '/system/bill-runs?page=99&billing-account-id=c17c0a2b-6950-490b-8c3a-4dc9f01da368&licence-id=354fc0bd-0820-4611-a6af-874480bbae3b'
                 }
-              }
+              },
+              currentPageNumber: selectedPage,
+              numberOfPages: 100,
+              showingMessage: 'Showing 50 of 4975 notices'
             })
           })
         })

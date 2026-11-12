@@ -1,3 +1,9 @@
+/**
+ * Vitest config for running the engine's unit tests
+ *
+ * @module VitestConfig
+ */
+
 const ci = String(process.env.CI) === 'true' || false
 
 export default {
@@ -49,6 +55,7 @@ export default {
           include: [
             'test/controllers/**/*.test.js',
             'test/errors/**/*.test.js',
+            'test/eslint-rules/**/*.test.js',
             'test/lib/**/*.test.js',
             'test/models/**/*.test.js',
             'test/plugins/**/*.test.js',
@@ -60,12 +67,10 @@ export default {
           ],
           // Share a single worker context across test files rather than isolating each file in its own module scope
           isolate: false,
-          // Module(s) to run once per test file before importing it. Used to add polyfills and test-level setup
-          setupFiles: ['test/support/vitest/file-setup.js'],
-          // Human-readable label for this project shown in the Vitest output
-          name: 'parallel',
           // In CI use 2 workers (GitHub actions have 2 cores) to avoid resource contention; locally use 50%
           maxWorkers: ci ? 2 : '50%',
+          // Human-readable label for this project shown in the Vitest output
+          name: 'parallel',
           // In CI use forked processes for safety; locally use threads for faster startup
           pool: ci ? 'forks' : 'threads',
           sequence: {
@@ -76,6 +81,8 @@ export default {
               files: true
             }
           },
+          // Module(s) to run once per test file before importing it. Used to add polyfills and test-level setup
+          setupFiles: ['test/support/vitest/file-setup.js'],
           // Maximum time in milliseconds a single test is allowed to run before it is marked as timed out
           testTimeout: 10000,
           // Disable watch mode so the suite always runs to completion and exits
@@ -97,12 +104,10 @@ export default {
           include: ['test/dal/**/*.test.js'],
           // Share a single worker context across test files rather than isolating each file in its own module scope
           isolate: false,
-          // Module(s) to run once per test file before importing it. Used to add polyfills and test-level setup
-          setupFiles: ['test/support/vitest/file-setup.js'],
-          // Human-readable label for this project shown in the Vitest output
-          name: 'series',
           // Force a single worker so tests run one at a time and cannot interfere with each other via the database
           maxWorkers: 1,
+          // Human-readable label for this project shown in the Vitest output
+          name: 'series',
           // Use forked processes to ensure each worker has a clean process boundary
           pool: 'forks',
           sequence: {
@@ -113,6 +118,8 @@ export default {
               files: true
             }
           },
+          // Module(s) to run once per test file before importing it. Used to add polyfills and test-level setup
+          setupFiles: ['test/support/vitest/file-setup.js'],
           // Maximum time in milliseconds a single test is allowed to run before it is marked as timed out
           testTimeout: 10000,
           // Disable watch mode so the suite always runs to completion and exits

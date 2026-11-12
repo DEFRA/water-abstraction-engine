@@ -54,60 +54,60 @@ export default class CompanyModel extends BaseModel {
   static get relationMappings() {
     return {
       billingAccountAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: BillingAccountAddressModel,
         join: {
           from: 'companies.id',
           to: 'billingAccountAddresses.companyId'
-        }
+        },
+        modelClass: BillingAccountAddressModel,
+        relation: Model.HasManyRelation
       },
       billingAccounts: {
-        relation: Model.HasManyRelation,
-        modelClass: BillingAccountModel,
         join: {
           from: 'companies.id',
           to: 'billingAccounts.companyId'
-        }
+        },
+        modelClass: BillingAccountModel,
+        relation: Model.HasManyRelation
       },
       companyAddresses: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyAddressModel,
         join: {
           from: 'companies.id',
           to: 'companyAddresses.companyId'
-        }
+        },
+        modelClass: CompanyAddressModel,
+        relation: Model.HasManyRelation
       },
       companyContacts: {
-        relation: Model.HasManyRelation,
-        modelClass: CompanyContactModel,
         join: {
           from: 'companies.id',
           to: 'companyContacts.companyId'
-        }
+        },
+        modelClass: CompanyContactModel,
+        relation: Model.HasManyRelation
       },
       licenceDocumentRoles: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceDocumentRoleModel,
         join: {
           from: 'companies.id',
           to: 'licenceDocumentRoles.companyId'
-        }
+        },
+        modelClass: LicenceDocumentRoleModel,
+        relation: Model.HasManyRelation
       },
       licenceVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionModel,
         join: {
           from: 'companies.id',
           to: 'licenceVersions.companyId'
-        }
+        },
+        modelClass: LicenceVersionModel,
+        relation: Model.HasManyRelation
       },
       region: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: RegionModel,
         join: {
           from: 'companies.regionId',
           to: 'regions.id'
-        }
+        },
+        modelClass: RegionModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

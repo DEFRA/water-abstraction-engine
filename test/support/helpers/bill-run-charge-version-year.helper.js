@@ -40,11 +40,11 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
+    batchType: 'annual',
     billRunId: generateUUID(),
     chargeVersionId: generateUUID(),
     financialYearEnding: 2024,
     status: 'ready',
-    batchType: 'annual',
     summer: false
   }
 

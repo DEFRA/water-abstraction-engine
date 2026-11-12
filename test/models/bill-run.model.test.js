@@ -32,7 +32,7 @@ describe('Bill Run model', () => {
     // Link bills
     testBills = []
     for (let i = 0; i < 2; i++) {
-      const bill = await BillHelper.add({ financialYearEnding: 2023, billRunId: testRecord.id })
+      const bill = await BillHelper.add({ billRunId: testRecord.id, financialYearEnding: 2023 })
 
       testBills.push(bill)
     }

@@ -3,8 +3,8 @@
  */
 
 import GroupModel from '../../../src/models/group.model.js'
-import { data as groups } from '../../../db/seeds/data/groups.js'
 import { selectRandomEntry } from '../general.js'
+import { data as groups } from '../../../db/seeds/data/groups.js'
 
 const data = groups
 

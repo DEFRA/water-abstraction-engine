@@ -19,36 +19,36 @@ export default class PurposeModel extends BaseModel {
   static get relationMappings() {
     return {
       chargeElements: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeElementModel,
         join: {
           from: 'purposes.id',
           to: 'chargeElements.purposeId'
-        }
+        },
+        modelClass: ChargeElementModel,
+        relation: Model.HasManyRelation
       },
       chargeReferences: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeReferenceModel,
         join: {
           from: 'purposes.id',
           to: 'chargeReferences.purposeId'
-        }
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.HasManyRelation
       },
       licenceVersionPurposes: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceVersionPurposeModel,
         join: {
           from: 'purposes.id',
           to: 'licenceVersionPurposes.purposeId'
-        }
+        },
+        modelClass: LicenceVersionPurposeModel,
+        relation: Model.HasManyRelation
       },
       returnRequirementPurposes: {
-        relation: Model.HasManyRelation,
-        modelClass: ReturnRequirementPurposeModel,
         join: {
           from: 'purposes.id',
           to: 'returnRequirementPurposes.purposeId'
-        }
+        },
+        modelClass: ReturnRequirementPurposeModel,
+        relation: Model.HasManyRelation
       }
     }
   }

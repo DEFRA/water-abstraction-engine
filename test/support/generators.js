@@ -6,8 +6,8 @@
 import crypto from 'crypto'
 
 import RegionHelper from './helpers/region.helper.js'
-import { faker } from './faker.js'
 import { formatDateObjectToISO } from '../../src/lib/dates.lib.js'
+import { faker } from './faker.js'
 import { generateNoticeReferenceCode, generateUUID } from '../../src/lib/general.lib.js'
 
 export { generateNoticeReferenceCode, generateUUID }
@@ -92,9 +92,9 @@ export function generateCompanyContact(companyName) {
 
   return {
     department: `${firstName} ${lastName}`,
+    email,
     firstName,
-    lastName,
-    email
+    lastName
   }
 }
 
@@ -315,7 +315,7 @@ export function generatePointExternalId(region = null) {
  * @returns {number} a random integer from `min` up to, but not including, `max`
  */
 export function generateRandomInteger(min, max) {
-  return faker.number.int({ min, max })
+  return faker.number.int({ max, min })
 }
 
 /**

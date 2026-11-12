@@ -22,9 +22,9 @@ export default function hapiPinoLogInTestService(logInTest) {
   }
 
   return {
-    // Don't log requests etc
-    logEvents: false,
     // Don't log anything tagged with DEBUG or info, for example, req.log(['INFO'], 'User is an admin')
-    ignoredEventTags: { log: ['DEBUG', 'INFO'], request: ['DEBUG', 'INFO'] }
+    ignoredEventTags: { log: ['DEBUG', 'INFO'], request: ['DEBUG', 'INFO'] },
+    // Don't log requests etc
+    logEvents: false
   }
 }

@@ -38,12 +38,12 @@ describe('Airbrake Plugin', () => {
     beforeEach(() => {
       path = '/boom'
       server.route({
-        method: 'GET',
-        options: { auth: false },
-        path,
         handler: () => {
           throw new Error('Test error')
-        }
+        },
+        method: 'GET',
+        options: { auth: false },
+        path
       })
     })
 
@@ -104,6 +104,7 @@ describe('Airbrake Plugin', () => {
 
         expect(NotifierStub).toHaveBeenCalledOnce()
         const args = NotifierStub.mock.calls[0][0]
+
         expect(args.request).toEqual('fake-request-fn')
       })
     })
@@ -124,6 +125,7 @@ describe('Airbrake Plugin', () => {
 
         expect(NotifierStub).toHaveBeenCalledOnce()
         const args = NotifierStub.mock.calls[0][0]
+
         expect(args.request).toBeUndefined()
       })
     })

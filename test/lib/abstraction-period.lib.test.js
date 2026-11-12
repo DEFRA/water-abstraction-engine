@@ -31,8 +31,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-APR-2022 to 31-MAR-2023 (starts first year, ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-04-01'),
-          endDate: new Date('2023-03-31')
+          endDate: new Date('2023-03-31'),
+          startDate: new Date('2022-04-01')
         }
       })
 
@@ -47,12 +47,12 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2022-04-01'),
-            endDate: new Date('2022-12-31')
+            endDate: new Date('2022-12-31'),
+            startDate: new Date('2022-04-01')
           },
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-03-31')
+            endDate: new Date('2023-03-31'),
+            startDate: new Date('2023-01-01')
           }
         ])
       })
@@ -61,8 +61,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-NOV-2022 to 31-DEC-2022 (starts and ends first year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-11-01'),
-          endDate: new Date('2022-12-31')
+          endDate: new Date('2022-12-31'),
+          startDate: new Date('2022-11-01')
         }
       })
 
@@ -77,8 +77,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2022-11-01'),
-            endDate: new Date('2022-12-31')
+            endDate: new Date('2022-12-31'),
+            startDate: new Date('2022-11-01')
           }
         ])
       })
@@ -87,8 +87,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-DEC-2022 to 31-JAN-2023 (starts first year, ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-12-01'),
-          endDate: new Date('2023-01-31')
+          endDate: new Date('2023-01-31'),
+          startDate: new Date('2022-12-01')
         }
       })
 
@@ -103,12 +103,12 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2022-12-01'),
-            endDate: new Date('2022-12-31')
+            endDate: new Date('2022-12-31'),
+            startDate: new Date('2022-12-01')
           },
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-01-31')
+            endDate: new Date('2023-01-31'),
+            startDate: new Date('2023-01-01')
           }
         ])
       })
@@ -117,8 +117,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-JAN-2023 to 28-FEB-2023 (starts and ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2023-01-01'),
-          endDate: new Date('2023-02-28')
+          endDate: new Date('2023-02-28'),
+          startDate: new Date('2023-01-01')
         }
       })
 
@@ -133,8 +133,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-01-01')
           }
         ])
       })
@@ -152,8 +152,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-NOV-2022 to 31-DEC-2022 (starts and ends first year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-11-01'),
-          endDate: new Date('2022-12-31')
+          endDate: new Date('2022-12-31'),
+          startDate: new Date('2022-11-01')
         }
       })
 
@@ -173,8 +173,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-DEC-2022 to 31-JAN-2023 (starts first year, ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-12-01'),
-          endDate: new Date('2023-01-31')
+          endDate: new Date('2023-01-31'),
+          startDate: new Date('2022-12-01')
         }
       })
 
@@ -189,8 +189,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-01-31')
+            endDate: new Date('2023-01-31'),
+            startDate: new Date('2023-01-01')
           }
         ])
       })
@@ -199,8 +199,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-JAN-2023 to 28-FEB-2023 (starts and ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2023-01-01'),
-          endDate: new Date('2023-02-28')
+          endDate: new Date('2023-02-28'),
+          startDate: new Date('2023-01-01')
         }
       })
 
@@ -215,8 +215,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-01-01')
           }
         ])
       })
@@ -234,8 +234,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-NOV-2022 to 31-DEC-2022 (starts and ends first year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-11-01'),
-          endDate: new Date('2022-12-31')
+          endDate: new Date('2022-12-31'),
+          startDate: new Date('2022-11-01')
         }
       })
 
@@ -250,8 +250,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2022-11-01'),
-            endDate: new Date('2022-12-31')
+            endDate: new Date('2022-12-31'),
+            startDate: new Date('2022-11-01')
           }
         ])
       })
@@ -260,8 +260,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-DEC-2022 to 31-JAN-2023 (starts first year, ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2022-12-01'),
-          endDate: new Date('2023-01-31')
+          endDate: new Date('2023-01-31'),
+          startDate: new Date('2022-12-01')
         }
       })
 
@@ -276,8 +276,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2022-12-01'),
-            endDate: new Date('2023-01-31')
+            endDate: new Date('2023-01-31'),
+            startDate: new Date('2022-12-01')
           }
         ])
       })
@@ -286,8 +286,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-JAN-2023 to 28-FEB-2023 (starts and ends second year)', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2023-01-01'),
-          endDate: new Date('2023-02-28')
+          endDate: new Date('2023-02-28'),
+          startDate: new Date('2023-01-01')
         }
       })
 
@@ -302,8 +302,8 @@ describe('Abstraction Period Lib', () => {
 
         expect(result).toEqual([
           {
-            startDate: new Date('2023-01-01'),
-            endDate: new Date('2023-02-28')
+            endDate: new Date('2023-02-28'),
+            startDate: new Date('2023-01-01')
           }
         ])
       })
@@ -312,8 +312,8 @@ describe('Abstraction Period Lib', () => {
     describe('and the reference period is 01-AUG-2023 to 30-SEP-2023', () => {
       beforeEach(() => {
         referencePeriod = {
-          startDate: new Date('2023-08-01'),
-          endDate: new Date('2023-09-30')
+          endDate: new Date('2023-09-30'),
+          startDate: new Date('2023-08-01')
         }
       })
 

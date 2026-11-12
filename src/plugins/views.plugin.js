@@ -9,9 +9,9 @@
  */
 
 import Nunjucks from 'nunjucks'
+import path from 'node:path'
 import Vision from '@hapi/vision'
 import { existsSync } from 'node:fs'
-import path from 'node:path'
 
 import MarkdownFilter from '../../views/filters/markdown.filter.js'
 
@@ -143,23 +143,23 @@ export default function ViewsPlugin(config) {
   function context(request) {
     return {
       assetPath: '/assets',
-      cspNonce: request.plugins.blankie?.nonces?.script,
-      referrer: request.info.referrer,
       auth: {
         authenticated: request.auth.isAuthenticated,
         authorized: request.auth.isAuthorized,
-        user: request.auth.credentials?.user,
+        permission: request.auth.credentials?.permission,
         scope: request.auth.credentials?.scope,
-        permission: request.auth.credentials?.permission
+        user: request.auth.credentials?.user
       },
+      cspNonce: request.plugins.blankie?.nonces?.script,
       // The navigation links, if any, to display in the top-level GOV.UK header
-      navigationLinks: request.auth.isAuthenticated ? navigationLinks : []
+      navigationLinks: request.auth.isAuthenticated ? navigationLinks : [],
+      referrer: request.info.referrer
     }
   }
 
   return {
-    plugin: Vision,
     options: {
+      context,
       engines: {
         // The 'engine' is the file extension this applies to; in this case, .njk
         njk: {
@@ -167,13 +167,13 @@ export default function ViewsPlugin(config) {
           prepare
         }
       },
-      context,
+      // Whether to enable caching of templates (typically only enabled in production)
+      isCached,
       // the root file path used to resolve and load the templates identified when calling h.view()
       path: rootFilePath,
       // a base path used as prefix for `path:`
-      relativeTo,
-      // Whether to enable caching of templates (typically only enabled in production)
-      isCached
-    }
+      relativeTo
+    },
+    plugin: Vision
   }
 }

@@ -51,19 +51,19 @@ function defaults(data = {}) {
   const returnReference = data.returnReference ? data.returnReference : generateReference()
 
   const defaults = {
-    reviewLicenceId: generateUUID(),
+    abstractionOutsidePeriod: false,
+    description: 'Lands at Mosshayne Farm, Exeter & Broadclyst',
+    dueDate: new Date('2022-06-03'),
+    endDate: new Date('2022-05-06'),
+    issues: '',
+    purposes: {},
+    receivedDate: new Date('2022-06-03'),
     returnId: generateReturnId(new Date('2022-04-01'), new Date('2023-03-31'), 1, licenceRef, returnReference),
     returnLogId: generateUUID(),
     returnReference,
     returnStatus: 'completed',
-    abstractionOutsidePeriod: false,
-    receivedDate: new Date('2022-06-03'),
-    dueDate: new Date('2022-06-03'),
-    purposes: {},
-    description: 'Lands at Mosshayne Farm, Exeter & Broadclyst',
-    startDate: new Date('2022-04-01'),
-    endDate: new Date('2022-05-06'),
-    issues: ''
+    reviewLicenceId: generateUUID(),
+    startDate: new Date('2022-04-01')
   }
 
   return {

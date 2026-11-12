@@ -17,20 +17,20 @@ export default class LicenceVersionPurposePointModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceVersionPurpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceVersionPurposeModel,
         join: {
           from: 'licenceVersionPurposePoints.licenceVersionPurposeId',
           to: 'licenceVersionPurposes.id'
-        }
+        },
+        modelClass: LicenceVersionPurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       point: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: PointModel,
         join: {
           from: 'licenceVersionPurposePoints.pointId',
           to: 'points.id'
-        }
+        },
+        modelClass: PointModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

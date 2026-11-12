@@ -12,8 +12,8 @@ describe('Plugins - Filter Routes Service', () => {
     { path: '/' },
     { path: '/admin' },
     {
-      path: '/path-to-be-filtered',
-      options: { app: { excludeFromProd: true } }
+      options: { app: { excludeFromProd: true } },
+      path: '/path-to-be-filtered'
     }
   ]
 

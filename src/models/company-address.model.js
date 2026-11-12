@@ -18,28 +18,28 @@ export default class CompanyAddressModel extends BaseModel {
   static get relationMappings() {
     return {
       address: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: AddressModel,
         join: {
           from: 'companyAddresses.addressId',
           to: 'addresses.id'
-        }
+        },
+        modelClass: AddressModel,
+        relation: Model.BelongsToOneRelation
       },
       company: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: CompanyModel,
         join: {
           from: 'companyAddresses.companyId',
           to: 'companies.id'
-        }
+        },
+        modelClass: CompanyModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceRole: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceRoleModel,
         join: {
           from: 'companyAddresses.licenceRoleId',
           to: 'licenceRoles.id'
-        }
+        },
+        modelClass: LicenceRoleModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

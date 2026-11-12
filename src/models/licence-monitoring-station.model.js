@@ -20,44 +20,44 @@ export default class LicenceMonitoringStationModel extends BaseModel {
   static get relationMappings() {
     return {
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'licenceMonitoringStations.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceVersionPurposeCondition: {
-        relation: Model.HasOneRelation,
-        modelClass: LicenceVersionPurposeConditionModel,
         join: {
           from: 'licenceMonitoringStations.licenceVersionPurposeConditionId',
           to: 'licenceVersionPurposeConditions.id'
-        }
+        },
+        modelClass: LicenceVersionPurposeConditionModel,
+        relation: Model.HasOneRelation
       },
       monitoringStation: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: MonitoringStationModel,
         join: {
           from: 'licenceMonitoringStations.monitoringStationId',
           to: 'monitoringStations.id'
-        }
+        },
+        modelClass: MonitoringStationModel,
+        relation: Model.BelongsToOneRelation
       },
       notifications: {
-        relation: Model.HasManyRelation,
-        modelClass: NotificationModel,
         join: {
           from: 'licenceMonitoringStations.id',
           to: 'notifications.licenceMonitoringStationId'
-        }
+        },
+        modelClass: NotificationModel,
+        relation: Model.HasManyRelation
       },
       user: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: UserModel,
         join: {
           from: 'licenceMonitoringStations.createdBy',
           to: 'users.userId'
-        }
+        },
+        modelClass: UserModel,
+        relation: Model.BelongsToOneRelation
       }
     }
   }

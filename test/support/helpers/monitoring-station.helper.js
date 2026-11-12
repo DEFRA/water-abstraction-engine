@@ -3,9 +3,9 @@
  */
 
 import MonitoringStationModel from '../../../src/models/monitoring-station.model.js'
-import { data as monitoringStations } from '../../../db/seeds/data/monitoring-stations.js'
 import { timestampForPostgres } from '../../../src/lib/general.lib.js'
 import { generateRandomInteger, generateUUID } from '../generators.js'
+import { data as monitoringStations } from '../../../db/seeds/data/monitoring-stations.js'
 
 /**
  * Add a new monitoring station
@@ -43,10 +43,10 @@ function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
-    hydrologyStationId: generateUUID(),
-    label: 'MONITOR PLACE',
     // INFO: The table does not have a default for the date columns
     createdAt: timestamp,
+    hydrologyStationId: generateUUID(),
+    label: 'MONITOR PLACE',
     updatedAt: timestamp
   }
 

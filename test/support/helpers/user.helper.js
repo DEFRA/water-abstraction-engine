@@ -3,8 +3,8 @@
  */
 
 import UserModel from '../../../src/models/user.model.js'
-import { generateUserName } from '../generators.js'
 import { selectRandomEntry } from '../general.js'
+import { generateUserName } from '../generators.js'
 import { data as users } from '../../../db/seeds/data/users.js'
 
 const data = users
@@ -57,11 +57,11 @@ function add(data = {}) {
  */
 function defaults(data = {}) {
   const defaults = {
-    username: generateUserName(),
+    application: 'water_admin',
+    badLogins: 0,
     password: 'P@55word',
     resetRequired: 0,
-    badLogins: 0,
-    application: 'water_admin'
+    username: generateUserName()
   }
 
   return {
@@ -93,10 +93,10 @@ function select(index = -1) {
 }
 
 export default {
-  data,
-  SKIP_COMPARE_LIST,
-  DEFAULT_INDEX,
   add,
+  data,
+  DEFAULT_INDEX,
   defaults,
-  select
+  select,
+  SKIP_COMPARE_LIST
 }

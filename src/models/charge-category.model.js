@@ -16,12 +16,12 @@ export default class ChargeCategoryModel extends BaseModel {
   static get relationMappings() {
     return {
       chargeReferences: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeReferenceModel,
         join: {
           from: 'chargeCategories.id',
           to: 'chargeReferences.chargeCategoryId'
-        }
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.HasManyRelation
       }
     }
   }

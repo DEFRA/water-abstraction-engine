@@ -12,8 +12,8 @@ describe('Expanded Error', () => {
       additionalData = {
         billRunId: '37f2871b-e0a7-471f-902b-1e55b09d6d88',
         details: {
-          type: 'supplementary',
-          status: 'errored'
+          status: 'errored',
+          type: 'supplementary'
         }
       }
     })

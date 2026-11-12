@@ -1,5 +1,3 @@
-import { legacyDbSnakeCaseMappers } from './src/lib/legacy-db-snake-case-mappers.lib.js'
-
 /**
  * Passing in our variant of `knexSnakeCaseMappers` allows us to use camelCase everywhere and knex will convert it to
  * snake_case on the fly. (see `src/lib/legacy-db-snake-case-mappers.lib.js` for details on why we have our own
@@ -17,9 +15,12 @@ import { legacyDbSnakeCaseMappers } from './src/lib/legacy-db-snake-case-mappers
  * even if the rest of the name is snake case. For example, a migration to create `line_attr_1` will actually create
  * `line_attr__1`. So, we only add `knexSnakeCaseMappers` when running the application to ensure that it isn't applied
  * to migrations.
+ *
+ * @module KnexfileApplication
  */
 
 import knexfile from './knexfile.js'
+import { legacyDbSnakeCaseMappers } from './src/lib/legacy-db-snake-case-mappers.lib.js'
 
 for (const environment in knexfile) {
   Object.assign(knexfile[environment], legacyDbSnakeCaseMappers({ underscoreBeforeDigits: true }))

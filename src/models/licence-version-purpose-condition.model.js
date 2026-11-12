@@ -18,28 +18,28 @@ export default class LicenceVersionPurposeConditionModel extends BaseModel {
   static get relationMappings() {
     return {
       licenceMonitoringStations: {
-        relation: Model.HasManyRelation,
-        modelClass: LicenceMonitoringStationModel,
         join: {
           from: 'licenceVersionPurposeConditions.id',
           to: 'licenceMonitoringStations.licenceVersionPurposeConditionId'
-        }
+        },
+        modelClass: LicenceMonitoringStationModel,
+        relation: Model.HasManyRelation
       },
       licenceVersionPurpose: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceVersionPurposeModel,
         join: {
           from: 'licenceVersionPurposeConditions.licenceVersionPurposeId',
           to: 'licenceVersionPurposes.id'
-        }
+        },
+        modelClass: LicenceVersionPurposeModel,
+        relation: Model.BelongsToOneRelation
       },
       licenceVersionPurposeConditionType: {
-        relation: Model.HasOneRelation,
-        modelClass: LicenceVersionPurposeConditionTypeModel,
         join: {
           from: 'licenceVersionPurposeConditions.licenceVersionPurposeConditionTypeId',
           to: 'licenceVersionPurposeConditionTypes.id'
-        }
+        },
+        modelClass: LicenceVersionPurposeConditionTypeModel,
+        relation: Model.HasOneRelation
       }
     }
   }

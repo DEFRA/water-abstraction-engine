@@ -1,5 +1,11 @@
-import { fileURLToPath } from 'node:url'
+/**
+ * Knex config for each environment, used to run migrations and seeds from the engine and the apps
+ *
+ * @module Knexfile
+ */
+
 import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import DatabaseConfig from './src/config/database.config.js'
 
@@ -11,42 +17,44 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const defaultConfig = {
   client: 'postgres',
-  useNullAsDefault: true,
   seeds: {
     directory: join(__dirname, 'db/seeds')
-  }
+  },
+  useNullAsDefault: true
 }
 
 const defaultConnection = {
-  host: DatabaseConfig.host,
-  user: DatabaseConfig.user,
-  password: DatabaseConfig.password,
+  charset: 'utf8',
   database: DatabaseConfig.database,
+  host: DatabaseConfig.host,
+  password: DatabaseConfig.password,
   port: DatabaseConfig.port,
-  charset: 'utf8'
+  user: DatabaseConfig.user
 }
 
 const development = {
   ...defaultConfig,
+  connection: defaultConnection,
   migrations: {
-    tableName: 'knex_migrations',
-    directory: join(__dirname, 'db/migrations/public')
-  },
-  connection: defaultConnection
+    directory: join(__dirname, 'db/migrations/public'),
+    tableName: 'knex_migrations'
+  }
 }
 
 const test = {
   ...defaultConfig,
-  migrations: {
-    sortDirsSeparately: true,
-    tableName: 'knex_migrations',
-    directory: [join(__dirname, 'db/migrations/legacy'), join(__dirname, 'db/migrations/public')]
-  },
   connection: {
     ...defaultConnection,
     database: DatabaseConfig.testDatabase
   },
+  migrations: {
+    directory: [join(__dirname, 'db/migrations/legacy'), join(__dirname, 'db/migrations/public')],
+    sortDirsSeparately: true,
+    tableName: 'knex_migrations'
+  },
   pool: {
+    // Aggressively tear down idle connections quickly. The default is 30 seconds
+    idleTimeoutMillis: 500,
     // Knex/Tarn's default pool keeps a minimum of 2 connections open at all times, and those minimum connections are
     // exempt from idle-timeout eviction - they only close when something explicitly destroys the pool. Nothing in our
     // test suite does that (each Vitest worker creates its own pool via db/db.js and never tears it down), so those
@@ -54,8 +62,6 @@ const test = {
     // tests finish. Setting `min: 0` here means idle connections are free to close themselves after Tarn's default
     // idle timeout instead
     min: 0,
-    // Aggressively tear down idle connections quickly. The default is 30 seconds
-    idleTimeoutMillis: 500,
     // Frequently scan and clear out those idle connections. The default is 1 second
     reapIntervalMillis: 250
   }
@@ -63,11 +69,11 @@ const test = {
 
 const production = {
   ...defaultConfig,
+  connection: defaultConnection,
   migrations: {
-    tableName: 'knex_migrations',
-    directory: join(__dirname, 'db/migrations/public')
-  },
-  connection: defaultConnection
+    directory: join(__dirname, 'db/migrations/public'),
+    tableName: 'knex_migrations'
+  }
 }
 
-export default { development, test, production }
+export default { development, production, test }

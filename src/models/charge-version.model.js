@@ -6,8 +6,8 @@
 import { Model } from 'objection'
 
 import BaseModel from './base.model.js'
-import BillRunChargeVersionYearModel from './bill-run-charge-version-year.model.js'
 import BillingAccountModel from './billing-account.model.js'
+import BillRunChargeVersionYearModel from './bill-run-charge-version-year.model.js'
 import ChangeReasonModel from './change-reason.model.js'
 import ChargeReferenceModel from './charge-reference.model.js'
 import ChargeVersionNoteModel from './charge-version-note.model.js'
@@ -28,68 +28,68 @@ export default class ChargeVersionModel extends BaseModel {
   static get relationMappings() {
     return {
       billingAccount: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: BillingAccountModel,
         join: {
           from: 'chargeVersions.billingAccountId',
           to: 'billingAccounts.id'
-        }
+        },
+        modelClass: BillingAccountModel,
+        relation: Model.BelongsToOneRelation
       },
       billRunChargeVersionYears: {
-        relation: Model.HasManyRelation,
-        modelClass: BillRunChargeVersionYearModel,
         join: {
           from: 'chargeVersions.id',
           to: 'billRunChargeVersionYears.chargeVersionId'
-        }
+        },
+        modelClass: BillRunChargeVersionYearModel,
+        relation: Model.HasManyRelation
       },
       changeReason: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: ChangeReasonModel,
         join: {
           from: 'chargeVersions.changeReasonId',
           to: 'changeReasons.id'
-        }
+        },
+        modelClass: ChangeReasonModel,
+        relation: Model.BelongsToOneRelation
       },
       chargeReferences: {
-        relation: Model.HasManyRelation,
-        modelClass: ChargeReferenceModel,
         join: {
           from: 'chargeVersions.id',
           to: 'chargeReferences.chargeVersionId'
-        }
+        },
+        modelClass: ChargeReferenceModel,
+        relation: Model.HasManyRelation
       },
       chargeVersionNote: {
-        relation: Model.HasOneRelation,
-        modelClass: ChargeVersionNoteModel,
         join: {
           from: 'chargeVersions.noteId',
           to: 'chargeVersionNotes.id'
-        }
+        },
+        modelClass: ChargeVersionNoteModel,
+        relation: Model.HasOneRelation
       },
       licence: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'chargeVersions.licenceId',
           to: 'licences.id'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.BelongsToOneRelation
       },
       modLogs: {
-        relation: Model.HasManyRelation,
-        modelClass: ModLogModel,
         join: {
           from: 'chargeVersions.id',
           to: 'modLogs.chargeVersionId'
-        }
+        },
+        modelClass: ModLogModel,
+        relation: Model.HasManyRelation
       },
       reviewChargeVersions: {
-        relation: Model.HasManyRelation,
-        modelClass: ReviewChargeVersionModel,
         join: {
           from: 'chargeVersions.id',
           to: 'reviewChargeVersions.chargeVersionId'
-        }
+        },
+        modelClass: ReviewChargeVersionModel,
+        relation: Model.HasManyRelation
       }
     }
   }

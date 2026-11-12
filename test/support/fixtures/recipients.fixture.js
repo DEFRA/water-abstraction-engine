@@ -202,8 +202,8 @@ function returnsNoticeLicenceHolder(download = false) {
     contact_type: 'licence holder',
     due_date: new Date('2025-04-28'),
     due_date_status: 'all nulls',
-    end_date: new Date('2025-03-31'),
     email: null,
+    end_date: new Date('2025-03-31'),
     latest_due_date: null,
     licence_ref: generateLicenceRef(),
     message_type: 'Letter',
@@ -238,8 +238,8 @@ function returnsNoticePrimaryUser(download = false) {
     contact_type: 'primary user',
     due_date: new Date('2025-04-28'),
     due_date_status: 'all nulls',
-    end_date: new Date('2025-03-31'),
     email,
+    end_date: new Date('2025-03-31'),
     latest_due_date: null,
     licence_ref: generateLicenceRef(),
     message_type: 'Email',
@@ -274,8 +274,8 @@ function returnsNoticeReturnsAgent(download = false) {
     contact_type: 'returns user',
     due_date: new Date('2025-04-28'),
     due_date_status: 'all nulls',
-    end_date: new Date('2025-03-31'),
     email,
+    end_date: new Date('2025-03-31'),
     latest_due_date: null,
     licence_ref: generateLicenceRef(),
     message_type: 'Email',
@@ -310,8 +310,8 @@ function returnsNoticeReturnsTo(download = false) {
     contact_type: 'returns to',
     due_date: new Date('2025-04-28'),
     due_date_status: 'all nulls',
-    end_date: new Date('2025-03-31'),
     email: null,
+    end_date: new Date('2025-03-31'),
     latest_due_date: null,
     licence_ref: generateLicenceRef(),
     message_type: 'Letter',
@@ -350,6 +350,10 @@ function alertsRecipients() {
  * licenceHolderWithMultipleLicences
  */
 function recipients() {
+  /*
+   * NOTE: Not in alphabetical order. Tests turn this into a list with Object.values() and depend on the key order
+   */
+  /* eslint-disable local/alanisms */
   return {
     primaryUser: _addPrimaryUser(),
     returnsUser: _addReturnsAgent(),
@@ -357,16 +361,17 @@ function recipients() {
     returnsTo: _addReturnTo(),
     licenceHolderWithMultipleLicences: _addLicenceHolderWithMultipleLicences()
   }
+  /* eslint-enable local/alanisms */
 }
 
 // an additional contact will always be associated with a primary user or licence holder by the licence ref
 function _addAdditionalContact() {
   return {
-    licence_refs: [generateLicenceRef()],
     contact: null,
     contact_hash_id: '90129f6aa5b98734aa3fefd3f8cf86a',
     contact_type: 'additional contact',
     email: 'additional.contact@important.com',
+    licence_refs: [generateLicenceRef()],
     message_type: 'Email'
   }
 }
@@ -385,25 +390,25 @@ function _addLicenceHolder() {
 
 function _addPrimaryUser() {
   return {
-    licence_refs: [generateLicenceRef()],
     contact: null,
     contact_hash_id: '90129f6aa5bf2ad50aa3fefd3f8cf86a',
     contact_type: 'primary user',
     email: 'primary.user@important.com',
-    return_log_ids: [generateUUID()],
-    message_type: 'Email'
+    licence_refs: [generateLicenceRef()],
+    message_type: 'Email',
+    return_log_ids: [generateUUID()]
   }
 }
 
 function _addReturnsAgent() {
   return {
-    licence_refs: [generateLicenceRef()],
     contact: null,
     contact_hash_id: '2e6918568dfbc1d78e2fbe279aaee990',
     contact_type: 'returns user',
     email: 'returns.agent@important.com',
-    return_log_ids: [generateUUID()],
-    message_type: 'Email'
+    licence_refs: [generateLicenceRef()],
+    message_type: 'Email',
+    return_log_ids: [generateUUID()]
   }
 }
 
@@ -501,12 +506,12 @@ export default {
   alertNoticeAdditionalContact,
   alertNoticeLicenceHolder,
   alertNoticePrimaryUser,
+  alertsRecipients,
+  recipients,
   renewalNoticeLicenceHolder,
   renewalNoticePrimaryUser,
   returnsNoticeLicenceHolder,
   returnsNoticePrimaryUser,
   returnsNoticeReturnsAgent,
-  returnsNoticeReturnsTo,
-  alertsRecipients,
-  recipients
+  returnsNoticeReturnsTo
 }

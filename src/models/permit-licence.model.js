@@ -21,12 +21,12 @@ export default class PermitLicenceModel extends BaseModel {
   static get relationMappings() {
     return {
       permitLicence: {
-        relation: Model.HasOneRelation,
-        modelClass: LicenceModel,
         join: {
           from: 'permitLicences.licenceRef',
           to: 'licences.licenceRef'
-        }
+        },
+        modelClass: LicenceModel,
+        relation: Model.HasOneRelation
       }
     }
   }
