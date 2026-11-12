@@ -4,22 +4,32 @@
  * @module StaticLookupsLib
  */
 
+/*
+ * NOTE: Not in alphabetical order. The key order is the order the statuses are displayed in when they are listed
+ */
+/* eslint-disable local/alanisms */
 export const billRunStatuses = Object.freeze({
+  processing: 'Building',
   cancel: 'Cancelling',
   empty: 'Empty',
   error: 'Error',
-  processing: 'Building',
   ready: 'Ready',
   review: 'Review',
   sent: 'Sent'
 })
+/* eslint-enable local/alanisms */
 
+/*
+ * NOTE: Not in alphabetical order. The key order is the order the types are displayed in when they are listed
+ */
+/* eslint-disable local/alanisms */
 export const billRunTypes = Object.freeze({
   annual: 'Annual',
   supplementary: 'Supplementary',
-  two_part_supplementary: 'Two-part tariff supplementary',
-  two_part_tariff: 'Two-part tariff'
+  two_part_tariff: 'Two-part tariff',
+  two_part_supplementary: 'Two-part tariff supplementary'
 })
+/* eslint-enable local/alanisms */
 
 export const companyTypes = ['person', 'organisation']
 
@@ -566,20 +576,25 @@ export const returnUnits = {
 
 export const sources = ['nald', 'wrls']
 
+/*
+ * NOTE: Not in alphabetical order. The key order is the order the units are displayed in when they are listed
+ */
+/* eslint-disable local/alanisms */
 export const thresholdUnits = {
-  CUBIC_FOOT_PER_SECOND: { label: 'cubic foot per second', value: 'ft3/s' },
-  CUBIC_METRES_PER_DAY: { label: 'cubic metres per day', value: 'm3/d' },
-  CUBIC_METRES_PER_SECOND: { label: 'cubic metres per second', value: 'm3/s' },
-  GALLONS_PER_DAY: { label: 'gallons per day', value: 'gpd' },
-  LITRES_PER_SECOND: { label: 'litres per second', value: 'l/s' },
   MEGALITRES_PER_DAY: { label: 'megalitres per day', value: 'Ml/d' },
-  METRES: { label: 'metres', value: 'm' },
+  CUBIC_METRES_PER_SECOND: { label: 'cubic metres per second', value: 'm3/s' },
+  CUBIC_METRES_PER_DAY: { label: 'cubic metres per day', value: 'm3/d' },
+  LITRES_PER_SECOND: { label: 'litres per second', value: 'l/s' },
   METRES_ABOVE_ORDNANCE_DATUM: { label: 'metres above ordnance datum', value: 'mAOD' },
-  METRES_ABOVE_SEA_DATUM: { label: 'metres above sea datum', value: 'mASD' },
   METRES_BELOW_ORDNANCE_DATUM: { label: 'metres below ordnance datum', value: 'mBOD' },
-  MILLION_GALLONS_PER_DAY: { label: 'million gallons per day', value: 'Mgpd' },
-  SOUTH_LEVEL_DATUM: { label: 'south level datum', value: 'SLD' }
+  METRES_ABOVE_SEA_DATUM: { label: 'metres above sea datum', value: 'mASD' },
+  METRES: { label: 'metres', value: 'm' },
+  SOUTH_LEVEL_DATUM: { label: 'south level datum', value: 'SLD' },
+  CUBIC_FOOT_PER_SECOND: { label: 'cubic foot per second', value: 'ft3/s' },
+  GALLONS_PER_DAY: { label: 'gallons per day', value: 'gpd' },
+  MILLION_GALLONS_PER_DAY: { label: 'million gallons per day', value: 'Mgpd' }
 }
+/* eslint-enable local/alanisms */
 
 /*
  * NOTE: Though not in alphabetical order, flowUnits has to be declared here because it depends on thresholdUnits

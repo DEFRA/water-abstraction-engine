@@ -350,13 +350,18 @@ function alertsRecipients() {
  * licenceHolderWithMultipleLicences
  */
 function recipients() {
+  /*
+   * NOTE: Not in alphabetical order. Tests turn this into a list with Object.values() and depend on the key order
+   */
+  /* eslint-disable local/alanisms */
   return {
-    licenceHolder: _addLicenceHolder(),
-    licenceHolderWithMultipleLicences: _addLicenceHolderWithMultipleLicences(),
     primaryUser: _addPrimaryUser(),
+    returnsUser: _addReturnsAgent(),
+    licenceHolder: _addLicenceHolder(),
     returnsTo: _addReturnTo(),
-    returnsUser: _addReturnsAgent()
+    licenceHolderWithMultipleLicences: _addLicenceHolderWithMultipleLicences()
   }
+  /* eslint-enable local/alanisms */
 }
 
 // an additional contact will always be associated with a primary user or licence holder by the licence ref
