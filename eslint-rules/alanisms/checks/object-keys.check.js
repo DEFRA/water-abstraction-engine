@@ -12,6 +12,11 @@ import { compareNames } from '../helpers.js'
  * Spread elements and computed keys that are not plain values split an object into separate runs, because moving keys
  * across them could change the result. Each run is checked on its own.
  *
+ * Objects passed to `Joi.object()`, or to `keys()` or `append()` on a Joi schema, are skipped. Joi reports errors in
+ * the order the keys are declared, so sorting them would change which error a validator returns. Objects passed to
+ * `when()` or `conditional()` on a Joi schema are also skipped, so `is`, `then` and `otherwise` keep reading in order.
+ * Objects nested inside them, such as `messages()`, are still checked.
+ *
  * The fix moves each key together with any comment lines directly above it. If a comment sits at the end of a key's
  * line, or after the last key, it is unclear which key it belongs to, so the object is reported but not fixed.
  *
@@ -24,6 +29,10 @@ export default function objectKeysCheck(context) {
 
   return {
     ObjectExpression(node) {
+      if (_joiSchemaKeys(node)) {
+        return
+      }
+
       for (const run of _runs(node.properties)) {
         _checkRun(context, sourceCode, run)
       }
@@ -99,6 +108,32 @@ function _chunks(sourceCode, run) {
   return chunks
 }
 
+function _joiSchemaKeys(node) {
+  const { parent } = node
+
+  if (parent.type !== 'CallExpression' || !parent.arguments.includes(node)) {
+    return false
+  }
+
+  const { callee } = parent
+
+  if (callee.type !== 'MemberExpression' || callee.computed) {
+    return false
+  }
+
+  const methodName = callee.property.name
+
+  if (methodName === 'object') {
+    return callee.object.type === 'Identifier' && callee.object.name === 'Joi'
+  }
+
+  if (['append', 'conditional', 'keys', 'when'].includes(methodName)) {
+    return _rootName(callee.object) === 'Joi'
+  }
+
+  return false
+}
+
 function _keyName(property) {
   if (property.type !== 'Property') {
     return null
@@ -115,6 +150,16 @@ function _keyName(property) {
   }
 
   return null
+}
+
+function _rootName(node) {
+  let current = node
+
+  while (current.type === 'CallExpression' || current.type === 'MemberExpression') {
+    current = current.type === 'CallExpression' ? current.callee : current.object
+  }
+
+  return current.type === 'Identifier' ? current.name : null
 }
 
 function _runs(properties) {

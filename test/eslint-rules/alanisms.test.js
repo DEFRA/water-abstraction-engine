@@ -66,9 +66,42 @@ describe('ESLint Rules - Alanisms rule', () => {
           errors: [{ messageId: 'objectKeys' }],
           options: _only('objectKeys'),
           output: null
+        },
+        {
+          code: _code(
+            'const schema = Joi.object({',
+            "  start: Joi.date().messages({ 'date.format': 'Enter a real date', 'any.required': 'Enter a date' }),",
+            '  end: Joi.date()',
+            '})'
+          ),
+          errors: [{ messageId: 'objectKeys' }],
+          options: _only('objectKeys'),
+          output: _code(
+            'const schema = Joi.object({',
+            "  start: Joi.date().messages({ 'any.required': 'Enter a date', 'date.format': 'Enter a real date' }),",
+            '  end: Joi.date()',
+            '})'
+          )
         }
       ],
       valid: [
+        { code: 'const schema = Joi.object({ start: Joi.date(), end: Joi.date() })', options: _only('objectKeys') },
+        {
+          code: 'const schema = Joi.object().keys({ start: Joi.date(), end: Joi.date() })',
+          options: _only('objectKeys')
+        },
+        {
+          code: 'const schema = Joi.object({ b: Joi.string() }).append({ start: Joi.date(), end: Joi.date() })',
+          options: _only('objectKeys')
+        },
+        {
+          code: "const schema = Joi.string().when('type', { is: 'a', then: Joi.required(), otherwise: Joi.optional() })",
+          options: _only('objectKeys')
+        },
+        {
+          code: "const schema = Joi.alternatives().conditional('type', { is: 'a', then: Joi.string(), otherwise: Joi.any() })",
+          options: _only('objectKeys')
+        },
         {
           code: "const page = { backLink: { href: '/', text: 'Back' }, joke: data.joke, pageTitle: 'Jokes' }",
           options: _only('objectKeys')
