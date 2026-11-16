@@ -31,7 +31,6 @@
     "./wrappers/*": "./src/wrappers/*"
   },
   "bin": {
-    "scaffold": "./bin/scaffold.sh",
     "water-knex": "./bin/water-knex.js"
   },
   "scripts": {
@@ -44,6 +43,7 @@
     "migrate:wipe": "NODE_ENV=test node db/wipe.database.js",
     "rollback:test": "NODE_ENV=test knex migrate:rollback",
     "rollback:all:test": "NODE_ENV=test knex migrate:rollback --all",
+    "scaffold": "node cli/scaffold.cli.js",
     "seed": "knex seed:run --knexfile knexfile.application.js",
     "test": "NODE_ENV=test TZ=UTC vitest run",
     "test:coverage": "NODE_ENV=test TZ=UTC vitest run --coverage"

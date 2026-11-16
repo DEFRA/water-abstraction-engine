@@ -103,16 +103,15 @@ export default [
   // Test files split their imports into commented "Test helpers" / "Things we need to stub" / "Thing under test"
   // sections, so the alanisms import order is applied within each section. Test files also have no @module block
   {
-    files: ['bin/templates/*.test.js', 'test/**/*'],
+    files: ['test/**/*'],
     rules: {
       'local/alanisms': ['error', { imports: 'sections', moduleJsdoc: false }]
     }
   },
   // Migrations and seeds are exempt from the @module check, for the same reason they are exempt from jsdoc/require-jsdoc
-  // above: their purpose is obvious from the file name. bin/templates/helper.js is a snippet that bin/scaffold.sh pastes
-  // into existing files, so it must not have a @module block of its own
+  // above: their purpose is obvious from the file name
   {
-    files: ['bin/templates/helper.js', 'db/migrations/**/*', 'db/seeds/**/*'],
+    files: ['db/migrations/**/*', 'db/seeds/**/*'],
     rules: {
       'local/alanisms': ['error', { moduleJsdoc: false }]
     }
