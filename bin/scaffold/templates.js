@@ -1,7 +1,7 @@
 /**
  * The templates for each file the scaffold CLI generates, and the controller and route snippet it prints
  *
- * Each template is a plain function that takes the module descriptors built in scaffold.cli.js and returns the content.
+ * Each template is a plain function that takes the module descriptors built in scaffold.js and returns the content.
  *
  * @module TemplatesLib
  */
@@ -11,7 +11,7 @@ import { posix } from 'node:path'
 /**
  * Generate the source of the presenter for a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the presenter
  */
@@ -45,7 +45,7 @@ export default function ${presenter.functionName}(session) {
 /**
  * Generate the test file for the presenter for a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the test file
  */
@@ -85,7 +85,7 @@ describe('${presenter.describeLabel}', () => {
 /**
  * Generate the source of the service that fetches and presents the data for a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the view service
  */
@@ -124,7 +124,7 @@ export default async function ${viewService.functionName}(sessionId) {
 /**
  * Generate the test file for the service that fetches and presents the data for a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the test file
  */
@@ -179,7 +179,7 @@ describe('${viewService.describeLabel}', () => {
 /**
  * Generate the source of the service that validates and saves the data submitted from a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the submit service
  */
@@ -240,7 +240,7 @@ function _validate(payload) {
 /**
  * Generate the test file for the service that validates and saves the data submitted from a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the test file
  */
@@ -326,7 +326,7 @@ describe('${submitService.describeLabel}', () => {
 /**
  * Generate the source of the validator for the data submitted from a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the validator
  */
@@ -362,7 +362,7 @@ export default function ${validator.functionName}(payload) {
 /**
  * Generate the test file for the validator for the data submitted from a page
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  *
  * @returns {string} the source of the test file
  */
@@ -434,7 +434,7 @@ export function viewTemplate() {
  * Only the handlers and routes for the services in the journey are included. The snippet is printed for the user to
  * paste into the right controller and routes files, rather than written to disk.
  *
- * @param {object} modules - the module descriptors built in scaffold.cli.js
+ * @param {object} modules - the module descriptors built in scaffold.js
  * @param {string[]} keys - the modules in the journey, for example `['submitService', 'validator']`
  *
  * @returns {string} the controller and route code

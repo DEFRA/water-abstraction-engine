@@ -28,7 +28,6 @@ The project is a shared Node.js package. Consuming applications build on top of 
 ├── workflows         # GitHub workflows
 .vscode/              # VSCode settings and tasks. Ignored by git
 bin/                  # Bash scripts including our build script
-cli/                  # Developer CLIs run from the engine, e.g. `npm run scaffold` (see cli/README.md)
 client/               # Our SASS files for custom styling
 db/                   # All things related to working with the database
 ├── migrations
@@ -97,10 +96,10 @@ docker compose exec dev /bin/bash
 
 ## Scaffolding a journey
 
-To start a new journey page in water-abstraction-system or water-abstraction-external, run the scaffold CLI from the engine (see `cli/README.md`):
+To start a new journey page, run the scaffold from the root of water-abstraction-system or water-abstraction-external (see `bin/scaffold/README.md`):
 
 ```bash
-docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine && npm run scaffold -- <path/name> <system|external> <complete|view|submit>'
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run scaffold -- <path/name> <complete|view|submit>'
 ```
 
 Then add the printed controller and route code to the app's controller and routes files.

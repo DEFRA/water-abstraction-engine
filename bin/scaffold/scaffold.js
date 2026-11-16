@@ -1,14 +1,15 @@
+#!/usr/bin/env node
+
 /**
- * Scaffolds a new journey in water-abstraction-system or water-abstraction-external. See cli/README.md
+ * Scaffolds a new journey in the app it is run from, for example water-abstraction-system. See bin/scaffold/README.md
  *
- * Usage: npm run scaffold -- <path/name> <system|external> <complete|view|submit>
+ * Usage, from the root of the app: npm run scaffold -- <path/name> <complete|view|submit>
  *
  * @module ScaffoldCli
  */
 
 import { existsSync } from 'node:fs'
 import { dirname, join, posix } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { mkdir, writeFile } from 'node:fs/promises'
 
 import {
@@ -22,7 +23,7 @@ import {
   viewServiceTemplate,
   viewServiceTestTemplate,
   viewTemplate
-} from './templates.lib.js'
+} from './templates.js'
 
 const JOURNEYS = {
   complete: ['presenter', 'view', 'viewService', 'submitService', 'validator'],
@@ -38,15 +39,15 @@ const TEMPLATES = {
   viewService: [viewServiceTemplate, viewServiceTestTemplate]
 }
 
-const [inputPath, target, journey] = process.argv.slice(2)
+const [inputPath, journey] = process.argv.slice(2)
 
-if (!inputPath || !target || !JOURNEYS[journey]) {
-  console.log('Usage: npm run scaffold -- <path/name> <system|external> <complete|view|submit>')
+if (!inputPath || !JOURNEYS[journey]) {
+  console.log('Usage: npm run scaffold -- <path/name> <complete|view|submit>')
   process.exit(1)
 }
 
-// The apps are checked out next to the engine, e.g. /home/repos/water-abstraction-system
-const targetRoot = join(fileURLToPath(new URL('../../', import.meta.url)), `water-abstraction-${target}`)
+// Files are written relative to the app it is run from
+const targetRoot = process.cwd()
 
 const segments = inputPath.split('/')
 const name = segments.pop()
