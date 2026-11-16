@@ -84,9 +84,9 @@ export default [
   },
   // This section works as an override to the configuration object above. It tells the jsdoc plugin to ignore any files
   // in the `src/controllers` and `db/seeds` directories. The controllers purposefully do very little and the purpose of
-  // the seed files is obvious
+  // the seed files is obvious. The scaffold helper templates are controller code, so are treated the same
   {
-    files: ['src/controllers/**/*', 'db/seeds/**/*', 'db/migrations/**/*'],
+    files: ['bin/scaffold/templates/*helper.js', 'src/controllers/**/*', 'db/seeds/**/*', 'db/migrations/**/*'],
     rules: {
       'jsdoc/require-jsdoc': 'off'
     }
@@ -103,15 +103,25 @@ export default [
   // Test files split their imports into commented "Test helpers" / "Things we need to stub" / "Thing under test"
   // sections, so the alanisms import order is applied within each section. Test files also have no @module block
   {
-    files: ['test/**/*'],
+    files: ['bin/scaffold/templates/*.test.js', 'test/**/*'],
     rules: {
       'local/alanisms': ['error', { imports: 'sections', moduleJsdoc: false }]
     }
   },
-  // Migrations and seeds are exempt from the @module check, for the same reason they are exempt from jsdoc/require-jsdoc
-  // above: their purpose is obvious from the file name
+  // The scaffold templates import the app's own modules through placeholder paths, such as '__PRESENTER_PATH__'. The
+  // import check can't tell these are relative imports, so it is turned off for them. The generated files are linted
+  // in the apps
   {
-    files: ['db/migrations/**/*', 'db/seeds/**/*'],
+    files: ['bin/scaffold/templates/*.service.js'],
+    rules: {
+      'local/alanisms': ['error', { imports: false }]
+    }
+  },
+  // Migrations and seeds are exempt from the @module check, for the same reason they are exempt from jsdoc/require-jsdoc
+  // above: their purpose is obvious from the file name. The scaffold helper templates are snippets pasted into existing
+  // files, so they must not have a @module block of their own
+  {
+    files: ['bin/scaffold/templates/*helper.js', 'db/migrations/**/*', 'db/seeds/**/*'],
     rules: {
       'local/alanisms': ['error', { moduleJsdoc: false }]
     }

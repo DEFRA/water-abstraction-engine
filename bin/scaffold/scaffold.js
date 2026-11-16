@@ -3,46 +3,48 @@
 /**
  * Scaffolds a new journey in the app it is run from, for example water-abstraction-system. See bin/scaffold/README.md
  *
- * Usage, from the root of the app: npm run scaffold -- <path/name> <complete|view|submit>
+ * Usage, from the root of the app: npm run scaffold -- <path/name> <check|complete|view|submit>
  *
  * @module ScaffoldCli
  */
 
 import { existsSync } from 'node:fs'
 import { dirname, join, posix } from 'node:path'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 
-import {
-  presenterTemplate,
-  presenterTestTemplate,
-  snippetTemplate,
-  submitServiceTemplate,
-  submitServiceTestTemplate,
-  validatorTemplate,
-  validatorTestTemplate,
-  viewServiceTemplate,
-  viewServiceTestTemplate,
-  viewTemplate
-} from './templates.js'
+const TEMPLATES_DIR = fileURLToPath(new URL('./templates/', import.meta.url))
 
+// Each entry is the template to use and the module it creates
 const JOURNEYS = {
-  complete: ['presenter', 'view', 'viewService', 'submitService', 'validator'],
-  submit: ['submitService', 'validator'],
-  view: ['presenter', 'view', 'viewService']
-}
-
-const TEMPLATES = {
-  presenter: [presenterTemplate, presenterTestTemplate],
-  submitService: [submitServiceTemplate, submitServiceTestTemplate],
-  validator: [validatorTemplate, validatorTestTemplate],
-  view: [viewTemplate],
-  viewService: [viewServiceTemplate, viewServiceTestTemplate]
+  check: [
+    ['check.presenter.js', 'presenter'],
+    ['view.njk', 'view'],
+    ['view-check.service.js', 'viewService'],
+    ['submit-check.service.js', 'submitService']
+  ],
+  complete: [
+    ['presenter.js', 'presenter'],
+    ['view.njk', 'view'],
+    ['view.service.js', 'viewService'],
+    ['submit.service.js', 'submitService'],
+    ['validator.js', 'validator']
+  ],
+  submit: [
+    ['submit.service.js', 'submitService'],
+    ['validator.js', 'validator']
+  ],
+  view: [
+    ['presenter.js', 'presenter'],
+    ['view.njk', 'view'],
+    ['view.service.js', 'viewService']
+  ]
 }
 
 const [inputPath, journey] = process.argv.slice(2)
 
 if (!inputPath || !JOURNEYS[journey]) {
-  console.log('Usage: npm run scaffold -- <path/name> <complete|view|submit>')
+  console.log('Usage: npm run scaffold -- <path/name> <check|complete|view|submit>')
   process.exit(1)
 }
 
@@ -53,29 +55,61 @@ const segments = inputPath.split('/')
 const name = segments.pop()
 const dir = segments.join('/')
 const depth = segments.length
-const names = { dir, name, pascalName: _pascalCase(name) }
 
 const modules = {
-  names,
   presenter: _module('presenters', `${name}.presenter.js`, 'presenter'),
   submitService: _module('services', `submit-${name}.service.js`, 'service'),
   validator: _module('validators', `${name}.validator.js`, 'validator'),
-  view: { sourcePath: posix.join('src', 'views', dir, `${name}.njk`), viewPath: posix.join(dir, `${name}.njk`) },
+  view: { sourcePath: posix.join('src', 'views', dir, `${name}.njk`) },
   viewService: _module('services', `view-${name}.service.js`, 'service')
 }
 
-for (const key of JOURNEYS[journey]) {
-  const [template, testTemplate] = TEMPLATES[key]
+// Placeholders that are the same in every template
+const placeholders = {
+  __PRESENTER_NAME__: modules.presenter.moduleName,
+  __PRESENTER_PATH__: modules.presenter.srcImportPath,
+  __ROUTE_BASE__: dir ? `/${dir}` : '',
+  __ROUTE_PATH__: `/${posix.join(dir, '{sessionId}', name)}`,
+  __SUBMIT_HANDLER_NAME__: `submit${_pascalCase(name)}`,
+  __SUBMIT_SERVICE_NAME__: modules.submitService.moduleName,
+  __SUBMIT_SERVICE_PATH__: modules.submitService.controllerImportPath,
+  __VALIDATOR_NAME__: modules.validator.moduleName,
+  __VALIDATOR_PATH__: modules.validator.srcImportPath,
+  __VIEW_HANDLER_NAME__: `view${_pascalCase(name)}`,
+  __VIEW_PATH__: posix.join(dir, `${name}.njk`),
+  __VIEW_SERVICE_NAME__: modules.viewService.moduleName,
+  __VIEW_SERVICE_PATH__: modules.viewService.controllerImportPath
+}
 
-  await _render(modules[key].sourcePath, template(modules))
+for (const [template, key] of JOURNEYS[journey]) {
+  const module = modules[key]
+  const testTemplate = template.replace(/\.js$/, '.test.js')
 
-  if (testTemplate) {
-    await _render(modules[key].testPath, testTemplate(modules))
+  await _render(template, module.sourcePath, module)
+
+  if (testTemplate !== template) {
+    await _render(testTemplate, module.testPath, module)
   }
 }
 
+const helper = journey === 'check' ? 'check.helper.js' : 'helper.js'
+
 console.log('\nHere is your ready-to-use controller + router snippet:\n')
-console.log(snippetTemplate(modules, JOURNEYS[journey]))
+console.log(_fill(await readFile(join(TEMPLATES_DIR, helper), 'utf8'), {}))
+
+function _fill(content, module) {
+  const values = {
+    ...placeholders,
+    __DESCRIBE_LABEL__: module.describeLabel,
+    __FUNCTION_NAME__: module.functionName,
+    __MODULE_NAME__: module.moduleName,
+    __REQUIRE_PATH__: module.testImportPath
+  }
+
+  return content.replace(/__[A-Z]+(?:_[A-Z]+)*__/g, (placeholder) => {
+    return values[placeholder] ?? placeholder
+  })
+}
 
 function _module(folder, fileName, type) {
   const stem = fileName.replace(/\.[a-z]+\.js$/, '')
@@ -94,7 +128,7 @@ function _module(folder, fileName, type) {
   }
 }
 
-async function _render(path, content) {
+async function _render(template, path, module) {
   const fullPath = join(targetRoot, path)
 
   if (existsSync(fullPath)) {
@@ -103,8 +137,10 @@ async function _render(path, content) {
     return
   }
 
+  const content = await readFile(join(TEMPLATES_DIR, template), 'utf8')
+
   await mkdir(dirname(fullPath), { recursive: true })
-  await writeFile(fullPath, content)
+  await writeFile(fullPath, _fill(content, module))
 
   console.log(`✅ Created ${path}`)
 }
