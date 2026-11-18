@@ -1,6 +1,9 @@
 // Test framework
 import { beforeEach, describe, expect, it } from 'vitest'
 
+// Test helpers
+import { generateUUID } from 'water-abstraction-engine/test/generators.js'
+
 // Thing under test
 import __MODULE_NAME__ from '__REQUIRE_PATH__'
 
@@ -8,7 +11,7 @@ describe('__DESCRIBE_LABEL__', () => {
   let session
 
   beforeEach(() => {
-    session = {}
+    session = { id: generateUUID() }
   })
 
   describe('when called', () => {
@@ -17,10 +20,10 @@ describe('__DESCRIBE_LABEL__', () => {
 
       expect(result).toEqual({
         backLink: {
-          href: '',
+          href: `__ROUTE_BASE__/${session.id}/previous-page`,
           text: 'Back'
         },
-        pageTitle: ''
+        pageTitle: 'Check the details'
       })
     })
   })

@@ -2,10 +2,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 // Test helpers
-import SessionModelStub from '__STUBS_SESSION_PATH__'
+import SessionModelStub from 'water-abstraction-engine/test/stubs/session.stub.js'
 
 // Things we need to stub
-import * as FetchSessionDal from '__FETCH_SESSION_DAL_TEST_PATH__'
+import * as FetchSessionDal from 'water-abstraction-engine/dal/fetch-session.dal.js'
 
 // Thing under test
 import __MODULE_NAME__ from '__REQUIRE_PATH__'
@@ -19,7 +19,7 @@ describe('__DESCRIBE_LABEL__', () => {
     payload = { placeholder: 'change me' }
     sessionData = {}
 
-    session = SessionModelStub.build(sessionData)
+    session = SessionModelStub(sessionData)
 
     vi.spyOn(FetchSessionDal, 'default').mockResolvedValue(session)
   })
@@ -32,14 +32,29 @@ describe('__DESCRIBE_LABEL__', () => {
     it('saves the submitted value', async () => {
       await __MODULE_NAME__(session.id, payload)
 
-      expect(session).toEqual(session)
-      expect(session.$update.called).toBe(true)
+      expect(session.$update).toHaveBeenCalled()
     })
 
     it('continues the journey', async () => {
       const result = await __MODULE_NAME__(session.id, payload)
 
-      expect(result).toEqual({})
+      expect(result).toEqual({ redirectUrl: `__ROUTE_BASE__/${session.id}/next-page` })
+    })
+  })
+
+  describe('when the check page has been visited', () => {
+    beforeEach(() => {
+      sessionData = { checkPageVisited: true }
+
+      session = SessionModelStub(sessionData)
+
+      vi.spyOn(FetchSessionDal, 'default').mockResolvedValue(session)
+    })
+
+    it('returns to the check page', async () => {
+      const result = await __MODULE_NAME__(session.id, payload)
+
+      expect(result).toEqual({ redirectUrl: `__ROUTE_BASE__/${session.id}/check` })
     })
   })
 
@@ -53,7 +68,7 @@ describe('__DESCRIBE_LABEL__', () => {
 
       expect(result).toEqual({
         backLink: {
-          href: '',
+          href: `__ROUTE_BASE__/${session.id}/previous-page`,
           text: 'Back'
         },
         error: {

@@ -4,10 +4,12 @@
  * @module __MODULE_NAME__
  */
 
+import FetchSessionDal from 'water-abstraction-engine/dal/fetch-session.dal.js'
+import { formatValidationResult } from 'water-abstraction-engine/presenters/base.presenter.js'
+import { checkUrl } from 'water-abstraction-engine/lib/check-page.lib.js'
+
 import __PRESENTER_NAME__ from '__PRESENTER_PATH__'
 import __VALIDATOR_NAME__ from '__VALIDATOR_PATH__'
-import FetchSessionDal from '__FETCH_SESSION_DAL_PATH__'
-import { formatValidationResult } from '__BASE_PRESENTER_PATH__'
 
 /**
  * Orchestrates validating the data for the '' page
@@ -15,7 +17,7 @@ import { formatValidationResult } from '__BASE_PRESENTER_PATH__'
  * @param {string} sessionId - The UUID of the current session
  * @param {object} payload - The submitted form data
  *
- * @returns {Promise<object>} The data formatted for the view template
+ * @returns {Promise<object>} The URL to redirect to when the data is valid, else the page data with the validation errors
  */
 export default async function __FUNCTION_NAME__(sessionId, payload) {
   const session = await FetchSessionDal(sessionId)
@@ -25,7 +27,9 @@ export default async function __FUNCTION_NAME__(sessionId, payload) {
   if (!validationResult) {
     await _save(session, payload)
 
-    return {}
+    return {
+      redirectUrl: checkUrl(session, `__ROUTE_BASE__/${sessionId}/next-page`)
+    }
   }
 
   const pageData = __PRESENTER_NAME__(session)

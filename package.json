@@ -31,7 +31,7 @@
     "./wrappers/*": "./src/wrappers/*"
   },
   "bin": {
-    "scaffold": "./bin/scaffold.sh",
+    "scaffold": "./bin/scaffold/scaffold.js",
     "water-knex": "./bin/water-knex.js"
   },
   "scripts": {
