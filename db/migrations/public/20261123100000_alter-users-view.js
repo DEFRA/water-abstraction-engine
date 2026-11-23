@@ -43,7 +43,7 @@ export function down(knex) {
         'users.last_login',
         'users.bad_logins',
         'users.application',
-        // 'users.role',
+        // 'users.role', // was made redundant when roles were moved to be stored separately in tables
         'users.external_id AS licence_entity_id',
         'users.reset_guid_date_created AS reset_guid_created_at',
         'users.enabled',
