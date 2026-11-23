@@ -153,6 +153,8 @@ export const NOTIFY_TEMPLATES = Object.freeze({
     statusAlert: 'c34d1b16-694b-4364-8e7e-83e9dbd34a62'
   },
   users: {
+    existingUserVerificationEmail: 'd9654596-a533-47e9-aa27-2cf869c6aa13',
+    newUserVerificationEmail: '3d25b496-abbd-49bb-b943-016019082988',
     verificationEmail: '45b79d3a-39f2-44cf-b8f9-012c952dbd92'
   }
 })
