@@ -25,6 +25,11 @@ export default class UserModel extends BaseModel {
     return 'users'
   }
 
+  // Defining which fields contain json allows us to insert an object without needing to stringify it first
+  static get jsonAttributes() {
+    return ['role']
+  }
+
   static get relationMappings() {
     return {
       chargeVersionNotes: {
