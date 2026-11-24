@@ -94,6 +94,16 @@ docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-engine &&
 docker compose exec dev /bin/bash
 ```
 
+## Scaffolding a journey
+
+To start a new journey page, run the scaffold from the root of water-abstraction-system or water-abstraction-external (see `bin/scaffold/README.md`):
+
+```bash
+docker compose exec dev /bin/bash -c 'cd /home/repos/water-abstraction-system && npm run scaffold -- <path/name> <check|complete|view|submit>'
+```
+
+Then add the printed controller and route code to the app's controller and routes files.
+
 ## Agentic configuration
 
 ### Agents
