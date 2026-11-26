@@ -10,9 +10,6 @@ import { data as regions } from '../../../db/seeds/data/regions.js'
 // per region. This region is not selected randomly to prevent unit tests from using this region unless necessary.
 const data = regions
 
-const BILL_RUN_REGION_INDEX = 9
-const TEST_REGION_INDEX = 8
-
 /**
  * Select an entry from the reference data entries seeded at the start of testing
  *
@@ -39,8 +36,6 @@ function select(index = -1) {
 }
 
 export default {
-  BILL_RUN_REGION_INDEX,
   data,
-  select,
-  TEST_REGION_INDEX
+  select
 }

@@ -45,25 +45,6 @@ export function generateAddress() {
 }
 
 /**
- * Generate an address external id
- *
- * This is built from NALD import data using the region code and address id
- *
- * @param {module:RegionModel|null} [region=null] - the region the address belongs to
- *
- * @returns {string} - A random external id
- */
-export function generateAddressExternalId(region = null) {
-  if (!region) {
-    region = RegionHelper.select(RegionHelper.TEST_REGION_INDEX)
-  }
-
-  const addressId = generateRandomInteger(100, 99998)
-
-  return `${region.naldRegionId}:${addressId}`
-}
-
-/**
  * Generates a Bill run number
  *
  * @param {object} region - the region
