@@ -54,19 +54,5 @@ export const data = [
     id: '77d44d65-6f33-425e-9075-ae5ac43a0c36',
     naldRegionId: 8,
     name: 'EA Wales'
-  },
-  {
-    chargeRegionId: 'S',
-    displayName: 'Test Region',
-    id: 'd0a4123d-1e19-480d-9dd4-f70f3387c4b9',
-    naldRegionId: 9,
-    name: 'Test'
-  },
-  {
-    chargeRegionId: 'S',
-    displayName: 'Bill Run Testing Region',
-    id: 'c502e4ca-9ae9-469d-8180-9f347d8e2bfd',
-    naldRegionId: 10,
-    name: 'Bill Run'
   }
 ]
